@@ -1,0 +1,16 @@
+PODS:
+  - UIViewExt (1.0.1)
+
+DEPENDENCIES:
+  - UIViewExt (~> 1.0.1)
+
+SPEC REPOS:
+  trunk:
+    - UIViewExt
+
+SPEC CHECKSUMS:
+  UIViewExt: 7f719ec46544e88dc0e7777626cbdbeea5497ef2
+
+PODFILE CHECKSUM: 087fb30a762852eb3747cea5f5f8f66187dafc5b
+
+COCOAPODS: 1.9.2

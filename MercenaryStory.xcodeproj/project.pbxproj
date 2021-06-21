@@ -3,20 +3,46 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 044501F2267ADED300C3F83D /* WDBaseNode.m */; };
+		04450F31267B4F9B00C3F83D /* Eye_Female.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F2E267B4F9A00C3F83D /* Eye_Female.png */; };
+		04450F32267B4F9B00C3F83D /* Eye_Dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F2F267B4F9B00C3F83D /* Eye_Dead.png */; };
+		04450F33267B4F9B00C3F83D /* Eye_Male.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F30267B4F9B00C3F83D /* Eye_Male.png */; };
+		04450F39267B4FD500C3F83D /* EyeBrows_Angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F38267B4FD500C3F83D /* EyeBrows_Angry.png */; };
+		04450F3E267B4FE300C3F83D /* EyeBrows_Eyebrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F3D267B4FE300C3F83D /* EyeBrows_Eyebrows.png */; };
+		04450F47267B501F00C3F83D /* Mouth_Angry.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F43267B501E00C3F83D /* Mouth_Angry.png */; };
+		04450F48267B501F00C3F83D /* Mouth_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F44267B501E00C3F83D /* Mouth_Normal.png */; };
+		04450F49267B501F00C3F83D /* Mouth_Smirk.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F45267B501F00C3F83D /* Mouth_Smirk.png */; };
+		04450F4A267B501F00C3F83D /* Mouth_Zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F46267B501F00C3F83D /* Mouth_Zombie.png */; };
+		04450F51267B504700C3F83D /* Ears_ElfEar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F4F267B504700C3F83D /* Ears_ElfEar.png */; };
+		04450F52267B504700C3F83D /* Ears_HumanEar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F50267B504700C3F83D /* Ears_HumanEar.png */; };
+		04450F5A267B50A800C3F83D /* HeadScar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F57267B50A800C3F83D /* HeadScar.png */; };
+		04450F5B267B50A800C3F83D /* PeasantHead.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F58267B50A800C3F83D /* PeasantHead.png */; };
+		04450F5C267B50A800C3F83D /* Head.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F59267B50A800C3F83D /* Head.png */; };
+		04450F65267B50D500C3F83D /* Human.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F64267B50D500C3F83D /* Human.png */; };
+		04450F6B267B520700C3F83D /* Hair6.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F6A267B520700C3F83D /* Hair6.png */; };
+		04450F79267B53DA00C3F83D /* ShadowSword.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F78267B53DA00C3F83D /* ShadowSword.png */; };
+		04450F7E267B59DD00C3F83D /* SamuraiElderSword.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F7D267B59DD00C3F83D /* SamuraiElderSword.png */; };
 		049EFE7E2679F83700283E13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFE7D2679F83700283E13 /* AppDelegate.m */; };
-		049EFE802679F83700283E13 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 049EFE7F2679F83700283E13 /* GameScene.sks */; };
-		049EFE822679F83700283E13 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 049EFE812679F83700283E13 /* Actions.sks */; };
-		049EFE852679F83700283E13 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFE842679F83700283E13 /* GameScene.m */; };
 		049EFE882679F83700283E13 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFE872679F83700283E13 /* GameViewController.m */; };
 		049EFE8B2679F83700283E13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 049EFE892679F83700283E13 /* Main.storyboard */; };
 		049EFE8D2679F83900283E13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 049EFE8C2679F83900283E13 /* Assets.xcassets */; };
 		049EFE902679F83900283E13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFE8F2679F83900283E13 /* main.m */; };
-		049EFE9A2679F83900283E13 /* MercenaryStoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFE992679F83900283E13 /* MercenaryStoryTests.m */; };
-		049EFEA52679F83900283E13 /* MercenaryStoryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFEA42679F83900283E13 /* MercenaryStoryUITests.m */; };
+		049EFEC92679FC5800283E13 /* WDBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFEC82679FC5800283E13 /* WDBaseScene.m */; };
+		049EFECF2679FC6A00283E13 /* WDTestScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFECE2679FC6A00283E13 /* WDTestScene.m */; };
+		049EFED42679FC8700283E13 /* WDTestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 049EFED32679FC8700283E13 /* WDTestScene.sks */; };
+		049EFEDD2679FD9E00283E13 /* gogogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049EFEDC2679FD9E00283E13 /* gogogo.jpg */; };
+		049EFEEB267A033100283E13 /* WDCalculateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EFEEA267A033100283E13 /* WDCalculateTool.m */; };
+		04D88A1F267C972F005C7B0C /* Armor1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D88A1E267C972F005C7B0C /* Armor1.png */; };
+		04D88A24267C9819005C7B0C /* Armor2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D88A23267C9819005C7B0C /* Armor2.png */; };
+		04E25E1E26807D87001CC70F /* Shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E25E1D26807D87001CC70F /* Shadow.png */; };
+		04E25E2326807DDE001CC70F /* FamilySword.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E25E2226807DDE001CC70F /* FamilySword.png */; };
+		04E25E282680804B001CC70F /* HunterShortBow.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E25E272680804A001CC70F /* HunterShortBow.png */; };
+		04E25E2E268091F6001CC70F /* WDBaseNode+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E25E2D268091F6001CC70F /* WDBaseNode+Animation.m */; };
+		B4BA03A275D60B67A665B596 /* Pods_MercenaryStory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD103ADE2C37D510020EC83 /* Pods_MercenaryStory.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +63,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044501F1267ADED300C3F83D /* WDBaseNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDBaseNode.h; sourceTree = "<group>"; };
+		044501F2267ADED300C3F83D /* WDBaseNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDBaseNode.m; sourceTree = "<group>"; };
+		04450F2E267B4F9A00C3F83D /* Eye_Female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_Female.png; sourceTree = "<group>"; };
+		04450F2F267B4F9B00C3F83D /* Eye_Dead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_Dead.png; sourceTree = "<group>"; };
+		04450F30267B4F9B00C3F83D /* Eye_Male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_Male.png; sourceTree = "<group>"; };
+		04450F38267B4FD500C3F83D /* EyeBrows_Angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EyeBrows_Angry.png; sourceTree = "<group>"; };
+		04450F3D267B4FE300C3F83D /* EyeBrows_Eyebrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EyeBrows_Eyebrows.png; sourceTree = "<group>"; };
+		04450F43267B501E00C3F83D /* Mouth_Angry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mouth_Angry.png; sourceTree = "<group>"; };
+		04450F44267B501E00C3F83D /* Mouth_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mouth_Normal.png; sourceTree = "<group>"; };
+		04450F45267B501F00C3F83D /* Mouth_Smirk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mouth_Smirk.png; sourceTree = "<group>"; };
+		04450F46267B501F00C3F83D /* Mouth_Zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mouth_Zombie.png; sourceTree = "<group>"; };
+		04450F4F267B504700C3F83D /* Ears_ElfEar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ears_ElfEar.png; sourceTree = "<group>"; };
+		04450F50267B504700C3F83D /* Ears_HumanEar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ears_HumanEar.png; sourceTree = "<group>"; };
+		04450F57267B50A800C3F83D /* HeadScar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeadScar.png; sourceTree = "<group>"; };
+		04450F58267B50A800C3F83D /* PeasantHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PeasantHead.png; sourceTree = "<group>"; };
+		04450F59267B50A800C3F83D /* Head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Head.png; sourceTree = "<group>"; };
+		04450F64267B50D500C3F83D /* Human.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Human.png; sourceTree = "<group>"; };
+		04450F6A267B520700C3F83D /* Hair6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hair6.png; sourceTree = "<group>"; };
+		04450F78267B53DA00C3F83D /* ShadowSword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShadowSword.png; sourceTree = "<group>"; };
+		04450F7D267B59DD00C3F83D /* SamuraiElderSword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SamuraiElderSword.png; sourceTree = "<group>"; };
 		049EFE792679F83700283E13 /* MercenaryStory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MercenaryStory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		049EFE7C2679F83700283E13 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		049EFE7D2679F83700283E13 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		049EFE7F2679F83700283E13 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		049EFE812679F83700283E13 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		049EFE832679F83700283E13 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		049EFE842679F83700283E13 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		049EFE862679F83700283E13 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		049EFE872679F83700283E13 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		049EFE8A2679F83700283E13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,11 +93,26 @@
 		049EFE8E2679F83900283E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		049EFE8F2679F83900283E13 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		049EFE952679F83900283E13 /* MercenaryStoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercenaryStoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		049EFE992679F83900283E13 /* MercenaryStoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MercenaryStoryTests.m; sourceTree = "<group>"; };
-		049EFE9B2679F83900283E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		049EFEA02679F83900283E13 /* MercenaryStoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MercenaryStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		049EFEA42679F83900283E13 /* MercenaryStoryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MercenaryStoryUITests.m; sourceTree = "<group>"; };
-		049EFEA62679F83900283E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		049EFEBE2679FA5700283E13 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		049EFEC72679FC5800283E13 /* WDBaseScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDBaseScene.h; sourceTree = "<group>"; };
+		049EFEC82679FC5800283E13 /* WDBaseScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDBaseScene.m; sourceTree = "<group>"; };
+		049EFECD2679FC6A00283E13 /* WDTestScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDTestScene.h; sourceTree = "<group>"; };
+		049EFECE2679FC6A00283E13 /* WDTestScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDTestScene.m; sourceTree = "<group>"; };
+		049EFED32679FC8700283E13 /* WDTestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WDTestScene.sks; sourceTree = "<group>"; };
+		049EFEDC2679FD9E00283E13 /* gogogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gogogo.jpg; sourceTree = "<group>"; };
+		049EFEE9267A033100283E13 /* WDCalculateTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDCalculateTool.h; sourceTree = "<group>"; };
+		049EFEEA267A033100283E13 /* WDCalculateTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDCalculateTool.m; sourceTree = "<group>"; };
+		04D88A1E267C972F005C7B0C /* Armor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Armor1.png; sourceTree = "<group>"; };
+		04D88A23267C9819005C7B0C /* Armor2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Armor2.png; sourceTree = "<group>"; };
+		04E25E1D26807D87001CC70F /* Shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shadow.png; sourceTree = "<group>"; };
+		04E25E2226807DDE001CC70F /* FamilySword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FamilySword.png; sourceTree = "<group>"; };
+		04E25E272680804A001CC70F /* HunterShortBow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HunterShortBow.png; sourceTree = "<group>"; };
+		04E25E2C268091F6001CC70F /* WDBaseNode+Animation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WDBaseNode+Animation.h"; sourceTree = "<group>"; };
+		04E25E2D268091F6001CC70F /* WDBaseNode+Animation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WDBaseNode+Animation.m"; sourceTree = "<group>"; };
+		92E18414883EBCA2F38A05AA /* Pods-MercenaryStory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercenaryStory.release.xcconfig"; path = "Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory.release.xcconfig"; sourceTree = "<group>"; };
+		93989DBAC1A006CC52F99BB0 /* Pods-MercenaryStory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercenaryStory.debug.xcconfig"; path = "Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory.debug.xcconfig"; sourceTree = "<group>"; };
+		DBD103ADE2C37D510020EC83 /* Pods_MercenaryStory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercenaryStory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4BA03A275D60B67A665B596 /* Pods_MercenaryStory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,13 +141,110 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0445021F267B4DF300C3F83D /* WDImages */ = {
+			isa = PBXGroup;
+			children = (
+				04E25E1D26807D87001CC70F /* Shadow.png */,
+				04D88A1D267C9728005C7B0C /* Armor */,
+				04450F6F267B53AF00C3F83D /* Weapon */,
+				04450F69267B51FE00C3F83D /* Hair */,
+				04450F63267B50CA00C3F83D /* Body */,
+				04450F56267B509D00C3F83D /* Head */,
+				04450F4E267B503400C3F83D /* Ears */,
+				04450F42267B500200C3F83D /* Mouth */,
+				04450F37267B4FBA00C3F83D /* Eyebrows */,
+				04450F2D267B4F7900C3F83D /* Eyes */,
+			);
+			path = WDImages;
+			sourceTree = "<group>";
+		};
+		04450F2D267B4F7900C3F83D /* Eyes */ = {
+			isa = PBXGroup;
+			children = (
+				04450F2F267B4F9B00C3F83D /* Eye_Dead.png */,
+				04450F2E267B4F9A00C3F83D /* Eye_Female.png */,
+				04450F30267B4F9B00C3F83D /* Eye_Male.png */,
+			);
+			path = Eyes;
+			sourceTree = "<group>";
+		};
+		04450F37267B4FBA00C3F83D /* Eyebrows */ = {
+			isa = PBXGroup;
+			children = (
+				04450F3D267B4FE300C3F83D /* EyeBrows_Eyebrows.png */,
+				04450F38267B4FD500C3F83D /* EyeBrows_Angry.png */,
+			);
+			path = Eyebrows;
+			sourceTree = "<group>";
+		};
+		04450F42267B500200C3F83D /* Mouth */ = {
+			isa = PBXGroup;
+			children = (
+				04450F43267B501E00C3F83D /* Mouth_Angry.png */,
+				04450F44267B501E00C3F83D /* Mouth_Normal.png */,
+				04450F45267B501F00C3F83D /* Mouth_Smirk.png */,
+				04450F46267B501F00C3F83D /* Mouth_Zombie.png */,
+			);
+			path = Mouth;
+			sourceTree = "<group>";
+		};
+		04450F4E267B503400C3F83D /* Ears */ = {
+			isa = PBXGroup;
+			children = (
+				04450F4F267B504700C3F83D /* Ears_ElfEar.png */,
+				04450F50267B504700C3F83D /* Ears_HumanEar.png */,
+			);
+			path = Ears;
+			sourceTree = "<group>";
+		};
+		04450F56267B509D00C3F83D /* Head */ = {
+			isa = PBXGroup;
+			children = (
+				04450F59267B50A800C3F83D /* Head.png */,
+				04450F57267B50A800C3F83D /* HeadScar.png */,
+				04450F58267B50A800C3F83D /* PeasantHead.png */,
+			);
+			path = Head;
+			sourceTree = "<group>";
+		};
+		04450F63267B50CA00C3F83D /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				04450F64267B50D500C3F83D /* Human.png */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		04450F69267B51FE00C3F83D /* Hair */ = {
+			isa = PBXGroup;
+			children = (
+				04450F6A267B520700C3F83D /* Hair6.png */,
+			);
+			path = Hair;
+			sourceTree = "<group>";
+		};
+		04450F6F267B53AF00C3F83D /* Weapon */ = {
+			isa = PBXGroup;
+			children = (
+				04E25E272680804A001CC70F /* HunterShortBow.png */,
+				04E25E2226807DDE001CC70F /* FamilySword.png */,
+				04450F78267B53DA00C3F83D /* ShadowSword.png */,
+				04450F7D267B59DD00C3F83D /* SamuraiElderSword.png */,
+			);
+			path = Weapon;
+			sourceTree = "<group>";
+		};
 		049EFE702679F83700283E13 = {
 			isa = PBXGroup;
 			children = (
+				0445021F267B4DF300C3F83D /* WDImages */,
+				049EFEC62679FC4C00283E13 /* WDBase */,
+				049EFEC52679FC0D00283E13 /* WDScene */,
+				049EFEBD2679FA3C00283E13 /* WDTool */,
 				049EFE7B2679F83700283E13 /* MercenaryStory */,
-				049EFE982679F83900283E13 /* MercenaryStoryTests */,
-				049EFEA32679F83900283E13 /* MercenaryStoryUITests */,
 				049EFE7A2679F83700283E13 /* Products */,
+				A5A50B841D983A4E5DA4BB93 /* Pods */,
+				B548025B664C65B65C09E299 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,12 +261,9 @@
 		049EFE7B2679F83700283E13 /* MercenaryStory */ = {
 			isa = PBXGroup;
 			children = (
+				049EFEDC2679FD9E00283E13 /* gogogo.jpg */,
 				049EFE7C2679F83700283E13 /* AppDelegate.h */,
 				049EFE7D2679F83700283E13 /* AppDelegate.m */,
-				049EFE7F2679F83700283E13 /* GameScene.sks */,
-				049EFE812679F83700283E13 /* Actions.sks */,
-				049EFE832679F83700283E13 /* GameScene.h */,
-				049EFE842679F83700283E13 /* GameScene.m */,
 				049EFE862679F83700283E13 /* GameViewController.h */,
 				049EFE872679F83700283E13 /* GameViewController.m */,
 				049EFE892679F83700283E13 /* Main.storyboard */,
@@ -122,22 +274,63 @@
 			path = MercenaryStory;
 			sourceTree = "<group>";
 		};
-		049EFE982679F83900283E13 /* MercenaryStoryTests */ = {
+		049EFEBD2679FA3C00283E13 /* WDTool */ = {
 			isa = PBXGroup;
 			children = (
-				049EFE992679F83900283E13 /* MercenaryStoryTests.m */,
-				049EFE9B2679F83900283E13 /* Info.plist */,
+				049EFEBE2679FA5700283E13 /* PrefixHeader.pch */,
+				049EFEE9267A033100283E13 /* WDCalculateTool.h */,
+				049EFEEA267A033100283E13 /* WDCalculateTool.m */,
 			);
-			path = MercenaryStoryTests;
+			path = WDTool;
 			sourceTree = "<group>";
 		};
-		049EFEA32679F83900283E13 /* MercenaryStoryUITests */ = {
+		049EFEC52679FC0D00283E13 /* WDScene */ = {
 			isa = PBXGroup;
 			children = (
-				049EFEA42679F83900283E13 /* MercenaryStoryUITests.m */,
-				049EFEA62679F83900283E13 /* Info.plist */,
+				049EFECD2679FC6A00283E13 /* WDTestScene.h */,
+				049EFECE2679FC6A00283E13 /* WDTestScene.m */,
+				049EFED32679FC8700283E13 /* WDTestScene.sks */,
 			);
-			path = MercenaryStoryUITests;
+			path = WDScene;
+			sourceTree = "<group>";
+		};
+		049EFEC62679FC4C00283E13 /* WDBase */ = {
+			isa = PBXGroup;
+			children = (
+				049EFEC72679FC5800283E13 /* WDBaseScene.h */,
+				049EFEC82679FC5800283E13 /* WDBaseScene.m */,
+				044501F1267ADED300C3F83D /* WDBaseNode.h */,
+				044501F2267ADED300C3F83D /* WDBaseNode.m */,
+				04E25E2C268091F6001CC70F /* WDBaseNode+Animation.h */,
+				04E25E2D268091F6001CC70F /* WDBaseNode+Animation.m */,
+			);
+			path = WDBase;
+			sourceTree = "<group>";
+		};
+		04D88A1D267C9728005C7B0C /* Armor */ = {
+			isa = PBXGroup;
+			children = (
+				04D88A1E267C972F005C7B0C /* Armor1.png */,
+				04D88A23267C9819005C7B0C /* Armor2.png */,
+			);
+			path = Armor;
+			sourceTree = "<group>";
+		};
+		A5A50B841D983A4E5DA4BB93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93989DBAC1A006CC52F99BB0 /* Pods-MercenaryStory.debug.xcconfig */,
+				92E18414883EBCA2F38A05AA /* Pods-MercenaryStory.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B548025B664C65B65C09E299 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBD103ADE2C37D510020EC83 /* Pods_MercenaryStory.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +340,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 049EFEA92679F83900283E13 /* Build configuration list for PBXNativeTarget "MercenaryStory" */;
 			buildPhases = (
+				8B5E347063CC5A97EE5CB24A /* [CP] Check Pods Manifest.lock */,
 				049EFE752679F83700283E13 /* Sources */,
 				049EFE762679F83700283E13 /* Frameworks */,
 				049EFE772679F83700283E13 /* Resources */,
+				5FAF2B71D5A6C0DCF185260A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -242,10 +437,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D88A1F267C972F005C7B0C /* Armor1.png in Resources */,
+				04450F5C267B50A800C3F83D /* Head.png in Resources */,
+				04450F33267B4F9B00C3F83D /* Eye_Male.png in Resources */,
+				04450F49267B501F00C3F83D /* Mouth_Smirk.png in Resources */,
+				04450F5B267B50A800C3F83D /* PeasantHead.png in Resources */,
+				04E25E2326807DDE001CC70F /* FamilySword.png in Resources */,
+				04450F48267B501F00C3F83D /* Mouth_Normal.png in Resources */,
+				04450F65267B50D500C3F83D /* Human.png in Resources */,
 				049EFE8B2679F83700283E13 /* Main.storyboard in Resources */,
-				049EFE802679F83700283E13 /* GameScene.sks in Resources */,
+				04D88A24267C9819005C7B0C /* Armor2.png in Resources */,
+				04E25E1E26807D87001CC70F /* Shadow.png in Resources */,
+				04450F52267B504700C3F83D /* Ears_HumanEar.png in Resources */,
+				04450F31267B4F9B00C3F83D /* Eye_Female.png in Resources */,
+				04450F47267B501F00C3F83D /* Mouth_Angry.png in Resources */,
+				04450F51267B504700C3F83D /* Ears_ElfEar.png in Resources */,
+				04450F7E267B59DD00C3F83D /* SamuraiElderSword.png in Resources */,
+				049EFEDD2679FD9E00283E13 /* gogogo.jpg in Resources */,
+				04450F39267B4FD500C3F83D /* EyeBrows_Angry.png in Resources */,
 				049EFE8D2679F83900283E13 /* Assets.xcassets in Resources */,
-				049EFE822679F83700283E13 /* Actions.sks in Resources */,
+				04450F79267B53DA00C3F83D /* ShadowSword.png in Resources */,
+				04450F6B267B520700C3F83D /* Hair6.png in Resources */,
+				049EFED42679FC8700283E13 /* WDTestScene.sks in Resources */,
+				04450F32267B4F9B00C3F83D /* Eye_Dead.png in Resources */,
+				04E25E282680804B001CC70F /* HunterShortBow.png in Resources */,
+				04450F3E267B4FE300C3F83D /* EyeBrows_Eyebrows.png in Resources */,
+				04450F4A267B501F00C3F83D /* Mouth_Zombie.png in Resources */,
+				04450F5A267B50A800C3F83D /* HeadScar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,15 +483,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5FAF2B71D5A6C0DCF185260A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B5E347063CC5A97EE5CB24A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MercenaryStory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		049EFE752679F83700283E13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049EFE852679F83700283E13 /* GameScene.m in Sources */,
+				04E25E2E268091F6001CC70F /* WDBaseNode+Animation.m in Sources */,
+				049EFEC92679FC5800283E13 /* WDBaseScene.m in Sources */,
 				049EFE882679F83700283E13 /* GameViewController.m in Sources */,
 				049EFE902679F83900283E13 /* main.m in Sources */,
+				049EFEEB267A033100283E13 /* WDCalculateTool.m in Sources */,
+				044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */,
 				049EFE7E2679F83700283E13 /* AppDelegate.m in Sources */,
+				049EFECF2679FC6A00283E13 /* WDTestScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +545,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049EFE9A2679F83900283E13 /* MercenaryStoryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +552,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049EFEA52679F83900283E13 /* MercenaryStoryUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,11 +696,14 @@
 		};
 		049EFEAA2679F83900283E13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93989DBAC1A006CC52F99BB0 /* Pods-MercenaryStory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BT8UTD5NYK;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/mac/Desktop/battleHeartCopy/MercenaryStory/WDTool/PrefixHeader.pch;
 				INFOPLIST_FILE = MercenaryStory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,11 +717,14 @@
 		};
 		049EFEAB2679F83900283E13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92E18414883EBCA2F38A05AA /* Pods-MercenaryStory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BT8UTD5NYK;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/mac/Desktop/battleHeartCopy/MercenaryStory/WDTool/PrefixHeader.pch;
 				INFOPLIST_FILE = MercenaryStory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

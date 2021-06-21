@@ -6,18 +6,17 @@
 //
 
 #import "GameViewController.h"
-#import "GameScene.h"
+#import "WDTestScene.h"
 
 @implementation GameViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Load the SKScene from 'GameScene.sks'
-    GameScene *scene = (GameScene *)[SKScene nodeWithFileNamed:@"GameScene"];
     
-    // Set the scale mode to scale to fit the window
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    CGFloat a = [UIScreen mainScreen].scale;
+    NSLog(@"%lf",[UIScreen mainScreen].bounds.size.width);
+    // Load the SKScene from 'GameScene.sks'
+    WDTestScene *scene = (WDTestScene *)[WDTestScene nodeWithFileNamed:@"WDTestScene"];
     
     SKView *skView = (SKView *)self.view;
     
@@ -26,6 +25,7 @@
     
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    skView.showsPhysics = YES;
 }
 
 - (BOOL)shouldAutorotate {

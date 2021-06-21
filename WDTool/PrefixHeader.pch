@@ -1,0 +1,66 @@
+//
+//  PrefixHeader.pch
+//  MercenaryStory
+//
+//  Created by Mac on 2021/6/16.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+
+/// 引入的头文件
+#import <UIViewExt/UIViewExt.h>
+#import "WDCalculateTool.h"  /// 切割图片、算法等
+#import "WDBaseNode.h"
+
+
+
+/// define
+//屏宽高
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+
+//零件
+#define kBody @"body"  //身体
+#define kHip @"hip"    //胯
+#define kRightHand @"rightHand" //右手
+#define kKnee @"knee"  //膝盖
+#define kFoot @"foot"  //脚
+#define kLeftArm @"leftArm" //左胳膊
+#define kRightArm @"rightArm" //右胳膊
+#define kLeftElbow @"kLeftElbow" //左胳膊肘
+#define kRightElbow @"kRightElbow" //右胳膊肘加手掌
+#define kLeftHand @"leftHand" //左手
+#define kRightFinger @"rightFinger" //右手指
+
+/// 脚和膝盖的移动动画
+#define KAnimationFootMove @"KAnimationFootMove"
+
+/// 上半身站立和移动动画
+#define kAnimationUpBody @"kAnimationUpBody"
+
+
+//弧度角度互换
+//角度转弧度
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
+//弧度转角度
+#define RADIANS_TO_DEGREES(radians) ((radians) * (180.0 / M_PI))
+
+
+
+
+//NSLog
+#ifndef __OPTIMIZE__
+#define NSLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define NSLog(...) {}
+#endif
+
+
+
+
+#endif /* PrefixHeader_pch */
