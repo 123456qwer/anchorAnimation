@@ -6,6 +6,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "WDAttributeManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,7 +41,8 @@ typedef NS_ENUM(NSInteger,AttackMode) {
     
 };
 
-
+@class WDEnemyNode;
+@class WDUserNode;
 @interface WDBaseNode : SKSpriteNode
 
 @property (nonatomic,strong)WDBaseNode *body;
@@ -62,9 +64,12 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,strong)WDBaseNode *ear;
 @property (nonatomic,strong)WDBaseNode *mouth;
 @property (nonatomic,strong)WDBaseNode *hair;
+@property (nonatomic,strong)WDBaseNode *hemlet;
+@property (nonatomic,strong)WDBaseNode *shield;
+@property (nonatomic,strong)WDBaseNode *shadow;
 
-
-
+/// 是否开启跑状态
+@property (nonatomic,assign)BOOL isRunState;
 
 /// 默认角度
 @property (nonatomic,assign)CGFloat defaultAngle;
@@ -72,8 +77,22 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,assign)AttackMode mode;
 /// 人物状态
 @property (nonatomic,assign)SpriteState state;
+/// 目标人物
+@property (nonatomic,strong)WDEnemyNode *targetNode;
 
+///腿部走路动画时间
 @property (nonatomic,assign)NSTimeInterval walkTime;
+///腿部走路的角度
+@property (nonatomic,assign)CGFloat legWalkAngle;
+
+
+#pragma mark - 人物属性 -
+
+/// 动画过程中人物走动速度、默认(220)
+@property (nonatomic,assign)CGFloat animationWalkSpeed;
+/// 动画过程中人物跑动速度 默认(300)
+@property (nonatomic,assign)CGFloat animationRunSpeed;
+
 
 - (void)setBodyArmor:(NSString *)armorName;
 - (void)setHipArmor:(NSString *)armorName;
@@ -100,23 +119,50 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 - (void)setLeftWeapon:(NSString *)weaponName;
 /// 设置武器（右）
 - (void)setRightWeapon:(NSString *)weaponName;
+/// 设置右手盾牌
+- (void)setRightShield:(NSString *)shieldName;
 
 
+///实时更新状态
+- (void)upDataAction;
 ///创建裸体人物
 - (void)createUserNodeWithScale:(CGFloat)scale;
 
 
 #pragma mark - 人物行为方法 -
+/// 移动方法统一调用，根据状态判断是跑是走
+- (void)moveAction:(CGPoint)movePoint;
+
 /// 走动的方法
-- (void)walkAction;
+- (void)walkAction:(CGPoint)movePoint;
+
+/// 跑的方法
+- (void)wdRunAction:(CGPoint)movePoint;
 
 /// 站住的动作，停止腿部运动
 - (void)standAction;
 
 /// 攻击
-- (void)attackAction;
+- (void)attackAction:(WDBaseNode *)enemyNode;
+
+/// 被攻击
+- (void)beAttackAction:(WDBaseNode *)enemyNode;
+
 
 
 @end
+
+
+
+
+/// 玩家人物
+@interface WDUserNode : WDBaseNode
+@end
+
+
+/// 敌对人物
+@interface WDEnemyNode : WDBaseNode
+@end
+
 
 NS_ASSUME_NONNULL_END

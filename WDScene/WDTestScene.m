@@ -6,7 +6,7 @@
 //
 
 #import "WDTestScene.h"
-
+#import "WDKknightNode.h"
 @implementation WDTestScene
 {
     WDBaseNode *_head;
@@ -30,7 +30,9 @@
     WDBaseNode *_leftFoot;
     
     NSTimeInterval _walkTime;
-    WDBaseNode *_person;
+    WDKknightNode *_person;
+    
+    WDBaseNode    *_enemyNode;
     
     int a;
     int b;
@@ -40,21 +42,46 @@
 {
     [super didMoveToView:view];
   
-
-    CGFloat scale = 0.7;
+    CGFloat bgScale = 2 * kScreenWidth / self.bgNode.size.width;
+    self.bgNode.xScale = bgScale;
+    self.bgNode.yScale = bgScale;
     
-    SKSpriteNode *bgNode = (SKSpriteNode *)[self childNodeWithName:@"bgNode"];
-    [bgNode setTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"gogogo.jpg"]]];
-    bgNode.position = CGPointMake(0, 0);
+    CGFloat scale = 0.4;
     
-    _person = [WDBaseNode spriteNodeWithColor:[UIColor orangeColor] size:CGSizeMake(110, 200)];
-    _person.mode = Attack_singleHand;
-    _person.state = Sprite_walk;
-    [bgNode addChild:_person];
+    _person = [WDKknightNode spriteNodeWithColor:[[UIColor orangeColor]colorWithAlphaComponent:0.2] size:CGSizeMake(145 * scale, 280 * scale)];
+    _person.anchorPoint = CGPointMake(0.5, 0.5);
+    [self.bgNode addChild:_person];
+    
+    _enemyNode = [WDEnemyNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(145 * scale, 280 * scale)];
+    _enemyNode.anchorPoint = CGPointMake(0.5, 0.5);
+    _enemyNode.name = @"enemy";
+    [self.bgNode addChild:_enemyNode];
+    
+    
+    
+    
+    [_enemyNode createUserNodeWithScale:scale];
+    [_person    createUserNodeWithScale:scale];
+    
+//    SKSpriteNode *aa = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(10, 10)];
+//    aa.zPosition = 100;
+//    [_person addChild:aa];
+//    
+//    SKSpriteNode *bb = [SKSpriteNode spriteNodeWithColor:[UIColor grayColor] size:CGSizeMake(10, 10)];
+//    bb.zPosition = 105;
+//    [_enemyNode addChild:bb];
+   
+    
+    //[_enemyNode standAction];
+    self.selectNode = _person;
+    [_enemyNode standAction];
+}
 
-    [_person createUserNodeWithScale:scale];
-    [_person setLeftWeapon:@"FamilySword"];
-    [self phyWithNode:_person];
+- (void)update:(NSTimeInterval)currentTime
+{
+    [super update:currentTime];
+    [_enemyNode upDataAction];
+    [self.selectNode upDataAction];
 }
 
 - (void)phyWithNode:(WDBaseNode *)node
@@ -79,20 +106,5 @@
 
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-//    a += 15;
-//    b -= 15;
-//    int f = arc4random() % 2;
-//    if (f == 0) {
-//        [_person standAction];
-//    }else{
-//        [_person walkAction];
-//    }
-    [_person attackAction];
-   
-    _rightArm.zRotation = DEGREES_TO_RADIANS(a);
-}
 
 @end

@@ -11,23 +11,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDBaseNode (Animation)
 
-/// 上半身运动
-- (void)upBodyAction;
+/// 移除腿部的动画
+- (void)removeLegAnimation;
+
+
+- (void)upBodyActionForStand;
+- (void)upBodyActionForWalk;
+- (void)upBodyActionForRun;
+
 
 /// 左腿走
-- (void)leftLegWalkAction;
-
+- (void)leftLegMoveAction;
 /// 右腿走
-- (void)rightLegWalkAction;
-
-/// 右胳膊晃动
-- (void)rightArmStandAction;
-
-/// 左胳膊晃动
-- (void)leftArmStandAction;
+- (void)rightLegMoveAction;
 
 /// 单手武器攻击
-- (void)singleAttackAction;
+- (void)singleAttackAction:(WDBaseNode *)enemy;
+
+///正常
+- (void)normalFaceState;
+///生气
+- (void)angleFaceState;
 
 @end
 

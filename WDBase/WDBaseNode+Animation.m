@@ -9,22 +9,124 @@
 
 @implementation WDBaseNode (Animation)
 
-/// 上半身运动
-- (void)upBodyAction{
-    
+#pragma mark - 上半身 -
+- (void)removeUpBodyAction
+{
     [self.rightElbow removeActionForKey:kAnimationUpBody];
     [self.leftElbow removeActionForKey:kAnimationUpBody];
     [self.hip removeActionForKey:kAnimationUpBody];
     [self.body removeActionForKey:kAnimationUpBody];
-    
-    [self leftArmStandAction];
-    [self rightArmStandAction];
 }
 
+/// 上半身跑动动画
+- (void)upBodyActionForRun{
+    
+    [self removeUpBodyAction];
+
+    NSDictionary *angleDic =
+    @{kRightArm:@[@(-3),@(-15)],kLeftArm:@[@(20),@(0)],kBody:@[@(-20),@(-10)]};
+    
+    [self leftArmAction:angleDic[kLeftArm]];
+    [self rightArmAction:angleDic[kRightArm]];
+    [self bodyAndHipAction:angleDic[kBody]];
+}
+
+/// 上半身走动动画
+- (void)upBodyActionForWalk{
+    
+    [self removeUpBodyAction];
+
+    NSDictionary *angleDic =
+    @{kRightArm:@[@(-3),@(-15)],kLeftArm:@[@(20),@(0)],kBody:@[@(-10),@(-4)]};
+    
+    [self leftArmAction:angleDic[kLeftArm]];
+    [self rightArmAction:angleDic[kRightArm]];
+    [self bodyAndHipAction:angleDic[kBody]];
+}
+
+/// 上半身站立动画
+- (void)upBodyActionForStand
+{
+    NSDictionary *angleDic =
+    @{kRightArm:@[@(-6),@(-12)],kLeftArm:@[@(14),@(8)],kBody:@[@(-1),@(1)]};
+    
+    [self leftArmAction:angleDic[kLeftArm]];
+    [self rightArmAction:angleDic[kRightArm]];
+    [self bodyAndHipAction:angleDic[kBody]];
+}
+
+
+
+/// 右胳膊晃动
+- (void)rightArmAction:(NSArray *)angleArr{
+    
+    CGFloat angle1 = [angleArr[0]floatValue];
+    CGFloat angle2 = [angleArr[1]floatValue];
+    
+    SKAction *rightElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle1) duration:0.5];
+    SKAction *rightElbowAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle2) duration:0.5];
+    SKAction *seqRightElbow = [SKAction sequence:@[rightElbowAction,rightElbowAction2]];
+    SKAction *repRightElbow = [SKAction repeatActionForever:seqRightElbow];
+    [self.rightElbow runAction:repRightElbow withKey:kAnimationUpBody];
+}
+
+/// 左胳膊晃动
+- (void)leftArmAction:(NSArray *)angleArr{
+    
+    CGFloat angle1 = [angleArr[0]floatValue];
+    CGFloat angle2 = [angleArr[1]floatValue];
+    
+    SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle1) duration:0.5];
+    SKAction *leftElbowAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle2) duration:0.5];
+    SKAction *seqElbow = [SKAction sequence:@[leftElbowAction,leftElbowAction2]];
+    SKAction *repElbow = [SKAction repeatActionForever:seqElbow];
+    [self.leftElbow runAction:repElbow withKey:kAnimationUpBody];
+}
+
+
+
+
+/// 上身摇摆
+- (void)bodyAndHipAction:(NSArray *)angleArr
+{
+    CGFloat angle1 = [angleArr[0]floatValue];
+    CGFloat angle2 = [angleArr[1]floatValue];
+//    
+    SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle1) duration:0.5];
+    SKAction *bodyAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle2) duration:0.5];
+    SKAction *seq = [SKAction sequence:@[bodyAction,bodyAction2]];
+    SKAction *rep = [SKAction repeatActionForever:seq];
+    [self.body runAction:rep withKey:kAnimationUpBody];
+    
+    
+    SKAction *hipAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-angle1) duration:0.5];
+    SKAction *hipAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-angle2) duration:0.5];
+    SKAction *seqHip = [SKAction sequence:@[hipAction,hipAction2]];
+    SKAction *repHip = [SKAction repeatActionForever:seqHip];
+    [self.hip runAction:repHip withKey:kAnimationUpBody];
+}
+
+
+#pragma mark - 腿部 -
+- (void)removeLegAnimation
+{
+    [self.leftKnee removeActionForKey:KAnimationFootMove];
+    [self.leftFoot removeActionForKey:KAnimationFootMove];
+    [self.rightKnee removeActionForKey:KAnimationFootMove];
+    [self.rightFoot removeActionForKey:KAnimationFootMove];
+    
+    self.rightKnee.zRotation = self.rightKnee.defaultAngle;
+    self.rightFoot.zRotation = self.rightFoot.defaultAngle;
+    
+    self.leftKnee.zRotation = self.leftKnee.defaultAngle;
+    self.leftFoot.zRotation = self.leftFoot.defaultAngle;
+}
 /// 左腿走
-- (void)leftLegWalkAction{
+- (void)leftLegMoveAction{
+    
+    
     NSTimeInterval moveTime = self.walkTime;
-    CGFloat angle = -15;
+    CGFloat angle = -self.legWalkAngle;
     
     SKAction *kneeAction1 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle) duration:moveTime];
     SKAction *kneeAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-angle) duration:moveTime];
@@ -48,10 +150,11 @@
 }
 
 /// 右腿走
-- (void)rightLegWalkAction{
+- (void)rightLegMoveAction{
     
     NSTimeInterval moveTime = self.walkTime;
-    CGFloat angle = 15;
+    CGFloat angle = self.legWalkAngle;
+    
     
     SKAction *kneeAction1 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(angle) duration:moveTime];
     SKAction *kneeAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-angle) duration:moveTime];
@@ -73,46 +176,20 @@
     }];
 }
 
-/// 右胳膊晃动
-- (void)rightArmStandAction{
-    SKAction *rightElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-6) duration:0.5];
-    SKAction *rightElbowAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-12) duration:0.5];
-    SKAction *seqRightElbow = [SKAction sequence:@[rightElbowAction,rightElbowAction2]];
-    SKAction *repRightElbow = [SKAction repeatActionForever:seqRightElbow];
-    [self.rightElbow runAction:repRightElbow withKey:kAnimationUpBody];
-}
 
-/// 左胳膊晃动
-- (void)leftArmStandAction{
-    
-    SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-1) duration:0.5];
-    SKAction *bodyAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(1) duration:0.5];
-    SKAction *seq = [SKAction sequence:@[bodyAction,bodyAction2]];
-    SKAction *rep = [SKAction repeatActionForever:seq];
-    [self.body runAction:rep withKey:kAnimationUpBody];
-    
-    
-    SKAction *hipAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(1) duration:0.5];
-    SKAction *hipAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-1) duration:0.5];
-    SKAction *seqHip = [SKAction sequence:@[hipAction,hipAction2]];
-    SKAction *repHip = [SKAction repeatActionForever:seqHip];
-    [self.hip runAction:repHip withKey:kAnimationUpBody];
-    
-    SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(14) duration:0.5];
-    SKAction *leftElbowAction2 = [SKAction rotateToAngle:DEGREES_TO_RADIANS(8) duration:0.5];
-    SKAction *seqElbow = [SKAction sequence:@[leftElbowAction,leftElbowAction2]];
-    SKAction *repElbow = [SKAction repeatActionForever:seqElbow];
-    [self.leftElbow runAction:repElbow withKey:kAnimationUpBody];
-}
-
-
-
+#pragma mark - 攻击 -
 /// 单手武器攻击
-- (void)singleAttackAction{
+- (void)singleAttackAction:(WDBaseNode *)enemyNode{
     
     if (self.state & Sprite_attack) {
         return;
     }
+    
+    
+    self.body.zRotation = DEGREES_TO_RADIANS(0);
+    self.hip.zRotation  = DEGREES_TO_RADIANS(0);
+    [self.body removeActionForKey:kAnimationUpBody];
+    [self.hip removeActionForKey:kAnimationUpBody];
     
     self.state = self.state | Sprite_attack;
     
@@ -160,6 +237,28 @@
             
             [weakSelf angleFaceState];
             
+            SKAction *waitAction = [SKAction waitForDuration:0.1];
+            ///未击中的情况下直接攻击
+            __block NSTimeInterval attactWaitTime = 0.4;
+            [weakSelf runAction:waitAction completion:^{
+                ///击中判定
+                CGFloat dis = [WDCalculateTool distanceBetweenPoints:weakSelf.position seconde:enemyNode.position];
+                
+                if (dis <= self.size.width / 2.0 + enemyNode.size.width / 2.0) {
+                    //击中
+                    [enemyNode beAttackAction:weakSelf];
+                }
+                
+                ///击中后看下目标位移否
+                CGFloat diss = [WDCalculateTool distanceBetweenPoints:weakSelf.position seconde:enemyNode.position];
+                if (diss > self.size.width) {
+                    attactWaitTime = 0.1;
+                }
+            }];
+            
+            
+            
+            
             [weakSelf.hip runAction:hipSeq completion:^{
                             
             }];
@@ -175,7 +274,14 @@
             [weakSelf.leftArm runAction:armSeq completion:^{
                             
                 [weakSelf normalFaceState];
-                weakSelf.state = weakSelf.state ^ Sprite_attack;
+                [weakSelf upBodyActionForStand];
+                
+                ///控制下攻击速度
+                SKAction *waitAction = [SKAction waitForDuration:attactWaitTime];
+                [weakSelf runAction:waitAction completion:^{
+                    weakSelf.state = weakSelf.state ^ Sprite_attack;
+                }];
+                
             }];
             
         }];

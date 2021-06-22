@@ -9,9 +9,54 @@
 
 @implementation WDCalculateTool
 
+#pragma mark - 计算相关 -
++ (CGFloat)distanceBetweenPoints:(CGPoint)first
+                         seconde:(CGPoint)second{
+    CGFloat deltaX = second.x - first.x;
+    CGFloat deltaY = second.y - first.y;
+    return sqrt(deltaX*deltaX + deltaY*deltaY );
+}
 
-+ (NSDictionary *)userArmorImageDic:(UIImage *)image
-{
++ (CGFloat)angleForStartPoint:(CGPoint)startPoint
+                     EndPoint:(CGPoint)endPoint{
+    
+    CGPoint Xpoint = CGPointMake(startPoint.x + 100, startPoint.y);
+    
+    CGFloat a = endPoint.x - startPoint.x;
+    CGFloat b = endPoint.y - startPoint.y;
+    CGFloat c = Xpoint.x - startPoint.x;
+    CGFloat d = Xpoint.y - startPoint.y;
+    
+    CGFloat rads = acos(((a*c) + (b*d)) / ((sqrt(a*a + b*b)) * (sqrt(c*c + d*d))));
+    
+    if (startPoint.y>endPoint.y) {
+        rads = -rads;
+    }
+    return rads;
+}
+
++ (CGPoint)calculateNodeMovePosition:(WDBaseNode  *)user
+                               enemy:(WDEnemyNode *)enemy{
+    
+    CGFloat y = enemy.position.y;
+    CGFloat x = 0;
+    
+    CGFloat userX  = user.position.x;
+    CGFloat enemyX = enemy.position.x;
+    
+    if (userX > enemyX) {
+        x = enemyX + user.size.width;
+    }else{
+        x = enemyX - user.size.width;
+    }
+    
+    
+    return CGPointMake(x, y);
+}
+
+
+#pragma mark - 图片相关 -
++ (NSDictionary *)userArmorImageDic:(UIImage *)image{
     
     CGImageRef imageRef = [image CGImage];
     
@@ -63,8 +108,7 @@
     return dic;
 }
 
-+ (NSDictionary *)userImageDic
-{
++ (NSDictionary *)userImageDic{
     UIImage *image = [UIImage imageNamed:@"Human"];
     
     CGImageRef imageRef = [image CGImage];
@@ -117,8 +161,7 @@
     return dic;
 }
 
-+ (NSArray *)curUserImage:(UIImage *)image
-{
++ (NSArray *)curUserImage:(UIImage *)image{
     image = [UIImage imageNamed:@"Human"];
     
     CGImageRef imageRef = [image CGImage];
@@ -173,16 +216,14 @@
 }
 
 
-+ (SKTexture *)textureWithArmorKeyName:(NSString *)name armorName:(NSString *)armor
-{
++ (SKTexture *)textureWithArmorKeyName:(NSString *)name armorName:(NSString *)armor{
     NSDictionary *dic = [WDCalculateTool userArmorImageDic:[UIImage imageNamed:armor]];
     UIImage *image = dic[name];
     SKTexture *texture = [SKTexture textureWithImage:image];
     return texture;
 }
 
-+ (WDBaseNode *)textureWithKeyName:(NSString *)name
-{
++ (WDBaseNode *)textureWithKeyName:(NSString *)name{
     NSDictionary *dic = [WDCalculateTool userImageDic];
     UIImage *image = dic[name];
     SKTexture *texture = [SKTexture textureWithImage:image];
@@ -190,5 +231,6 @@
     node.name = name;
     return node;
 }
+
 
 @end

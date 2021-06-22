@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04394AA026819455006EBF8B /* RedBatScene.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394A9F26819455006EBF8B /* RedBatScene.png */; };
+		04394AA72681ADEE006EBF8B /* WDAttributeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394AA62681ADEE006EBF8B /* WDAttributeManager.m */; };
+		04394AB42681B06A006EBF8B /* WDKknightNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394AB32681B06A006EBF8B /* WDKknightNode.m */; };
+		04394AB92681B5AE006EBF8B /* Leaky.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394AB82681B5AE006EBF8B /* Leaky.png */; };
+		04394ABE2681B5CF006EBF8B /* BuzzCut.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394ABD2681B5CF006EBF8B /* BuzzCut.png */; };
+		04394AD22681B7DF006EBF8B /* BerserkHelm.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394AD02681B7DE006EBF8B /* BerserkHelm.png */; };
+		04394AD32681B7DF006EBF8B /* LeatherHelm.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394AD12681B7DF006EBF8B /* LeatherHelm.png */; };
+		04394AD82681B87B006EBF8B /* EliteKnightHelm.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394AD72681B87B006EBF8B /* EliteKnightHelm.png */; };
+		04394ADD2681B8CD006EBF8B /* KnightArmor.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394ADC2681B8CD006EBF8B /* KnightArmor.png */; };
+		04394AE32681BD11006EBF8B /* SteelShield.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394AE22681BD11006EBF8B /* SteelShield.png */; };
 		044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 044501F2267ADED300C3F83D /* WDBaseNode.m */; };
 		04450F31267B4F9B00C3F83D /* Eye_Female.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F2E267B4F9A00C3F83D /* Eye_Female.png */; };
 		04450F32267B4F9B00C3F83D /* Eye_Dead.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F2F267B4F9B00C3F83D /* Eye_Dead.png */; };
@@ -63,6 +73,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04394A9F26819455006EBF8B /* RedBatScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBatScene.png; sourceTree = "<group>"; };
+		04394AA52681ADEE006EBF8B /* WDAttributeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDAttributeManager.h; sourceTree = "<group>"; };
+		04394AA62681ADEE006EBF8B /* WDAttributeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDAttributeManager.m; sourceTree = "<group>"; };
+		04394AB22681B06A006EBF8B /* WDKknightNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDKknightNode.h; sourceTree = "<group>"; };
+		04394AB32681B06A006EBF8B /* WDKknightNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDKknightNode.m; sourceTree = "<group>"; };
+		04394AB82681B5AE006EBF8B /* Leaky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Leaky.png; sourceTree = "<group>"; };
+		04394ABD2681B5CF006EBF8B /* BuzzCut.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuzzCut.png; sourceTree = "<group>"; };
+		04394AD02681B7DE006EBF8B /* BerserkHelm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BerserkHelm.png; sourceTree = "<group>"; };
+		04394AD12681B7DF006EBF8B /* LeatherHelm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LeatherHelm.png; sourceTree = "<group>"; };
+		04394AD72681B87B006EBF8B /* EliteKnightHelm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EliteKnightHelm.png; sourceTree = "<group>"; };
+		04394ADC2681B8CD006EBF8B /* KnightArmor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KnightArmor.png; sourceTree = "<group>"; };
+		04394AE22681BD11006EBF8B /* SteelShield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SteelShield.png; sourceTree = "<group>"; };
 		044501F1267ADED300C3F83D /* WDBaseNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDBaseNode.h; sourceTree = "<group>"; };
 		044501F2267ADED300C3F83D /* WDBaseNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDBaseNode.m; sourceTree = "<group>"; };
 		04450F2E267B4F9A00C3F83D /* Eye_Female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_Female.png; sourceTree = "<group>"; };
@@ -141,10 +163,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04394AA42681ADB6006EBF8B /* WDManager */ = {
+			isa = PBXGroup;
+			children = (
+				04394AA52681ADEE006EBF8B /* WDAttributeManager.h */,
+				04394AA62681ADEE006EBF8B /* WDAttributeManager.m */,
+			);
+			path = WDManager;
+			sourceTree = "<group>";
+		};
+		04394AAE2681AFE3006EBF8B /* WDUsers */ = {
+			isa = PBXGroup;
+			children = (
+				04394AB22681B06A006EBF8B /* WDKknightNode.h */,
+				04394AB32681B06A006EBF8B /* WDKknightNode.m */,
+			);
+			path = WDUsers;
+			sourceTree = "<group>";
+		};
+		04394ACC2681B7BD006EBF8B /* Helmet */ = {
+			isa = PBXGroup;
+			children = (
+				04394AD72681B87B006EBF8B /* EliteKnightHelm.png */,
+				04394AD02681B7DE006EBF8B /* BerserkHelm.png */,
+				04394AD12681B7DF006EBF8B /* LeatherHelm.png */,
+			);
+			path = Helmet;
+			sourceTree = "<group>";
+		};
+		04394AE12681BCF2006EBF8B /* Shield */ = {
+			isa = PBXGroup;
+			children = (
+				04394AE22681BD11006EBF8B /* SteelShield.png */,
+			);
+			path = Shield;
+			sourceTree = "<group>";
+		};
 		0445021F267B4DF300C3F83D /* WDImages */ = {
 			isa = PBXGroup;
 			children = (
+				04394A9F26819455006EBF8B /* RedBatScene.png */,
 				04E25E1D26807D87001CC70F /* Shadow.png */,
+				04394AE12681BCF2006EBF8B /* Shield */,
+				04394ACC2681B7BD006EBF8B /* Helmet */,
 				04D88A1D267C9728005C7B0C /* Armor */,
 				04450F6F267B53AF00C3F83D /* Weapon */,
 				04450F69267B51FE00C3F83D /* Hair */,
@@ -218,6 +279,8 @@
 		04450F69267B51FE00C3F83D /* Hair */ = {
 			isa = PBXGroup;
 			children = (
+				04394ABD2681B5CF006EBF8B /* BuzzCut.png */,
+				04394AB82681B5AE006EBF8B /* Leaky.png */,
 				04450F6A267B520700C3F83D /* Hair6.png */,
 			);
 			path = Hair;
@@ -237,6 +300,8 @@
 		049EFE702679F83700283E13 = {
 			isa = PBXGroup;
 			children = (
+				04394AAE2681AFE3006EBF8B /* WDUsers */,
+				04394AA42681ADB6006EBF8B /* WDManager */,
 				0445021F267B4DF300C3F83D /* WDImages */,
 				049EFEC62679FC4C00283E13 /* WDBase */,
 				049EFEC52679FC0D00283E13 /* WDScene */,
@@ -310,6 +375,7 @@
 		04D88A1D267C9728005C7B0C /* Armor */ = {
 			isa = PBXGroup;
 			children = (
+				04394ADC2681B8CD006EBF8B /* KnightArmor.png */,
 				04D88A1E267C972F005C7B0C /* Armor1.png */,
 				04D88A23267C9819005C7B0C /* Armor2.png */,
 			);
@@ -438,7 +504,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D88A1F267C972F005C7B0C /* Armor1.png in Resources */,
+				04394AD82681B87B006EBF8B /* EliteKnightHelm.png in Resources */,
 				04450F5C267B50A800C3F83D /* Head.png in Resources */,
+				04394AA026819455006EBF8B /* RedBatScene.png in Resources */,
 				04450F33267B4F9B00C3F83D /* Eye_Male.png in Resources */,
 				04450F49267B501F00C3F83D /* Mouth_Smirk.png in Resources */,
 				04450F5B267B50A800C3F83D /* PeasantHead.png in Resources */,
@@ -449,9 +517,14 @@
 				04D88A24267C9819005C7B0C /* Armor2.png in Resources */,
 				04E25E1E26807D87001CC70F /* Shadow.png in Resources */,
 				04450F52267B504700C3F83D /* Ears_HumanEar.png in Resources */,
+				04394AD32681B7DF006EBF8B /* LeatherHelm.png in Resources */,
+				04394ABE2681B5CF006EBF8B /* BuzzCut.png in Resources */,
+				04394ADD2681B8CD006EBF8B /* KnightArmor.png in Resources */,
 				04450F31267B4F9B00C3F83D /* Eye_Female.png in Resources */,
 				04450F47267B501F00C3F83D /* Mouth_Angry.png in Resources */,
+				04394AD22681B7DF006EBF8B /* BerserkHelm.png in Resources */,
 				04450F51267B504700C3F83D /* Ears_ElfEar.png in Resources */,
+				04394AB92681B5AE006EBF8B /* Leaky.png in Resources */,
 				04450F7E267B59DD00C3F83D /* SamuraiElderSword.png in Resources */,
 				049EFEDD2679FD9E00283E13 /* gogogo.jpg in Resources */,
 				04450F39267B4FD500C3F83D /* EyeBrows_Angry.png in Resources */,
@@ -462,6 +535,7 @@
 				04450F32267B4F9B00C3F83D /* Eye_Dead.png in Resources */,
 				04E25E282680804B001CC70F /* HunterShortBow.png in Resources */,
 				04450F3E267B4FE300C3F83D /* EyeBrows_Eyebrows.png in Resources */,
+				04394AE32681BD11006EBF8B /* SteelShield.png in Resources */,
 				04450F4A267B501F00C3F83D /* Mouth_Zombie.png in Resources */,
 				04450F5A267B50A800C3F83D /* HeadScar.png in Resources */,
 			);
@@ -535,9 +609,11 @@
 				049EFE882679F83700283E13 /* GameViewController.m in Sources */,
 				049EFE902679F83900283E13 /* main.m in Sources */,
 				049EFEEB267A033100283E13 /* WDCalculateTool.m in Sources */,
+				04394AA72681ADEE006EBF8B /* WDAttributeManager.m in Sources */,
 				044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */,
 				049EFE7E2679F83700283E13 /* AppDelegate.m in Sources */,
 				049EFECF2679FC6A00283E13 /* WDTestScene.m in Sources */,
+				04394AB42681B06A006EBF8B /* WDKknightNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
