@@ -25,13 +25,30 @@ NS_ASSUME_NONNULL_BEGIN
 /// 右腿走
 - (void)rightLegMoveAction;
 
+/// 行走动画
+- (void)moveSameActionWithState:(SpriteState)moveState
+                      movePoint:(CGPoint)movePoint;
+
 /// 单手武器攻击
 - (void)singleAttackAction:(WDBaseNode *)enemy;
+///弓箭攻击
+- (void)bowAttackAction:(WDBaseNode *)enemyNode;
 
+///表情
 ///正常
 - (void)normalFaceState;
 ///生气
 - (void)angleFaceState;
+///死亡的表情
+- (void)deadFaceState;
+
+///减血
+- (void)reduceBlood:(CGFloat)attackNumber;
+///加血
+- (void)addBlood:(int)cureNumber;
+
+///出血动画
+- (void)bleedAnimation:(CGFloat)attackNumber;
 
 @end
 

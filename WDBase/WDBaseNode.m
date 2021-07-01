@@ -7,6 +7,7 @@
 
 #import "WDBaseNode.h"
 #import "WDBaseNode+Animation.h"
+#import "WDEnemyNode.h"
 @implementation WDBaseNode
 {
     WDBaseNode *_head;
@@ -38,11 +39,17 @@
     WDBaseNode *_leftKnee;
     WDBaseNode *_leftFoot;
     
+    WDBaseNode *_bgBlood;///血条背景
+    WDBaseNode *_blood;  ///血条
+    
     CGFloat     _bodyZ;
 }
 
 - (void)createUserNodeWithScale:(CGFloat)scale{
 
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(upDataAction) name:kNotificationForUpData object:nil];
+    
     _bodyZ    = 100;
 
     _walkTime = 0.2;
@@ -50,7 +57,7 @@
     
     //阴影
     _shadow = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Shadow"]]];
-    _shadow.position = CGPointMake(0, -95 * scale);
+    _shadow.position = CGPointMake(0, -125 * scale);
     _shadow.xScale = 0.3 * scale;
     _shadow.yScale = 0.3 * scale;
     [self addChild:_shadow];
@@ -58,7 +65,7 @@
     //身体部位
     _body = [self textureWithKeyName:kBody];
     _body.zPosition      = _bodyZ;
-    _body.position       = CGPointMake(0, -35 * scale);
+    _body.position       = CGPointMake(0, -65 * scale);
     _body.anchorPoint    = CGPointMake(0.5, 0.3);
     _body.xScale = scale;
     _body.yScale = scale;
@@ -78,14 +85,18 @@
     
     ///脚和腿
     [self createKneeAndFoot];
-
+    
+    ///血条
+    [self createBlood:scale];
+    
+    [self addObserver:self forKeyPath:@"xScale" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionNew context:nil];
 }
 
-///创建脑袋
+///创建脑袋、脸等
 - (void)createHead{
     
     //头
-    _head = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Head"]]];
+    _head = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].humanHead];
     _head.xScale = 0.9;
     _head.yScale = 0.9;
     _head.zPosition = 2;
@@ -94,34 +105,37 @@
     
     
     //眼睛
-    _eye = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Eye_Male"]]];
+    _eye = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].male_eye];
     _eye.zPosition = 0;
     [_head addChild:_eye];
     
     //眉毛
-    _eyeBrows = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EyeBrows_Eyebrows"]]];
+    _eyeBrows = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].normalEyeBrows];
     _eyeBrows.zPosition = 0;
     [_head addChild:_eyeBrows];
     
     //嘴
-    _mouth = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Mouth_Normal"]]];
+    _mouth = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].normalMouth];
     _mouth.zPosition = 0;
     [_head addChild:_mouth];
+    
+    self.defaultMouthTexture = _mouth.texture;
     
 //    //头发
     _hair = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"BuzzCut"]]];
     _hair.zPosition = 0;
     [_head addChild:_hair];
     
+
+    //耳朵
+    _ear = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].normalEar];
+    _ear.zPosition = 0;
+    [_head addChild:_ear];
+    
     //头盔
     _hemlet = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EliteKnightHelm"]]];
     _hemlet.zPosition = 0;
     [_head addChild:_hemlet];
-    
-    //耳朵
-    _ear = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Ears_HumanEar"]]];
-    _ear.zPosition = 0;
-    [_head addChild:_ear];
 }
 
 ///创建胯部
@@ -141,7 +155,7 @@
     _rightArm.anchorPoint = CGPointMake(0.43,0.6);
     _rightArm.position = CGPointMake(17, 65);
     _rightArm.zRotation = DEGREES_TO_RADIANS(-16);
-    _rightArm.zPosition = -1;
+    _rightArm.zPosition = -3;
     [_body addChild:_rightArm];
     
     //右胳膊肘，这个地方其实位于图片手的位置
@@ -156,7 +170,7 @@
     _rightHand.zRotation = DEGREES_TO_RADIANS(30);
     _rightHand.anchorPoint = CGPointMake(0.5, 0.5);
     _rightHand.position = CGPointMake(32,-5);
-    _rightHand.zPosition = 0;
+    _rightHand.zPosition = 1;
     [_rightElbow addChild:_rightHand];
 
     //右手指
@@ -164,7 +178,7 @@
     _rightFinger.anchorPoint = CGPointMake(0.5, 0.5);
     _rightFinger.zRotation = DEGREES_TO_RADIANS(-30);
     _rightFinger.position = CGPointMake(28, -3);
-    _rightFinger.zPosition = 0;
+    _rightFinger.zPosition = 2;
     [_rightElbow addChild:_rightFinger];
     
 
@@ -214,14 +228,14 @@
     _rightKnee = [self textureWithKeyName:kKnee];
     _rightKnee.anchorPoint = CGPointMake(0.5 , 0.55);
     _rightKnee.position = CGPointMake(18.3, -5);
-    _rightKnee.zPosition = 0;
+    _rightKnee.zPosition = 1;
     [_hip addChild:_rightKnee];
     
     //右脚
     _rightFoot = [self textureWithKeyName:kFoot];
     _rightFoot.anchorPoint = CGPointMake(0.5 , 0.65 );
     _rightFoot.position = CGPointMake(0, -23);
-    _rightFoot.zPosition = 0;
+    _rightFoot.zPosition = 1;
     [_rightKnee addChild:_rightFoot];
     
     //左膝盖
@@ -229,7 +243,7 @@
     _leftKnee.xScale = - fabs(_leftKnee.xScale);
     _leftKnee.anchorPoint = CGPointMake(0.5 , 0.55);
     _leftKnee.position = CGPointMake(-19, -5);
-    _leftKnee.zPosition = 0;
+    _leftKnee.zPosition = 2;
     [_hip addChild:_leftKnee];
     
     //左脚
@@ -237,60 +251,91 @@
     _leftFoot.xScale = - fabs(_leftFoot.xScale);
     _leftFoot.anchorPoint = CGPointMake(0.5 , 0.65 );
     _leftFoot.position = CGPointMake(0, -23);
-    _leftFoot.zPosition = 0;
+    _leftFoot.zPosition = 1;
     [_leftKnee addChild:_leftFoot];
     
     _leftKnee.defaultAngle = DEGREES_TO_RADIANS(-5);
     _leftKnee.zRotation = DEGREES_TO_RADIANS(-5);
 }
 
+///创建血条
+- (void)createBlood:(CGFloat)scale{
+    
+    UIColor *color = [UIColor blackColor];
+
+    _bgBlood = [WDBaseNode spriteNodeWithColor:color size:CGSizeMake(self.size.width, 20 * scale)];
+    _bgBlood.position = CGPointMake(-self.size.width / 2.0, self.size.height / 2.0 + _bgBlood.size.height + 30 * scale);
+    [self addChild:_bgBlood];
+    
+    UIColor *color2 = UICOLOR_RGB(127, 255, 0, 1);
+    if ([self isKindOfClass:[WDEnemyNode class]]) {
+        color2 = UICOLOR_RGB(255, 227, 132, 1);
+    }
+    
+    _blood = [WDBaseNode spriteNodeWithColor:color2 size:CGSizeMake(self.size.width, 20 * scale)];
+    [_bgBlood addChild:_blood];
+    
+    _bgBlood.anchorPoint = CGPointMake(0, 0);
+    _blood.anchorPoint   = CGPointMake(0, 0);
+}
+
+
+#pragma mark - 金色选中箭头 -
+- (void)setArrowNodeWithPosition:(CGPoint)point
+                           scale:(CGFloat)scale
+{
+    SKTexture *texture = [WDTextureManager shareManager].arrowTexture;
+    _arrowNode = [WDBaseNode spriteNodeWithTexture:texture];
+    _arrowNode.position = point;
+    _arrowNode.xScale = scale;
+    _arrowNode.yScale = scale;
+    _arrowNode.zPosition = 100;
+    _arrowNode.hidden = YES;
+    [self addChild:_arrowNode];
+    
+    SKAction *move1 = [SKAction moveTo:CGPointMake(point.x,point.y + 30) duration:0.5];
+    SKAction *move2 = [SKAction moveTo:CGPointMake(point.x, point.y ) duration:0.5];
+    SKAction *seq = [SKAction sequence:@[move1,move2]];
+    SKAction *rep = [SKAction repeatActionForever:seq];
+    [_arrowNode runAction:rep withKey:@"arrow"];
+}
 
 
 #pragma mark - 行为 -✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
-- (void)upDataAction
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    
-    self.zPosition = 10000 - self.position.y;
-    
-    NSLog(@"%@ %lf",self.name,self.zPosition);
-    
-    if (self.state & Sprite_stand) {
-        [self removeLegAnimation];
-    }
-    
-    if (self.targetNode) {
-        
-        /// 行走方向
-        if (self.targetNode.position.x > self.position.x) {
-            self.xScale = fabs(self.xScale);
-        }else{
-            self.xScale = - fabs(self.xScale);
-        }
-        
-        /// 攻击、走动、跑动状态不处理
-        if (self.state & Sprite_attack || self.state & Sprite_walk || self.state & Sprite_run) {
-            return;
-        }
-        
-        
-        /// 超出距离
-        CGFloat distance = [WDCalculateTool distanceBetweenPoints:self.position seconde:self.targetNode.position];
-        
-        if (distance > self.size.width) {
-            CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self enemy:self.targetNode];
-            [self walkAction:movePoint];
-            return;
-        }
-        
-        ///可以攻击的状态
-        [self attackAction:self.targetNode];
-        
+    if (self.xScale > 0) {
+        self.bgBlood.xScale = fabs(self.bgBlood.xScale);
+        self.bgBlood.position = CGPointMake(-self.size.width / 2.0, self.bgBlood.position.y);
+        self.direction = 1;
+    }else{
+        self.bgBlood.xScale = - fabs(self.bgBlood.xScale);
+        self.bgBlood.position = CGPointMake(self.size.width / 2.0, self.bgBlood.position.y);
+        self.direction = -1;
     }
 }
 
-/// 移动
-- (void)moveAction:(CGPoint)movePoint
+/// 一直在更新的方法
+- (void)upDataAction
 {
+    /// 父类只负责Z坐标和死亡以及移除腿部动画的操作，其他游戏逻辑子类自行实现
+    self.zPosition = 10000 - self.position.y;
+    
+    
+    if (self.state & Sprite_stand && !(self.state & Sprite_dead)) {
+        [self removeLegAnimation];
+    }
+  
+}
+
+/// 移动
+- (void)moveAction:(CGPoint)movePoint{
+    
+    self.bowMiddle.zPosition = 0;
+    self.rightHand.zPosition = 1;
+    self.rightFinger.zPosition = 2;
+    [self removeBowAnimation];
+    
     if (self.isRunState) {
         [self wdRunAction:movePoint];
     }else{
@@ -298,132 +343,21 @@
     }
 }
 
-/// 行走，不能同时调用，会有问题
+/// 行走
 - (void)walkAction:(CGPoint)movePoint{
-    
-    //跑和走、站立不能同时
-    if (self.state & Sprite_run) {
-        self.state = self.state ^ Sprite_run;
-    }
         
-    if (self.state & Sprite_stand) {
-        self.state = self.state ^ Sprite_stand;
-    }
-    
-    if (self.state & Sprite_attack) {
-        self.state = self.state ^ Sprite_attack;
-    }
-    
-    [self.hip removeAllActions];
-    [self.body removeAllActions];
-    [self.leftArm removeAllActions];
-    [self.leftElbow removeAllActions];
-    [self.rightArm removeAllActions];
-    
-    self.leftArm.zRotation = self.leftArm.defaultAngle;
-    self.rightArm.zRotation = self.rightArm.defaultAngle;
-    self.hip.zRotation = 0;
-    self.body.zRotation = 0;
-    
-    [self normalFaceState];
-    
     self.legWalkAngle = 30;
-    
-    if (!(self.state & Sprite_walk)) {
-        [self removeLegAnimation];
-        [self performSelector:@selector(rightLegMoveAction) withObject:nil afterDelay:_walkTime / 2];
-        [self rightLegMoveAction];
-        [self leftLegMoveAction];
-        [self upBodyActionForWalk];
-    }
-    
-    
-    [self removeAllActions];
-    self.state = self.state | Sprite_walk;
-    
-    
-    if (movePoint.x < self.position.x) {
-        self.xScale = - fabs(self.xScale);
-    }else{
-        self.xScale = fabs(self.xScale);
-    }
-    
-    CGFloat distance = [WDCalculateTool distanceBetweenPoints:self.position seconde:movePoint];
-    
-    
-    NSTimeInterval moveTime = fabs(distance) / self.animationWalkSpeed;
-    SKAction *moveAction = [SKAction moveTo:movePoint duration:moveTime];
-    __weak typeof(self)weakSelf = self;
-    [self runAction:moveAction completion:^{
-        [weakSelf standAction];
-    }];
-    
+    [self moveSameActionWithState:Sprite_walk movePoint:movePoint];
 }
 
 /// 跑动
-- (void)wdRunAction:(CGPoint)movePoint
-{
-    //跑和走、站立不能同时
-    if (self.state & Sprite_walk) {
-        self.state = self.state ^ Sprite_walk;
-    }
-        
-    if (self.state & Sprite_stand) {
-        self.state = self.state ^ Sprite_stand;
-    }
-    
-    if (self.state & Sprite_attack) {
-        self.state = self.state ^ Sprite_attack;
-    }
-    
-    [self.hip removeAllActions];
-    [self.body removeAllActions];
-    [self.leftArm removeAllActions];
-    [self.leftElbow removeAllActions];
-    [self.rightArm removeAllActions];
-    
-    self.leftArm.zRotation = self.leftArm.defaultAngle;
-    self.rightArm.zRotation = self.rightArm.defaultAngle;
-    self.hip.zRotation = 0;
-    self.body.zRotation = 0;
-    
-    [self normalFaceState];
-    
+- (void)wdRunAction:(CGPoint)movePoint{
     self.legWalkAngle = 60;
-    
-    if (!(self.state & Sprite_walk)) {
-        [self removeLegAnimation];
-        [self performSelector:@selector(rightLegMoveAction) withObject:nil afterDelay:_walkTime / 2];
-        [self rightLegMoveAction];
-        [self leftLegMoveAction];
-        [self upBodyActionForRun];
-    }
-    
-    
-    [self removeAllActions];
-    self.state = self.state | Sprite_run;
-    
-    
-    if (movePoint.x < self.position.x) {
-        self.xScale = - fabs(self.xScale);
-    }else{
-        self.xScale = fabs(self.xScale);
-    }
-    
-    CGFloat distance = [WDCalculateTool distanceBetweenPoints:self.position seconde:movePoint];
-    
-    
-    NSTimeInterval moveTime = fabs(distance) / self.animationRunSpeed;
-    SKAction *moveAction = [SKAction moveTo:movePoint duration:moveTime];
-    __weak typeof(self)weakSelf = self;
-    [self runAction:moveAction completion:^{
-        [weakSelf standAction];
-    }];
+    [self moveSameActionWithState:Sprite_run movePoint:movePoint];
 }
 
 /// 站住的动作，停止腿部运动
 - (void)standAction{
-    
     
     //跑和走、站立不能同时
     if (self.state & Sprite_run) {
@@ -436,13 +370,6 @@
     
     self.state = self.state | Sprite_stand;
     
-//    SKAction *hip = [SKAction rotateToAngle:self.hip.defaultAngle duration:0.003];
-//    SKAction *body = [SKAction rotateToAngle:self.body.defaultAngle duration:0.003];
-//    [self.hip  runAction:hip];
-//    [self.body  runAction:body];
-    
-//    self.hip.zRotation = self.hip.defaultAngle;
-//    self.body.zRotation = self.body.defaultAngle;
     
     [self removeLegAnimation];
     [self upBodyActionForStand];
@@ -452,6 +379,12 @@
 
 /// 攻击
 - (void)attackAction:(WDBaseNode *)enemyNode{
+    
+    if (self.state & Sprite_attack) {
+        return;
+    }
+    
+    [self pauseWalkOrRun];
     
     switch (self.mode) {
         case Attack_singleHand:
@@ -466,7 +399,7 @@
             break;
         case Attack_bow:
         {
-            
+            [self bowAttackAction:enemyNode];
         }
             break;
             
@@ -479,13 +412,74 @@
 
 /// 被攻击
 - (void)beAttackAction:(WDBaseNode *)enemyNode
-{
-    
+          attackNumber:(int)attackNumber{
+  
+    [self bleedAnimation:attackNumber];
+    [self reduceBlood:attackNumber];
 }
 
+/// 被治疗
+- (void)beCureAction:(WDBaseNode *)cureNode
+{
+    [self addBlood:cureNode.cureNumber];
+}
 
+/// 死亡
+- (void)deadAction
+{
+    self.state = Sprite_dead;
+    
+    [self removeAllBodyAction];
+    
+    NSTimeInterval time1 = 0.4;
+    
+    SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *leftFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *rightKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *rightFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-15) duration:time1];
+    SKAction *rightArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *leftArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(30) duration:time1];
+    
+    
+    [self.leftElbow runAction:leftElbowAction];
+    [self.leftArm runAction:leftArmAction];
+    [self.rightArm runAction:rightArmAction];
+    [self.rightFoot runAction:rightFootAction];
+    [self.rightKnee runAction:rightKneeAction];
+    [self.leftFoot runAction:leftFootAction];
+    
+     
+    NSTimeInterval time2 = 0.15;
+    
+    __weak typeof(self)weakSelf = self;
+    [self.body runAction:bodyAction completion:^{
+            
+        [weakSelf deadFaceState];
+        
+        SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(90) duration:time2];
+        SKAction *rightKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-10) duration:time2];
+        SKAction *rightFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-25) duration:time2];
+        SKAction *leftKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(5) duration:time2];
+        SKAction *leftFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(5) duration:time2];
+        SKAction *leftArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(0) duration:time2];
+        SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(0) duration:time2];
+        SKAction *rightArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-35) duration:time2];
+        
+        [weakSelf.rightArm runAction:rightArmAction];
+        [weakSelf.leftElbow runAction:leftElbowAction];
+        [weakSelf.leftArm runAction:leftArmAction];
+        [weakSelf.leftFoot runAction:leftFootAction];
+        [weakSelf.leftKnee runAction:leftKneeAction];
+        [weakSelf.rightFoot runAction:rightFootAction];
+        [weakSelf.rightKnee runAction:rightKneeAction];
+        
+        [weakSelf.body runAction:bodyAction];
+        
+    }];
+}
 
-
+- (void)addHateNumberWithAttackNode:(WDBaseNode *)node{}
 
 
 #pragma mark - 穿盔甲、武器 -
@@ -500,7 +494,6 @@
 - (void)setAllArmor:(NSString *)armorName{
    
     
-    
     [self setBodyArmor:armorName];
     [self setHipArmor:armorName];
 
@@ -509,7 +502,6 @@
     [self setLeftElbowArmor:armorName];
     [self setLeftArmArmor:armorName];
     [self setLeftHandArmor:armorName];
-    
     
   
     [self setRightKneeArmor:armorName];
@@ -544,8 +536,14 @@
 - (void)setRightFingerArmor:(NSString *)armorName{
     [self createSrpiteWithSuperNode:_rightFinger armorName:armorName];
 }
+/// 胯部不太一样，直接加在BODY上
 - (void)setHipArmor:(NSString *)armorName{
-    [self createSrpiteWithSuperNode:_hip armorName:armorName];
+    
+    WDBaseNode *armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:@"hip" armorName:armorName]];
+    armorNode.anchorPoint = CGPointMake(0.5, 0.5);
+    armorNode.position = CGPointMake(0, 7);
+    [_body addChild:armorNode];
+    armorNode.zPosition = 3;
 }
 - (void)setRightKneeArmor:(NSString *)armorName{
     [self createSrpiteWithSuperNode:_rightKnee armorName:armorName];
@@ -558,6 +556,32 @@
 }
 - (void)setleftFootArmor:(NSString *)armorName{
     [self createSrpiteWithSuperNode:_leftFoot armorName:armorName];
+}
+
+/// 设置头发
+- (void)setHairTexture:(NSString *)name{
+    self.hair.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+}
+
+/// 设置嘴巴
+- (void)setMouthTexture:(NSString *)name{
+    self.mouth.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+    self.defaultMouthTexture = self.mouth.texture;
+}
+
+/// 设置眉毛
+- (void)setEyeBrowsTexture:(NSString *)name{
+    self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+}
+
+/// 设置眼睛
+- (void)setEyeTexture:(NSString *)name{
+    self.eye.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+}
+
+/// 帽子
+- (void)setHemletTexture:(NSString *)name{
+    self.hemlet.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
 }
 
 - (void)setLeftWeapon:(NSString *)weaponName{
@@ -587,9 +611,64 @@
     _shield = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:shieldName]]];
     _shield.anchorPoint = CGPointMake(0.5, 0.5);
     _shield.position = CGPointMake(40, -15);
-    _shield.zPosition = 2;
+    _shield.zPosition = 7;
     _shield.zRotation = DEGREES_TO_RADIANS(10);
     [_rightElbow addChild:_shield];
+   
+}
+
+- (void)setBow:(NSString *)bowName{
+    
+    NSArray *bowArr = [WDCalculateTool cutBow:[UIImage imageNamed:bowName]];
+    
+    SKTexture *middle = bowArr[0];
+    SKTexture *bow    = bowArr[1];
+    SKTexture *arrow  = bowArr[2];
+    
+    self.arrowTexture = arrow;
+    
+    _bowMiddle = [WDBaseNode spriteNodeWithTexture:middle];
+    _bowMiddle.anchorPoint = CGPointMake(0.5, 0.5);
+    _bowMiddle.position = CGPointMake(35, -8);
+    _bowMiddle.zPosition = 0;
+    _bowMiddle.zRotation = DEGREES_TO_RADIANS(-30);
+    [_rightElbow addChild:_bowMiddle];
+    
+    _bowUp = [WDBaseNode spriteNodeWithTexture:bow];
+    _bowUp.anchorPoint = CGPointMake(0.5, 0.2);
+    _bowUp.position = CGPointMake(1, 20);
+    _bowUp.zPosition = 0;
+    _bowUp.zRotation = DEGREES_TO_RADIANS(0);
+    _bowUp.defaultAngle = DEGREES_TO_RADIANS(0);
+    [_bowMiddle addChild:_bowUp];
+
+    
+    _bowDown = [WDBaseNode spriteNodeWithTexture:bow];
+    _bowDown.anchorPoint = CGPointMake(0.5, 0.2);
+    _bowDown.position = CGPointMake(1, -17);
+    _bowDown.zPosition = 0;
+    _bowDown.xScale  = -1;
+    _bowDown.zRotation = DEGREES_TO_RADIANS(- 180);
+    _bowDown.defaultAngle = DEGREES_TO_RADIANS(- 180);
+    [_bowMiddle addChild:_bowDown];
+    
+}
+
+
+#pragma mark - 一些判断方法 -
+/// 停止走或者跑
+- (void)pauseWalkOrRun
+{
+    if (self.state & Sprite_walk) {
+        self.state = self.state ^ Sprite_walk;
+    }
+    
+    if (self.state & Sprite_run) {
+        self.state = self.state ^ Sprite_run;
+    }
+    
+    [self removeLegAnimation];
+    [self removeAllBodyAction];
 }
 
 #pragma mark - 私有辅助方法 -
@@ -600,28 +679,49 @@
     node.physicsBody.allowsRotation = NO;
     node.physicsBody.categoryBitMask = 0;
 }
-
 - (WDBaseNode *)textureWithKeyName:(NSString *)name{
     return [WDCalculateTool textureWithKeyName:name];
 }
 
 
+- (void)removeBowAnimation{
+    [self.bowUp removeAllActions];
+    [self.bowDown removeAllActions];
+    self.bowUp.zRotation = self.bowUp.defaultAngle;
+    self.bowDown.zRotation = self.bowDown.defaultAngle;
+}
+
+- (void)removeAllBodyAction
+{
+    
+    [self.bowUp removeAllActions];
+    [self.bowDown removeAllActions];
+    [self.hip removeAllActions];
+    [self.body removeAllActions];
+    [self.leftArm removeAllActions];
+    [self.leftElbow removeAllActions];
+    [self.leftKnee removeAllActions];
+    [self.leftFoot removeAllActions];
+    [self.rightArm removeAllActions];
+    [self.rightElbow removeAllActions];
+    [self.rightKnee removeAllActions];
+    [self.rightFoot removeAllActions];
+    
+    self.leftArm.zRotation = self.leftArm.defaultAngle;
+    self.rightArm.zRotation = self.rightArm.defaultAngle;
+    self.bowUp.zRotation = self.bowUp.defaultAngle;
+    self.bowDown.zRotation = self.bowDown.defaultAngle;
+    self.hip.zRotation = 0;
+    self.body.zRotation = 0;
+}
+
+- (void)dealloc
+{
+    //NSLog(@"%@释放了",self.name);
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationForUpData object:nil];
+}
 
 
 @end
 
 
-
-
-
-
-
-
-@implementation WDUserNode
-@end
-
-
-
-@implementation WDEnemyNode
-
-@end

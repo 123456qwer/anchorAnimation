@@ -21,24 +21,25 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat)angleForStartPoint:(CGPoint)startPoint
                      EndPoint:(CGPoint)endPoint;
 
-///点击中敌人，确定人物要走到的位置
-+ (CGPoint)calculateNodeMovePosition:(WDBaseNode *)user
-                               enemy:(WDEnemyNode *)enemy;
+///人物要走到目标的位置点（近战）
++ (CGPoint)calculateNodeMovePosition:(WDBaseNode *)attackNode
+                               enemy:(WDBaseNode *)targetNode;
+///人物要走到目标的位置点（远程）
++ (CGPoint)calculateNodeMovePositionForBow:(WDBaseNode *)attackNode
+                                     enemy:(WDBaseNode *)targetNode;
 
 
 
 #pragma mark - 图片计算相关 -
-+ (NSArray *)curUserImage:(UIImage *)image;
-
 + (SKTexture *)textureWithArmorKeyName:(NSString *)name
                              armorName:(NSString *)armor;
 
 + (WDBaseNode *)textureWithKeyName:(NSString *)name;
++ (WDBaseNode *)textureWithKeyNameForSkeleton:(NSString *)name;
 
 
-+ (NSDictionary *)userImageDic;
 + (NSDictionary *)userArmorImageDic:(UIImage *)image;
-
++ (NSArray *)cutBow:(UIImage *)image;
 
 @end
 

@@ -8,7 +8,7 @@ target 'MercenaryStory' do
   # Pods for DeathDay
 
 pod 'UIViewExt', '~> 1.0.1'
-
+pod 'SDWebImage', '~> 5.9.0'
 
 end
 

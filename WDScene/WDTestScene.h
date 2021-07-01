@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WDTestScene : WDBaseScene
+@interface WDTestScene : WDBaseScene<SKPhysicsContactDelegate>
 @property (nonatomic,strong)WDBaseNode *rightKnee;
 @property (nonatomic,strong)WDBaseNode *rightFoot;
 

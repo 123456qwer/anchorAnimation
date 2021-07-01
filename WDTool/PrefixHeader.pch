@@ -14,7 +14,8 @@
 #import <UIViewExt/UIViewExt.h>
 #import "WDCalculateTool.h"  /// 切割图片、算法等
 #import "WDBaseNode.h"
-
+#import "WDNotificationManager.h"
+#import "WDTextureManager.h"
 
 
 /// define
@@ -67,13 +68,13 @@
 #define kKinght_skill_4 @"Knight_skill_4" //冰巫师第4个技能，薄葬
 #define kKinght_skill_5 @"Knight_skill_5" //冰巫师第5个技能，复活
 
-//冰霜巫师
-#define kIceWizard @"IceWizard"
-#define kIceWizard_skill_1 @"IceWizard_skill_1" //群疗
-#define kIceWizard_skill_2 @"IceWizard_skill_2" //双倍治疗
-#define kIceWizard_skill_3 @"IceWizard_skill_3" //减伤
-#define kIceWizard_skill_4 @"IceWizard_skill_4" //薄葬
-#define kIceWizard_skill_5 @"IceWizard_skill_5" //复活
+//牧师
+#define kPriest @"Priest"
+#define kPriest_skill_1 @"kPriest_skill_1" //群疗
+#define kPriest_skill_2 @"kPriest_skill_2" //双倍治疗
+#define kPriest_skill_3 @"kPriest_skill_3" //减伤
+#define kPriest_skill_4 @"kPriest_skill_4" //薄葬
+#define kPriest_skill_5 @"kPriest_skill_5" //复活
 
 //弓箭手
 #define kArcher @"Archer"
@@ -84,6 +85,23 @@
 #define kArcher_skill_5 @"Archer_skill_5" //三倍攻击，继承每一根箭
 
 
+//法师
+#define kWizard @"Wizard"
+#define kWizard_skill_1 @"Wizard_skill_1" //增加攻速时间
+#define kWizard_skill_2 @"Wizard_skill_2" //三连发
+#define kWizard_skill_3 @"Wizard_skill_3" //增加移动速度
+#define kWizard_skill_4 @"Wizard_skill_4" //攻击增加吸血
+#define kWizard_skill_5 @"Wizard_skill_5" //三倍攻击，继承每一根箭
+
+
+#pragma mark - 敌人 -
+/// 士兵1号 普通骷髅兵
+#define kSolider1 @"Solider1"
+/// 士兵2号 骷髅弓手
+#define kSolider2 @"Solider2"
+
+
+
 //NSLog
 #ifndef __OPTIMIZE__
 #define NSLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
@@ -92,6 +110,42 @@
 #endif
 
 
+#pragma mark 物理运算类别掩码
+//body.categoryBitMask = 0;  <类别掩码，为0时代表我谁也碰撞不了>
+//body.contactTestBitMask = 0; <碰撞检测掩码，为0时代表不触发检测>
+//body.collisionBitMask = 0;  <允许碰撞掩码，为0时代表谁也碰撞不了我>
+//想要发生碰撞，需要 categoryBitMask & collisionBitMask 运算，为非0，可以发生碰撞
+
+static int spriteNumber = 0;
+
+static const uint32_t PLAYER_CATEGORY  = 0x01;  //0001
+static const uint32_t PLAYER_COLLISION = 0x02;  //0010
+static const uint32_t PLAYER_CONTACT   = 0x15;  //1111
+
+static const uint32_t LINE_CATEGORY  = 0x00;  //0000
+static const uint32_t LINE_COLLISION = 0x00;  //0000
+static const uint32_t LINE_CONTACT   = 0x00;  //0000
+
+
+static const uint32_t MONSTER_CATEGORY  = 0x04;  //0100
+static const uint32_t MONSTER_COLLISION = 0x08;  //1000
+static const uint32_t MONSTER_CONTACT   = 0x04;  //0100
+
+
+
+static const uint32_t ARROW_CATEGORY       = 0X04;     //0100
+static const uint32_t ARROW_CATEGORY_ENEMY = 0x01;     //1000
+
+
+
+
+
+#pragma mark - 通知 -
+
+///增加仇恨通知
+#define kNotificationForAddHateNumber @"kNotificationForAddHateNumber"
+///实时调用更新的通知
+#define kNotificationForUpData @"kNotificationForUpData"
 
 
 #endif /* PrefixHeader_pch */

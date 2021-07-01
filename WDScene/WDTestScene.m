@@ -7,6 +7,13 @@
 
 #import "WDTestScene.h"
 #import "WDKknightNode.h"
+#import "WDSolider1Node.h"
+#import "WDSolider2BowNode.h"
+
+#import "WDPriestNode.h"
+#import "WDArcherNode.h"
+#import "WDWizardNode.h"
+
 @implementation WDTestScene
 {
     WDBaseNode *_head;
@@ -30,12 +37,18 @@
     WDBaseNode *_leftFoot;
     
     NSTimeInterval _walkTime;
-    WDKknightNode *_person;
+    WDKknightNode *_knight;
+    WDPriestNode  *_priest;
+    WDArcherNode  *_archer;
+    WDWizardNode  *_wizard;
     
-    WDBaseNode    *_enemyNode;
-    
+    WDSolider1Node    *_enemyNode;
+    WDSolider1Node    *_enemyNode2;
+    WDSolider2BowNode    *_enemyNode3;
+
     int a;
     int b;
+    WDBaseNode *node;
 }
 
 - (void)didMoveToView:(SKView *)view
@@ -43,68 +56,50 @@
     [super didMoveToView:view];
   
     CGFloat bgScale = 2 * kScreenWidth / self.bgNode.size.width;
-    self.bgNode.xScale = bgScale;
-    self.bgNode.yScale = bgScale;
-    
-    CGFloat scale = 0.4;
-    
-    _person = [WDKknightNode spriteNodeWithColor:[[UIColor orangeColor]colorWithAlphaComponent:0.2] size:CGSizeMake(145 * scale, 280 * scale)];
-    _person.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.bgNode addChild:_person];
-    
-    _enemyNode = [WDEnemyNode spriteNodeWithColor:[UIColor greenColor] size:CGSizeMake(145 * scale, 280 * scale)];
-    _enemyNode.anchorPoint = CGPointMake(0.5, 0.5);
-    _enemyNode.name = @"enemy";
-    [self.bgNode addChild:_enemyNode];
+//    self.bgNode.xScale = bgScale;
+//    self.bgNode.yScale = bgScale;
+//   self.bgNode.
     
     
+  
+    _knight = [WDBaseNode initActionWithName:kKinght superNode:self];
+    _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
+    _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
+    _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
+    
+    _enemyNode = [WDBaseNode initActionWithName:kSolider1 superNode:self];
+    _enemyNode2 = [WDBaseNode initActionWithName:kSolider1 superNode:self];
+    _enemyNode3 = [WDBaseNode initActionWithName:kSolider2 superNode:self];
+    
+    self.selectNode = _knight;
+    self.selectNode.arrowNode.hidden = NO;
     
     
-    [_enemyNode createUserNodeWithScale:scale];
-    [_person    createUserNodeWithScale:scale];
-    
-//    SKSpriteNode *aa = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:CGSizeMake(10, 10)];
-//    aa.zPosition = 100;
-//    [_person addChild:aa];
+    _knight.position = CGPointMake(0, 0);
+    _priest.position = CGPointMake(_priest.size.width, 0);
+    _wizard.position = CGPointMake(-_priest.size.width, 0);
+    _archer.position = CGPointMake(-_priest.size.width * 2.0, 0);
+//
+//
+    NSArray *names = @[_knight.name,_priest.name,_archer.name,_wizard.name];
+//    NSArray *names = @[_knight.name];
+
+    [_enemyNode setHateSprites:names];
+    [_enemyNode2 setHateSprites:names];
+    [_enemyNode3 setHateSprites:names];
+}
+
+//- (void)update:(NSTimeInterval)currentTime
+//{
+//    [super update:currentTime];
+//    [_enemyNode upDataAction];
+//    [_enemyNode2 upDataAction];
+//    [_wizard upDataAction];
+//    [_knight upDataAction];
+//    [_priest upDataAction];
+//    [_archer upDataAction];
+//
 //    
-//    SKSpriteNode *bb = [SKSpriteNode spriteNodeWithColor:[UIColor grayColor] size:CGSizeMake(10, 10)];
-//    bb.zPosition = 105;
-//    [_enemyNode addChild:bb];
-   
-    
-    //[_enemyNode standAction];
-    self.selectNode = _person;
-    [_enemyNode standAction];
-}
-
-- (void)update:(NSTimeInterval)currentTime
-{
-    [super update:currentTime];
-    [_enemyNode upDataAction];
-    [self.selectNode upDataAction];
-}
-
-- (void)phyWithNode:(WDBaseNode *)node
-{
-    SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:node.size center:CGPointMake(0, 0)];
-    node.physicsBody = body;
-    node.physicsBody.affectedByGravity = NO;
-    node.physicsBody.allowsRotation = YES;
-    node.physicsBody.categoryBitMask = 0;
-}
-
-- (WDBaseNode *)textureWithKeyName:(NSString *)name
-{
-    NSDictionary *dic = [WDCalculateTool userImageDic];
-    UIImage *image = dic[name];
-    SKTexture *texture = [SKTexture textureWithImage:image];
-    WDBaseNode *node = [WDBaseNode spriteNodeWithTexture:texture];
-    node.name = name;
-    
-    return node;
-}
-
-
-
+//}
 
 @end

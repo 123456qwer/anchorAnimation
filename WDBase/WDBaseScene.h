@@ -6,6 +6,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "WDBaseNode+InitAction.h"
+#import "WDEnemyNode.h"
+
+#import "WDArcherNode.h"
+#import "WDPriestNode.h"
+#import "WDWizardNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
