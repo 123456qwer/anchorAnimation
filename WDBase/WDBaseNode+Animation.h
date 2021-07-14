@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 ///弓箭攻击
 - (void)bowAttackAction:(WDBaseNode *)enemyNode;
 
+/// 死亡动画
+- (void)deadAnimation;
+
 ///表情
 ///正常
 - (void)normalFaceState;

@@ -115,7 +115,7 @@
         }
     }
     
-    CGFloat wi = attackNode.parent.frame.size.width;
+    CGFloat wi = attackNode.parent.frame.size.width / 2;
     
     if (x > wi - enemy.size.width) {
         x = wi - enemy.size.width;
@@ -124,6 +124,28 @@
     }
     
     y = targetNode.position.y + enemy.randomAttackY;
+    return CGPointMake(x, y);
+}
+
++ (CGPoint)calculateMaxMovePosition:(CGPoint)movePoint
+                               node:(WDBaseNode *)node{
+    
+    CGFloat x = movePoint.x;
+    CGFloat y = movePoint.y;
+    
+    if (x > kScreenWidth - node.size.width) {
+        x = kScreenWidth - node.size.width;
+    }else if(x < -kScreenWidth + node.size.width + node.size.width / 2.0){
+        x = -kScreenWidth + node.size.width + node.size.width / 2.0;
+    }
+    
+    if (y > kScreenHeight - node.size.height) {
+        y = kScreenHeight - node.size.height;
+    }else if(y < -kScreenHeight + node.size.height){
+        y = -kScreenHeight + node.size.height;
+    }
+    
+    
     return CGPointMake(x, y);
 }
 

@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger,SpriteState) {
     /// 死亡
     Sprite_dead   = 1 << 5,   ///0010 0000
     
+    /// 电影态
+    Sprite_movie  = 1 << 6,   ///0100 0000
     
 };
 

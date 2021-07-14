@@ -428,55 +428,7 @@
 - (void)deadAction
 {
     self.state = Sprite_dead;
-    
-    [self removeAllBodyAction];
-    
-    NSTimeInterval time1 = 0.4;
-    
-    SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
-    SKAction *leftFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
-    SKAction *rightKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
-    SKAction *rightFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-15) duration:time1];
-    SKAction *rightArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
-    SKAction *leftArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
-    SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(30) duration:time1];
-    
-    
-    [self.leftElbow runAction:leftElbowAction];
-    [self.leftArm runAction:leftArmAction];
-    [self.rightArm runAction:rightArmAction];
-    [self.rightFoot runAction:rightFootAction];
-    [self.rightKnee runAction:rightKneeAction];
-    [self.leftFoot runAction:leftFootAction];
-    
-     
-    NSTimeInterval time2 = 0.15;
-    
-    __weak typeof(self)weakSelf = self;
-    [self.body runAction:bodyAction completion:^{
-            
-        [weakSelf deadFaceState];
-        
-        SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(90) duration:time2];
-        SKAction *rightKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-10) duration:time2];
-        SKAction *rightFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-25) duration:time2];
-        SKAction *leftKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(5) duration:time2];
-        SKAction *leftFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(5) duration:time2];
-        SKAction *leftArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(0) duration:time2];
-        SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(0) duration:time2];
-        SKAction *rightArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-35) duration:time2];
-        
-        [weakSelf.rightArm runAction:rightArmAction];
-        [weakSelf.leftElbow runAction:leftElbowAction];
-        [weakSelf.leftArm runAction:leftArmAction];
-        [weakSelf.leftFoot runAction:leftFootAction];
-        [weakSelf.leftKnee runAction:leftKneeAction];
-        [weakSelf.rightFoot runAction:rightFootAction];
-        [weakSelf.rightKnee runAction:rightKneeAction];
-        
-        [weakSelf.body runAction:bodyAction];
-        
-    }];
+    [self deadAnimation];
 }
 
 - (void)addHateNumberWithAttackNode:(WDBaseNode *)node{}

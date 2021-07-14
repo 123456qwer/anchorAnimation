@@ -146,6 +146,8 @@ static const uint32_t ARROW_CATEGORY_ENEMY = 0x01;     //1000
 #define kNotificationForAddHateNumber @"kNotificationForAddHateNumber"
 ///实时调用更新的通知
 #define kNotificationForUpData @"kNotificationForUpData"
+///死亡通知
+#define kNotificationForDead @"kNotificationForDead"
 
 
 #endif /* PrefixHeader_pch */

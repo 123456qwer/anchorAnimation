@@ -7,6 +7,7 @@
 
 #import "WDBaseNode+Animation.h"
 #import "WDEnemyNode.h"
+#import "WDBaseScene.h"
 @implementation WDBaseNode (Animation)
 
 #pragma mark - 上半身 -
@@ -466,8 +467,64 @@
     //self.attackNumber = self.trueAttackNumber;
 }
 
-
-
+/// 死亡
+- (void)deadAnimation{
+    
+    [self removeAllBodyAction];
+    
+    NSTimeInterval time1 = 0.4;
+    
+    SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *leftFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *rightKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *rightFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-15) duration:time1];
+    SKAction *rightArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *leftArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(45) duration:time1];
+    SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(30) duration:time1];
+    
+    
+    [self.leftElbow runAction:leftElbowAction];
+    [self.leftArm runAction:leftArmAction];
+    [self.rightArm runAction:rightArmAction];
+    [self.rightFoot runAction:rightFootAction];
+    [self.rightKnee runAction:rightKneeAction];
+    [self.leftFoot runAction:leftFootAction];
+    
+     
+    NSTimeInterval time2 = 0.15;
+    
+    __weak typeof(self)weakSelf = self;
+    [self.body runAction:bodyAction completion:^{
+            
+        [weakSelf deadFaceState];
+        
+        SKAction *bodyAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(90) duration:time2];
+        SKAction *rightKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-10) duration:time2];
+        SKAction *rightFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-25) duration:time2];
+        SKAction *leftKneeAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(5) duration:time2];
+        SKAction *leftFootAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(5) duration:time2];
+        SKAction *leftArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(0) duration:time2];
+        SKAction *leftElbowAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(0) duration:time2];
+        SKAction *rightArmAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(-35) duration:time2];
+        
+        [weakSelf.rightArm runAction:rightArmAction];
+        [weakSelf.leftElbow runAction:leftElbowAction];
+        [weakSelf.leftArm runAction:leftArmAction];
+        [weakSelf.leftFoot runAction:leftFootAction];
+        [weakSelf.leftKnee runAction:leftKneeAction];
+        [weakSelf.rightFoot runAction:rightFootAction];
+        [weakSelf.rightKnee runAction:rightKneeAction];
+        
+        SKAction *alp  = [SKAction fadeAlphaTo:0 duration:0.5];
+        SKAction *remo = [SKAction removeFromParent];
+        [weakSelf.body runAction:bodyAction completion:^{
+            [weakSelf runAction:[SKAction sequence:@[alp,remo]] completion:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForDead object:weakSelf];
+            }];
+           
+        }];
+    }];
+}
 
 #pragma mark - 表情 -
 ///正常
@@ -741,7 +798,13 @@
     NSTimeInterval moveTime = fabs(distance) / speed;
     SKAction *moveAction = [SKAction moveTo:movePoint duration:moveTime];
     __weak typeof(self)weakSelf = self;
+    __block NSString *name = self.name;
     [self runAction:moveAction completion:^{
+        WDBaseScene *base = (WDBaseScene *)weakSelf.parent;
+        if ([name isEqualToString:base.selectNode.name]) {
+            [base hiddenArrow];
+        }
+        
         [weakSelf standAction];
     }];
 

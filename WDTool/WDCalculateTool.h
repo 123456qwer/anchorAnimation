@@ -28,6 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGPoint)calculateNodeMovePositionForBow:(WDBaseNode *)attackNode
                                      enemy:(WDBaseNode *)targetNode;
 
+///人物可以走的极限距离
++ (CGPoint)calculateMaxMovePosition:(CGPoint)movePoint
+                               node:(WDBaseNode *)node;
+
 
 
 #pragma mark - 图片计算相关 -

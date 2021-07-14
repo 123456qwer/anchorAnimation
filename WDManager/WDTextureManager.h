@@ -40,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)SKTexture *normalEar;
 
 
+/** 小怪出场光效 */
+@property (nonatomic,copy)NSArray <SKTexture *>*smokeArr;
+
 + (WDTextureManager *)shareManager;
 
 @end

@@ -1,16 +1,22 @@
 PODS:
+  - SDWebImage (5.9.0):
+    - SDWebImage/Core (= 5.9.0)
+  - SDWebImage/Core (5.9.0)
   - UIViewExt (1.0.1)
 
 DEPENDENCIES:
+  - SDWebImage (~> 5.9.0)
   - UIViewExt (~> 1.0.1)
 
 SPEC REPOS:
   trunk:
+    - SDWebImage
     - UIViewExt
 
 SPEC CHECKSUMS:
+  SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
   UIViewExt: 7f719ec46544e88dc0e7777626cbdbeea5497ef2
 
-PODFILE CHECKSUM: 087fb30a762852eb3747cea5f5f8f66187dafc5b
+PODFILE CHECKSUM: 5fcc3c3b9082a328cf4ae44b29265e8c4afec537
 
 COCOAPODS: 1.9.2

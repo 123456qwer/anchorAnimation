@@ -54,5 +54,9 @@
     
 }
 
+- (void)dealloc
+{
+    NSLog(@"%@ %@ 释放了！",self.numberName,self.name);
+}
 
 @end

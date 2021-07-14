@@ -6,6 +6,7 @@
 //
 
 #import "WDBaseNode+InitAction.h"
+#import "WDBaseScene+MonsterLocation.h"
 /// 玩家
 #import "WDKknightNode.h"
 #import "WDPriestNode.h"
@@ -17,7 +18,7 @@
 #import "WDSolider2BowNode.h"
 
 
-static CGFloat allScale = 0.4;
+static CGFloat allScale = 0.5;
 @implementation WDBaseNode (InitAction)
 /// 初始化方法
 + (id)initActionWithName:(NSString *)spriteName
@@ -114,8 +115,10 @@ static CGFloat allScale = 0.4;
                              superNode:(SKSpriteNode *)superNode{
    
     WDSolider1Node *node = [[WDSolider1Node alloc] init];
+    node.alpha = 0;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self singleAttackWithName:spriteName node:node superNode:superNode];
+    [self setMonsterLocation:node];
     return node;
 }
 
@@ -123,11 +126,20 @@ static CGFloat allScale = 0.4;
                                 superNode:(SKSpriteNode *)superNode{
    
     WDSolider2BowNode *node = [[WDSolider2BowNode alloc] init];
+    node.alpha = 0;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self bowAttackWithName:spriteName node:node superNode:superNode];
+    [self setMonsterLocation:node];
     return node;
 }
 
+/// 出场
++ (void)setMonsterLocation:(WDEnemyNode *)node{
+   
+    WDBaseScene *scene = (WDBaseScene *)node.parent;
+    [scene setMLocationAndSave:node];
+
+}
 
 
 @end

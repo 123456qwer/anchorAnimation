@@ -36,6 +36,7 @@
     self.physicsBody.contactTestBitMask = MONSTER_CONTACT;
 }
 
+#pragma mark - 仇恨系统 -
 - (void)setHateSprites:(NSArray *)names
 {
     WDHateManager *manager = [[WDHateManager alloc] init];
@@ -55,13 +56,20 @@
     
 }
 
+
 - (void)addHateNumberWithAttackNode:(WDBaseNode *)node{
+    
+    if (!node) {
+        return;
+    }
     
     int hateNumber = [self.hateManager.hateDic[node.name]intValue];
     CGFloat attackNumber = node.attackNumber;
     if ([node.name isEqualToString:kPriest]) {
         attackNumber = 0;
     }
+    
+    /// 目前仇恨值的计算是node自带的仇恨值 + 攻击力 + 之前积累的仇恨值
     hateNumber = node.hateNumber + attackNumber + hateNumber;
     
     [self.hateManager.hateDic setObject:@(hateNumber) forKey:node.name];
@@ -88,6 +96,10 @@
     self.zPosition = 10000 - self.position.y;
    
     if (self.state & Sprite_dead) {
+        return;
+    }
+    
+    if (self.state & Sprite_movie) {
         return;
     }
     
@@ -168,9 +180,23 @@
             
             /// 超出距离
             int distance = fabs([WDCalculateTool distanceBetweenPoints:self.position seconde:self.targetNode.position]);
-            
-            if (distance > self.attackDistance || distance < self.size.width * 2.0) {
-                //CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self enemy:self.targetNode];
+            CGFloat wi = self.parent.frame.size.width / 2.0;
+            int x = self.position.x;
+            BOOL isMax = NO;
+            int a = wi - self.size.width;
+            int b = -wi + self.size.width;
+            if (x >= a) {
+                isMax = YES;
+            }else if(x <= b){
+                isMax = YES;
+            }
+             
+            if (isMax && distance < self.attackDistance) {
+                ///可以攻击的状态
+                [self attackAction:self.targetNode];
+                
+            }else if (distance > self.attackDistance || distance < self.size.width * 2.0) {
+                
                 CGPoint movePoint = [WDCalculateTool calculateNodeMovePositionForBow:self enemy:self.targetNode];
                 [self moveAction:movePoint];
                 

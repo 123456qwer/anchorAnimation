@@ -146,4 +146,26 @@ static WDTextureManager *textureManager = nil;
     return [arr copy];
 }
 
+#pragma mark - 小怪出场光效 -
+- (NSArray<SKTexture *> *)smokeArr
+{
+    if (!_smokeArr) {
+        _smokeArr = [self loadWithImageName:@"smoke_" count:14];
+    }
+    return _smokeArr;
+}
+
+- (NSMutableArray *)loadWithImageName:(NSString *)name
+                                count:(NSInteger)count
+{
+    NSMutableArray *muAr = [NSMutableArray array];
+    for (int i = 0; i < count; i ++) {
+        NSString *nameS = [NSString stringWithFormat:@"%@%d",name,i+1];
+        SKTexture *texture1 = [SKTexture textureWithImage:[UIImage imageNamed:nameS]];
+        [muAr addObject:texture1];
+    }
+    
+    return muAr;
+}
+
 @end
