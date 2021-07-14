@@ -36,6 +36,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 仇恨列表名称
 @property (nonatomic,copy)NSArray *hateNameArr;
 
+
+/// 技能
+- (void)skill1Action;
+- (void)skill2Action;
+- (void)skill3Action;
+- (void)skill4Action;
+- (void)skill5Action;
+
+
 #pragma mark - 移动结束，隐藏指示箭头 -
 - (void)hiddenArrow;
 

@@ -266,6 +266,24 @@
     }
 }
 
+
+#pragma mark - 释放技能 -
+- (void)skill1Action{
+    [_selectNode skill1Action];
+}
+- (void)skill2Action{
+    [_selectNode skill2Action];
+}
+- (void)skill3Action{
+    [_selectNode skill3Action];
+}
+- (void)skill4Action{
+    [_selectNode skill4Action];
+}
+- (void)skill5Action{
+    [_selectNode skill5Action];
+}
+
 #pragma mark - 物理检测 -
 - (void)didBeginContact:(SKPhysicsContact *)contact{
     [self contactLogicAction:contact];

@@ -23,6 +23,7 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
+#define IS_IPHONEX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1080, 2340), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1170, 2532), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1284, 2778), [[UIScreen mainScreen] currentMode].size)) : NO)
 
 //零件
 #define kBody @"body"  //身体
@@ -148,6 +149,17 @@ static const uint32_t ARROW_CATEGORY_ENEMY = 0x01;     //1000
 #define kNotificationForUpData @"kNotificationForUpData"
 ///死亡通知
 #define kNotificationForDead @"kNotificationForDead"
+
+
+/// 换人通知
+#define kNotificationForChangeUser @"kNotificationForChangeUser"
+/// 基本只有教学关卡有用
+#define kNotificationForSkillCanUse @"kNotificationForSkillCanUse"
+/// 介绍技能通知
+#define kNotificationForShowSkill @"kNotificationForShowSkill"
+/// 隐藏或显示技能栏
+#define kNotificationForHiddenSkill @"kNotificationForHiddenSkill"
+
 
 
 #endif /* PrefixHeader_pch */

@@ -62,13 +62,13 @@
 
     
     _knight = [WDBaseNode initActionWithName:kKinght superNode:self];
-    _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
-    _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
-    _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
+//    _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
+//    _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
+//    _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
     self.selectNode = _knight;
     self.selectNode.arrowNode.hidden = NO;
-    self.hateNameArr = @[_knight.name,_priest.name,_archer.name,_wizard.name];
-    
+    //self.hateNameArr = @[_knight.name,_priest.name,_archer.name,_wizard.name];
+    self.hateNameArr = @[_knight.name];
     
     [WDBaseNode initActionWithName:kSolider1 superNode:self];
     [WDBaseNode initActionWithName:kSolider1 superNode:self];
@@ -79,6 +79,9 @@
     _priest.position = CGPointMake(_priest.size.width, 0);
     _wizard.position = CGPointMake(-_priest.size.width, 0);
     _archer.position = CGPointMake(-_priest.size.width * 2.0, 0);
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeUser object:self.selectNode.name];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForHiddenSkill object:@(1)];
 
 }
 

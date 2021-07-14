@@ -119,6 +119,13 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 ///腿部走路的角度
 @property (nonatomic,assign)CGFloat legWalkAngle;
 
+/// 技能是否在释放状态
+@property (nonatomic,assign)BOOL skill1;
+@property (nonatomic,assign)BOOL skill2;
+@property (nonatomic,assign)BOOL skill3;
+@property (nonatomic,assign)BOOL skill4;
+@property (nonatomic,assign)BOOL skill5;
+
 /**
  
   仇恨系统 仇恨值相当于默认人物的仇恨值 + 攻击造成的伤害
@@ -202,6 +209,14 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 ///设置选中箭头
 - (void)setArrowNodeWithPosition:(CGPoint)point
                            scale:(CGFloat)scale;
+
+
+
+- (void)skill1Action;
+- (void)skill2Action;
+- (void)skill3Action;
+- (void)skill4Action;
+- (void)skill5Action;
 
 #pragma mark - 人物行为方法 -
 /// 移动方法统一调用，根据状态判断是跑是走

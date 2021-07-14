@@ -623,6 +623,23 @@
     [self removeAllBodyAction];
 }
 
+#pragma mark - 释放技能 -
+- (void)skill1Action{
+    self.skill1 = YES;
+}
+- (void)skill2Action{
+    self.skill2 = YES;
+}
+- (void)skill3Action{
+    self.skill3 = YES;
+}
+- (void)skill4Action{
+    self.skill4 = YES;
+}
+- (void)skill5Action{
+    self.skill5 = YES;
+}
+
 #pragma mark - 私有辅助方法 -
 - (void)phyWithNode:(WDBaseNode *)node{
     SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:node.size center:CGPointMake(0, 0)];

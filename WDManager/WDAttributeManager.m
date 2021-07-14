@@ -29,7 +29,7 @@
     node.attackNumber       = 20;
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 0;
-    node.attackNumber       = 20;
+    node.attackNumber       = 0;
     node.hateNumber         = 100;
 }
 
@@ -82,7 +82,7 @@
     node.animationRunSpeed  = 300;
     node.initBlood          = 600;
     node.lastBlood          = 600;
-    node.attackNumber       = 20;
+    node.attackNumber       = 0;
     node.CADisplaySpeed     = 2;
 }
 
@@ -93,7 +93,7 @@
     node.animationRunSpeed  = 300;
     node.initBlood          = 300;
     node.lastBlood          = 300;
-    node.attackNumber       = 20;
+    node.attackNumber       = 0;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;
 }

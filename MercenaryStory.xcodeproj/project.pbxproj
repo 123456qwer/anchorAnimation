@@ -24,6 +24,13 @@
 		040EDAA6269EB30A0045DFDE /* smoke_8.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDA98269EB30A0045DFDE /* smoke_8.png */; };
 		040EDAA7269EB30A0045DFDE /* smoke_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDA99269EB30A0045DFDE /* smoke_6.png */; };
 		040EDAAD269EB4830045DFDE /* WDBaseScene+MonsterLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EDAAC269EB4830045DFDE /* WDBaseScene+MonsterLocation.m */; };
+		040EDAB7269EC6F60045DFDE /* WDSkillBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EDAB6269EC6F60045DFDE /* WDSkillBtn.m */; };
+		040EDAC0269EC70F0045DFDE /* WDSkillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040EDABF269EC70F0045DFDE /* WDSkillView.m */; };
+		040EDACB269EDA8C0045DFDE /* Knight_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDAC6269EDA8B0045DFDE /* Knight_3.png */; };
+		040EDACC269EDA8C0045DFDE /* Knight_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDAC7269EDA8C0045DFDE /* Knight_4.png */; };
+		040EDACD269EDA8C0045DFDE /* Knight_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDAC8269EDA8C0045DFDE /* Knight_0.png */; };
+		040EDACE269EDA8C0045DFDE /* Knight_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDAC9269EDA8C0045DFDE /* Knight_1.png */; };
+		040EDACF269EDA8C0045DFDE /* Knight_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDACA269EDA8C0045DFDE /* Knight_2.png */; };
 		04394AA72681ADEE006EBF8B /* WDAttributeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394AA62681ADEE006EBF8B /* WDAttributeManager.m */; };
 		04394AB42681B06A006EBF8B /* WDKknightNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04394AB32681B06A006EBF8B /* WDKknightNode.m */; };
 		04394AB92681B5AE006EBF8B /* Leaky.png in Resources */ = {isa = PBXBuildFile; fileRef = 04394AB82681B5AE006EBF8B /* Leaky.png */; };
@@ -154,6 +161,15 @@
 		040EDA99269EB30A0045DFDE /* smoke_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke_6.png; sourceTree = "<group>"; };
 		040EDAAB269EB4830045DFDE /* WDBaseScene+MonsterLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WDBaseScene+MonsterLocation.h"; sourceTree = "<group>"; };
 		040EDAAC269EB4830045DFDE /* WDBaseScene+MonsterLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WDBaseScene+MonsterLocation.m"; sourceTree = "<group>"; };
+		040EDAB5269EC6F60045DFDE /* WDSkillBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDSkillBtn.h; sourceTree = "<group>"; };
+		040EDAB6269EC6F60045DFDE /* WDSkillBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDSkillBtn.m; sourceTree = "<group>"; };
+		040EDABE269EC70F0045DFDE /* WDSkillView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDSkillView.h; sourceTree = "<group>"; };
+		040EDABF269EC70F0045DFDE /* WDSkillView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDSkillView.m; sourceTree = "<group>"; };
+		040EDAC6269EDA8B0045DFDE /* Knight_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Knight_3.png; sourceTree = "<group>"; };
+		040EDAC7269EDA8C0045DFDE /* Knight_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Knight_4.png; sourceTree = "<group>"; };
+		040EDAC8269EDA8C0045DFDE /* Knight_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Knight_0.png; sourceTree = "<group>"; };
+		040EDAC9269EDA8C0045DFDE /* Knight_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Knight_1.png; sourceTree = "<group>"; };
+		040EDACA269EDA8C0045DFDE /* Knight_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Knight_2.png; sourceTree = "<group>"; };
 		04394AA52681ADEE006EBF8B /* WDAttributeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDAttributeManager.h; sourceTree = "<group>"; };
 		04394AA62681ADEE006EBF8B /* WDAttributeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDAttributeManager.m; sourceTree = "<group>"; };
 		04394AB22681B06A006EBF8B /* WDKknightNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDKknightNode.h; sourceTree = "<group>"; };
@@ -302,6 +318,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040EDAB4269EC6E20045DFDE /* OperationViews */ = {
+			isa = PBXGroup;
+			children = (
+				040EDAB5269EC6F60045DFDE /* WDSkillBtn.h */,
+				040EDAB6269EC6F60045DFDE /* WDSkillBtn.m */,
+				040EDABE269EC70F0045DFDE /* WDSkillView.h */,
+				040EDABF269EC70F0045DFDE /* WDSkillView.m */,
+			);
+			path = OperationViews;
+			sourceTree = "<group>";
+		};
+		040EDAC4269EDA750045DFDE /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				040EDAC5269EDA810045DFDE /* knight */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		040EDAC5269EDA810045DFDE /* knight */ = {
+			isa = PBXGroup;
+			children = (
+				040EDAC8269EDA8C0045DFDE /* Knight_0.png */,
+				040EDAC9269EDA8C0045DFDE /* Knight_1.png */,
+				040EDACA269EDA8C0045DFDE /* Knight_2.png */,
+				040EDAC6269EDA8B0045DFDE /* Knight_3.png */,
+				040EDAC7269EDA8C0045DFDE /* Knight_4.png */,
+			);
+			path = knight;
+			sourceTree = "<group>";
+		};
 		04394AA42681ADB6006EBF8B /* WDManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +425,7 @@
 		0445021F267B4DF300C3F83D /* WDImages */ = {
 			isa = PBXGroup;
 			children = (
+				040EDAC4269EDA750045DFDE /* Users */,
 				046FECD1268ACAFE00260225 /* Common */,
 				044447E5268467AA00089700 /* Bow */,
 				04394AE12681BCF2006EBF8B /* Shield */,
@@ -551,6 +599,7 @@
 		049EFE7B2679F83700283E13 /* MercenaryStory */ = {
 			isa = PBXGroup;
 			children = (
+				040EDAB4269EC6E20045DFDE /* OperationViews */,
 				049EFE7C2679F83700283E13 /* AppDelegate.h */,
 				049EFE7D2679F83700283E13 /* AppDelegate.m */,
 				049EFE862679F83700283E13 /* GameViewController.h */,
@@ -758,6 +807,7 @@
 				044447FE268479E400089700 /* HornBow.png in Resources */,
 				04450F49267B501F00C3F83D /* Mouth_Smirk.png in Resources */,
 				04450F5B267B50A800C3F83D /* PeasantHead.png in Resources */,
+				040EDACB269EDA8C0045DFDE /* Knight_3.png in Resources */,
 				044447BE2684267100089700 /* Mouth_Bored.png in Resources */,
 				040EDAA6269EB30A0045DFDE /* smoke_8.png in Resources */,
 				046FEC9E268ABCB800260225 /* FireWizardArmor.png in Resources */,
@@ -772,6 +822,7 @@
 				049EFE8B2679F83700283E13 /* Main.storyboard in Resources */,
 				04D88A24267C9819005C7B0C /* Armor2.png in Resources */,
 				040EDA88269EA5BF0045DFDE /* biaoji.png in Resources */,
+				040EDACF269EDA8C0045DFDE /* Knight_2.png in Resources */,
 				04450F52267B504700C3F83D /* Ears_HumanEar.png in Resources */,
 				044447CE2684598E00089700 /* cureFire.sks in Resources */,
 				044447E7268467B500089700 /* FamilyBow.png in Resources */,
@@ -808,6 +859,7 @@
 				04450F39267B4FD500C3F83D /* EyeBrows_Angry.png in Resources */,
 				046FECF2268B024E00260225 /* HunterShortBow.png in Resources */,
 				040EDA9A269EB30A0045DFDE /* smoke_5.png in Resources */,
+				040EDACC269EDA8C0045DFDE /* Knight_4.png in Resources */,
 				044447B9268425E200089700 /* ShortPonytail.png in Resources */,
 				049EFE8D2679F83900283E13 /* Assets.xcassets in Resources */,
 				046FECE0268ACB2400260225 /* RedBatScene.png in Resources */,
@@ -815,6 +867,7 @@
 				04450F6B267B520700C3F83D /* Hair6.png in Resources */,
 				040EDAA1269EB30A0045DFDE /* smoke_1.png in Resources */,
 				04BB817D268333EA00EB0D8F /* Head_Skeleton.png in Resources */,
+				040EDACD269EDA8C0045DFDE /* Knight_0.png in Resources */,
 				046FECE7268ACB2400260225 /* blood_hit_05.png in Resources */,
 				049EFED42679FC8700283E13 /* WDTestScene.sks in Resources */,
 				040EDAA7269EB30A0045DFDE /* smoke_6.png in Resources */,
@@ -833,6 +886,7 @@
 				04BB81782683336200EB0D8F /* Skeleton.png in Resources */,
 				04450F4A267B501F00C3F83D /* Mouth_Zombie.png in Resources */,
 				04450F5A267B50A800C3F83D /* HeadScar.png in Resources */,
+				040EDACE269EDA8C0045DFDE /* Knight_1.png in Resources */,
 				04BB816C2683099800EB0D8F /* EyeBrows_Dead.png in Resources */,
 				040EDAA3269EB30A0045DFDE /* smoke_9.png in Resources */,
 			);
@@ -914,6 +968,7 @@
 				049EFEEB267A033100283E13 /* WDCalculateTool.m in Sources */,
 				04394AA72681ADEE006EBF8B /* WDAttributeManager.m in Sources */,
 				043ADA672689CE00001D2F01 /* WDTextureManager.m in Sources */,
+				040EDAB7269EC6F60045DFDE /* WDSkillBtn.m in Sources */,
 				044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */,
 				049EFE7E2679F83700283E13 /* AppDelegate.m in Sources */,
 				040EDAAD269EB4830045DFDE /* WDBaseScene+MonsterLocation.m in Sources */,
@@ -924,6 +979,7 @@
 				046FECED268B020A00260225 /* WDSolider2BowNode.m in Sources */,
 				043ADA5226899A47001D2F01 /* WDHateManager.m in Sources */,
 				04394AB42681B06A006EBF8B /* WDKknightNode.m in Sources */,
+				040EDAC0269EC70F0045DFDE /* WDSkillView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

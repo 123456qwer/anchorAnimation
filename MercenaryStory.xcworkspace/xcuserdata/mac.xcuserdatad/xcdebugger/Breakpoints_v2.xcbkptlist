@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0B842FFF-09A7-48FA-95B3-0FB649B8F446"
+            uuid = "B34531FA-1125-4A17-8E66-20DE2B2BB6CA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WDBase/WDBaseNode.m"
+            filePath = "WDBase/WDEnemyNode.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
-            landmarkName = "-dealloc"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-upDataAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

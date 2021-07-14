@@ -74,4 +74,32 @@
   
 }
 
+
+
+#pragma mark - 技能 -
+- (void)skill1Action
+{
+   
+}
+
+- (void)skill2Action
+{
+    
+}
+
+- (void)skill3Action
+{
+    
+}
+
+- (void)skill4Action
+{
+    
+}
+
+- (void)skill5Action
+{
+    
+}
+
 @end

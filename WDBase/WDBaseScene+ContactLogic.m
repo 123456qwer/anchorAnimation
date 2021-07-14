@@ -19,7 +19,7 @@
         int numer = nodeA.attackNumber;
         if ([nodeB isKindOfClass:[WDEnemyNode class]]) {
             [nodeB beAttackAction:nodeA attackNumber:numer];
-            WDArcherNode *node = (WDArcherNode *)[self.bgNode childNodeWithName:kArcher];
+            WDArcherNode *node = (WDArcherNode *)[self childNodeWithName:kArcher];
             [nodeB addHateNumberWithAttackNode:node];
             //弓箭手吸血技能
 //            if (node.skill4) {
@@ -30,7 +30,7 @@
         int numer = nodeB.attackNumber;
         if ([nodeA isKindOfClass:[WDEnemyNode class]]) {
             [nodeA beAttackAction:nodeB attackNumber:numer];
-            WDArcherNode *node = (WDArcherNode *)[self.bgNode childNodeWithName:kArcher];
+            WDArcherNode *node = (WDArcherNode *)[self childNodeWithName:kArcher];
             [nodeA addHateNumberWithAttackNode:node];
             //弓箭手吸血技能
 //            if (node.skill4) {
@@ -61,7 +61,7 @@
     if ([nodeA.name isEqualToString:@"iceFire"] && ![nodeB isKindOfClass:[WDUserNode class]]) {
         CGFloat numer = 10;
         [nodeA removeFromParent];
-        WDPriestNode *node = (WDPriestNode *)[self.bgNode childNodeWithName:kPriest];
+        WDPriestNode *node = (WDPriestNode *)[self childNodeWithName:kPriest];
         [nodeB addHateNumberWithAttackNode:node];
         if ([nodeB isKindOfClass:[WDEnemyNode class]]) {
             [nodeB beAttackAction:nodeA attackNumber:numer];
@@ -70,7 +70,7 @@
     }else if([nodeB.name isEqualToString:@"iceFire"] && ![nodeA isKindOfClass:[WDUserNode class]]){
         CGFloat numer = 10;
         [nodeB removeFromParent];
-        WDPriestNode *node = (WDPriestNode *)[self.bgNode childNodeWithName:kPriest];
+        WDPriestNode *node = (WDPriestNode *)[self childNodeWithName:kPriest];
         [nodeA addHateNumberWithAttackNode:node];
         if ([nodeA isKindOfClass:[WDEnemyNode class]]) {
             [nodeA beAttackAction:nodeB attackNumber:numer];
@@ -82,7 +82,7 @@
     if ([nodeA.name isEqualToString:@"wizardFire"] && ![nodeB isKindOfClass:[WDUserNode class]]) {
         CGFloat numer = 10;
         [nodeA removeFromParent];
-        WDWizardNode *node = (WDWizardNode *)[self.bgNode childNodeWithName:kWizard];
+        WDWizardNode *node = (WDWizardNode *)[self childNodeWithName:kWizard];
         [nodeB addHateNumberWithAttackNode:node];
         if ([nodeB isKindOfClass:[WDEnemyNode class]]) {
             [nodeB beAttackAction:nodeA attackNumber:numer];
@@ -91,7 +91,7 @@
     }else if([nodeB.name isEqualToString:@"wizardFire"] && ![nodeA isKindOfClass:[WDUserNode class]]){
         CGFloat numer = 10;
         [nodeB removeFromParent];
-        WDWizardNode *node = (WDWizardNode *)[self.bgNode childNodeWithName:kWizard];
+        WDWizardNode *node = (WDWizardNode *)[self childNodeWithName:kWizard];
         [nodeA addHateNumberWithAttackNode:node];
         if ([nodeA isKindOfClass:[WDEnemyNode class]]) {
             [nodeA beAttackAction:nodeB attackNumber:numer];
