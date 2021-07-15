@@ -70,10 +70,8 @@
     //self.hateNameArr = @[_knight.name,_priest.name,_archer.name,_wizard.name];
     self.hateNameArr = @[_knight.name];
     
-    [WDBaseNode initActionWithName:kSolider1 superNode:self];
-    [WDBaseNode initActionWithName:kSolider1 superNode:self];
-    [WDBaseNode initActionWithName:kSolider2 superNode:self];
-
+    [WDBaseNode initTextureActionWithName:kRedBat superNode:self];
+  //  [WDBaseNode initActionWithName:kSolider1 superNode:self];
     
     _knight.position = CGPointMake(0, 0);
     _priest.position = CGPointMake(_priest.size.width, 0);

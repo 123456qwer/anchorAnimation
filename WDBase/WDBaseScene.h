@@ -9,6 +9,7 @@
 #import "WDBaseNode+InitAction.h"
 #import "WDEnemyNode.h"
 
+#import "WDKknightNode.h"
 #import "WDArcherNode.h"
 #import "WDPriestNode.h"
 #import "WDWizardNode.h"
@@ -35,6 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)NSMutableArray *monsterArr;
 /// 仇恨列表名称
 @property (nonatomic,copy)NSArray *hateNameArr;
+/// 向下指示手势
+@property (nonatomic,strong)SKSpriteNode *clickNode;
+
+#pragma mark - 玩家，根据玩家自己选择的人物初始化 -
+@property (nonatomic,strong)WDKknightNode *knight;
+@property (nonatomic,strong)WDArcherNode  *archer;
+@property (nonatomic,strong)WDPriestNode  *priest;
+@property (nonatomic,strong)WDWizardNode  *wizard;
 
 
 /// 技能
@@ -45,8 +54,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)skill5Action;
 
 
-#pragma mark - 移动结束，隐藏指示箭头 -
+#pragma mark - 指示箭头 -
 - (void)hiddenArrow;
+- (void)arrowMoveActionWithPos:(CGPoint)pos;
 
 @end
 

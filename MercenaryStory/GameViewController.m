@@ -6,7 +6,10 @@
 //
 
 #import "GameViewController.h"
+
 #import "WDTestScene.h"
+#import "WDLearnScene1.h"
+
 
 #import "WDSkillView.h"
 
@@ -64,8 +67,9 @@
 //    CGFloat a = [UIScreen mainScreen].scale;
 //    NSLog(@"%lf",a);
     // Load the SKScene from 'GameScene.sks'
-    WDTestScene *scene = (WDTestScene *)[WDTestScene nodeWithFileNamed:@"WDTestScene"];
-    
+
+    WDLearnScene1 *scene = (WDLearnScene1 *)[WDLearnScene1 nodeWithFileNamed:@"WDLearnScene1"];
+   // WDTestScene *scene = (WDTestScene *)[WDTestScene nodeWithFileNamed:@"WDTestScene"];
     SKView *skView = (SKView *)self.view;
     
     // Present the scene
@@ -114,6 +118,7 @@
         
     }
 }
+
 
 
 

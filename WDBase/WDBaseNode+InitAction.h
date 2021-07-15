@@ -10,9 +10,13 @@
 NS_ASSUME_NONNULL_BEGIN
 @class WDBaseScene;
 @interface WDBaseNode (InitAction)
-/// 初始化方法
+/// 初始化方法(骨骼动画系列)
 + (id)initActionWithName:(NSString *)spriteName
                superNode:(WDBaseScene *)superNode;
+
+/// 初始化方法(帧动画系列)
++ (id)initTextureActionWithName:(NSString *)spriteName
+                      superNode:(WDBaseScene *)superNode;
 
 @end
 

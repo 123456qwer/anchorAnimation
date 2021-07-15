@@ -146,6 +146,16 @@ static WDTextureManager *textureManager = nil;
     return [arr copy];
 }
 
+- (WDRedBatModel *)redBatModel
+{
+    if (!_redBatModel) {
+        _redBatModel = [[WDRedBatModel alloc] init];
+        [_redBatModel setNormalTexturesWithName:kRedBat standNumber:12 runNumber:0 walkNumber:8 diedNumber:8 attack1Number:7];
+    }
+    
+    return _redBatModel;
+}
+
 #pragma mark - 小怪出场光效 -
 - (NSArray<SKTexture *> *)smokeArr
 {
@@ -153,6 +163,16 @@ static WDTextureManager *textureManager = nil;
         _smokeArr = [self loadWithImageName:@"smoke_" count:14];
     }
     return _smokeArr;
+}
+
+#pragma mark - 手指引导 -
+- (NSArray<SKTexture *> *)handClickArr{
+   
+    if (!_handClickArr) {
+        _handClickArr = [WDCalculateTool curImageWithImage:[UIImage imageNamed:@"hand2"] line:1 arrange:2 itemSize:CGSizeMake(128, 128) count:2];;
+    }
+    
+    return _handClickArr;
 }
 
 - (NSMutableArray *)loadWithImageName:(NSString *)name

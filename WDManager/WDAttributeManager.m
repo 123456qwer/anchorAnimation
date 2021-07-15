@@ -29,7 +29,7 @@
     node.attackNumber       = 20;
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 0;
-    node.attackNumber       = 0;
+    node.attackNumber       = 20;
     node.hateNumber         = 100;
 }
 
@@ -94,6 +94,18 @@
     node.initBlood          = 300;
     node.lastBlood          = 300;
     node.attackNumber       = 0;
+    node.CADisplaySpeed     = 2;
+    node.attackDistance     = 400;
+}
+
+/// 蝙蝠
++ (void)initRedBatAttribute:(WDBaseNode *)node{
+    
+    node.animationWalkSpeed = 220;
+    node.animationRunSpeed  = 300;
+    node.initBlood          = 300;
+    node.lastBlood          = 300;
+    node.attackNumber       = 1;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;
 }

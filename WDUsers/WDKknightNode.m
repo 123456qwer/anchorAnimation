@@ -16,7 +16,7 @@
     
     [self setAllArmor:@"KnightArmor"];
     [self setLeftWeapon:@"FamilySword"];
-    [self setRightShield:@"SteelShield"];
+    //[self setRightShield:@"SteelShield"];
     [self standAction];
 }
 
@@ -52,7 +52,7 @@
         int distanceX = fabs(self.position.x - self.targetNode.position.x);
         int distanceY = fabs(self.position.y - self.targetNode.position.y);
         WDEnemyNode *node = (WDEnemyNode *)self.targetNode;
-        if (distanceX > self.size.width + node.randomAttackX || distanceY > self.size.height / 3.0) {
+        if (distanceX > self.attackMaxSize + node.attackMaxSize || distanceY > self.size.height / 3.0 || distanceX < self.attackMinSize) {
             CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self enemy:self.targetNode];
             [self moveAction:movePoint];
             return;

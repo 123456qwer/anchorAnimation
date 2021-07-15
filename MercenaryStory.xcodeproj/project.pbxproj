@@ -118,6 +118,22 @@
 		04BB817D268333EA00EB0D8F /* Head_Skeleton.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BB817C268333EA00EB0D8F /* Head_Skeleton.png */; };
 		04BB81822683350A00EB0D8F /* Eye_Zombies1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BB81812683350A00EB0D8F /* Eye_Zombies1.png */; };
 		04BB8187268336F700EB0D8F /* Eye_Zombies2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BB8186268336F700EB0D8F /* Eye_Zombies2.png */; };
+		04C6F34926A0041B00753957 /* LearnScene.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F34826A0041B00753957 /* LearnScene.jpg */; };
+		04C6F34F26A0044600753957 /* WDLearnScene1.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6F34E26A0044600753957 /* WDLearnScene1.m */; };
+		04C6F35426A0045900753957 /* WDLearnScene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F35326A0045900753957 /* WDLearnScene1.sks */; };
+		04C6F35A26A008FC00753957 /* hand.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F35826A008FC00753957 /* hand.png */; };
+		04C6F35B26A008FC00753957 /* hand2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F35926A008FC00753957 /* hand2.png */; };
+		04C6F36026A01BAF00753957 /* RedBat.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F35F26A01BAF00753957 /* RedBat.atlas */; };
+		04C6F36826A01BBB00753957 /* WDRedBatNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6F36426A01BBB00753957 /* WDRedBatNode.m */; };
+		04C6F37226A01C0100753957 /* WDRedBatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C6F37126A01C0100753957 /* WDRedBatModel.m */; };
+		04C6F38026A036E700753957 /* RedBat_hurt_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37826A036E600753957 /* RedBat_hurt_6.png */; };
+		04C6F38126A036E700753957 /* RedBat_hurt_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37926A036E600753957 /* RedBat_hurt_7.png */; };
+		04C6F38226A036E700753957 /* RedBat_hurt_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37A26A036E600753957 /* RedBat_hurt_2.png */; };
+		04C6F38326A036E700753957 /* RedBat_hurt_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37B26A036E600753957 /* RedBat_hurt_0.png */; };
+		04C6F38426A036E700753957 /* RedBat_hurt_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37C26A036E600753957 /* RedBat_hurt_3.png */; };
+		04C6F38526A036E700753957 /* RedBat_hurt_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37D26A036E700753957 /* RedBat_hurt_1.png */; };
+		04C6F38626A036E700753957 /* RedBat_hurt_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37E26A036E700753957 /* RedBat_hurt_5.png */; };
+		04C6F38726A036E700753957 /* RedBat_hurt_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C6F37F26A036E700753957 /* RedBat_hurt_4.png */; };
 		04D88A1F267C972F005C7B0C /* Armor1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D88A1E267C972F005C7B0C /* Armor1.png */; };
 		04D88A24267C9819005C7B0C /* Armor2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D88A23267C9819005C7B0C /* Armor2.png */; };
 		04E25E2326807DDE001CC70F /* FamilySword.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E25E2226807DDE001CC70F /* FamilySword.png */; };
@@ -282,6 +298,25 @@
 		04BB817C268333EA00EB0D8F /* Head_Skeleton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Head_Skeleton.png; sourceTree = "<group>"; };
 		04BB81812683350A00EB0D8F /* Eye_Zombies1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_Zombies1.png; sourceTree = "<group>"; };
 		04BB8186268336F700EB0D8F /* Eye_Zombies2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_Zombies2.png; sourceTree = "<group>"; };
+		04C6F34826A0041B00753957 /* LearnScene.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LearnScene.jpg; sourceTree = "<group>"; };
+		04C6F34D26A0044600753957 /* WDLearnScene1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDLearnScene1.h; sourceTree = "<group>"; };
+		04C6F34E26A0044600753957 /* WDLearnScene1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDLearnScene1.m; sourceTree = "<group>"; };
+		04C6F35326A0045900753957 /* WDLearnScene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WDLearnScene1.sks; sourceTree = "<group>"; };
+		04C6F35826A008FC00753957 /* hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand.png; sourceTree = "<group>"; };
+		04C6F35926A008FC00753957 /* hand2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hand2.png; sourceTree = "<group>"; };
+		04C6F35F26A01BAF00753957 /* RedBat.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = RedBat.atlas; sourceTree = "<group>"; };
+		04C6F36426A01BBB00753957 /* WDRedBatNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDRedBatNode.m; sourceTree = "<group>"; };
+		04C6F36626A01BBB00753957 /* WDRedBatNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDRedBatNode.h; sourceTree = "<group>"; };
+		04C6F37026A01C0100753957 /* WDRedBatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDRedBatModel.h; sourceTree = "<group>"; };
+		04C6F37126A01C0100753957 /* WDRedBatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDRedBatModel.m; sourceTree = "<group>"; };
+		04C6F37826A036E600753957 /* RedBat_hurt_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_6.png; sourceTree = "<group>"; };
+		04C6F37926A036E600753957 /* RedBat_hurt_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_7.png; sourceTree = "<group>"; };
+		04C6F37A26A036E600753957 /* RedBat_hurt_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_2.png; sourceTree = "<group>"; };
+		04C6F37B26A036E600753957 /* RedBat_hurt_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_0.png; sourceTree = "<group>"; };
+		04C6F37C26A036E600753957 /* RedBat_hurt_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_3.png; sourceTree = "<group>"; };
+		04C6F37D26A036E700753957 /* RedBat_hurt_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_1.png; sourceTree = "<group>"; };
+		04C6F37E26A036E700753957 /* RedBat_hurt_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_5.png; sourceTree = "<group>"; };
+		04C6F37F26A036E700753957 /* RedBat_hurt_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBat_hurt_4.png; sourceTree = "<group>"; };
 		04D88A1E267C972F005C7B0C /* Armor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Armor1.png; sourceTree = "<group>"; };
 		04D88A23267C9819005C7B0C /* Armor2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Armor2.png; sourceTree = "<group>"; };
 		04E25E2226807DDE001CC70F /* FamilySword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FamilySword.png; sourceTree = "<group>"; };
@@ -425,6 +460,8 @@
 		0445021F267B4DF300C3F83D /* WDImages */ = {
 			isa = PBXGroup;
 			children = (
+				04C6F37626A036D500753957 /* Enemys */,
+				04C6F34726A0041400753957 /* Scene */,
 				040EDAC4269EDA750045DFDE /* Users */,
 				046FECD1268ACAFE00260225 /* Common */,
 				044447E5268467AA00089700 /* Bow */,
@@ -537,6 +574,8 @@
 		046FECD1268ACAFE00260225 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04C6F35826A008FC00753957 /* hand.png */,
+				04C6F35926A008FC00753957 /* hand2.png */,
 				040EDA93269EB3090045DFDE /* smoke_1.png */,
 				040EDA90269EB3080045DFDE /* smoke_2.png */,
 				040EDA91269EB3080045DFDE /* smoke_3.png */,
@@ -628,6 +667,9 @@
 				049EFECD2679FC6A00283E13 /* WDTestScene.h */,
 				049EFECE2679FC6A00283E13 /* WDTestScene.m */,
 				049EFED32679FC8700283E13 /* WDTestScene.sks */,
+				04C6F34D26A0044600753957 /* WDLearnScene1.h */,
+				04C6F34E26A0044600753957 /* WDLearnScene1.m */,
+				04C6F35326A0045900753957 /* WDLearnScene1.sks */,
 			);
 			path = WDScene;
 			sourceTree = "<group>";
@@ -658,12 +700,48 @@
 		04BB817026831F4100EB0D8F /* WDEnemy */ = {
 			isa = PBXGroup;
 			children = (
+				04C6F35F26A01BAF00753957 /* RedBat.atlas */,
 				04BB817126831F6000EB0D8F /* WDSolider1Node.h */,
 				04BB817226831F6000EB0D8F /* WDSolider1Node.m */,
 				046FECEB268B020A00260225 /* WDSolider2BowNode.h */,
 				046FECEC268B020A00260225 /* WDSolider2BowNode.m */,
+				04C6F36626A01BBB00753957 /* WDRedBatNode.h */,
+				04C6F36426A01BBB00753957 /* WDRedBatNode.m */,
+				04C6F37026A01C0100753957 /* WDRedBatModel.h */,
+				04C6F37126A01C0100753957 /* WDRedBatModel.m */,
 			);
 			path = WDEnemy;
+			sourceTree = "<group>";
+		};
+		04C6F34726A0041400753957 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				04C6F34826A0041B00753957 /* LearnScene.jpg */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		04C6F37626A036D500753957 /* Enemys */ = {
+			isa = PBXGroup;
+			children = (
+				04C6F37726A036E000753957 /* RedBat */,
+			);
+			path = Enemys;
+			sourceTree = "<group>";
+		};
+		04C6F37726A036E000753957 /* RedBat */ = {
+			isa = PBXGroup;
+			children = (
+				04C6F37B26A036E600753957 /* RedBat_hurt_0.png */,
+				04C6F37D26A036E700753957 /* RedBat_hurt_1.png */,
+				04C6F37A26A036E600753957 /* RedBat_hurt_2.png */,
+				04C6F37C26A036E600753957 /* RedBat_hurt_3.png */,
+				04C6F37F26A036E700753957 /* RedBat_hurt_4.png */,
+				04C6F37E26A036E700753957 /* RedBat_hurt_5.png */,
+				04C6F37826A036E600753957 /* RedBat_hurt_6.png */,
+				04C6F37926A036E600753957 /* RedBat_hurt_7.png */,
+			);
+			path = RedBat;
 			sourceTree = "<group>";
 		};
 		04D88A1D267C9728005C7B0C /* Armor */ = {
@@ -804,6 +882,8 @@
 				046FEC99268ABC3100260225 /* HardwoodWand.png in Resources */,
 				04450F5C267B50A800C3F83D /* Head.png in Resources */,
 				04450F33267B4F9B00C3F83D /* Eye_Male.png in Resources */,
+				04C6F38126A036E700753957 /* RedBat_hurt_7.png in Resources */,
+				04C6F35A26A008FC00753957 /* hand.png in Resources */,
 				044447FE268479E400089700 /* HornBow.png in Resources */,
 				04450F49267B501F00C3F83D /* Mouth_Smirk.png in Resources */,
 				04450F5B267B50A800C3F83D /* PeasantHead.png in Resources */,
@@ -811,11 +891,13 @@
 				044447BE2684267100089700 /* Mouth_Bored.png in Resources */,
 				040EDAA6269EB30A0045DFDE /* smoke_8.png in Resources */,
 				046FEC9E268ABCB800260225 /* FireWizardArmor.png in Resources */,
+				04C6F38426A036E700753957 /* RedBat_hurt_3.png in Resources */,
 				046FECE3268ACB2400260225 /* blood_hit_02.png in Resources */,
 				046FECE5268ACB2400260225 /* Shadow.png in Resources */,
 				04E25E2326807DDE001CC70F /* FamilySword.png in Resources */,
 				040EDAA5269EB30A0045DFDE /* smoke_13.png in Resources */,
 				044447C3268427B500089700 /* ClericWand1.png in Resources */,
+				04C6F38226A036E700753957 /* RedBat_hurt_2.png in Resources */,
 				04450F48267B501F00C3F83D /* Mouth_Normal.png in Resources */,
 				04450F65267B50D500C3F83D /* Human.png in Resources */,
 				046FEC8F268ABB4B00260225 /* WizardHelm.png in Resources */,
@@ -831,12 +913,14 @@
 				04394AD32681B7DF006EBF8B /* LeatherHelm.png in Resources */,
 				044447D4268459DC00089700 /* MyParticle.sks in Resources */,
 				04394ABE2681B5CF006EBF8B /* BuzzCut.png in Resources */,
+				04C6F38526A036E700753957 /* RedBat_hurt_1.png in Resources */,
 				046FECE4268ACB2400260225 /* blood_hit_07.png in Resources */,
 				040EDA9C269EB30A0045DFDE /* smoke_10.png in Resources */,
 				04394ADD2681B8CD006EBF8B /* KnightArmor.png in Resources */,
 				04450F31267B4F9B00C3F83D /* Eye_Female.png in Resources */,
 				04450F47267B501F00C3F83D /* Mouth_Angry.png in Resources */,
 				044447F926846F5300089700 /* BowmanHelm.png in Resources */,
+				04C6F34926A0041B00753957 /* LearnScene.jpg in Resources */,
 				046FECE6268ACB2400260225 /* blood_hit_01.png in Resources */,
 				04BB8167268307A600EB0D8F /* Mouth_Dead.png in Resources */,
 				040EDA83269EA5AF0045DFDE /* arrow.png in Resources */,
@@ -846,6 +930,7 @@
 				046FECA3268AC21F00260225 /* Eyes5.png in Resources */,
 				044447EC26846EE600089700 /* ArcherArmor.png in Resources */,
 				046FECE2268ACB2400260225 /* blood_hit_03.png in Resources */,
+				04C6F35426A0045900753957 /* WDLearnScene1.sks in Resources */,
 				04394AD22681B7DF006EBF8B /* BerserkHelm.png in Resources */,
 				040EDA9B269EB30A0045DFDE /* smoke_7.png in Resources */,
 				04450F51267B504700C3F83D /* Ears_ElfEar.png in Resources */,
@@ -857,10 +942,13 @@
 				046FECDE268ACB2400260225 /* blood_hit_06.png in Resources */,
 				040EDA9E269EB30A0045DFDE /* smoke_2.png in Resources */,
 				04450F39267B4FD500C3F83D /* EyeBrows_Angry.png in Resources */,
+				04C6F36026A01BAF00753957 /* RedBat.atlas in Resources */,
 				046FECF2268B024E00260225 /* HunterShortBow.png in Resources */,
 				040EDA9A269EB30A0045DFDE /* smoke_5.png in Resources */,
+				04C6F38726A036E700753957 /* RedBat_hurt_4.png in Resources */,
 				040EDACC269EDA8C0045DFDE /* Knight_4.png in Resources */,
 				044447B9268425E200089700 /* ShortPonytail.png in Resources */,
+				04C6F35B26A008FC00753957 /* hand2.png in Resources */,
 				049EFE8D2679F83900283E13 /* Assets.xcassets in Resources */,
 				046FECE0268ACB2400260225 /* RedBatScene.png in Resources */,
 				04450F79267B53DA00C3F83D /* ShadowSword.png in Resources */,
@@ -871,6 +959,7 @@
 				046FECE7268ACB2400260225 /* blood_hit_05.png in Resources */,
 				049EFED42679FC8700283E13 /* WDTestScene.sks in Resources */,
 				040EDAA7269EB30A0045DFDE /* smoke_6.png in Resources */,
+				04C6F38026A036E700753957 /* RedBat_hurt_6.png in Resources */,
 				044447B42684258800089700 /* PriestHelm.png in Resources */,
 				04450F32267B4F9B00C3F83D /* Eye_Dead.png in Resources */,
 				040EDAA2269EB30A0045DFDE /* smoke_14.png in Resources */,
@@ -883,9 +972,11 @@
 				046FEC94268ABBCC00260225 /* Hair5.png in Resources */,
 				046FECE1268ACB2400260225 /* blood_hit_04.png in Resources */,
 				046FECA8268AC30100260225 /* Mouth_injured.png in Resources */,
+				04C6F38326A036E700753957 /* RedBat_hurt_0.png in Resources */,
 				04BB81782683336200EB0D8F /* Skeleton.png in Resources */,
 				04450F4A267B501F00C3F83D /* Mouth_Zombie.png in Resources */,
 				04450F5A267B50A800C3F83D /* HeadScar.png in Resources */,
+				04C6F38626A036E700753957 /* RedBat_hurt_5.png in Resources */,
 				040EDACE269EDA8C0045DFDE /* Knight_1.png in Resources */,
 				04BB816C2683099800EB0D8F /* EyeBrows_Dead.png in Resources */,
 				040EDAA3269EB30A0045DFDE /* smoke_9.png in Resources */,
@@ -963,11 +1054,14 @@
 				046FECFB268B052100260225 /* WDUserNode.m in Sources */,
 				044834BA26856F50008F4C92 /* WDBaseScene+ContactLogic.m in Sources */,
 				049EFE902679F83900283E13 /* main.m in Sources */,
+				04C6F34F26A0044600753957 /* WDLearnScene1.m in Sources */,
 				044447E12684677000089700 /* WDArcherNode.m in Sources */,
 				044834C326857F46008F4C92 /* WDEnemyNode.m in Sources */,
 				049EFEEB267A033100283E13 /* WDCalculateTool.m in Sources */,
+				04C6F37226A01C0100753957 /* WDRedBatModel.m in Sources */,
 				04394AA72681ADEE006EBF8B /* WDAttributeManager.m in Sources */,
 				043ADA672689CE00001D2F01 /* WDTextureManager.m in Sources */,
+				04C6F36826A01BBB00753957 /* WDRedBatNode.m in Sources */,
 				040EDAB7269EC6F60045DFDE /* WDSkillBtn.m in Sources */,
 				044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */,
 				049EFE7E2679F83700283E13 /* AppDelegate.m in Sources */,

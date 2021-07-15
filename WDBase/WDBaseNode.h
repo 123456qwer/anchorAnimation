@@ -119,6 +119,12 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 ///腿部走路的角度
 @property (nonatomic,assign)CGFloat legWalkAngle;
 
+/// 近战可以出发攻击的最大距离
+@property (nonatomic,assign)int attackMaxSize;
+
+/// 近战可以发出攻击的最小距离
+@property (nonatomic,assign)int attackMinSize;
+
 /// 技能是否在释放状态
 @property (nonatomic,assign)BOOL skill1;
 @property (nonatomic,assign)BOOL skill2;
@@ -246,6 +252,10 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 /// 仇恨增加
 - (void)addHateNumberWithAttackNode:(WDBaseNode *)node;
 
+///创建血条
+- (void)createBlood:(CGFloat)scale;
+///
+- (void)setBloodYPosition:(CGFloat)yPage;
 
 #pragma mark - 一些判断方法 -
 /// 暂停走、跑

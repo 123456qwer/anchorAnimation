@@ -150,7 +150,7 @@
             }
             
             
-            if (distance > self.size.width + self.randomAttackX || distanceY > self.size.height / 3.0 || distance < self.size.width - self.size.width / 10.f + self.randomAttackX) {
+            if (distance > self.attackMaxSize + self.targetNode.attackMaxSize || distanceY > self.size.height / 3.0 || distance < self.attackMinSize) {
                 CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self enemy:self.targetNode];
                 [self moveAction:movePoint];
                 

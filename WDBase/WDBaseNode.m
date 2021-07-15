@@ -50,6 +50,9 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(upDataAction) name:kNotificationForUpData object:nil];
     
+    self.attackMaxSize = self.size.width / 2.0;
+    self.attackMinSize = self.size.width / 3.0;
+    
     _bodyZ    = 100;
 
     _walkTime = 0.2;
@@ -279,6 +282,9 @@
     _blood.anchorPoint   = CGPointMake(0, 0);
 }
 
+- (void)setBloodYPosition:(CGFloat)yPage{
+    _bgBlood.position = CGPointMake(-self.size.width / 2.0, self.size.height / 2.0 + _bgBlood.size.height + yPage);
+}
 
 #pragma mark - 金色选中箭头 -
 - (void)setArrowNodeWithPosition:(CGPoint)point
@@ -545,6 +551,8 @@
     _leftWeapon.zPosition = -1;
     _leftWeapon.zRotation = DEGREES_TO_RADIANS(-130);
     [_leftHand addChild:_leftWeapon];
+    
+    _leftWeapon.name = @"leftWeapon";
 }
 
 - (void)setRightWeapon:(NSString *)weaponName{
@@ -556,6 +564,9 @@
     _rightWeapon.zPosition = 0;
     _rightWeapon.zRotation = DEGREES_TO_RADIANS(-30);
     [_rightElbow addChild:_rightWeapon];
+    
+    
+    _rightWeapon.name = @"rightWeapon";
 }
 
 - (void)setRightShield:(NSString *)shieldName{
@@ -567,6 +578,7 @@
     _shield.zRotation = DEGREES_TO_RADIANS(10);
     [_rightElbow addChild:_shield];
    
+    _shield.name = @"shield";
 }
 
 - (void)setBow:(NSString *)bowName{

@@ -100,6 +100,8 @@
 #define kSolider1 @"Solider1"
 /// 士兵2号 骷髅弓手
 #define kSolider2 @"Solider2"
+//红色蝙蝠
+#define kRedBat @"RedBat"
 
 
 
@@ -138,7 +140,7 @@ static const uint32_t ARROW_CATEGORY       = 0X04;     //0100
 static const uint32_t ARROW_CATEGORY_ENEMY = 0x01;     //1000
 
 
-
+static CGFloat allScale = 0.5;
 
 
 #pragma mark - 通知 -
@@ -160,6 +162,7 @@ static const uint32_t ARROW_CATEGORY_ENEMY = 0x01;     //1000
 /// 隐藏或显示技能栏
 #define kNotificationForHiddenSkill @"kNotificationForHiddenSkill"
 
-
+/// 玩家移动结束通知
+#define kNotificationForMoveEnd @"kNotificationForMoveEnd"
 
 #endif /* PrefixHeader_pch */

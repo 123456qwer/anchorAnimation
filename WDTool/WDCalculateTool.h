@@ -45,6 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSDictionary *)userArmorImageDic:(UIImage *)image;
 + (NSArray *)cutBow:(UIImage *)image;
 
++ (NSArray *)curImageWithImage:(UIImage *)image
+                          line:(NSInteger)line
+                       arrange:(NSInteger)arrange
+                      itemSize:(CGSize)imageSize
+                         count:(NSInteger)count;
+
 @end
 
 NS_ASSUME_NONNULL_END

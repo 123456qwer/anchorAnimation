@@ -58,9 +58,9 @@
     
     
     if (attackNode.position.x > targetNode.position.x) {
-        x = targetNode.position.x + targetNode.size.width + enemy.randomAttackX;
+        x = targetNode.position.x + attackNode.attackMaxSize + targetNode.attackMaxSize;
     }else{
-        x = targetNode.position.x - targetNode.size.width - enemy.randomAttackX;
+        x = targetNode.position.x - attackNode.attackMaxSize - targetNode.attackMaxSize;
     }
     
     /// 同一个位置不占人
@@ -359,6 +359,45 @@
     WDBaseNode *node = [WDBaseNode spriteNodeWithTexture:texture];
     node.name = name;
     return node;
+}
+
+
++ (NSArray *)curImageWithImage:(UIImage *)image
+                          line:(NSInteger)line
+                       arrange:(NSInteger)arrange
+                      itemSize:(CGSize)imageSize
+                         count:(NSInteger)count
+{
+    CGImageRef imageRef1 = [image CGImage];
+
+    
+    UIImage *curImage = [UIImage imageWithCGImage:imageRef1];
+    
+    CGImageRef imageRef = [curImage CGImage];
+    
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    
+    NSMutableArray *imagesArr = [NSMutableArray arrayWithCapacity:count];
+    for (NSInteger i = 0; i < count; i ++) {
+           
+        CGFloat x = i % arrange * width;
+        CGFloat y = i / arrange * height;
+       
+        CGRect frame = CGRectMake(x, y, width, height);
+        CGImageRef subImage = CGImageCreateWithImageInRect(imageRef, frame);
+        UIImage *newImage = [UIImage imageWithCGImage:subImage];
+        SKTexture *texture = [SKTexture textureWithImage:newImage];
+        [imagesArr addObject:texture];
+           
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //CGImageRelease(subImage);
+        });
+
+    }
+    
+    
+    return imagesArr;
 }
 
 

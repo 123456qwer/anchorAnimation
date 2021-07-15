@@ -806,6 +806,7 @@
         }
         
         [weakSelf standAction];
+        [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForMoveEnd object:nil];
     }];
 
 }

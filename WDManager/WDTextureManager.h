@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WDRedBatModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -42,6 +43,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 小怪出场光效 */
 @property (nonatomic,copy)NSArray <SKTexture *>*smokeArr;
+
+/** 手势引导 */
+@property (nonatomic,copy)NSArray <SKTexture *>*handClickArr;
+
+
+/// 蝙蝠
+@property (nonatomic,strong)WDRedBatModel *redBatModel;
+
 
 + (WDTextureManager *)shareManager;
 

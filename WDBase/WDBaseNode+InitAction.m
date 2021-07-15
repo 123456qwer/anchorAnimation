@@ -18,7 +18,10 @@
 #import "WDSolider2BowNode.h"
 
 
-static CGFloat allScale = 0.5;
+#import "WDRedBatNode.h"
+
+
+
 @implementation WDBaseNode (InitAction)
 /// 初始化方法
 + (id)initActionWithName:(NSString *)spriteName
@@ -140,6 +143,37 @@ static CGFloat allScale = 0.5;
     [scene setMLocationAndSave:node];
 
 }
+
+
+
+
+#pragma mark - 帧动画系列 -
++ (id)initTextureActionWithName:(NSString *)spriteName
+                      superNode:(WDBaseScene *)superNode{
+    
+    NSString *selName = [NSString stringWithFormat:@"init%@Action:superNode:",spriteName];
+    SEL sel = NSSelectorFromString(selName);
+    if ([self respondsToSelector:sel]) {
+        return [self performSelector:sel withObject:spriteName withObject:superNode];
+    }
+
+    return nil;
+    
+}
+
++ (WDRedBatNode *)initRedBatAction:(NSString *)spriteName
+                         superNode:(SKSpriteNode *)superNode{
+   
+   
+    
+    WDRedBatNode *node = [WDRedBatNode initWithModel:[WDTextureManager shareManager].redBatModel];
+    node.name = kRedBat;
+    [superNode addChild:node];
+    [WDAttributeManager setSpriteAttribute:node];
+    [self setMonsterLocation:node];
+    return node;
+}
+
 
 
 @end

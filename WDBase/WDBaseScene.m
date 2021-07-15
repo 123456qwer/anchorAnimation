@@ -117,6 +117,60 @@
 }
 
 
+
+- (WDKknightNode *)knight{
+   
+    if (!_knight) {
+        _knight = [WDBaseNode initActionWithName:kKinght superNode:self];
+    }
+    
+    return _knight;
+}
+
+- (WDArcherNode *)archer{
+   
+    if (!_archer) {
+        _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
+    }
+    
+    return _archer;
+}
+
+- (WDWizardNode *)wizard{
+   
+    if (!_wizard) {
+        _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
+    }
+    
+    return _wizard;
+}
+
+- (WDPriestNode *)priest{
+   
+    if (!_priest) {
+        _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
+    }
+    
+    return _priest;
+}
+
+
+- (SKSpriteNode *)clickNode{
+    if (!_clickNode) {
+        _clickNode = [SKSpriteNode spriteNodeWithTexture:self.textureManager.handClickArr[0]];
+        _clickNode.hidden = YES;
+        _clickNode.name = @"click";
+        _clickNode.position = CGPointMake(0, - 80.f * self.yScale);
+        [self addChild:_clickNode];
+        _clickNode.zPosition = 100000;
+        SKAction *an = [SKAction animateWithTextures:self.textureManager.handClickArr timePerFrame:0.5];
+        SKAction *re = [SKAction repeatActionForever:an];
+        [_clickNode runAction:re];
+    }
+    
+    return _clickNode;
+}
+
 #pragma mark - 操作 -
 /// 开始触碰
 - (void)touchDownAtPoint:(CGPoint)pos {
@@ -321,11 +375,11 @@
        
     arrow.alpha = 1;
     location.alpha = 1;
-    arrow.position = CGPointMake(pos.x, y);
-    location.position = CGPointMake(pos.x, y - 80);
+    arrow.position = CGPointMake(pos.x, y + 30 * self.yScale);
+    location.position = CGPointMake(pos.x, y - 60 * self.yScale);
        
-    SKAction *move1 = [SKAction moveTo:CGPointMake(pos.x,y + 40) duration:0.3];
-    SKAction *move2 = [SKAction moveTo:CGPointMake(pos.x, y ) duration:0.3];
+    SKAction *move1 = [SKAction moveTo:CGPointMake(pos.x,y + 70 * self.yScale) duration:0.3];
+    SKAction *move2 = [SKAction moveTo:CGPointMake(pos.x, y + 30 * self.yScale) duration:0.3];
     SKAction *seq = [SKAction sequence:@[move1,move2]];
     SKAction *rep = [SKAction repeatActionForever:seq];
     [arrow runAction:rep];
