@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1DF45E94-1BDD-4697-A9E5-64556B2D5234"
+            uuid = "0E966BB9-6189-4B38-90E1-F083B6518784"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WDEnemy/WDRedBatNode.m"
+            filePath = "WDBase/WDBaseNode.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-observedNode"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-createHead"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

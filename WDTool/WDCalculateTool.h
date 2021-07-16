@@ -51,6 +51,13 @@ NS_ASSUME_NONNULL_BEGIN
                       itemSize:(CGSize)imageSize
                          count:(NSInteger)count;
 
++ (NSArray *)arrWithLine:(NSInteger)line
+                 arrange:(NSInteger)arrange
+               imageSize:(CGSize)imageSize
+           subImageCount:(NSInteger)count
+                   image:(UIImage *)image
+           curImageFrame:(CGRect)frame;
+
 @end
 
 NS_ASSUME_NONNULL_END

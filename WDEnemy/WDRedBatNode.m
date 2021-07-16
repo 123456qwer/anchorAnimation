@@ -91,6 +91,8 @@
 
 - (void)beAttackAction:(WDBaseNode *)enemyNode attackNumber:(int)attackNumber{
     [super beAttackAction:enemyNode attackNumber:attackNumber];
+   
+    [WDAnimationManager demageAnimation:self point:CGPointMake(0, 0) scale:2 demagePic:@""];
     
     ///血量少于一半，硬直
     if (self.lastBlood * 2 < self.initBlood && _stagger == 1) {

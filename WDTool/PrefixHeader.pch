@@ -16,6 +16,7 @@
 #import "WDBaseNode.h"
 #import "WDNotificationManager.h"
 #import "WDTextureManager.h"
+#import "WDAnimationManager.h"
 
 
 /// define

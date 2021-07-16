@@ -40,7 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 普通耳朵
 @property (nonatomic,strong)SKTexture *normalEar;
 
-
+/// 受伤效果
+@property (nonatomic,strong)SKTexture *demageTexture;
 /** 小怪出场光效 */
 @property (nonatomic,copy)NSArray <SKTexture *>*smokeArr;
 
@@ -53,6 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 + (WDTextureManager *)shareManager;
+
+/// 人物头顶上的状态
+/// @param line 哪一行，参考Balloon图片
+- (NSArray *)balloonTexturesWithLine:(NSInteger)line;
 
 @end
 

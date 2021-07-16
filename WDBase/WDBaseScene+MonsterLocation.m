@@ -38,7 +38,10 @@
     
     [monsterNode runAction:[SKAction fadeAlphaTo:1 duration:self.textureManager.smokeArr.count * 0.075]];
     [node runAction:s completion:^{
-        monsterNode.state = monsterNode.state ^ Sprite_movie;
+        /// 非教学直接开始攻击
+        if (!(monsterNode.state & Sprite_learn)) {
+            monsterNode.state = monsterNode.state ^ Sprite_movie;
+        }
     }];
 }
 

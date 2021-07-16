@@ -61,7 +61,7 @@
     self.bgNode.yScale = bgScale;
 
     
-    _knight = [WDBaseNode initActionWithName:kKinght superNode:self];
+    _knight = [WDBaseNode initActionWithName:kKinght superNode:self position:CGPointMake(0, 0)];
 //    _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
 //    _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
 //    _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
@@ -70,8 +70,8 @@
     //self.hateNameArr = @[_knight.name,_priest.name,_archer.name,_wizard.name];
     self.hateNameArr = @[_knight.name];
     
-    [WDBaseNode initTextureActionWithName:kRedBat superNode:self];
-  //  [WDBaseNode initActionWithName:kSolider1 superNode:self];
+    //[WDBaseNode initTextureActionWithName:kRedBat superNode:self position:CGPointMake(0, 0)];
+    [WDBaseNode initActionWithName:kSolider1 superNode:self position:CGPointMake(0, 0)];
     
     _knight.position = CGPointMake(0, 0);
     _priest.position = CGPointMake(_priest.size.width, 0);

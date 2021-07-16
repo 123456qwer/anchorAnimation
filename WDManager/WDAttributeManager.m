@@ -103,9 +103,9 @@
     
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 300;
-    node.lastBlood          = 300;
-    node.attackNumber       = 1;
+    node.initBlood          = 150;
+    node.lastBlood          = 150;
+    node.attackNumber       = 20;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;
 }

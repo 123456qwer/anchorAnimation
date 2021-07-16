@@ -470,6 +470,8 @@
 /// 死亡
 - (void)deadAnimation{
     
+    
+    
     [self removeAllBodyAction];
     
     NSTimeInterval time1 = 0.4;

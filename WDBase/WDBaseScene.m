@@ -65,6 +65,7 @@
         _selectLine.anchorPoint = CGPointMake(0, 0);
         _selectLine.name = @"selectLine";
         _selectLine.zPosition = 10;
+        _selectLine.hidden = YES;
         [self addChild:_selectLine];
     }
     
@@ -121,7 +122,7 @@
 - (WDKknightNode *)knight{
    
     if (!_knight) {
-        _knight = [WDBaseNode initActionWithName:kKinght superNode:self];
+        _knight = [WDBaseNode initActionWithName:kKinght superNode:self position:CGPointMake(0, 0)];
     }
     
     return _knight;
@@ -130,7 +131,7 @@
 - (WDArcherNode *)archer{
    
     if (!_archer) {
-        _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
+        _archer = [WDBaseNode initActionWithName:kArcher superNode:self position:CGPointMake(0, 0)];
     }
     
     return _archer;
@@ -139,7 +140,7 @@
 - (WDWizardNode *)wizard{
    
     if (!_wizard) {
-        _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
+        _wizard = [WDBaseNode initActionWithName:kWizard superNode:self position:CGPointMake(0, 0)];
     }
     
     return _wizard;
@@ -148,7 +149,7 @@
 - (WDPriestNode *)priest{
    
     if (!_priest) {
-        _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
+        _priest = [WDBaseNode initActionWithName:kPriest superNode:self position:CGPointMake(0, 0)];
     }
     
     return _priest;
@@ -343,9 +344,8 @@
     [self contactLogicAction:contact];
 }
 - (void)didEndContact:(SKPhysicsContact *)contact{
+    
 }
-
-
 
 
 

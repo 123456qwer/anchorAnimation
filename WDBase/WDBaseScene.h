@@ -53,6 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)skill4Action;
 - (void)skill5Action;
 
+/// 触碰结束
+- (void)touchUpAtPoint:(CGPoint)pos;
 
 #pragma mark - 指示箭头 -
 - (void)hiddenArrow;

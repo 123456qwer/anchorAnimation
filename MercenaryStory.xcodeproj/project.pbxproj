@@ -81,6 +81,20 @@
 		04450F7E267B59DD00C3F83D /* SamuraiElderSword.png in Resources */ = {isa = PBXBuildFile; fileRef = 04450F7D267B59DD00C3F83D /* SamuraiElderSword.png */; };
 		044834BA26856F50008F4C92 /* WDBaseScene+ContactLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 044834B926856F50008F4C92 /* WDBaseScene+ContactLogic.m */; };
 		044834C326857F46008F4C92 /* WDEnemyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 044834C226857F46008F4C92 /* WDEnemyNode.m */; };
+		04513E2626A14C5D005B6097 /* WDAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04513E2526A14C5D005B6097 /* WDAnimationManager.m */; };
+		04513E2B26A14CE3005B6097 /* demage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E2A26A14CE3005B6097 /* demage1.png */; };
+		04513E3626A1618F005B6097 /* talk.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E3526A1618F005B6097 /* talk.png */; };
+		04513E3D26A16C69005B6097 /* WDTalkNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04513E3C26A16C69005B6097 /* WDTalkNode.m */; };
+		04513E4326A16C6F005B6097 /* WDBalloonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 04513E4226A16C6E005B6097 /* WDBalloonNode.m */; };
+		04513E4826A16D9B005B6097 /* Balloon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E4726A16D9B005B6097 /* Balloon.png */; };
+		04513E4E26A18293005B6097 /* WDEquipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04513E4D26A18293005B6097 /* WDEquipView.m */; };
+		04513E5426A182DD005B6097 /* Panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E5326A182DD005B6097 /* Panel.png */; };
+		04513E5926A18301005B6097 /* Brown.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E5826A18301005B6097 /* Brown.png */; };
+		04513E5E26A18306005B6097 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E5D26A18306005B6097 /* Green.png */; };
+		04513E6326A1830C005B6097 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E6226A1830C005B6097 /* Blue.png */; };
+		04513E6826A18311005B6097 /* Empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E6726A18311005B6097 /* Empty.png */; };
+		04513E6D26A18317005B6097 /* Grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E6C26A18316005B6097 /* Grey.png */; };
+		04513E7226A1831D005B6097 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 04513E7126A1831C005B6097 /* Red.png */; };
 		046FEC8A268AB75500260225 /* WDWizardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FEC89268AB75500260225 /* WDWizardNode.m */; };
 		046FEC8F268ABB4B00260225 /* WizardHelm.png in Resources */ = {isa = PBXBuildFile; fileRef = 046FEC8E268ABB4B00260225 /* WizardHelm.png */; };
 		046FEC94268ABBCC00260225 /* Hair5.png in Resources */ = {isa = PBXBuildFile; fileRef = 046FEC93268ABBCC00260225 /* Hair5.png */; };
@@ -247,6 +261,24 @@
 		044834B926856F50008F4C92 /* WDBaseScene+ContactLogic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WDBaseScene+ContactLogic.m"; sourceTree = "<group>"; };
 		044834C126857F46008F4C92 /* WDEnemyNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDEnemyNode.h; sourceTree = "<group>"; };
 		044834C226857F46008F4C92 /* WDEnemyNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDEnemyNode.m; sourceTree = "<group>"; };
+		04513E2426A14C5D005B6097 /* WDAnimationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDAnimationManager.h; sourceTree = "<group>"; };
+		04513E2526A14C5D005B6097 /* WDAnimationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDAnimationManager.m; sourceTree = "<group>"; };
+		04513E2A26A14CE3005B6097 /* demage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demage1.png; sourceTree = "<group>"; };
+		04513E3526A1618F005B6097 /* talk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = talk.png; sourceTree = "<group>"; };
+		04513E3B26A16C69005B6097 /* WDTalkNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTalkNode.h; sourceTree = "<group>"; };
+		04513E3C26A16C69005B6097 /* WDTalkNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDTalkNode.m; sourceTree = "<group>"; };
+		04513E4126A16C6E005B6097 /* WDBalloonNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDBalloonNode.h; sourceTree = "<group>"; };
+		04513E4226A16C6E005B6097 /* WDBalloonNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDBalloonNode.m; sourceTree = "<group>"; };
+		04513E4726A16D9B005B6097 /* Balloon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Balloon.png; sourceTree = "<group>"; };
+		04513E4C26A18293005B6097 /* WDEquipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDEquipView.h; sourceTree = "<group>"; };
+		04513E4D26A18293005B6097 /* WDEquipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDEquipView.m; sourceTree = "<group>"; };
+		04513E5326A182DD005B6097 /* Panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Panel.png; sourceTree = "<group>"; };
+		04513E5826A18301005B6097 /* Brown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brown.png; sourceTree = "<group>"; };
+		04513E5D26A18306005B6097 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		04513E6226A1830C005B6097 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
+		04513E6726A18311005B6097 /* Empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Empty.png; sourceTree = "<group>"; };
+		04513E6C26A18316005B6097 /* Grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grey.png; sourceTree = "<group>"; };
+		04513E7126A1831C005B6097 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
 		046FEC88268AB75500260225 /* WDWizardNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDWizardNode.h; sourceTree = "<group>"; };
 		046FEC89268AB75500260225 /* WDWizardNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDWizardNode.m; sourceTree = "<group>"; };
 		046FEC8E268ABB4B00260225 /* WizardHelm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WizardHelm.png; sourceTree = "<group>"; };
@@ -356,10 +388,13 @@
 		040EDAB4269EC6E20045DFDE /* OperationViews */ = {
 			isa = PBXGroup;
 			children = (
+				04513E5226A182D1005B6097 /* images */,
 				040EDAB5269EC6F60045DFDE /* WDSkillBtn.h */,
 				040EDAB6269EC6F60045DFDE /* WDSkillBtn.m */,
 				040EDABE269EC70F0045DFDE /* WDSkillView.h */,
 				040EDABF269EC70F0045DFDE /* WDSkillView.m */,
+				04513E4C26A18293005B6097 /* WDEquipView.h */,
+				04513E4D26A18293005B6097 /* WDEquipView.m */,
 			);
 			path = OperationViews;
 			sourceTree = "<group>";
@@ -395,6 +430,8 @@
 				043ADA602689C230001D2F01 /* WDNotificationManager.m */,
 				043ADA652689CE00001D2F01 /* WDTextureManager.h */,
 				043ADA662689CE00001D2F01 /* WDTextureManager.m */,
+				04513E2426A14C5D005B6097 /* WDAnimationManager.h */,
+				04513E2526A14C5D005B6097 /* WDAnimationManager.m */,
 			);
 			path = WDManager;
 			sourceTree = "<group>";
@@ -402,6 +439,7 @@
 		04394AAE2681AFE3006EBF8B /* WDUsers */ = {
 			isa = PBXGroup;
 			children = (
+				04513E3A26A16C54005B6097 /* Common */,
 				04394AB22681B06A006EBF8B /* WDKknightNode.h */,
 				04394AB32681B06A006EBF8B /* WDKknightNode.m */,
 				044447A8268424A500089700 /* WDPriestNode.h */,
@@ -571,9 +609,37 @@
 			path = Weapon;
 			sourceTree = "<group>";
 		};
+		04513E3A26A16C54005B6097 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				04513E4126A16C6E005B6097 /* WDBalloonNode.h */,
+				04513E4226A16C6E005B6097 /* WDBalloonNode.m */,
+				04513E3B26A16C69005B6097 /* WDTalkNode.h */,
+				04513E3C26A16C69005B6097 /* WDTalkNode.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		04513E5226A182D1005B6097 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				04513E7126A1831C005B6097 /* Red.png */,
+				04513E6726A18311005B6097 /* Empty.png */,
+				04513E5326A182DD005B6097 /* Panel.png */,
+				04513E5826A18301005B6097 /* Brown.png */,
+				04513E5D26A18306005B6097 /* Green.png */,
+				04513E6226A1830C005B6097 /* Blue.png */,
+				04513E6C26A18316005B6097 /* Grey.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		046FECD1268ACAFE00260225 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04513E4726A16D9B005B6097 /* Balloon.png */,
+				04513E3526A1618F005B6097 /* talk.png */,
+				04513E2A26A14CE3005B6097 /* demage1.png */,
 				04C6F35826A008FC00753957 /* hand.png */,
 				04C6F35926A008FC00753957 /* hand2.png */,
 				040EDA93269EB3090045DFDE /* smoke_1.png */,
@@ -877,6 +943,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04513E5926A18301005B6097 /* Brown.png in Resources */,
 				04D88A1F267C972F005C7B0C /* Armor1.png in Resources */,
 				04394AD82681B87B006EBF8B /* EliteKnightHelm.png in Resources */,
 				046FEC99268ABC3100260225 /* HardwoodWand.png in Resources */,
@@ -894,6 +961,7 @@
 				04C6F38426A036E700753957 /* RedBat_hurt_3.png in Resources */,
 				046FECE3268ACB2400260225 /* blood_hit_02.png in Resources */,
 				046FECE5268ACB2400260225 /* Shadow.png in Resources */,
+				04513E7226A1831D005B6097 /* Red.png in Resources */,
 				04E25E2326807DDE001CC70F /* FamilySword.png in Resources */,
 				040EDAA5269EB30A0045DFDE /* smoke_13.png in Resources */,
 				044447C3268427B500089700 /* ClericWand1.png in Resources */,
@@ -910,6 +978,7 @@
 				044447E7268467B500089700 /* FamilyBow.png in Resources */,
 				046FECDF268ACB2400260225 /* blood_hit_08.png in Resources */,
 				040EDAA0269EB30A0045DFDE /* smoke_11.png in Resources */,
+				04513E6D26A18317005B6097 /* Grey.png in Resources */,
 				04394AD32681B7DF006EBF8B /* LeatherHelm.png in Resources */,
 				044447D4268459DC00089700 /* MyParticle.sks in Resources */,
 				04394ABE2681B5CF006EBF8B /* BuzzCut.png in Resources */,
@@ -924,6 +993,7 @@
 				046FECE6268ACB2400260225 /* blood_hit_01.png in Resources */,
 				04BB8167268307A600EB0D8F /* Mouth_Dead.png in Resources */,
 				040EDA83269EA5AF0045DFDE /* arrow.png in Resources */,
+				04513E6826A18311005B6097 /* Empty.png in Resources */,
 				040EDA9D269EB30A0045DFDE /* smoke_4.png in Resources */,
 				044447D5268459DC00089700 /* Assets.xcassets in Resources */,
 				044447AF2684252200089700 /* PriestArmor.png in Resources */,
@@ -933,6 +1003,7 @@
 				04C6F35426A0045900753957 /* WDLearnScene1.sks in Resources */,
 				04394AD22681B7DF006EBF8B /* BerserkHelm.png in Resources */,
 				040EDA9B269EB30A0045DFDE /* smoke_7.png in Resources */,
+				04513E3626A1618F005B6097 /* talk.png in Resources */,
 				04450F51267B504700C3F83D /* Ears_ElfEar.png in Resources */,
 				044448032684929300089700 /* Fire.sks in Resources */,
 				040EDAA4269EB30A0045DFDE /* smoke_12.png in Resources */,
@@ -951,16 +1022,19 @@
 				04C6F35B26A008FC00753957 /* hand2.png in Resources */,
 				049EFE8D2679F83900283E13 /* Assets.xcassets in Resources */,
 				046FECE0268ACB2400260225 /* RedBatScene.png in Resources */,
+				04513E2B26A14CE3005B6097 /* demage1.png in Resources */,
 				04450F79267B53DA00C3F83D /* ShadowSword.png in Resources */,
 				04450F6B267B520700C3F83D /* Hair6.png in Resources */,
 				040EDAA1269EB30A0045DFDE /* smoke_1.png in Resources */,
 				04BB817D268333EA00EB0D8F /* Head_Skeleton.png in Resources */,
 				040EDACD269EDA8C0045DFDE /* Knight_0.png in Resources */,
+				04513E4826A16D9B005B6097 /* Balloon.png in Resources */,
 				046FECE7268ACB2400260225 /* blood_hit_05.png in Resources */,
 				049EFED42679FC8700283E13 /* WDTestScene.sks in Resources */,
 				040EDAA7269EB30A0045DFDE /* smoke_6.png in Resources */,
 				04C6F38026A036E700753957 /* RedBat_hurt_6.png in Resources */,
 				044447B42684258800089700 /* PriestHelm.png in Resources */,
+				04513E5426A182DD005B6097 /* Panel.png in Resources */,
 				04450F32267B4F9B00C3F83D /* Eye_Dead.png in Resources */,
 				040EDAA2269EB30A0045DFDE /* smoke_14.png in Resources */,
 				04BB8187268336F700EB0D8F /* Eye_Zombies2.png in Resources */,
@@ -969,9 +1043,11 @@
 				043ADA43268965E4001D2F01 /* IceFire.sks in Resources */,
 				04450F3E267B4FE300C3F83D /* EyeBrows_Eyebrows.png in Resources */,
 				04394AE32681BD11006EBF8B /* SteelShield.png in Resources */,
+				04513E6326A1830C005B6097 /* Blue.png in Resources */,
 				046FEC94268ABBCC00260225 /* Hair5.png in Resources */,
 				046FECE1268ACB2400260225 /* blood_hit_04.png in Resources */,
 				046FECA8268AC30100260225 /* Mouth_injured.png in Resources */,
+				04513E5E26A18306005B6097 /* Green.png in Resources */,
 				04C6F38326A036E700753957 /* RedBat_hurt_0.png in Resources */,
 				04BB81782683336200EB0D8F /* Skeleton.png in Resources */,
 				04450F4A267B501F00C3F83D /* Mouth_Zombie.png in Resources */,
@@ -1046,7 +1122,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04513E4326A16C6F005B6097 /* WDBalloonNode.m in Sources */,
 				04E25E2E268091F6001CC70F /* WDBaseNode+Animation.m in Sources */,
+				04513E4E26A18293005B6097 /* WDEquipView.m in Sources */,
 				049EFEC92679FC5800283E13 /* WDBaseScene.m in Sources */,
 				049EFE882679F83700283E13 /* GameViewController.m in Sources */,
 				046FEC8A268AB75500260225 /* WDWizardNode.m in Sources */,
@@ -1054,6 +1132,7 @@
 				046FECFB268B052100260225 /* WDUserNode.m in Sources */,
 				044834BA26856F50008F4C92 /* WDBaseScene+ContactLogic.m in Sources */,
 				049EFE902679F83900283E13 /* main.m in Sources */,
+				04513E3D26A16C69005B6097 /* WDTalkNode.m in Sources */,
 				04C6F34F26A0044600753957 /* WDLearnScene1.m in Sources */,
 				044447E12684677000089700 /* WDArcherNode.m in Sources */,
 				044834C326857F46008F4C92 /* WDEnemyNode.m in Sources */,
@@ -1063,6 +1142,7 @@
 				043ADA672689CE00001D2F01 /* WDTextureManager.m in Sources */,
 				04C6F36826A01BBB00753957 /* WDRedBatNode.m in Sources */,
 				040EDAB7269EC6F60045DFDE /* WDSkillBtn.m in Sources */,
+				04513E2626A14C5D005B6097 /* WDAnimationManager.m in Sources */,
 				044501F3267ADED300C3F83D /* WDBaseNode.m in Sources */,
 				049EFE7E2679F83700283E13 /* AppDelegate.m in Sources */,
 				040EDAAD269EB4830045DFDE /* WDBaseScene+MonsterLocation.m in Sources */,

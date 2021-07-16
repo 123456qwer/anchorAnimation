@@ -125,9 +125,12 @@
     self.defaultMouthTexture = _mouth.texture;
     
 //    //头发
-    _hair = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"BuzzCut"]]];
+    UIImage *hairImage = [UIImage imageNamed:@"BuzzCut"];
+    
+    _hair = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:hairImage]];
     _hair.zPosition = 0;
     [_head addChild:_hair];
+    
     
 
     //耳朵
@@ -136,9 +139,10 @@
     [_head addChild:_ear];
     
     //头盔
-    _hemlet = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EliteKnightHelm"]]];
-    _hemlet.zPosition = 0;
-    [_head addChild:_hemlet];
+//    _hemlet = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EliteKnightHelm"]]];
+//    _hemlet.zPosition = 0;
+//    [_head addChild:_hemlet];
+   
 }
 
 ///创建胯部
@@ -306,6 +310,37 @@
     [_arrowNode runAction:rep withKey:@"arrow"];
 }
 
+- (WDTalkNode *)talkNode
+{
+    if (!_talkNode) {
+        _talkNode = [WDTalkNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"talk"]]];
+        _talkNode.zPosition = 1000;
+        _talkNode.hidden = YES;
+        _talkNode.xScale = 1.5;
+        _talkNode.yScale = 1.5;
+        _talkNode.position = CGPointMake(0, self.size.height - 1 * self.yScale);
+        [self addChild:_talkNode];
+    }
+    
+    return _talkNode;
+}
+
+- (WDBalloonNode *)balloonNode
+{
+    if (!_balloonNode) {
+        
+        NSArray *balloonArr = [[WDTextureManager shareManager]balloonTexturesWithLine:1];
+        _balloonNode = [WDBalloonNode spriteNodeWithTexture:balloonArr[1]];
+        _balloonNode.position = CGPointMake(_balloonNode.position.x, self.size.height / 2.0 + _balloonNode.size.height / 2.0);
+        _balloonNode.xScale = 1.5;
+        _balloonNode.yScale = 1.5;
+        [_balloonNode setScaleAndPositionWithName:self.name];
+        _balloonNode.zPosition = 100000;
+        [self addChild:_balloonNode];
+    }
+    
+    return _balloonNode;
+}
 
 #pragma mark - 行为 -✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
@@ -314,10 +349,12 @@
         self.bgBlood.xScale = fabs(self.bgBlood.xScale);
         self.bgBlood.position = CGPointMake(-self.size.width / 2.0, self.bgBlood.position.y);
         self.direction = 1;
+        self.talkNode.xScale = fabs(self.talkNode.xScale);
     }else{
         self.bgBlood.xScale = - fabs(self.bgBlood.xScale);
         self.bgBlood.position = CGPointMake(self.size.width / 2.0, self.bgBlood.position.y);
         self.direction = -1;
+        self.talkNode.xScale = - fabs(self.talkNode.xScale);
     }
 }
 
@@ -433,6 +470,11 @@
 /// 死亡
 - (void)deadAction
 {
+    if (self.state & Sprite_learn) {
+        [self addBlood:self.initBlood];
+        return;
+    }
+    
     self.state = Sprite_dead;
     [self deadAnimation];
 }
@@ -539,6 +581,12 @@
 
 /// 帽子
 - (void)setHemletTexture:(NSString *)name{
+    if (!_hemlet) {
+        _hemlet = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EliteKnightHelm"]]];
+        _hemlet.zPosition = 0;
+        [_head addChild:_hemlet];
+    }
+    
     self.hemlet.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
 }
 

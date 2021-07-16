@@ -14,7 +14,7 @@
     [super createUserNodeWithScale:scale];
     
     
-    [self setAllArmor:@"KnightArmor"];
+   // [self setAllArmor:@"KnightArmor"];
     [self setLeftWeapon:@"FamilySword"];
     //[self setRightShield:@"SteelShield"];
     [self standAction];

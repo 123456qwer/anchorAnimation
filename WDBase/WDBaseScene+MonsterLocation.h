@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 设置怪物出生位置以及动画
 - (void)setMLocationAndSave:(WDEnemyNode *)node;
+- (void)setSmokeWithMonster:(WDBaseNode *)monsterNode
+                       name:(NSString *)nameStr;
 
 @end
 

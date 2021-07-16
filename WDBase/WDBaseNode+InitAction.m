@@ -26,11 +26,14 @@
 /// 初始化方法
 + (id)initActionWithName:(NSString *)spriteName
                superNode:(WDBaseScene *)superNode
+                position:(CGPoint)initPoint
 {
-    NSString *selName = [NSString stringWithFormat:@"init%@Action:superNode:",spriteName];
+    ;
+    NSString *selName = [NSString stringWithFormat:@"init%@Action:dic:",spriteName];
+    NSDictionary *dic = @{@"superNode":superNode,@"point":[NSValue valueWithCGPoint:initPoint]};
     SEL sel = NSSelectorFromString(selName);
     if ([self respondsToSelector:sel]) {
-        return [self performSelector:sel withObject:spriteName withObject:superNode];
+        return [self performSelector:sel withObject:spriteName withObject:dic];
     }
 
     return nil;
@@ -71,10 +74,12 @@
 #pragma mark - 玩家 -
 #pragma mark - 骑士 -
 + (WDKknightNode *)initKnightAction:(NSString *)spriteName
-                          superNode:(SKSpriteNode *)superNode{
+                                dic:(NSDictionary *)dic{
     
-
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDKknightNode *node = [[WDKknightNode alloc] init];
+    node.position = point;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self singleAttackWithName:spriteName node:node superNode:superNode];
     return node;
@@ -82,9 +87,12 @@
 
 #pragma mark - 牧师 -
 + (WDPriestNode *)initPriestAction:(NSString *)spriteName
-                         superNode:(SKSpriteNode *)superNode{
+                               dic:(NSDictionary *)dic{
     
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDPriestNode *node = [[WDPriestNode alloc] init];
+    node.position = point;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self singleAttackWithName:spriteName node:node superNode:superNode];
     return node;
@@ -92,9 +100,12 @@
 
 #pragma mark - 弓箭手 -
 + (WDArcherNode *)initArcherAction:(NSString *)spriteName
-                         superNode:(SKSpriteNode *)superNode{
+                               dic:(NSDictionary *)dic{
     
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDArcherNode *node = [[WDArcherNode alloc] init];
+    node.position = point;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self bowAttackWithName:spriteName node:node superNode:superNode];
 
@@ -103,9 +114,12 @@
 
 #pragma mark - 法师 -
 + (WDWizardNode *)initWizardAction:(NSString *)spriteName
-                         superNode:(SKSpriteNode *)superNode{
+                               dic:(NSDictionary *)dic{
     
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDWizardNode *node = [[WDWizardNode alloc] init];
+    node.position = point;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self singleAttackWithName:spriteName node:node superNode:superNode];
     return node;
@@ -115,9 +129,12 @@
 #pragma mark - 敌人 -
 #pragma mark - 骷髅兵 -
 + (WDSolider1Node *)initSolider1Action:(NSString *)spriteName
-                             superNode:(SKSpriteNode *)superNode{
+                                   dic:(NSDictionary *)dic{
    
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDSolider1Node *node = [[WDSolider1Node alloc] init];
+    node.position = point;
     node.alpha = 0;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self singleAttackWithName:spriteName node:node superNode:superNode];
@@ -126,9 +143,12 @@
 }
 
 + (WDSolider2BowNode *)initSolider2Action:(NSString *)spriteName
-                                superNode:(SKSpriteNode *)superNode{
+                                      dic:(NSDictionary *)dic{
    
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDSolider2BowNode *node = [[WDSolider2BowNode alloc] init];
+    node.position = point;
     node.alpha = 0;
     node.size = CGSizeMake(145 * allScale, 300 * allScale);
     [self bowAttackWithName:spriteName node:node superNode:superNode];
@@ -149,12 +169,14 @@
 
 #pragma mark - 帧动画系列 -
 + (id)initTextureActionWithName:(NSString *)spriteName
-                      superNode:(WDBaseScene *)superNode{
+                      superNode:(WDBaseScene *)superNode
+                      initPoint:(CGPoint)initPoint{
     
-    NSString *selName = [NSString stringWithFormat:@"init%@Action:superNode:",spriteName];
+    NSString *selName = [NSString stringWithFormat:@"init%@Action:dic:",spriteName];
+    NSDictionary *dic = @{@"superNode":superNode,@"point":[NSValue valueWithCGPoint:initPoint]};
     SEL sel = NSSelectorFromString(selName);
     if ([self respondsToSelector:sel]) {
-        return [self performSelector:sel withObject:spriteName withObject:superNode];
+        return [self performSelector:sel withObject:spriteName withObject:dic];
     }
 
     return nil;
@@ -162,11 +184,13 @@
 }
 
 + (WDRedBatNode *)initRedBatAction:(NSString *)spriteName
-                         superNode:(SKSpriteNode *)superNode{
+                               dic:(NSDictionary *)dic{
    
    
-    
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
     WDRedBatNode *node = [WDRedBatNode initWithModel:[WDTextureManager shareManager].redBatModel];
+    node.position = point;
     node.name = kRedBat;
     [superNode addChild:node];
     [WDAttributeManager setSpriteAttribute:node];

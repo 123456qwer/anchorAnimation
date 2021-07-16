@@ -8,6 +8,8 @@
 #import <SpriteKit/SpriteKit.h>
 #import "WDAttributeManager.h"
 #import "WDHateManager.h"
+#import "WDTalkNode.h"
+#import "WDBalloonNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +35,9 @@ typedef NS_ENUM(NSInteger,SpriteState) {
     
     /// 电影态
     Sprite_movie  = 1 << 6,   ///0100 0000
+    
+    /// 教学关卡
+    Sprite_learn  = 1 << 7,   ///1000 0000
     
 };
 
@@ -113,6 +118,10 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,assign)int attackDistance;
 /// 代号
 @property (nonatomic,copy)NSString *numberName;
+/// 对话框
+@property (nonatomic,strong)WDTalkNode *talkNode;
+/// 表情
+@property (nonatomic,strong)WDBalloonNode *balloonNode;
 
 ///腿部走路动画时间
 @property (nonatomic,assign)NSTimeInterval walkTime;
