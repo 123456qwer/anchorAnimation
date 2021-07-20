@@ -18,6 +18,7 @@
     [self setLeftWeapon:@"FamilySword"];
     //[self setRightShield:@"SteelShield"];
     [self standAction];
+    
 }
 
 #pragma mark - 复写 -

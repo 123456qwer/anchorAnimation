@@ -13,4 +13,9 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForAddHateNumber object:node userInfo:nil];
 }
 
++ (void)changeEquip:(NSDictionary *)equipDic{
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeEquip object:equipDic userInfo:nil];
+}
+
+
 @end

@@ -1,22 +1,28 @@
 PODS:
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - SDWebImage (5.9.0):
     - SDWebImage/Core (= 5.9.0)
   - SDWebImage/Core (5.9.0)
   - UIViewExt (1.0.1)
 
 DEPENDENCIES:
+  - FMDB
   - SDWebImage (~> 5.9.0)
   - UIViewExt (~> 1.0.1)
 
 SPEC REPOS:
   trunk:
+    - FMDB
     - SDWebImage
     - UIViewExt
 
 SPEC CHECKSUMS:
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
   UIViewExt: 7f719ec46544e88dc0e7777626cbdbeea5497ef2
 
-PODFILE CHECKSUM: 5fcc3c3b9082a328cf4ae44b29265e8c4afec537
+PODFILE CHECKSUM: 5088374711b5ba4b10ac2ee0e376d482667dfcc6
 
 COCOAPODS: 1.9.2

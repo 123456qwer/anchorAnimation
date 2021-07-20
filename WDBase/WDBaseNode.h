@@ -13,6 +13,47 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger,EquipType) {
+    
+    /// 头盔
+    Equip_helmet    = 1, /// 0000 0001
+    
+    /// 衣服
+    Equip_armor     = 2,
+    
+    /// 肩膀
+    Equip_pauldrons = 3,
+    
+    /// 手套
+    Equip_gloves    = 4,
+    
+    /// 腰带
+    Equip_belt      = 5,
+    
+    /// 靴子
+    Equip_boots     = 6,
+    
+    /// 盾牌
+    Equip_shield    = 7,
+    
+    /// 单手武器
+    Equip_sword1h    = 8,
+    
+    /// 双手武器
+    Equip_sword2h    = 9,
+    
+    /// 弓
+    Equip_bow    = 10,
+    
+    /// 眼罩
+    Equip_mask    = 11,
+    
+    /// 眼镜
+    Equip_glasses    = 12,
+    
+};
+
+
 typedef NS_ENUM(NSInteger,SpriteState) {
     
     /// 默认站立

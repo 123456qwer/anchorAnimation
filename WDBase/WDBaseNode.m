@@ -485,9 +485,17 @@
 #pragma mark - 穿盔甲、武器 -
 - (void)createSrpiteWithSuperNode:(WDBaseNode *)superNode
                         armorName:(NSString *)armorName{
-    WDBaseNode *armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName]];
-    armorNode.anchorPoint = superNode.anchorPoint;
-    [superNode addChild:armorNode];
+    
+    WDBaseNode *armorNode = (WDBaseNode *)[superNode childNodeWithName:superNode.name];
+    if (!armorNode) {
+        armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName]];
+        armorNode.anchorPoint = superNode.anchorPoint;
+        armorNode.name = superNode.name;
+        [superNode addChild:armorNode];
+    }else{
+        armorNode.texture = [WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName];
+    }
+    
     
 }
 
@@ -593,14 +601,19 @@
 - (void)setLeftWeapon:(NSString *)weaponName{
     
     //左手武器
-    _leftWeapon = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:weaponName]]];
-    _leftWeapon.anchorPoint = _leftHand.anchorPoint;
-    _leftWeapon.position = CGPointMake(0, -1);
-    _leftWeapon.zPosition = -1;
-    _leftWeapon.zRotation = DEGREES_TO_RADIANS(-130);
-    [_leftHand addChild:_leftWeapon];
+    if (!_leftWeapon) {
+        _leftWeapon = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:weaponName]]];
+        _leftWeapon.anchorPoint = _leftHand.anchorPoint;
+        _leftWeapon.position = CGPointMake(0, -1);
+        _leftWeapon.zPosition = -1;
+        _leftWeapon.zRotation = DEGREES_TO_RADIANS(-130);
+        [_leftHand addChild:_leftWeapon];
+        
+        _leftWeapon.name = @"leftWeapon";
+    }
     
-    _leftWeapon.name = @"leftWeapon";
+    _leftWeapon.texture = [SKTexture textureWithImage:[UIImage imageNamed:weaponName]];
+    
 }
 
 - (void)setRightWeapon:(NSString *)weaponName{

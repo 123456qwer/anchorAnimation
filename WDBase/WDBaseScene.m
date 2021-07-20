@@ -6,6 +6,7 @@
 //
 
 #import "WDBaseScene.h"
+#import "WDEquipScene.h"
 #import "WDBaseScene+ContactLogic.h"
 
 
@@ -13,7 +14,6 @@
 
 - (void)didMoveToView:(SKView *)view
 {
-    
     /// 添加一些常用通知方法
     [self addObserve];
     
@@ -35,6 +35,7 @@
 - (void)addObserve{
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deadAction:) name:kNotificationForDead object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeEquip:) name:kNotificationForChangeEquip object:nil];
 }
 
 #pragma mark - 操作 -
@@ -319,6 +320,37 @@
         CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self.selectNode enemy:enemy];
         [_selectNode moveAction:movePoint];
     }
+}
+
+/// 显示装备栏
+- (void)presentEquipScene{
+    if (self.presentEquipBlock) {
+        self.presentEquipBlock(self.selectNode.name);
+    }
+}
+
+/// 换装通知
+- (void)changeEquip:(NSNotification *)notification{
+    
+    NSLog(@"%@",notification);
+    
+    NSDictionary *dic = notification.object;
+    if ([dic[dic.allKeys[0]] isKindOfClass:[NSString class]]) {
+        
+        /// 这个是盔甲类
+        NSString *armor = dic.allKeys[0];
+        NSString *name = dic[armor];
+        if ([name isEqualToString:kBody]) {
+            [_selectNode setBodyArmor:armor];
+        }
+        
+        
+    }else{
+        
+        /// 这个是武器头盔
+        
+    }
+    
 }
 
 

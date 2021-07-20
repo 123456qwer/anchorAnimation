@@ -41,6 +41,8 @@
     
     self.knight.state = self.knight.state | Sprite_learn;
     [self.knight.talkNode setText:@"选中操作人物"];
+    
+    [self performSelector:@selector(presentEquipScene) withObject:nil afterDelay:0.1];
 }
 
 /// 开始触碰

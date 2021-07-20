@@ -9,16 +9,37 @@
 
 #import "WDTestScene.h"
 #import "WDLearnScene1.h"
+#import "WDEquipScene.h"
 
 
 #import "WDSkillView.h"
+#import "WDEquipView.h"
+
 
 
 @implementation GameViewController
 {
     WDSkillView *_skillView;
     WDBaseScene *_selectScene;
+    WDEquipView *_equipView;
 }
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+        
+
+//    CGFloat a = [UIScreen mainScreen].scale;
+    
+    //[self createSkillView];
+    
+    [self createEquipView];
+    
+    [self createSceneWithName:@"WDLearnScene1"];
+    
+}
+
 
 /// 初始化起始技能
 - (void)initUserSkill{
@@ -34,7 +55,7 @@
     [defaults setBool:YES forKey:key4];
 }
 
-/// 玩家技能以及辅助选中界面
+#pragma mark - 创建技能页面 -
 - (void)createSkillView
 {
     CGFloat page = 0;
@@ -59,36 +80,55 @@
     }];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-        
-    //[self createSkillView];
-    
-//    CGFloat a = [UIScreen mainScreen].scale;
-//    NSLog(@"%lf",a);
-    // Load the SKScene from 'GameScene.sks'
+#pragma mark - 创建装备选择页面 -
+- (void)createEquipView{
+    _equipView = [[WDEquipView alloc] initWithFrame:CGRectMake(kScreenWidth / 2.0, 0, kScreenWidth / 2.0, kScreenHeight)];
+    _equipView.hidden = YES;
+    [self.view addSubview:_equipView];
+}
 
-    WDLearnScene1 *scene = (WDLearnScene1 *)[WDLearnScene1 nodeWithFileNamed:@"WDLearnScene1"];
-   // WDTestScene *scene = (WDTestScene *)[WDTestScene nodeWithFileNamed:@"WDTestScene"];
+
+#pragma mark - 创建场景 (根据场景名称) -
+- (void)createSceneWithName:(NSString *)sceneName{
+    
+    
+     Class class = NSClassFromString(sceneName);
+     WDBaseScene *scene = [class nodeWithFileNamed:sceneName];
+     
+     SKView *skView = (SKView *)self.view;
+ 
+     [skView presentScene:scene];
+
+     skView.showsFPS = YES;
+     skView.showsNodeCount = YES;
+     //skView.ignoresSiblingOrder = YES;
+     skView.showsPhysics = YES;
+
+     _selectScene = scene;
+    
+    __weak typeof(self)weakSelf = self;
+    /// 切换装备回调
+    [_selectScene setPresentEquipBlock:^(NSString * _Nonnull userName) {
+        [weakSelf showEquipView:userName];
+    }];
+    
+}
+
+
+//////////////////  操作相关 //////////////////////////
+
+#pragma mark - 展示换装页面 -
+- (void)showEquipView:(NSString *)userName{
+   
     SKView *skView = (SKView *)self.view;
-    
-    // Present the scene
-    [skView presentScene:scene];
-    
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
-    //skView.ignoresSiblingOrder = YES;
-    skView.showsPhysics = YES;
-    
-    _selectScene = scene;
+    WDEquipScene *equipScene = (WDEquipScene *)[WDEquipScene nodeWithFileNamed:@"WDEquipScene"];
+    [skView presentScene:equipScene];
+    _equipView.hidden = NO;
 }
 
 
 
-
-
-
-
+#pragma mark - 释放技能 -
 - (void)skillActionWithTag:(NSInteger)tag{
    
     if (tag == 100) {
@@ -132,7 +172,7 @@
 
 
 
-
+#pragma mark - system -
 
 - (BOOL)shouldAutorotate {
     return YES;

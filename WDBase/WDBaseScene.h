@@ -15,8 +15,9 @@
 #import "WDWizardNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
 @interface WDBaseScene : SKScene<SKPhysicsContactDelegate>
+
+
 
 /// 选中的线
 @property (nonatomic,strong)WDBaseNode *selectLine;
@@ -30,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 纹理管理器
 @property (nonatomic,strong)WDTextureManager *textureManager;
 
+
 /// 背景
 @property (nonatomic,strong)SKSpriteNode *bgNode;
 /// 管理怪物
@@ -38,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSArray *hateNameArr;
 /// 向下指示手势
 @property (nonatomic,strong)SKSpriteNode *clickNode;
+/// 展示装备栏
+@property (nonatomic,copy)void (^presentEquipBlock)(NSString *userName);
+
 
 #pragma mark - 玩家，根据玩家自己选择的人物初始化 -
 @property (nonatomic,strong)WDKknightNode *knight;
@@ -55,6 +60,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 触碰结束
 - (void)touchUpAtPoint:(CGPoint)pos;
+
+/// 显示装备栏
+- (void)presentEquipScene;
 
 #pragma mark - 指示箭头 -
 - (void)hiddenArrow;

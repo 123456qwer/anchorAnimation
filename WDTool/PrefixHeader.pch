@@ -152,6 +152,8 @@ static CGFloat allScale = 0.5;
 #define kNotificationForUpData @"kNotificationForUpData"
 ///死亡通知
 #define kNotificationForDead @"kNotificationForDead"
+///换装通知
+#define kNotificationForChangeEquip @"kNotificationForChangeEquip"
 
 
 /// 换人通知
@@ -165,5 +167,8 @@ static CGFloat allScale = 0.5;
 
 /// 玩家移动结束通知
 #define kNotificationForMoveEnd @"kNotificationForMoveEnd"
+
+
+
 
 #endif /* PrefixHeader_pch */

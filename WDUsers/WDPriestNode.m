@@ -17,11 +17,12 @@
     [self setAllArmor:@"PriestArmor"];
     [self setHemletTexture:@"PriestHelm"];
     [self setHairTexture:@"ShortPonytail"];
-    [self setEyeTexture:@"Eye_Female"];
+    [self setEyeTexture:@"EyesBlue"];
     [self setMouthTexture:@"Mouth_Bored"];
     [self setLeftWeapon:@"ClericWand1"];
 
     [self standAction];
+    
 }
 
 

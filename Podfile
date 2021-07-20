@@ -9,6 +9,7 @@ target 'MercenaryStory' do
 
 pod 'UIViewExt', '~> 1.0.1'
 pod 'SDWebImage', '~> 5.9.0'
+pod 'FMDB'
 
 end
 
