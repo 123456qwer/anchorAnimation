@@ -98,6 +98,7 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 
 @class WDEnemyNode;
 @class WDUserNode;
+@class WDBaseModel;
 @interface WDBaseNode : SKSpriteNode
 
 @property (nonatomic,strong)WDBaseNode *body;
@@ -223,7 +224,7 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 - (void)setLeftHandArmor:(NSString *)armorName;
 - (void)setLeftKneeArmor:(NSString *)armorName;
 - (void)setleftFootArmor:(NSString *)armorName;
-
+- (void)setLeftHandArmorReal:(NSString *)armorName;
 
 - (void)setRightArmArmor:(NSString *)armorName;
 - (void)setRightElbowArmor:(NSString *)armorName;
@@ -232,8 +233,8 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 - (void)setRightKneeArmor:(NSString *)armorName;
 - (void)setRightFootArmor:(NSString *)armorName;
 
-
-
+/// 根据model设置装备
+- (void)setArmorWithModel:(WDBaseModel *)model;
 
 - (void)setAllArmor:(NSString *)armorName;
 - (WDBaseNode *)textureWithKeyName:(NSString *)name;

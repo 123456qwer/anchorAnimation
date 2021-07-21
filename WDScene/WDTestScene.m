@@ -71,12 +71,15 @@
     self.hateNameArr = @[_knight.name];
     
     //[WDBaseNode initTextureActionWithName:kRedBat superNode:self position:CGPointMake(0, 0)];
-    [WDBaseNode initActionWithName:kSolider1 superNode:self position:CGPointMake(0, 0)];
+    //[WDBaseNode initActionWithName:kSolider1 superNode:self position:CGPointMake(0, 0)];
     
     _knight.position = CGPointMake(0, 0);
-    _priest.position = CGPointMake(_priest.size.width, 0);
-    _wizard.position = CGPointMake(-_priest.size.width, 0);
-    _archer.position = CGPointMake(-_priest.size.width * 2.0, 0);
+    [_knight setAllArmor:@"KnightArmor"];
+    _knight.xScale = 2.0;
+    _knight.yScale = 2.0;
+//    _priest.position = CGPointMake(_priest.size.width, 0);
+//    _wizard.position = CGPointMake(-_priest.size.width, 0);
+//    _archer.position = CGPointMake(-_priest.size.width * 2.0, 0);
     
     [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeUser object:self.selectNode.name];
     [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForHiddenSkill object:@(1)];

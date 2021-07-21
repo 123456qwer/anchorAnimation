@@ -40,6 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 普通耳朵
 @property (nonatomic,strong)SKTexture *normalEar;
 
+/// 对话框
+@property (nonatomic,strong)SKTexture *speak;
+@property (nonatomic,strong)SKTexture *confirm;
+@property (nonatomic,strong)SKTexture *cancel;
+
 /// 受伤效果
 @property (nonatomic,strong)SKTexture *demageTexture;
 /** 小怪出场光效 */

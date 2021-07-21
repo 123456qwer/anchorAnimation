@@ -12,12 +12,14 @@
 
 /// 引入的头文件
 #import <UIViewExt/UIViewExt.h>
+#import <FMDB.h>
 #import "WDCalculateTool.h"  /// 切割图片、算法等
 #import "WDBaseNode.h"
 #import "WDNotificationManager.h"
 #import "WDTextureManager.h"
 #import "WDAnimationManager.h"
-
+#import "WDDataManager.h"
+#import "WDBaseModel.h"
 
 /// define
 //屏宽高
@@ -25,6 +27,9 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define IS_IPHONEX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1080, 2340), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1170, 2532), [[UIScreen mainScreen] currentMode].size)||CGSizeEqualToSize(CGSizeMake(1284, 2778), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+
+#define kIsFirstLogin @"kIsFirstLogin" // 首次进入，初始化一下数据
 
 //零件
 #define kBody @"body"  //身体
@@ -35,6 +40,8 @@
 #define kLeftArm @"leftArm" //左胳膊
 #define kRightArm @"rightArm" //右胳膊
 #define kLeftElbow @"kLeftElbow" //左胳膊肘
+#define kLeftHandAro @"kLeftHandAro" //左手
+
 #define kRightElbow @"kRightElbow" //右胳膊肘加手掌
 #define kLeftHand @"leftHand" //左手
 #define kRightFinger @"rightFinger" //右手指

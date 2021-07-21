@@ -25,6 +25,7 @@
     WDBaseNode *_leftArm;
     WDBaseNode *_leftElbow;
     WDBaseNode *_leftHand;
+    WDBaseNode *_leftHandAro;
     
     WDBaseNode *_rightArm;
     WDBaseNode *_rightElbow;
@@ -210,7 +211,7 @@
     _leftElbow = [self textureWithKeyName:kLeftElbow];
     _leftElbow.anchorPoint = CGPointMake(0.5 ,0.6 );
     _leftElbow.position = CGPointMake(-26.5,-19.5);
-    _leftElbow.zPosition = 0;
+    _leftElbow.zPosition = 1;
     [_leftArm addChild:_leftElbow];
 
     //左手
@@ -219,13 +220,26 @@
     _leftHand.position = CGPointMake(0,-25);
     _leftHand.zPosition = 5;
     [_leftElbow addChild:_leftHand];
-
+    
+    //左手盔甲
+    _leftHandAro = [self textureWithKeyName:kLeftHandAro];
+    _leftHandAro.anchorPoint = CGPointMake(0.5, 0.5 );
+    _leftHandAro.position = CGPointMake(0,-15);
+    _leftHandAro.zPosition = 6;
+    [_leftElbow addChild:_leftHandAro];
+    
     //默认的角度
     _leftArm.defaultAngle = DEGREES_TO_RADIANS(5);
     _leftArm.zRotation = DEGREES_TO_RADIANS(5);
     
+    _leftHandAro.defaultAngle = DEGREES_TO_RADIANS(-20);
+    _leftHandAro.zRotation = DEGREES_TO_RADIANS(-20);
+    
     _leftElbow.defaultAngle = DEGREES_TO_RADIANS(8);
     _leftElbow.zRotation = DEGREES_TO_RADIANS(8);
+    
+    _leftHand.defaultAngle = DEGREES_TO_RADIANS(-25);
+    _leftHand.zRotation = DEGREES_TO_RADIANS(-25);
 }
 
 ///创建腿和脚
@@ -487,20 +501,71 @@
                         armorName:(NSString *)armorName{
     
     WDBaseNode *armorNode = (WDBaseNode *)[superNode childNodeWithName:superNode.name];
-    if (!armorNode) {
-        armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName]];
-        armorNode.anchorPoint = superNode.anchorPoint;
-        armorNode.name = superNode.name;
-        [superNode addChild:armorNode];
+    
+    if ([armorName isEqualToString:@"n"]) {
+        NSLog(@"还没有 ”%@“ 的装备呢",superNode.name);
+        if (armorNode) {
+            [armorNode removeFromParent];
+            armorNode = nil;
+        }
     }else{
-        armorNode.texture = [WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName];
+        
+        NSLog(@"穿戴好了 “%@”",superNode.name);
+        if (!armorNode) {
+            armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName]];
+            armorNode.anchorPoint = superNode.anchorPoint;
+            armorNode.name = superNode.name;
+            [superNode addChild:armorNode];
+        }else{
+            armorNode.texture = [WDCalculateTool textureWithArmorKeyName:superNode.name armorName:armorName];
+        }
     }
     
+    
+    
+    
+    
+}
+
+
+- (void)setArmorWithModel:(WDBaseModel *)model{
+    
+    [self setBodyArmor:model.Equip_armor];
+
+    [self setLeftElbowArmor:model.Equip_pauldrons];
+    [self setLeftArmArmor:model.Equip_pauldrons];
+    [self setRightArmArmor:model.Equip_pauldrons];
+    [self setLeftArmArmor:model.Equip_pauldrons];
+    
+
+    [self setRightElbowArmor:model.Equip_gloves];
+    [self setLeftHandArmor:model.Equip_gloves];
+    [self setRightHandArmor:model.Equip_gloves];
+    [self setRightFingerArmor:model.Equip_gloves];
+    [self setLeftHandArmorReal:model.Equip_gloves];
+
+    
+    [self setleftFootArmor:model.Equip_boots];
+    [self setLeftKneeArmor:model.Equip_boots];
+    [self setRightKneeArmor:model.Equip_boots];
+    [self setRightFootArmor:model.Equip_boots];
+
+
+    [self setHipArmor:model.Equip_belt];
+    
+    [self setHemletTexture:model.Equip_helmet];
+    
+    [self setLeftWeapon:model.Equip_sword1h];
+    [self setRightShield:model.Equip_shield];
     
 }
 
 - (void)setAllArmor:(NSString *)armorName{
    
+    if ([armorName isEqualToString:@"n"]) {
+        NSLog(@"还没有套装呢！");
+        return;
+    }
     
     [self setBodyArmor:armorName];
     [self setHipArmor:armorName];
@@ -510,7 +575,7 @@
     [self setLeftElbowArmor:armorName];
     [self setLeftArmArmor:armorName];
     [self setLeftHandArmor:armorName];
-    
+    [self setLeftHandArmorReal:armorName];
   
     [self setRightKneeArmor:armorName];
     [self setRightFootArmor:armorName];
@@ -547,12 +612,30 @@
 /// 胯部不太一样，直接加在BODY上
 - (void)setHipArmor:(NSString *)armorName{
     
-    WDBaseNode *armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:@"hip" armorName:armorName]];
-    armorNode.anchorPoint = CGPointMake(0.5, 0.5);
-    armorNode.position = CGPointMake(0, 7);
-    [_body addChild:armorNode];
-    armorNode.zPosition = 3;
+    WDBaseNode *armorNode = (WDBaseNode *)[_body childNodeWithName:@"hip_armor"];
+    if ([armorName isEqualToString:@"n"]) {
+        
+        if (armorNode) {
+            [armorNode removeFromParent];
+            armorNode = nil;
+        }
+        
+    }else{
+        
+        if (!armorNode) {
+            armorNode = [WDBaseNode spriteNodeWithTexture:[WDCalculateTool textureWithArmorKeyName:@"hip" armorName:armorName]];
+            armorNode.anchorPoint = CGPointMake(0.5, 0.5);
+            armorNode.position = CGPointMake(0, 7);
+            armorNode.name = @"hip_armor";
+            [_body addChild:armorNode];
+            armorNode.zPosition = 3;
+        }else{
+            armorNode.texture = [WDCalculateTool textureWithArmorKeyName:@"hip" armorName:armorName];
+        }
+    }
+ 
 }
+
 - (void)setRightKneeArmor:(NSString *)armorName{
     [self createSrpiteWithSuperNode:_rightKnee armorName:armorName];
 }
@@ -565,6 +648,11 @@
 - (void)setleftFootArmor:(NSString *)armorName{
     [self createSrpiteWithSuperNode:_leftFoot armorName:armorName];
 }
+
+- (void)setLeftHandArmorReal:(NSString *)armorName{
+    [self createSrpiteWithSuperNode:_leftHandAro armorName:armorName];
+}
+
 
 /// 设置头发
 - (void)setHairTexture:(NSString *)name{
@@ -589,58 +677,113 @@
 
 /// 帽子
 - (void)setHemletTexture:(NSString *)name{
-    if (!_hemlet) {
-        _hemlet = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EliteKnightHelm"]]];
-        _hemlet.zPosition = 0;
-        [_head addChild:_hemlet];
-    }
     
-    self.hemlet.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+    if ([name isEqualToString:@"n"]) {
+        
+        if (_hemlet) {
+            [_hemlet removeFromParent];
+            _hemlet = nil;
+        }
+        
+    }else{
+        
+        if (!_hemlet) {
+            _hemlet = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"EliteKnightHelm"]]];
+            _hemlet.zPosition = 0;
+            [_head addChild:_hemlet];
+        }
+        
+        self.hemlet.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+    }
 }
 
+
+/// 左手武器
 - (void)setLeftWeapon:(NSString *)weaponName{
     
-    //左手武器
-    if (!_leftWeapon) {
-        _leftWeapon = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:weaponName]]];
-        _leftWeapon.anchorPoint = _leftHand.anchorPoint;
-        _leftWeapon.position = CGPointMake(0, -1);
-        _leftWeapon.zPosition = -1;
-        _leftWeapon.zRotation = DEGREES_TO_RADIANS(-130);
-        [_leftHand addChild:_leftWeapon];
+    if ([weaponName isEqualToString:@"n"]) {
         
-        _leftWeapon.name = @"leftWeapon";
+        if (_leftWeapon) {
+            [_leftWeapon removeFromParent];
+            _leftWeapon = nil;
+        }
+        
+    }else{
+        
+        
+        if (!_leftWeapon) {
+            _leftWeapon = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:weaponName]]];
+            _leftWeapon.anchorPoint = _leftHand.anchorPoint;
+            _leftWeapon.position = CGPointMake(-5, -1);
+            _leftWeapon.zPosition = -1;
+            _leftWeapon.zRotation = DEGREES_TO_RADIANS(-115);
+            [_leftHand addChild:_leftWeapon];
+            
+            _leftWeapon.name = @"leftWeapon";
+        }else{
+            _leftWeapon.texture = [SKTexture textureWithImage:[UIImage imageNamed:weaponName]];
+        }
     }
-    
-    _leftWeapon.texture = [SKTexture textureWithImage:[UIImage imageNamed:weaponName]];
-    
 }
 
+
+/// 右手武器
 - (void)setRightWeapon:(NSString *)weaponName{
     
-    //右手武器
-    _rightWeapon = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:weaponName]]];
-    _rightWeapon.anchorPoint = CGPointMake(0.5, 0.5);
-    _rightWeapon.position = CGPointMake(28, -15);
-    _rightWeapon.zPosition = 0;
-    _rightWeapon.zRotation = DEGREES_TO_RADIANS(-30);
-    [_rightElbow addChild:_rightWeapon];
-    
-    
-    _rightWeapon.name = @"rightWeapon";
+    if ([weaponName isEqualToString:@"n"]) {
+        
+        if (_rightWeapon) {
+            [_rightWeapon removeFromParent];
+            _rightWeapon = nil;
+        }
+        
+    }else{
+        
+        if (!_rightWeapon) {
+            
+            _rightWeapon = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:weaponName]]];
+            _rightWeapon.anchorPoint = CGPointMake(0.5, 0.5);
+            _rightWeapon.position = CGPointMake(28, -15);
+            _rightWeapon.zPosition = 0;
+            _rightWeapon.zRotation = DEGREES_TO_RADIANS(-30);
+            [_rightElbow addChild:_rightWeapon];
+            
+            _rightWeapon.name = @"rightWeapon";
+            
+        }else{
+            _rightWeapon.texture = [SKTexture textureWithImage:[UIImage imageNamed:weaponName]];
+        }
+    }
+
 }
 
+/// 右手盾牌
 - (void)setRightShield:(NSString *)shieldName{
-    //右手盾牌
-    _shield = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:shieldName]]];
-    _shield.anchorPoint = CGPointMake(0.5, 0.5);
-    _shield.position = CGPointMake(40, -15);
-    _shield.zPosition = 7;
-    _shield.zRotation = DEGREES_TO_RADIANS(10);
-    [_rightElbow addChild:_shield];
-   
-    _shield.name = @"shield";
+    
+    if ([shieldName isEqualToString:@"n"]) {
+        
+        if (_shield) {
+            [_shield removeFromParent];
+            _shield = nil;
+        }
+        
+    }else{
+        
+        if (!_shield) {
+            _shield = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:shieldName]]];
+            _shield.anchorPoint = CGPointMake(0.5, 0.5);
+            _shield.position = CGPointMake(40, -15);
+            _shield.zPosition = 7;
+            _shield.zRotation = DEGREES_TO_RADIANS(10);
+            [_rightElbow addChild:_shield];
+            _shield.name = @"shield";
+        }else{
+            _shield.texture = [SKTexture textureWithImage:[UIImage imageNamed:shieldName]];
+        }
+    }
+
 }
+
 
 - (void)setBow:(NSString *)bowName{
     
@@ -652,30 +795,44 @@
     
     self.arrowTexture = arrow;
     
-    _bowMiddle = [WDBaseNode spriteNodeWithTexture:middle];
-    _bowMiddle.anchorPoint = CGPointMake(0.5, 0.5);
-    _bowMiddle.position = CGPointMake(35, -8);
-    _bowMiddle.zPosition = 0;
-    _bowMiddle.zRotation = DEGREES_TO_RADIANS(-30);
-    [_rightElbow addChild:_bowMiddle];
+    if (!_bowMiddle) {
+        _bowMiddle = [WDBaseNode spriteNodeWithTexture:middle];
+        _bowMiddle.anchorPoint = CGPointMake(0.5, 0.5);
+        _bowMiddle.position = CGPointMake(35, -8);
+        _bowMiddle.zPosition = 0;
+        _bowMiddle.zRotation = DEGREES_TO_RADIANS(-30);
+        [_rightElbow addChild:_bowMiddle];
+    }else{
+        _bowMiddle.texture = middle;
+    }
     
-    _bowUp = [WDBaseNode spriteNodeWithTexture:bow];
-    _bowUp.anchorPoint = CGPointMake(0.5, 0.2);
-    _bowUp.position = CGPointMake(1, 20);
-    _bowUp.zPosition = 0;
-    _bowUp.zRotation = DEGREES_TO_RADIANS(0);
-    _bowUp.defaultAngle = DEGREES_TO_RADIANS(0);
-    [_bowMiddle addChild:_bowUp];
+    
+    if (!_bowUp) {
+        _bowUp = [WDBaseNode spriteNodeWithTexture:bow];
+        _bowUp.anchorPoint = CGPointMake(0.5, 0.2);
+        _bowUp.position = CGPointMake(1, 20);
+        _bowUp.zPosition = 0;
+        _bowUp.zRotation = DEGREES_TO_RADIANS(0);
+        _bowUp.defaultAngle = DEGREES_TO_RADIANS(0);
+        [_bowMiddle addChild:_bowUp];
+    }else{
+        _bowUp.texture = bow;
+    }
+    
 
+    if (!_bowDown) {
+        _bowDown = [WDBaseNode spriteNodeWithTexture:bow];
+        _bowDown.anchorPoint = CGPointMake(0.5, 0.2);
+        _bowDown.position = CGPointMake(1, -17);
+        _bowDown.zPosition = 0;
+        _bowDown.xScale  = -1;
+        _bowDown.zRotation = DEGREES_TO_RADIANS(- 180);
+        _bowDown.defaultAngle = DEGREES_TO_RADIANS(- 180);
+        [_bowMiddle addChild:_bowDown];
+    }else{
+        _bowDown.texture = bow;
+    }
     
-    _bowDown = [WDBaseNode spriteNodeWithTexture:bow];
-    _bowDown.anchorPoint = CGPointMake(0.5, 0.2);
-    _bowDown.position = CGPointMake(1, -17);
-    _bowDown.zPosition = 0;
-    _bowDown.xScale  = -1;
-    _bowDown.zRotation = DEGREES_TO_RADIANS(- 180);
-    _bowDown.defaultAngle = DEGREES_TO_RADIANS(- 180);
-    [_bowMiddle addChild:_bowDown];
     
 }
 

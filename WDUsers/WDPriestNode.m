@@ -13,13 +13,14 @@
     
     [super createUserNodeWithScale:scale];
     
+    WDBaseModel *model = [[WDDataManager shareManager] searchData:kPriest];
+    
+    [self setArmorWithModel:model];
 
-    [self setAllArmor:@"PriestArmor"];
-    [self setHemletTexture:@"PriestHelm"];
+
     [self setHairTexture:@"ShortPonytail"];
     [self setEyeTexture:@"EyesBlue"];
     [self setMouthTexture:@"Mouth_Bored"];
-    [self setLeftWeapon:@"ClericWand1"];
 
     [self standAction];
     

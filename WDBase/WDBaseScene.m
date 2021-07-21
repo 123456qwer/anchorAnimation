@@ -58,6 +58,70 @@
 }
 
 #pragma mark - getter -
+- (SKSpriteNode *)confirmNode{
+    if (!_confirmNode) {
+        _confirmNode = [SKSpriteNode spriteNodeWithTexture:self.textureManager.confirm];
+        _confirmNode.name = @"confirm";
+        _confirmNode.zPosition = 100000;
+        _confirmNode.xScale = 0.1;
+        _confirmNode.yScale = 0.1;
+        _confirmNode.position = CGPointMake(self.speakBgNode.size.width / 2.0 / 1.5 - _confirmNode.size.width * 2.0, 0);
+        [self.speakBgNode addChild:_confirmNode];
+    }
+    
+    return _confirmNode;
+}
+
+- (SKSpriteNode *)cancelNode{
+    if (!_cancelNode) {
+        _cancelNode = [SKSpriteNode spriteNodeWithTexture:self.textureManager.cancel];
+        _cancelNode.position = CGPointMake(self.speakBgNode.size.width / 2.0 / 1.5, 0);
+        _cancelNode.zPosition = 100000;
+        _cancelNode.xScale = 0.1;
+        _cancelNode.yScale = 0.1;
+        _cancelNode.name   = @"cancel";
+        [self.speakBgNode addChild:_cancelNode];
+    }
+    
+    return _cancelNode;
+}
+
+- (SKSpriteNode *)speakBgNode{
+    if (!_speakBgNode) {
+        _speakBgNode = [SKSpriteNode spriteNodeWithTexture:self.textureManager.speak];
+        _speakBgNode.zPosition = 1000000;
+        _speakBgNode.xScale = 1.5;
+        _speakBgNode.yScale = 1.5;
+        _speakBgNode.position = CGPointMake(0, -kScreenHeight + _speakBgNode.size.height / 1.5);
+        [self addChild:_speakBgNode];
+    }
+    return _speakBgNode;
+}
+
+- (SKLabelNode *)speakLabelNode{
+    
+    if (!_speakLabelNode) {
+        
+        NSString *fontName = @"Noteworthy";
+        SKLabelNode *node = [SKLabelNode labelNodeWithFontNamed:fontName];
+        node.name = @"text";
+        node.numberOfLines = 0;
+        node.text = @"";
+        node.fontColor = [UIColor whiteColor];
+        node.zPosition = 100;
+        node.colorBlendFactor = 1;
+        node.fontSize = 30;
+        node.color = [SKColor blackColor];
+        node.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+        node.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        [self.speakBgNode addChild:node];
+        _speakLabelNode = node;
+    }
+    
+    return _speakLabelNode;
+    
+}
+
 /// 操作线
 - (WDBaseNode *)selectLine
 {
@@ -165,12 +229,26 @@
         _clickNode.position = CGPointMake(0, - 80.f * self.yScale);
         [self addChild:_clickNode];
         _clickNode.zPosition = 100000;
-        SKAction *an = [SKAction animateWithTextures:self.textureManager.handClickArr timePerFrame:0.5];
+        NSArray *animationArr = [self.textureManager.handClickArr subarrayWithRange:NSMakeRange(0, 2)];
+        SKAction *an = [SKAction animateWithTextures:animationArr timePerFrame:0.5];
         SKAction *re = [SKAction repeatActionForever:an];
         [_clickNode runAction:re];
     }
     
     return _clickNode;
+}
+
+- (SKSpriteNode *)leftOrRightNode{
+    if (!_leftOrRightNode) {
+        _leftOrRightNode = [SKSpriteNode spriteNodeWithTexture:self.textureManager.handClickArr[2]];
+        _leftOrRightNode.hidden = YES;
+        _leftOrRightNode.name = @"click";
+        _leftOrRightNode.position = CGPointMake(0, 0);
+        [self addChild:_leftOrRightNode];
+        _leftOrRightNode.zPosition = 100000;
+        
+    }
+    return _leftOrRightNode;
 }
 
 #pragma mark - 操作 -
@@ -331,26 +409,7 @@
 
 /// 换装通知
 - (void)changeEquip:(NSNotification *)notification{
-    
     NSLog(@"%@",notification);
-    
-    NSDictionary *dic = notification.object;
-    if ([dic[dic.allKeys[0]] isKindOfClass:[NSString class]]) {
-        
-        /// 这个是盔甲类
-        NSString *armor = dic.allKeys[0];
-        NSString *name = dic[armor];
-        if ([name isEqualToString:kBody]) {
-            [_selectNode setBodyArmor:armor];
-        }
-        
-        
-    }else{
-        
-        /// 这个是武器头盔
-        
-    }
-    
 }
 
 
@@ -379,7 +438,56 @@
     
 }
 
+#pragma mark - 对话 -
+- (void)setTextAction:(NSString *)text{
+    self.speakBgNode.hidden = NO;
+    self.speakLabelNode.text = text;
+}
 
+- (void)setTextAction:(NSString *)text
+           hiddenTime:(NSInteger)time
+        completeBlock:(void (^)(void))completeBlock{
+   
+    self.speakBgNode.hidden = NO;
+    self.speakLabelNode.text = text;
+    self.talkCompleteBlock = completeBlock;
+    
+    [self performSelector:@selector(endTalkAction) withObject:nil afterDelay:time];
+    
+}
+
+- (void)speakChangeSelectWithNode:(WDBaseNode *)node{
+    _selectNode.arrowNode.hidden = YES;
+    _selectNode = node;
+    _selectNode.arrowNode.hidden = NO;
+}
+
+- (void)endTalkAction{
+    
+    if (self.talkCompleteBlock) {
+        self.talkCompleteBlock();
+    }
+}
+
+
+- (void)stopTalk{
+    self.speakBgNode.hidden = YES;
+}
+
+- (void)setClickNodePositionWithNode:(WDBaseNode *)node{
+    self.clickNode.position = CGPointMake(node.position.x, self.clickNode.position.y);
+    self.clickNode.hidden = NO;
+}
+
+- (void)showConfirmNodes{
+    self.cancelNode.hidden = NO;
+    self.confirmNode.hidden = NO;
+}
+
+- (void)hiddenConfirmNodes{
+    self.cancelNode.hidden = YES;
+    self.confirmNode.hidden = YES;
+}
 
 #pragma mark - 指示箭头 -
 - (void)hiddenArrow
@@ -442,6 +550,14 @@
     }
     
 }
+
+#pragma mark - 切换场景 -
+- (void)changeSceneWithName:(NSString *)sceneName{
+    if (self.changeSceneBlock) {
+        self.changeSceneBlock(sceneName);
+    }
+}
+
 
 - (void)dealloc
 {

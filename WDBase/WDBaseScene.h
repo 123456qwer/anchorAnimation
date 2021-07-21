@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)WDBaseNode *selectLine;
 
 /// 选中的人物
-@property (nonatomic,strong)WDUserNode *selectNode;
+@property (nonatomic,strong)WDBaseNode *selectNode;
 
 /// 指示箭头
 @property (nonatomic,strong)WDBaseNode *arrowNode;
@@ -31,6 +31,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// 纹理管理器
 @property (nonatomic,strong)WDTextureManager *textureManager;
 
+/// 对话框
+@property (nonatomic,strong)SKSpriteNode *speakBgNode;
+/// 文字
+@property (nonatomic,strong)SKLabelNode *speakLabelNode;
+
+/// 确认
+@property (nonatomic,strong)SKSpriteNode *confirmNode;
+/// 否定
+@property (nonatomic,strong)SKSpriteNode *cancelNode;
 
 /// 背景
 @property (nonatomic,strong)SKSpriteNode *bgNode;
@@ -40,9 +49,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSArray *hateNameArr;
 /// 向下指示手势
 @property (nonatomic,strong)SKSpriteNode *clickNode;
+/// 左右指示手势
+@property (nonatomic,strong)SKSpriteNode *leftOrRightNode;
+
+/// 聊天自动切换
+@property (nonatomic,copy)void (^talkCompleteBlock)(void);
+
 /// 展示装备栏
 @property (nonatomic,copy)void (^presentEquipBlock)(NSString *userName);
 
+/// 切换场景
+@property (nonatomic,copy)void (^changeSceneBlock)(NSString *sceneName);
 
 #pragma mark - 玩家，根据玩家自己选择的人物初始化 -
 @property (nonatomic,strong)WDKknightNode *knight;
@@ -63,6 +80,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 显示装备栏
 - (void)presentEquipScene;
+
+#pragma mark - 切换场景 -
+- (void)changeSceneWithName:(NSString *)sceneName;
+
+#pragma mark - 对话相关 -
+/// 显示对话栏
+- (void)setTextAction:(NSString *)text;
+/// 自动隐藏
+- (void)setTextAction:(NSString *)text
+           hiddenTime:(NSInteger)time
+        completeBlock:(void (^)(void))completeBlock;
+
+- (void)stopTalk;
+
+/// 对话目标转化
+- (void)speakChangeSelectWithNode:(WDBaseNode *)node;
+
+/// 设置点击
+- (void)setClickNodePositionWithNode:(WDBaseNode *)node;
+
+/// 展示确定、取消按钮
+- (void)showConfirmNodes;
+/// 隐藏确定、取消按钮
+- (void)hiddenConfirmNodes;
 
 #pragma mark - 指示箭头 -
 - (void)hiddenArrow;

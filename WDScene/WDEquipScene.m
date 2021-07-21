@@ -24,16 +24,56 @@
 /// 换装通知
 - (void)changeEquip:(NSNotification *)notification{
 
-    NSLog(@"%@",notification);
-    
     NSDictionary *dic = notification.object;
+   
+    WDDataManager *manager = [WDDataManager shareManager];
+    NSString *user = manager.userName;
+    
+    WDBaseModel *model = [manager searchData:user];
+    
     if ([dic[dic.allKeys[0]] isKindOfClass:[NSString class]]) {
-        
         /// 这个是盔甲类
         NSString *armor = dic.allKeys[0];
         NSString *name = dic[armor];
         if ([name isEqualToString:kBody]) {
+            
+            model.Equip_armor = armor;
             [self.selectNode setBodyArmor:armor];
+            
+        }else if([name isEqualToString:kLeftArm]){
+            
+            model.Equip_pauldrons = armor;
+            
+            [self.selectNode setLeftElbowArmor:armor];
+            [self.selectNode setLeftArmArmor:armor];
+            [self.selectNode setRightArmArmor:armor];
+            [self.selectNode setLeftArmArmor:armor];
+            
+        }else if([name isEqualToString:kLeftHandAro]){
+            
+            model.Equip_gloves = armor;
+            
+            [self.selectNode setRightElbowArmor:armor];
+            [self.selectNode setLeftHandArmor:armor];
+            [self.selectNode setRightHandArmor:armor];
+            [self.selectNode setRightFingerArmor:armor];
+            [self.selectNode setLeftHandArmorReal:armor];
+
+            
+        }else if([name isEqualToString:kFoot]){
+            
+            model.Equip_boots = armor;
+            
+            [self.selectNode setleftFootArmor:armor];
+            [self.selectNode setLeftKneeArmor:armor];
+            [self.selectNode setRightKneeArmor:armor];
+            [self.selectNode setRightFootArmor:armor];
+            
+        }else if([name isEqualToString:kHip]){
+            
+            model.Equip_belt = armor;
+            
+            [self.selectNode setHipArmor:armor];
         }
         
         
@@ -43,16 +83,24 @@
         int value = [dic[armor]intValue];
         
         if(value == Equip_helmet){
+            
+            model.Equip_helmet = armor;
             /// 这个是武器头盔
             [self.selectNode setHemletTexture:armor];
         }else if(value == Equip_sword1h){
-            
+            model.Equip_sword1h = armor;
             ///单手武器
             [self.selectNode setLeftWeapon:armor];
-            
+        }else if(value == Equip_shield){
+            model.Equip_shield = armor;
+            ///盾牌
+            [self.selectNode setRightShield:armor];
         }
         
     }
+    
+    [manager changeDataWithModel:model userName:user];
+
     
 }
 

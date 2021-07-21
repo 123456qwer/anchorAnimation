@@ -11,9 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDEquipView : UIView
 
+@property (nonatomic,copy)void (^confirmBlock)(void);
+
 - (instancetype)initWithFrame:(CGRect)frame;
 
 - (void)reloadDataWithName:(NSString *)name;
+- (void)cancelConfirmBtn;
 
 @end
 

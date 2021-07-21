@@ -162,6 +162,7 @@
     CGImageRef footRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(235, 388, 120, 124));
     CGImageRef leftHandRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(235, 285, 114, 103));
     CGImageRef leftArmRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(235, 0, 138, 160));
+    CGImageRef leftHandAroRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(360, 335, 55, 55));
     CGImageRef rightArmRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(375, 0, 138, 160));
     CGImageRef leftArmKneeRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(235, 160, 114, 125));
     CGImageRef rightArmKneeRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(375, 160, 161, 161));
@@ -201,7 +202,11 @@
     //左胳膊
     UIImage *leftArm  = [UIImage imageWithCGImage:leftArmRef];
     CGImageRelease(leftArmRef);
-
+    
+    //左手的盔甲
+    UIImage *leftHandAro = [UIImage imageWithCGImage:leftHandAroRef];
+    CGImageRelease(leftHandAroRef);
+    
     //右胳膊
     UIImage *rightArm  = [UIImage imageWithCGImage:rightArmRef];
     CGImageRelease(rightArmRef);
@@ -210,7 +215,7 @@
     UIImage *leftArmKnee = [UIImage imageWithCGImage:leftArmKneeRef];
     CGImageRelease(leftArmKneeRef);
     
-    NSDictionary *dic = @{kBody:bodyImage,kHip:hipImage,kRightHand:rightHand,kRightElbow:rightArmKnee,kRightFinger:rightFinger,kKnee:knee,kFoot:foot,kLeftHand:leftHand,kLeftArm:leftArm,kRightArm:rightArm,kLeftElbow:leftArmKnee};
+    NSDictionary *dic = @{kBody:bodyImage,kHip:hipImage,kRightHand:rightHand,kRightElbow:rightArmKnee,kRightFinger:rightFinger,kKnee:knee,kFoot:foot,kLeftHand:leftHand,kLeftArm:leftArm,kRightArm:rightArm,kLeftElbow:leftArmKnee,kLeftHandAro:leftHandAro};
     return dic;
 }
 
@@ -258,6 +263,7 @@
     CGImageRef leftArmRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(235, 0, 138, 160));
     CGImageRef rightArmRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(375, 0, 138, 160));
     CGImageRef leftArmKneeRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(235, 160, 114, 125));
+    CGImageRef leftHandAroRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(360, 335, 55, 55));
     CGImageRef rightArmKneeRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(375, 160, 161, 161));
     CGImageRef rightFingerRef = CGImageCreateWithImageInRect(imageRef, CGRectMake(425, 321, 32, 32));
     
@@ -304,7 +310,9 @@
     UIImage *leftArmKnee = [UIImage imageWithCGImage:leftArmKneeRef];
     CGImageRelease(leftArmKneeRef);
 
-    
+    //左手的盔甲
+    UIImage *leftHandAro = [UIImage imageWithCGImage:leftHandAroRef];
+    CGImageRelease(leftHandAroRef);
     
     
     NSDictionary *dic = @{kBody:[SKTexture textureWithImage:bodyImage],
@@ -317,7 +325,9 @@
                           kLeftHand:[SKTexture textureWithImage:leftHand],
                           kLeftArm:[SKTexture textureWithImage:leftArm],
                           kRightArm:[SKTexture textureWithImage:rightArm],
-                          kLeftElbow:[SKTexture textureWithImage:leftArmKnee]};
+                          kLeftElbow:[SKTexture textureWithImage:leftArmKnee],
+                          kLeftHandAro:[SKTexture textureWithImage:leftHandAro]
+    };
     
     return dic;
 }

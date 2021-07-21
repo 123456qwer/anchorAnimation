@@ -13,10 +13,10 @@
 {
     [super createUserNodeWithScale:scale];
     
+    WDBaseModel *model = [[WDDataManager shareManager]searchData:kKinght];
     
-   // [self setAllArmor:@"KnightArmor"];
-    [self setLeftWeapon:@"FamilySword"];
-    //[self setRightShield:@"SteelShield"];
+    [self setArmorWithModel:model];
+
     [self standAction];
     
 }
@@ -101,6 +101,12 @@
 - (void)skill5Action
 {
     
+}
+
+
+- (void)dealloc
+{
+    NSLog(@"11111");
 }
 
 @end

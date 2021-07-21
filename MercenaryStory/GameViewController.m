@@ -6,6 +6,7 @@
 //
 
 #import "GameViewController.h"
+#import "GameViewController+Data.h"
 
 #import "WDTestScene.h"
 #import "WDLearnScene1.h"
@@ -14,6 +15,7 @@
 
 #import "WDSkillView.h"
 #import "WDEquipView.h"
+#import "WDAllMenuView.h"
 
 
 
@@ -22,6 +24,8 @@
     WDSkillView *_skillView;
     WDBaseScene *_selectScene;
     WDEquipView *_equipView;
+    WDAllMenuView *_allMenuView;
+    NSString *_userName;
 }
 
 
@@ -29,16 +33,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         
-
+    /// 第一次进入初始化数据
+    [self initDataAction];
+    
+    
+    
 //    CGFloat a = [UIScreen mainScreen].scale;
     
     //[self createSkillView];
     
     [self createEquipView];
+    [self createMenuView];
     
     [self createSceneWithName:@"WDLearnScene1"];
     
 }
+
+
 
 
 /// 初始化起始技能
@@ -53,6 +64,18 @@
     [defaults setBool:YES forKey:key2];
     [defaults setBool:YES forKey:key3];
     [defaults setBool:YES forKey:key4];
+}
+
+#pragma mark - 主要菜单栏 -
+- (void)createMenuView{
+    
+    _allMenuView = [[WDAllMenuView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 80)];
+    [self.view addSubview:_allMenuView];
+    
+    __weak typeof(self)weakSelf = self;
+    [_allMenuView setOpenBackPack:^{
+        [weakSelf showEquipView:weakSelf.userName];
+    }];
 }
 
 #pragma mark - 创建技能页面 -
@@ -85,6 +108,16 @@
     _equipView = [[WDEquipView alloc] initWithFrame:CGRectMake(kScreenWidth / 2.0, 0, kScreenWidth / 2.0, kScreenHeight)];
     _equipView.hidden = YES;
     [self.view addSubview:_equipView];
+    
+    __weak typeof(self)weakSelf = self;
+    [_equipView setConfirmBlock:^{
+        [weakSelf presentSelectScene];
+    }];
+}
+
+- (void)presentSelectScene{
+    SKView *skView = (SKView *)self.view;
+    [skView presentScene:_selectScene];
 }
 
 
@@ -109,21 +142,48 @@
     __weak typeof(self)weakSelf = self;
     /// 切换装备回调
     [_selectScene setPresentEquipBlock:^(NSString * _Nonnull userName) {
-        [weakSelf showEquipView:userName];
+        weakSelf.userName = userName;
+        [weakSelf showMenuView];
+    }];
+    
+    /// 切换场景
+    [_selectScene setChangeSceneBlock:^(NSString * _Nonnull sceneName) {
+        [weakSelf createSceneWithName:sceneName];
     }];
     
 }
 
 
 //////////////////  操作相关 //////////////////////////
+#pragma mark - 展示主菜单栏 -
+- (void)showMenuView{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self->_allMenuView.frame = CGRectMake(0, kScreenHeight - 80, kScreenWidth, 80);
+    }];
+}
+
 
 #pragma mark - 展示换装页面 -
 - (void)showEquipView:(NSString *)userName{
    
-    SKView *skView = (SKView *)self.view;
-    WDEquipScene *equipScene = (WDEquipScene *)[WDEquipScene nodeWithFileNamed:@"WDEquipScene"];
-    [skView presentScene:equipScene];
-    _equipView.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        self->_allMenuView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 80);
+    } completion:^(BOOL finished) {
+        if (userName) {
+            SKView *skView = (SKView *)self.view;
+            WDEquipScene *equipScene = (WDEquipScene *)[WDEquipScene nodeWithFileNamed:@"WDEquipScene"];
+            [skView presentScene:equipScene];
+            [self->_equipView reloadDataWithName:userName];
+            [self->_equipView cancelConfirmBtn];
+            self->_equipView.hidden = NO;
+        }else{
+            NSLog(@"还没选中人物");
+        }
+    }];
+    
+    
+    
 }
 
 

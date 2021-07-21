@@ -29,7 +29,6 @@
     if (self) {
         
         //self.backgroundColor = [UIColor orangeColor];
-        [self loadData];
         [self bgView];
         [self createEquipButtonCollctionView];
         [self createEquipCollectionView];
@@ -38,29 +37,51 @@
     return self;
 }
 
-//#define kBody @"body"  //身体
-//#define kHip @"hip"    //胯
-//#define kRightHand @"rightHand" //右手
-//#define kKnee @"knee"  //膝盖
-//#define kFoot @"foot"  //脚
-//#define kLeftArm @"leftArm" //左胳膊
-//#define kRightArm @"rightArm" //右胳膊
-//#define kLeftElbow @"kLeftElbow" //左胳膊肘
-//#define kRightElbow @"kRightElbow" //右胳膊肘加手掌
-//#define kLeftHand @"leftHand" //左手
-//#define kRightFinger @"rightFinger" //右手指
-
-/// 这里加载下数据
-- (void)loadData{
+- (void)cancelConfirmBtn{
     
-    
-    NSArray *helmets = @[@"EliteKnightHelm",@"LeatherHelm",@"BerserkHelm",@"PriestHelm",@"WizardHelm"];
-    NSDictionary *armors = @{@"KnightArmor":kBody,@"Armor1":kBody};
-    NSArray *weapon1s = @[@"FamilySword",@"GuardSword1"];
-    _allEquipDic = @{@"1":helmets,@"2":armors,@"8":weapon1s};
-    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(-120 + kScreenWidth / 2.0, _bgHeight - 50, 50, 50)];
+    [btn setImage:[UIImage imageNamed:@"confirm"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
+    btn.layer.masksToBounds = YES;
+    btn.layer.cornerRadius = 25.f;
+    btn.backgroundColor = [UIColor whiteColor];
+    [self.superview addSubview:btn];
     
 }
+
+- (void)confirmAction:(UIButton *)sender{
+    
+    [sender removeFromSuperview];
+    [_equipCollectionView reloadHaveChangeArr];
+    self.hidden = YES;
+    
+    _confirmBlock();
+}
+
+
+
+- (void)reloadDataWithName:(NSString *)name {
+    
+    [WDDataManager shareManager].userName = name;
+    _equipButtonCollectionView.userName = name;
+    
+    NSString *key = [NSString stringWithFormat:@"%@_user",name];
+    WDBaseModel *model = [[WDDataManager shareManager]searchData:key];
+    
+    NSArray *helmets = @[model.Equip_helmet];
+    NSDictionary *armors = @{kBody:model.Equip_armor};
+    NSDictionary *leftArm = @{kLeftArm:model.Equip_pauldrons};
+    NSDictionary *gloves = @{kLeftHandAro:model.Equip_gloves};
+    NSDictionary *hip = @{kHip:model.Equip_belt};
+    NSDictionary *foot = @{kFoot:model.Equip_boots};
+    
+    NSArray *shield   = @[model.Equip_shield];
+    NSArray *weapon1s = @[model.Equip_sword1h];
+    
+    _allEquipDic = @{@"1":helmets,@"2":armors,@"3":leftArm,@"4":gloves,@"5":hip,@"6":foot,@"7":shield,@"8":weapon1s};
+    [self changeEquip:Equip_helmet - 1 name:name];
+}
+
 
 - (void)bgView{
     
@@ -113,9 +134,10 @@
     [_equipButtonCollectionView registerNib:[UINib nibWithNibName:@"WDEquipBtnCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([WDEquipBtnCell class])];
     
     __weak typeof(self)weakSelf = self;
-    [_equipButtonCollectionView setChangeEquipBlock:^(NSInteger row) {
-        [weakSelf changeEquip:row];
+    [_equipButtonCollectionView setChangeEquipBlock:^(NSInteger row, NSString * _Nonnull userName) {
+        [weakSelf changeEquip:row name:userName];
     }];
+  
 }
 
 - (void)createEquipCollectionView{
@@ -160,14 +182,14 @@
 
 #pragma mark - 操作 -
 /// 更换选中的装备位置
-- (void)changeEquip:(EquipType)index{
+- (void)changeEquip:(EquipType)index name:(NSString *)userName{
     
     NSString *key = [NSString stringWithFormat:@"%ld",index + 1];
     id value = _allEquipDic[key];
     if ([value isKindOfClass:[NSArray class]]) {
-        [_equipCollectionView reloadDataWithArr:_allEquipDic[key] index:index];
+        [_equipCollectionView reloadDataWithArr:_allEquipDic[key] index:index name:userName];
     }else{
-        [_equipCollectionView reloadDataWithDic:_allEquipDic[key] index:index];
+        [_equipCollectionView reloadDataWithDic:_allEquipDic[key] index:index name:userName];
     }
     
 }

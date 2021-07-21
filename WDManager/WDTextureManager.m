@@ -26,6 +26,27 @@ static WDTextureManager *textureManager = nil;
 
 
 #pragma mark - getter -
+- (SKTexture *)speak{
+    if (!_speak) {
+        _speak = [SKTexture textureWithImage:[UIImage imageNamed:@"speak"]];
+    }
+    return _speak;;
+}
+
+- (SKTexture *)confirm{
+    if (!_confirm) {
+        _confirm = [SKTexture textureWithImage:[UIImage imageNamed:@"confirm"]];
+    }
+    return _confirm;
+}
+
+- (SKTexture *)cancel{
+    if (!_cancel) {
+        _cancel = [SKTexture textureWithImage:[UIImage imageNamed:@"cancel"]];
+    }
+    return _cancel;
+}
+
 - (SKTexture *)arrowTexture
 {
     if (!_arrowTexture) {
@@ -182,11 +203,13 @@ static WDTextureManager *textureManager = nil;
 - (NSArray<SKTexture *> *)handClickArr{
    
     if (!_handClickArr) {
-        _handClickArr = [WDCalculateTool curImageWithImage:[UIImage imageNamed:@"hand2"] line:1 arrange:2 itemSize:CGSizeMake(128, 128) count:2];;
+        _handClickArr = [WDCalculateTool curImageWithImage:[UIImage imageNamed:@"hand2"] line:1 arrange:2 itemSize:CGSizeMake(128, 128) count:3];
     }
     
     return _handClickArr;
 }
+
+
 
 #pragma mark - 人物情绪 -
 - (NSArray *)balloonTexturesWithLine:(NSInteger)line

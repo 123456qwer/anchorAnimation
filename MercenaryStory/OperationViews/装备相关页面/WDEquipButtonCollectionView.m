@@ -59,7 +59,7 @@
     _isSelect[indexPath.row] = YES;
     [self reloadData];
     
-    _changeEquipBlock(indexPath.row);
+    _changeEquipBlock(indexPath.row,_userName);
 }
 
 @end

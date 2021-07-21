@@ -14,10 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 帽子之类的
 - (void)reloadDataWithArr:(NSArray *)equipArr
-                    index:(NSInteger)index;
+                    index:(NSInteger)index
+                     name:(NSString *)userName;
 /// 其他装备
 - (void)reloadDataWithDic:(NSDictionary *)equipDic
-                    index:(NSInteger)index;
+                    index:(NSInteger)index
+                     name:(NSString *)userName;
+
+/// 关闭装备页面，清空选中状态
+- (void)reloadHaveChangeArr;
 
 @end
 

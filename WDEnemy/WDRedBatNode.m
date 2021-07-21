@@ -218,7 +218,7 @@
 {
     
     self.zPosition = 10000 - self.position.y;
-    self.zPosition = self.zPosition + 100;
+    self.zPosition = self.zPosition + 150;
       
     
     if (self.state & Sprite_dead) {

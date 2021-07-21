@@ -29,7 +29,7 @@
     node.attackNumber       = 20;
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 0;
-    node.attackNumber       = 20;
+    node.attackNumber       = 25;
     node.hateNumber         = 100;
 }
 

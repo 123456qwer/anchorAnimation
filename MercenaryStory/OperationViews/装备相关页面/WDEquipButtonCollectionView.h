@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDEquipButtonCollectionView : UICollectionView<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (nonatomic,copy)void (^changeEquipBlock)(NSInteger row);
+@property (nonatomic,copy)NSString *userName;
+@property (nonatomic,copy)void (^changeEquipBlock)(NSInteger row,NSString *userName);
 
 @end
 
