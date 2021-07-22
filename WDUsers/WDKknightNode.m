@@ -7,6 +7,8 @@
 
 #import "WDKknightNode.h"
 #import "WDEnemyNode.h"
+#import "WDBaseNode+Animation.h"
+
 @implementation WDKknightNode
 
 - (void)createUserNodeWithScale:(CGFloat)scale
@@ -34,6 +36,11 @@
         self.targetNode = nil;
     }
     
+    if (self.state & Sprite_attack) {
+        [self removeLegAnimation];
+        return;
+    }
+    
     if (self.targetNode) {
         
         /// 行走方向
@@ -48,7 +55,6 @@
             return;
         }
         
-        
         /// 超出距离
         int distanceX = fabs(self.position.x - self.targetNode.position.x);
         int distanceY = fabs(self.position.y - self.targetNode.position.y);
@@ -58,10 +64,11 @@
             [self moveAction:movePoint];
             return;
         }
+        
         ///可以攻击的状态
         [self attackAction:self.targetNode];
-        
     }
+    
 }
 
 - (void)beAttackAction:(WDBaseNode *)enemyNode

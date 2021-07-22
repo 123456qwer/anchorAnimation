@@ -8,6 +8,8 @@
 #import "WDBaseNode+Animation.h"
 #import "WDEnemyNode.h"
 #import "WDBaseScene.h"
+#import "WDBaseNode+Emoji.h"
+
 @implementation WDBaseNode (Animation)
 
 #pragma mark - 上半身 -
@@ -108,10 +110,11 @@
 #pragma mark - 腿部 -
 - (void)removeLegAnimation
 {
-    [self.leftKnee removeActionForKey:KAnimationFootMove];
-    [self.leftFoot removeActionForKey:KAnimationFootMove];
     [self.rightKnee removeActionForKey:KAnimationFootMove];
     [self.rightFoot removeActionForKey:KAnimationFootMove];
+    [self.leftKnee removeActionForKey:KAnimationFootMove];
+    [self.leftFoot removeActionForKey:KAnimationFootMove];
+    
     
     self.rightKnee.zRotation = self.rightKnee.defaultAngle;
     self.rightFoot.zRotation = self.rightFoot.defaultAngle;
@@ -179,13 +182,11 @@
 /// 单手武器攻击
 - (void)singleAttackAction:(WDBaseNode *)enemyNode{
     
-    self.body.zRotation = DEGREES_TO_RADIANS(0);
-    self.hip.zRotation  = DEGREES_TO_RADIANS(0);
-    [self.body removeActionForKey:kAnimationUpBody];
-    [self.hip removeActionForKey:kAnimationUpBody];
-    
+  
     self.state = self.state | Sprite_attack;
-    
+   
+    [self pauseWalkOrRun];
+
     /// 左胳膊的动作条
     SKAction *armAction = [SKAction rotateToAngle:DEGREES_TO_RADIANS(115) duration:0.15];
     
@@ -295,6 +296,8 @@
     
    
     self.state = self.state | Sprite_attack;
+   
+    [self pauseWalkOrRun];
     
     self.bowMiddle.zPosition = 10000;
     self.rightHand.zPosition = 10001;
@@ -312,7 +315,7 @@
     }
     
     
-    NSTimeInterval time1 = 0.25;
+    
     CGFloat angle = RADIANS_TO_DEGREES(rads);
     if (angle > 75) {
         rads = DEGREES_TO_RADIANS(75);
@@ -320,9 +323,16 @@
         rads = DEGREES_TO_RADIANS(30);
     }
 
-    
+    NSTimeInterval time1 = 0.25;
     NSTimeInterval time2 = 0.2;
     NSTimeInterval time3 = 0.05;
+    NSTimeInterval time4 = 0.2;
+    if (self.skill1) {
+        time1 = 0.1;
+        time2 = 0.05;
+        time3 = 0.01;
+        time4 = 0.03;
+    }
     
     ///左手的动作
     CGFloat leftAngle = 60 + RADIANS_TO_DEGREES(rads);
@@ -378,6 +388,9 @@
                     
         }];
         
+        
+        weakSelf.mouth.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Mouth_Fishy"]];
+        
         [weakSelf.leftArm runAction:leftArmSeq completion:^{
             
             [weakSelf.body runAction:bodyAction2];
@@ -387,7 +400,8 @@
             
             [weakSelf.rightArm runAction:rightArmAction2 completion:^{
                 
-                [weakSelf runAction:[SKAction waitForDuration:0.2] completion:^{
+                [weakSelf normalFaceState];
+                [weakSelf runAction:[SKAction waitForDuration:time4] completion:^{
                     weakSelf.state = weakSelf.state ^ Sprite_attack;
                 }];
                 
@@ -526,28 +540,7 @@
     }];
 }
 
-#pragma mark - 表情 -
-///正常
-- (void)normalFaceState{
-    
-    self.mouth.texture = self.defaultMouthTexture;
-    self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"EyeBrows_Eyebrows"]];
-}
 
-///生气
-- (void)angleFaceState{
-    
-    self.mouth.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Mouth_Angry"]];
-    self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"EyeBrows_Angry"]];
-}
-
-///死亡
-- (void)deadFaceState
-{
-    self.mouth.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Mouth_Dead"]];
-    self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"EyeBrows_Dead"]];
-    self.eye.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Eye_Dead"]];
-}
 
 #pragma mark - 互动 -
 /// 减血血条动画
@@ -561,9 +554,12 @@
    
     if (lastBlood <= 0) {
         attackNumber = self.lastBlood;
+        self.lastBlood = 0;
+    }else{
+        self.lastBlood = lastBlood;
     }
     
-    self.lastBlood = lastBlood;
+    
     
     ///剩余血的半分比
     CGFloat percent = (float)self.lastBlood / (float)self.initBlood;

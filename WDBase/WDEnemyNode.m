@@ -7,6 +7,8 @@
 
 #import "WDEnemyNode.h"
 #import "WDBaseNode+Animation.h"
+#import "WDBaseNode+Emoji.h"
+
 @implementation WDEnemyNode
 #pragma mark - 敌人 -
 - (void)createUserNodeWithScale:(CGFloat)scale{
@@ -89,6 +91,8 @@
         self.targetNode = node;
     }
 }
+
+
 
 /// 一直在更新的方法
 - (void)upDataAction
@@ -236,7 +240,6 @@
         isWalk = NO;
     }
 
-    [self normalFaceState];
     
     if (!(self.state & moveState)) {
         
@@ -318,5 +321,7 @@
     NSLog(@"%@释放了",self.name);
     [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationForAddHateNumber object:nil];
 }
+
+
 
 @end

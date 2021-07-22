@@ -13,6 +13,7 @@
 #import "WDPriestNode.h"
 #import "WDArcherNode.h"
 #import "WDWizardNode.h"
+#import "WDBaseNode+Emoji.h"
 
 @implementation WDTestScene
 {
@@ -54,36 +55,34 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-    
+   
+    self.bgNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Forest"]]];
+    [self addChild:self.bgNode];
 
     CGFloat bgScale = 2 * kScreenWidth / self.bgNode.size.width;
-    self.bgNode.xScale = bgScale;
-    self.bgNode.yScale = bgScale;
+    self.bgNode.xScale = 1;
+    self.bgNode.yScale = 1;
 
     
-    _knight = [WDBaseNode initActionWithName:kKinght superNode:self position:CGPointMake(0, 0)];
+    _priest = [WDBaseNode initActionWithName:kPriest superNode:self position:CGPointMake(0, 0)];
 //    _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
 //    _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
 //    _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
-    self.selectNode = _knight;
+    self.selectNode = _priest;
     self.selectNode.arrowNode.hidden = NO;
     //self.hateNameArr = @[_knight.name,_priest.name,_archer.name,_wizard.name];
-    self.hateNameArr = @[_knight.name];
+   // self.hateNameArr = @[_knight.name];
     
-    //[WDBaseNode initTextureActionWithName:kRedBat superNode:self position:CGPointMake(0, 0)];
-    //[WDBaseNode initActionWithName:kSolider1 superNode:self position:CGPointMake(0, 0)];
+   // [WDBaseNode initTextureActionWithName:kRedBat superNode:self initPoint:CGPointMake(1, 0)];
     
-    _knight.position = CGPointMake(0, 0);
-    [_knight setAllArmor:@"KnightArmor"];
-    _knight.xScale = 2.0;
-    _knight.yScale = 2.0;
-//    _priest.position = CGPointMake(_priest.size.width, 0);
-//    _wizard.position = CGPointMake(-_priest.size.width, 0);
-//    _archer.position = CGPointMake(-_priest.size.width * 2.0, 0);
+//    [WDBaseNode initActionWithName:kSolider1 superNode:self position:CGPointMake(0, 0)];
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeUser object:self.selectNode.name];
-    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForHiddenSkill object:@(1)];
+    
 
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [_priest omgFaceState];
 }
 
 

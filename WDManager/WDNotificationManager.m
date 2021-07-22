@@ -17,5 +17,14 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeEquip object:equipDic userInfo:nil];
 }
 
++ (void)changeUser:(NSString *)userName{
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeUser object:userName userInfo:nil];
+}
+
+/// 是否隐藏技能框(1不隐藏，0隐藏)
++ (void)hiddenSkillView:(NSInteger)index{
+    [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForHiddenSkill object:@(index)];
+
+}
 
 @end

@@ -6,10 +6,13 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+
 #import "WDAttributeManager.h"
 #import "WDHateManager.h"
 #import "WDTalkNode.h"
 #import "WDBalloonNode.h"
+
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -135,6 +138,10 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 
 ///默认嘴的纹理
 @property (nonatomic,strong)SKTexture *defaultMouthTexture;
+///默认眼睛的纹理
+@property (nonatomic,strong)SKTexture *defaultEyeTexture;
+///默认眉毛的纹理
+@property (nonatomic,strong)SKTexture *defaultEyesBrowsTexture;
 
 /// 选中箭头
 @property (nonatomic,strong)WDBaseNode *arrowNode;
@@ -208,8 +215,10 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,assign)int initBlood;
 /// 剩余血量
 @property (nonatomic,assign)int lastBlood;
-/// 治疗量
+/// 当前治疗量
 @property (nonatomic,assign)int cureNumber;
+/// 增加的治疗量
+@property (nonatomic,assign)int realCureNumber;
 /// 方向，默认1是向右，-1向左
 @property (nonatomic,assign)int direction;
 
@@ -307,6 +316,13 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 - (void)createBlood:(CGFloat)scale;
 ///
 - (void)setBloodYPosition:(CGFloat)yPage;
+
+
+/// 普通选中状态
+- (void)selectSpriteAction;
+
+/// 治愈选中状态
+- (void)cureSelectSpriteAction;
 
 #pragma mark - 一些判断方法 -
 /// 暂停走、跑

@@ -145,8 +145,7 @@
             [btn reloadAction];
         }
     }
-    
-    
+
 }
 
 - (void)skillAction:(WDSkillBtn *)sender
@@ -194,11 +193,11 @@
         //背景
         if ([keyName containsString:@"_view"]) {
             UIView *view = self.skillViewDic[keyName];
-//            if ([keyName isEqualToString:viewNameKey]) {
+            if ([keyName isEqualToString:viewNameKey]) {
                 view.hidden = NO;
-//            }else{
-//                view.hidden = YES;
-//            }
+            }else{
+                view.hidden = YES;
+            }
         }
         
         //技能cd
@@ -216,11 +215,11 @@
                 NSInteger index = btn.tag - 100;
                 NSString *skillName = [NSString stringWithFormat:@"%@_%ld",name,index];
                 /// 测试状态，所以先注释掉
-//                if ([defaults boolForKey:skillName]) {
+                if ([defaults boolForKey:skillName]) {
                     btn.hidden = NO;
-//                }else{
-//                    btn.hidden = YES;
-//                }
+                }else{
+                    btn.hidden = YES;
+                }
                 
             }
         }

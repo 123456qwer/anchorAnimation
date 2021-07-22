@@ -113,10 +113,14 @@
     _eye.zPosition = 0;
     [_head addChild:_eye];
     
+    self.defaultEyeTexture = _eye.texture;
+    
     //眉毛
     _eyeBrows = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].normalEyeBrows];
     _eyeBrows.zPosition = 0;
     [_head addChild:_eyeBrows];
+    
+    self.defaultEyesBrowsTexture = _eyeBrows.texture;
     
     //嘴
     _mouth = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].normalMouth];
@@ -440,9 +444,7 @@
     if (self.state & Sprite_attack) {
         return;
     }
-    
-    [self pauseWalkOrRun];
-    
+        
     switch (self.mode) {
         case Attack_singleHand:
         {
@@ -491,6 +493,27 @@
     
     self.state = Sprite_dead;
     [self deadAnimation];
+}
+
+- (void)selectSpriteAction
+{
+    SKAction *a = [SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:0.7 duration:0.15];
+    SKAction *b = [SKAction colorizeWithColorBlendFactor:0 duration:0.15];
+    SKAction *seq = [SKAction sequence:@[a,b]];
+    SKAction *rep = [SKAction repeatAction:seq count:2];
+    
+    [self runAction:rep];
+}
+
+- (void)cureSelectSpriteAction{
+    
+    ///4ebd00
+    SKAction *a = [SKAction colorizeWithColor:[UIColor greenColor] colorBlendFactor:0.7 duration:0.15];
+    SKAction *b = [SKAction colorizeWithColorBlendFactor:0 duration:0.15];
+    SKAction *seq = [SKAction sequence:@[a,b]];
+    SKAction *rep = [SKAction repeatAction:seq count:2];
+    
+    [self runAction:rep];
 }
 
 - (void)addHateNumberWithAttackNode:(WDBaseNode *)node{}
@@ -558,6 +581,7 @@
     [self setLeftWeapon:model.Equip_sword1h];
     [self setRightShield:model.Equip_shield];
     
+    [self setBow:model.Equip_bow];
 }
 
 - (void)setAllArmor:(NSString *)armorName{
@@ -668,11 +692,13 @@
 /// 设置眉毛
 - (void)setEyeBrowsTexture:(NSString *)name{
     self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+    self.defaultEyesBrowsTexture = self.eyeBrows.texture;
 }
 
 /// 设置眼睛
 - (void)setEyeTexture:(NSString *)name{
     self.eye.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+    self.defaultEyeTexture = self.eye.texture;
 }
 
 /// 帽子
@@ -787,51 +813,75 @@
 
 - (void)setBow:(NSString *)bowName{
     
-    NSArray *bowArr = [WDCalculateTool cutBow:[UIImage imageNamed:bowName]];
-    
-    SKTexture *middle = bowArr[0];
-    SKTexture *bow    = bowArr[1];
-    SKTexture *arrow  = bowArr[2];
-    
-    self.arrowTexture = arrow;
-    
-    if (!_bowMiddle) {
-        _bowMiddle = [WDBaseNode spriteNodeWithTexture:middle];
-        _bowMiddle.anchorPoint = CGPointMake(0.5, 0.5);
-        _bowMiddle.position = CGPointMake(35, -8);
-        _bowMiddle.zPosition = 0;
-        _bowMiddle.zRotation = DEGREES_TO_RADIANS(-30);
-        [_rightElbow addChild:_bowMiddle];
+    if ([bowName isEqualToString:@"n"]) {
+        
+        if (_bowMiddle) {
+            [_bowMiddle removeFromParent];
+            _bowMiddle = nil;
+        }
+        
+        if (_bowUp) {
+            [_bowUp removeFromParent];
+            _bowUp = nil;
+        }
+        
+        if (_bowDown) {
+            [_bowDown removeFromParent];
+            _bowDown = nil;
+        }
+        
     }else{
-        _bowMiddle.texture = middle;
-    }
-    
-    
-    if (!_bowUp) {
-        _bowUp = [WDBaseNode spriteNodeWithTexture:bow];
-        _bowUp.anchorPoint = CGPointMake(0.5, 0.2);
-        _bowUp.position = CGPointMake(1, 20);
-        _bowUp.zPosition = 0;
-        _bowUp.zRotation = DEGREES_TO_RADIANS(0);
-        _bowUp.defaultAngle = DEGREES_TO_RADIANS(0);
-        [_bowMiddle addChild:_bowUp];
-    }else{
-        _bowUp.texture = bow;
-    }
-    
+        
+        NSArray *bowArr = [WDCalculateTool cutBow:[UIImage imageNamed:bowName]];
+        
+        SKTexture *middle = bowArr[0];
+        SKTexture *bow    = bowArr[1];
+        SKTexture *arrow  = bowArr[2];
+        
+        self.arrowTexture = arrow;
+        
+        if (!_bowMiddle) {
+            _bowMiddle = [WDBaseNode spriteNodeWithTexture:middle];
+            _bowMiddle.anchorPoint = CGPointMake(0.5, 0.5);
+            _bowMiddle.position = CGPointMake(35, -8);
+            _bowMiddle.zPosition = 0;
+            _bowMiddle.zRotation = DEGREES_TO_RADIANS(-30);
+            [_rightElbow addChild:_bowMiddle];
+        }else{
+            _bowMiddle.texture = middle;
+        }
+        
+        
+        if (!_bowUp) {
+            _bowUp = [WDBaseNode spriteNodeWithTexture:bow];
+            _bowUp.anchorPoint = CGPointMake(0.5, 0.2);
+            _bowUp.position = CGPointMake(1, 20);
+            _bowUp.zPosition = 0;
+            _bowUp.zRotation = DEGREES_TO_RADIANS(0);
+            _bowUp.defaultAngle = DEGREES_TO_RADIANS(0);
+            [_bowMiddle addChild:_bowUp];
+        }else{
+            _bowUp.texture = bow;
+        }
+        
 
-    if (!_bowDown) {
-        _bowDown = [WDBaseNode spriteNodeWithTexture:bow];
-        _bowDown.anchorPoint = CGPointMake(0.5, 0.2);
-        _bowDown.position = CGPointMake(1, -17);
-        _bowDown.zPosition = 0;
-        _bowDown.xScale  = -1;
-        _bowDown.zRotation = DEGREES_TO_RADIANS(- 180);
-        _bowDown.defaultAngle = DEGREES_TO_RADIANS(- 180);
-        [_bowMiddle addChild:_bowDown];
-    }else{
-        _bowDown.texture = bow;
+        if (!_bowDown) {
+            _bowDown = [WDBaseNode spriteNodeWithTexture:bow];
+            _bowDown.anchorPoint = CGPointMake(0.5, 0.2);
+            _bowDown.position = CGPointMake(1, -17);
+            _bowDown.zPosition = 0;
+            _bowDown.xScale  = -1;
+            _bowDown.zRotation = DEGREES_TO_RADIANS(- 180);
+            _bowDown.defaultAngle = DEGREES_TO_RADIANS(- 180);
+            [_bowMiddle addChild:_bowDown];
+        }else{
+            _bowDown.texture = bow;
+        }
     }
+    
+   
+    
+    
     
     
 }

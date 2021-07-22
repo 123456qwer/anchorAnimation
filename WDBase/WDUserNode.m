@@ -7,6 +7,7 @@
 
 #import "WDUserNode.h"
 #import "WDBaseNode+Animation.h"
+#import "WDBaseNode+Emoji.h"
 
 @implementation WDUserNode
 
@@ -69,7 +70,6 @@
             isWalk = NO;
         }
 
-        [self normalFaceState];
         
         if (!(self.state & moveState)) {
             
@@ -148,5 +148,28 @@
     
     
 }
+
+- (void)selectSpriteAction
+{
+    SKAction *a = [SKAction colorizeWithColor:[UIColor blackColor] colorBlendFactor:1 duration:0.15];
+    SKAction *b = [SKAction colorizeWithColorBlendFactor:0 duration:0.15];
+    SKAction *seq = [SKAction sequence:@[a,b]];
+    SKAction *rep = [SKAction repeatAction:seq count:4];
+    
+    [self.arrowNode runAction:rep];
+    [self.shadow runAction:rep];
+}
+
+- (void)cureSelectSpriteAction{
+    
+    ///4ebd00
+    SKAction *a = [SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1 duration:0.15];
+    SKAction *b = [SKAction colorizeWithColorBlendFactor:0 duration:0.15];
+    SKAction *seq = [SKAction sequence:@[a,b]];
+    SKAction *rep = [SKAction repeatAction:seq count:4];
+    
+    [self.shadow runAction:rep];
+}
+
 
 @end

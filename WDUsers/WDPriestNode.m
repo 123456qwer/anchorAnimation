@@ -6,6 +6,7 @@
 //
 
 #import "WDPriestNode.h"
+#import "WDBaseNode+Animation.h"
 
 @implementation WDPriestNode
 - (void)createUserNodeWithScale:(CGFloat)scale
@@ -19,8 +20,9 @@
 
 
     [self setHairTexture:@"ShortPonytail"];
-    [self setEyeTexture:@"EyesBlue"];
-    [self setMouthTexture:@"Mouth_Bored"];
+    [self setEyeTexture:@"Eyes10"];
+    [self setMouthTexture:@"Mouth_smile"];
+    [self setEyeBrowsTexture:@"EyeBrows_love"];
 
     [self standAction];
     
@@ -36,7 +38,7 @@
         return;
     }
     
-    if (self.state & Sprite_cure || self.state & Sprite_walk || self.state & Sprite_run) {
+    if (self.state & Sprite_cure) {
         return;
     }
     
@@ -74,13 +76,18 @@
         return;
     }
     
+    if (self.state & Sprite_attack) {
+        [self removeLegAnimation];
+        return;
+    }
+    
     if (self.state & Sprite_cure) {
         self.state = self.state ^ Sprite_cure;
     }
     
     self.state = self.state | Sprite_attack;
     
-    [self removeAllBodyAction];
+    [self pauseWalkOrRun];
     
     NSTimeInterval time1 = 0.5;
     

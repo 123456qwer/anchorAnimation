@@ -58,6 +58,10 @@ NS_ASSUME_NONNULL_BEGIN
                    image:(UIImage *)image
            curImageFrame:(CGRect)frame;
 
+
+
++ (UIColor *)colorFromHexRGB:(NSString *)inColorString;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -363,12 +363,11 @@
         
         self.selectNode.cureNode = user;
         self.selectNode.targetNode = nil;
+        [user cureSelectSpriteAction];
         
     }else{
         
-        self.selectNode.arrowNode.hidden = YES;
-        self.selectNode = user;
-        self.selectNode.arrowNode.hidden = NO;
+        [self changeSelectNode:user];
     }
 }
 
@@ -387,17 +386,8 @@
     self.selectNode.targetNode = enemy;
     self.selectNode.cureNode   = nil;
     [self.selectNode removeAllActions];
-    [self.selectNode pauseWalkOrRun];
-
     
-    CGFloat dis = [WDCalculateTool distanceBetweenPoints:enemy.position seconde:self.selectNode.position];
-    
-    if (dis <= self.selectNode.size.width || self.selectNode.attackDistance > 0) {
-        [self.selectNode attackAction:enemy];
-    }else{
-        CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self.selectNode enemy:enemy];
-        [_selectNode moveAction:movePoint];
-    }
+   
 }
 
 /// 显示装备栏
@@ -456,10 +446,13 @@
     
 }
 
-- (void)speakChangeSelectWithNode:(WDBaseNode *)node{
+- (void)changeSelectNode:(WDBaseNode *)node{
     _selectNode.arrowNode.hidden = YES;
     _selectNode = node;
     _selectNode.arrowNode.hidden = NO;
+    
+    [_selectNode selectSpriteAction];
+    
 }
 
 - (void)endTalkAction{

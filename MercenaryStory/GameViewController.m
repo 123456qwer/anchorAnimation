@@ -8,8 +8,7 @@
 #import "GameViewController.h"
 #import "GameViewController+Data.h"
 
-#import "WDTestScene.h"
-#import "WDLearnScene1.h"
+
 #import "WDEquipScene.h"
 
 
@@ -36,35 +35,26 @@
     /// 第一次进入初始化数据
     [self initDataAction];
     
-    
+    NSString *sceneStr = @"";
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//
+    if (![defaults boolForKey:kLearnPass1]) {
+        sceneStr = @"WDLearnScene1";
+    }else if(![defaults boolForKey:kLearnPass2]){
+        sceneStr = @"WDLearnScene2";
+    }
     
 //    CGFloat a = [UIScreen mainScreen].scale;
     
-    //[self createSkillView];
-    
+    [self createSkillView];
     [self createEquipView];
     [self createMenuView];
     
-    [self createSceneWithName:@"WDLearnScene1"];
+    [self createSceneWithName:sceneStr];
     
 }
 
 
-
-
-/// 初始化起始技能
-- (void)initUserSkill{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *key1 = [NSString stringWithFormat:@"%@_0",kKinght];
-    NSString *key2 = [NSString stringWithFormat:@"%@_0",kArcher];
-    NSString *key3 = [NSString stringWithFormat:@"%@_0",kPriest];
-    NSString *key4 = [NSString stringWithFormat:@"%@_0",kWizard];
-    
-    [defaults setBool:YES forKey:key1];
-    [defaults setBool:YES forKey:key2];
-    [defaults setBool:YES forKey:key3];
-    [defaults setBool:YES forKey:key4];
-}
 
 #pragma mark - 主要菜单栏 -
 - (void)createMenuView{
@@ -94,7 +84,7 @@
     
     
     _skillView = [[WDSkillView alloc] initWithFrame:CGRectMake(x,kScreenHeight - 50 - page, width , 50)];
-    _skillView.backgroundColor = [UIColor orangeColor];
+    //_skillView.backgroundColor = [UIColor orangeColor];
     _skillView.hidden = YES;
     [self.view addSubview:_skillView];
     __weak typeof(self)weakSelf = self;
@@ -124,13 +114,16 @@
 #pragma mark - 创建场景 (根据场景名称) -
 - (void)createSceneWithName:(NSString *)sceneName{
     
+    //sceneName = @"WDTestScene";
     
      Class class = NSClassFromString(sceneName);
      WDBaseScene *scene = [class nodeWithFileNamed:sceneName];
      
+    
+    
      SKView *skView = (SKView *)self.view;
- 
-     [skView presentScene:scene];
+     SKTransition *tr = [SKTransition fadeWithDuration:1];
+     [skView presentScene:scene transition:tr];
 
      skView.showsFPS = YES;
      skView.showsNodeCount = YES;

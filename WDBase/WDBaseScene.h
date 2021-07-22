@@ -94,8 +94,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)stopTalk;
 
-/// 对话目标转化
-- (void)speakChangeSelectWithNode:(WDBaseNode *)node;
+/// 目标转化
+- (void)changeSelectNode:(WDBaseNode *)node;
 
 /// 设置点击
 - (void)setClickNodePositionWithNode:(WDBaseNode *)node;

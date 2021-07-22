@@ -37,14 +37,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 死亡动画
 - (void)deadAnimation;
 
-///表情
-///正常
-- (void)normalFaceState;
-///生气
-- (void)angleFaceState;
-///死亡的表情
-- (void)deadFaceState;
-
 ///减血
 - (void)reduceBlood:(CGFloat)attackNumber;
 ///加血

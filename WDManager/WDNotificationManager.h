@@ -19,6 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// 换装
 + (void)changeEquip:(NSDictionary *)equipDic;
 
+/// 换人
++ (void)changeUser:(NSString *)userName;
+
+/// 是否隐藏技能框(1不隐藏，0隐藏)
++ (void)hiddenSkillView:(NSInteger)index;
+
 
 @end
 

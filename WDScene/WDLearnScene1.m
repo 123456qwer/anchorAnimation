@@ -11,6 +11,7 @@
 #import "WDBaseScene+MonsterLocation.h"
 #import "WDRedBatNode.h"
 #import "WDRedBatModel.h"
+#import "WDBaseNode+Emoji.h"
 
 @implementation WDLearnScene1
 {
@@ -46,11 +47,11 @@
     [super didMoveToView:view];
     
     _isCreate = YES;
-
+    
+    self.bgNode.size = CGSizeMake(kScreenWidth * 2.0, kScreenHeight * 2.0);
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moveEnd) name:kNotificationForMoveEnd object:nil];
     
-    self.bgNode.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"LearnScene.jpg"]];
     
     self.knight.position = CGPointMake(-kScreenWidth / 2.0, 0);
     self.clickNode.position = CGPointMake(-kScreenWidth / 2.0, self.clickNode.position.y);
@@ -110,7 +111,7 @@
     
     
     if (_isSelectOver) {
-        NSLog(@"1");
+        
         return;
     }
     
@@ -123,7 +124,7 @@
             if ([node.name isEqualToString:@"confirm"]) {
                 
                 [self hiddenConfirmNodes];
-                [self speakChangeSelectWithNode:self.knight];
+                [self changeSelectNode:self.knight];
                 [self setTextAction:@"虽然在下还有要事在身，但为报恩\n在所不辞！" hiddenTime:3 completeBlock:^{
                     [weakSelf endTalkYes1];
                 }];
@@ -132,7 +133,7 @@
             }else if([node.name isEqualToString:@"cancel"]){
                 
                 [self hiddenConfirmNodes];
-                [self speakChangeSelectWithNode:self.knight];
+                [self changeSelectNode:self.knight];
                 [self setTextAction:@"因为在下还有要事在身，所以。。。。" hiddenTime:3 completeBlock:^{
                     [weakSelf endTalkNo1];
                 }];
@@ -164,6 +165,7 @@
             self.selectNode = knight;
             self.selectNode.arrowNode.hidden = NO;
             self.clickNode.hidden = YES;
+            [self.selectNode selectSpriteAction];
             //[self.knight.talkNode setText:@"点击移动到\n箭头指定地"];
             [self setTextAction:@"点击移动到箭头指定地点"];
         }
@@ -231,7 +233,7 @@
                 _isFourClick = YES;
                 self.clickNode.hidden = YES;
                 [self leadCureHand];
-//                [self.priest.talkNode setText:@"拖动手指\n为他治疗"];
+                [self.selectNode selectSpriteAction];
                 [self setTextAction:@"拖动手指为他治疗"];
                 break;
             }
@@ -263,6 +265,7 @@
             _isFiveClick = YES;
             self.knight.paused = NO;
             _redNode.paused    = NO;
+            [knight cureSelectSpriteAction];
             [self stopTalk];
             [_leadHandNode removeAllActions];
             [_leadHandNode removeFromParent];
@@ -288,20 +291,11 @@
         self.selectNode.state = self.selectNode.state ^ Sprite_attack;
     }
     
+    [enemy selectSpriteAction];
     self.selectNode.targetNode = enemy;
     self.selectNode.cureNode   = nil;
     [self.selectNode removeAllActions];
-    [self.selectNode pauseWalkOrRun];
 
-    
-    CGFloat dis = [WDCalculateTool distanceBetweenPoints:enemy.position seconde:self.selectNode.position];
-    
-    if (dis <= self.selectNode.size.width || self.selectNode.attackDistance > 0) {
-        [self.selectNode attackAction:enemy];
-    }else{
-        CGPoint movePoint = [WDCalculateTool calculateNodeMovePosition:self.selectNode enemy:enemy];
-        [self.selectNode moveAction:movePoint];
-    }
 }
 
 
@@ -399,6 +393,8 @@
     [WDAttributeManager setSpriteAttribute:_redNode];
     _redNode.attackNumber = 100;
     _redNode.numberName = @"showRedBat";
+    _redNode.lastBlood = 150;
+    _redNode.initBlood = 150;
 }
 
 - (void)moveEndDouble{
@@ -447,7 +443,7 @@
             
             self.priest.state = self.priest.state ^ Sprite_cure;
             self.priest.cureNode = nil;
-           
+            _isAllOver = YES;
             [self.knight moveAction:CGPointMake(0, 0)];
             [self.priest moveAction:CGPointMake(kScreenWidth / 3.0, 0)];
             //主要调整一下朝向
@@ -502,16 +498,25 @@
     
     self.knight.bgBlood.hidden = YES;
     self.priest.bgBlood.hidden = YES;
-    int time = 2;
+   
     _isAllOver = YES;
     __weak typeof(self)weakSelf = self;
-    [self speakChangeSelectWithNode:self.knight];
+    [self changeSelectNode:self.knight];
     [self setTextAction:@"救命之恩！在下没齿难忘!" hiddenTime:2 completeBlock:^{
-        [weakSelf speakChangeSelectWithNode:weakSelf.priest];
+       
+        [weakSelf changeSelectNode:weakSelf.priest];
+        [weakSelf.priest fishyFaceState];
+        
         [weakSelf setTextAction:@"我有一个疑问，你为什么要裸奔啊？" hiddenTime:2 completeBlock:^{
             
-            [weakSelf.knight.balloonNode setBalloonWithLine:6 hiddenTime:time completeBlock:^{
+            [weakSelf.knight omgFaceState];
+            
+            
+            [weakSelf.knight.balloonNode setBalloonWithLine:6 hiddenTime:3 completeBlock:^{
+                
                 [weakSelf talkTwo];
+                
+                [weakSelf.priest normalFaceState];
             }];
         
         }];
@@ -523,32 +528,40 @@
     __weak typeof(self)weakSelf = self;
     [self setTextAction:@"嘛，这样吧！你打开装栏\n我送你一些装备吧" hiddenTime:2 completeBlock:^{
         
-        [weakSelf stopTalk];
-        weakSelf.leftOrRightNode.hidden = NO;
-        CGPoint point1 = CGPointMake(weakSelf.leftOrRightNode.size.width + 70, -kScreenHeight + weakSelf.leftOrRightNode.size.height - 20);
-        CGPoint point2 = CGPointMake(weakSelf.leftOrRightNode.size.width, -kScreenHeight + weakSelf.leftOrRightNode.size.height - 20);
-        weakSelf.leftOrRightNode.position = point1;
-        SKAction *move = [SKAction moveTo:point2 duration:0.3];
-        SKAction *move2 = [SKAction moveTo:point1 duration:0.3];
-        SKAction *seq = [SKAction sequence:@[move,move2]];
-        SKAction *rep = [SKAction repeatActionForever:seq];
-        [weakSelf.leftOrRightNode runAction:rep];
+        [weakSelf changeSelectNode:weakSelf.knight];
+        [weakSelf.knight loveFaceState];
+        
+        [weakSelf setTextAction:@"真的嘛！？！？！？" hiddenTime:2 completeBlock:^{
+            
+            [weakSelf stopTalk];
+            weakSelf.leftOrRightNode.hidden = NO;
+            CGPoint point1 = CGPointMake(weakSelf.leftOrRightNode.size.width + 70, -kScreenHeight + weakSelf.leftOrRightNode.size.height - 20);
+            CGPoint point2 = CGPointMake(weakSelf.leftOrRightNode.size.width, -kScreenHeight + weakSelf.leftOrRightNode.size.height - 20);
+            weakSelf.leftOrRightNode.position = point1;
+            SKAction *move = [SKAction moveTo:point2 duration:0.3];
+            SKAction *move2 = [SKAction moveTo:point1 duration:0.3];
+            SKAction *seq = [SKAction sequence:@[move,move2]];
+            SKAction *rep = [SKAction repeatActionForever:seq];
+            [weakSelf.leftOrRightNode runAction:rep];
+            
+            
+            WDBaseModel *model = [[WDDataManager shareManager]searchData:kKinght];
+            model.Equip_shield = @"SteelShield";
+            model.Equip_helmet = @"EliteKnightHelm";
+            model.Equip_armor  = @"KnightArmor";
+            model.Equip_pauldrons = @"KnightArmor";
+            model.Equip_gloves = @"KnightArmor";
+            model.Equip_belt = @"KnightArmor";
+            model.Equip_boots = @"KnightArmor";
+            
+            NSString *allArmorName = [NSString stringWithFormat:@"%@_user",kKinght];
+            WDBaseModel *modelAll = [[WDDataManager shareManager]searchData:allArmorName];
+            [modelAll appendDataWithModel:model name:allArmorName];
+        
+            weakSelf.presentEquipBlock(kKinght);
+        }];
         
         
-        WDBaseModel *model = [[WDDataManager shareManager]searchData:kKinght];
-        model.Equip_shield = @"SteelShield";
-        model.Equip_helmet = @"EliteKnightHelm";
-        model.Equip_armor  = @"KnightArmor";
-        model.Equip_pauldrons = @"KnightArmor";
-        model.Equip_gloves = @"KnightArmor";
-        model.Equip_belt = @"KnightArmor";
-        model.Equip_boots = @"KnightArmor";
-        
-        NSString *allArmorName = [NSString stringWithFormat:@"%@_user",kKinght];
-        WDBaseModel *modelAll = [[WDDataManager shareManager]searchData:allArmorName];
-        [modelAll appendDataWithModel:model name:allArmorName];
-    
-        weakSelf.presentEquipBlock(kKinght);
     }];
     
   
@@ -560,15 +573,19 @@
     self.leftOrRightNode.hidden = YES;
     
     WDBaseModel * model = [[WDDataManager shareManager]searchData:kKinght];
-    
     [self.knight setArmorWithModel:model];
-    
+    [self changeSelectNode:self.priest];
+
     /// 没换衣服和换衣服对话不一样
     __weak typeof(self)weakSelf = self;
     if ([model.Equip_armor isEqualToString:@"n"]) {
         
+        [weakSelf.knight omgFaceState];
+        [weakSelf.priest fishyFaceState];
+        
         [self setTextAction:@"看来你还是喜欢裸奔啊。。。" hiddenTime:2 completeBlock:^{
             [weakSelf endEquip2];
+            
         }];
        
         
@@ -576,6 +593,7 @@
         
         [self setTextAction:@"看起来不错，很适合你" hiddenTime:2 completeBlock:^{
             [weakSelf endEquip2];
+            [weakSelf.knight normalFaceState];
         }];
        
     }
@@ -584,6 +602,8 @@
 
 - (void)endEquip2{
     
+    [self.knight normalFaceState];
+    [self.priest normalFaceState];
     __weak typeof(self)weakSelf = self;
     [self setTextAction:@"总之如今战乱，妖魔横行\n我准备组建个雇佣兵组织" hiddenTime:3 completeBlock:^{
         [weakSelf setTextAction:@"你意向如何，要不要加入呢？" hiddenTime:2 completeBlock:^{
@@ -595,7 +615,7 @@
 
 - (void)endTalkNo1{
     
-    [self speakChangeSelectWithNode:self.priest];
+    [self changeSelectNode:self.priest];
     
     __weak typeof(self)weakSelf = self;
     [self setTextAction:@"作为报恩，你先暂时加入我把。" hiddenTime:2 completeBlock:^{
@@ -606,7 +626,7 @@
 - (void)endTalkYes1{
     
    
-    [self speakChangeSelectWithNode:self.priest];
+    [self changeSelectNode:self.priest];
 
     __weak typeof(self)weakSelf = self;
     [self setTextAction:@"那真是太好了！" hiddenTime:2 completeBlock:^{
@@ -617,11 +637,13 @@
 - (void)endTalk2{
     
     [self hiddenConfirmNodes];
-    [self speakChangeSelectWithNode:self.priest];
+    [self changeSelectNode:self.priest];
     
     __weak typeof(self)weakSelf = self;
-    [self setTextAction:@"你那套装备\n是你前任的骑士留下的，他。。。。" hiddenTime:3 completeBlock:^{
+    [self setTextAction:@"你那套装备,是前任骑士留下的..." hiddenTime:3 completeBlock:^{
+        [weakSelf.priest normalFaceState];
         [weakSelf stopTalk];
+        [weakSelf.priest sadFaceState];
         [weakSelf.priest.balloonNode setBalloonWithLine:8 hiddenTime:2 completeBlock:^{
             [weakSelf endTalk3];
         }];
@@ -630,9 +652,11 @@
 }
 
 - (void)endTalk3{
+    
+    [self.priest normalFaceState];
     __weak typeof(self)weakSelf = self;
-    [self setTextAction:@"嘛，总之，算你在内目前总共三个人\n还有一个弓箭手" hiddenTime:4 completeBlock:^{
-        [weakSelf setTextAction:@"一起为咱们的小佣兵团加油努力吧！" hiddenTime:3 completeBlock:^{
+    [self setTextAction:@"嘛，总之，算你在内目前总共三个人\n还有一个路痴弓箭手" hiddenTime:4 completeBlock:^{
+        [weakSelf setTextAction:@"咱们的小佣兵团还会不断壮大！！" hiddenTime:3 completeBlock:^{
             [weakSelf setTextAction:@"事不宜迟，出发赶往临时的集合地点吧。" hiddenTime:3 completeBlock:^{
                 
                 [weakSelf over];
@@ -653,6 +677,7 @@
 
 - (void)overAndOver{
     
+    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:kLearnPass1];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     NSLog(@"下一章！");
     [self changeSceneWithName:@"WDLearnScene2"];
