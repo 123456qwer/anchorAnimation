@@ -12,6 +12,8 @@
 ///正常
 - (void)normalFaceState{
     
+    [self.balloonNode removeAllActions];
+    self.balloonNode.hidden = YES;
     self.mouth.texture = self.defaultMouthTexture;
     self.eyeBrows.texture = self.defaultEyesBrowsTexture;
     self.eye.texture = self.defaultEyeTexture;
@@ -22,6 +24,14 @@
     
     self.mouth.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Mouth_Angry"]];
     self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"EyeBrows_Angry"]];
+}
+
+///生气,带眼睛
+- (void)angleFaceStateWithEye{
+    
+    [self angleFaceState];
+    self.eye.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Eye_Angry"]];
+    [self.balloonNode setBalloonWithLine:Balloon_angry hiddenTime:0];
 }
 
 ///死亡
@@ -38,6 +48,7 @@
 ///疑问
 - (void)fishyFaceState{
     [self setTextureWithName:@"Fishy"];
+    
 }
 
 /// ❤️~

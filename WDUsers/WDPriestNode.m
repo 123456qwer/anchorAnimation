@@ -42,6 +42,10 @@
         return;
     }
     
+    if (self.state & Sprite_walk || self.state & Sprite_run) {
+        return;
+    }
+    
     if (self.cureNode) {
         if (self.position.x > self.cureNode.position.x) {
             self.xScale = - fabs(self.xScale);
@@ -72,13 +76,18 @@
 
 - (void)attackAction:(WDBaseNode *)enemyNode
 {
+    [self removeLegAnimation];
+
     if (self.state & Sprite_attack) {
         return;
     }
+
+    if (self.state & Sprite_walk) {
+        self.state = self.state ^ Sprite_walk;
+    }
     
-    if (self.state & Sprite_attack) {
-        [self removeLegAnimation];
-        return;
+    if (self.state & Sprite_run) {
+        self.state = self.state ^ Sprite_run;
     }
     
     if (self.state & Sprite_cure) {

@@ -15,6 +15,41 @@
 
 
 NS_ASSUME_NONNULL_BEGIN
+typedef NS_ENUM(NSInteger,Balloon_type) {
+    
+    /// 惊讶
+    Balloon_surprise    = 1, /// 0000 0001
+    
+    /// 疑问
+    Balloon_question    = 2,
+    
+    /// 高星
+    Balloon_happy = 3,
+    
+    /// 爱
+    Balloon_love    = 4,
+    
+    /// 愤怒
+    Balloon_angry      = 5,
+    
+    /// 尴尬的汗珠
+    Balloon_awkward     = 6,
+    
+    /// 无奈的线
+    Balloon_line    = 7,
+    
+    /// 点点点
+    Balloon_point    = 8,
+    
+    /// 点子！
+    Balloon_light    = 9,
+    
+    /// 弓
+    Balloon_zzz    = 10,
+    
+ 
+    
+};
 
 typedef NS_ENUM(NSInteger,EquipType) {
     
@@ -222,7 +257,7 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 /// 方向，默认1是向右，-1向左
 @property (nonatomic,assign)int direction;
 
-
+@property (nonatomic,copy)void (^_Nullable moveFinishBlock)(void);
 
 - (void)setBodyArmor:(NSString *)armorName;
 - (void)setHipArmor:(NSString *)armorName;
@@ -287,6 +322,10 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 #pragma mark - 人物行为方法 -
 /// 移动方法统一调用，根据状态判断是跑是走
 - (void)moveAction:(CGPoint)movePoint;
+
+/// 增加一个移动结束的回调
+- (void)moveAction:(CGPoint)movePoint
+   moveFinishBlock:(void (^)(void))finishBlock;
 
 /// 走动的方法
 - (void)walkAction:(CGPoint)movePoint;

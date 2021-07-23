@@ -802,6 +802,10 @@
         }
         
         [weakSelf standAction];
+        if (weakSelf.moveFinishBlock) {
+            weakSelf.moveFinishBlock();
+            weakSelf.moveFinishBlock = NULL;
+        }
         [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForMoveEnd object:nil];
     }];
 

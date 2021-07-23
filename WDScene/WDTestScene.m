@@ -55,30 +55,7 @@
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-   
-    self.bgNode = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Forest"]]];
-    [self addChild:self.bgNode];
-
-    CGFloat bgScale = 2 * kScreenWidth / self.bgNode.size.width;
-    self.bgNode.xScale = 1;
-    self.bgNode.yScale = 1;
-
-    
-    _priest = [WDBaseNode initActionWithName:kPriest superNode:self position:CGPointMake(0, 0)];
-//    _priest = [WDBaseNode initActionWithName:kPriest superNode:self];
-//    _archer = [WDBaseNode initActionWithName:kArcher superNode:self];
-//    _wizard = [WDBaseNode initActionWithName:kWizard superNode:self];
-    self.selectNode = _priest;
-    self.selectNode.arrowNode.hidden = NO;
-    //self.hateNameArr = @[_knight.name,_priest.name,_archer.name,_wizard.name];
-   // self.hateNameArr = @[_knight.name];
-    
-   // [WDBaseNode initTextureActionWithName:kRedBat superNode:self initPoint:CGPointMake(1, 0)];
-    
-//    [WDBaseNode initActionWithName:kSolider1 superNode:self position:CGPointMake(0, 0)];
-    
-    
-
+  
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

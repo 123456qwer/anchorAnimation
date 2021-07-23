@@ -380,7 +380,7 @@
 - (void)upDataAction
 {
     /// 父类只负责Z坐标和死亡以及移除腿部动画的操作，其他游戏逻辑子类自行实现
-    self.zPosition = 10000 - self.position.y;
+    self.zPosition = 4000 - self.position.y;
     
     
     if (self.state & Sprite_stand && !(self.state & Sprite_dead)) {
@@ -391,6 +391,24 @@
 
 /// 移动
 - (void)moveAction:(CGPoint)movePoint{
+    
+    self.bowMiddle.zPosition = 0;
+    self.rightHand.zPosition = 1;
+    self.rightFinger.zPosition = 2;
+    [self removeBowAnimation];
+    
+    if (self.isRunState) {
+        [self wdRunAction:movePoint];
+    }else{
+        [self walkAction:movePoint];
+    }
+}
+
+/// 增加一个移动结束的回调
+- (void)moveAction:(CGPoint)movePoint
+   moveFinishBlock:(void (^)(void))finishBlock{
+    
+    self.moveFinishBlock = finishBlock;
     
     self.bowMiddle.zPosition = 0;
     self.rightHand.zPosition = 1;

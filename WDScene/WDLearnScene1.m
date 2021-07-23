@@ -28,6 +28,7 @@
     WDBaseNode   *_leadHandNode;
     int  _diedNumber;
     BOOL _isCreate;
+   
 }
 
 
@@ -48,7 +49,7 @@
     
     _isCreate = YES;
     
-    self.bgNode.size = CGSizeMake(kScreenWidth * 2.0, kScreenHeight * 2.0);
+  
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moveEnd) name:kNotificationForMoveEnd object:nil];
     
@@ -61,6 +62,9 @@
     
     
     [self setTextAction:@"选中操作人物"];
+
+   
+    
 
     
 }
@@ -295,6 +299,10 @@
     self.selectNode.targetNode = enemy;
     self.selectNode.cureNode   = nil;
     [self.selectNode removeAllActions];
+    
+    if (self.selectNode.attackDistance > 0) {
+        [self.selectNode attackAction:enemy];
+    }
 
 }
 
@@ -512,7 +520,7 @@
             [weakSelf.knight omgFaceState];
             
             
-            [weakSelf.knight.balloonNode setBalloonWithLine:6 hiddenTime:3 completeBlock:^{
+            [weakSelf.knight.balloonNode setBalloonWithLine:6 hiddenTime:2 completeBlock:^{
                 
                 [weakSelf talkTwo];
                 

@@ -9,8 +9,15 @@
 
 @implementation GameViewController (Data)
 
+
+
+
 #pragma mark - 第一次进入游戏，初始化一下数据，只调用一次 -
 - (void)initDataAction{
+    
+    if (![[NSUserDefaults standardUserDefaults]boolForKey:kIsHaveName]) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeName) name:kNotificationForChangeName object:nil];
+    }
     
     
     if([[NSUserDefaults standardUserDefaults]boolForKey:kIsFirstLogin]){
@@ -103,5 +110,96 @@
     [manager openDBwithName:allArmor];
     [manager insterData:0 name:@[@"BowmanHelm",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"n",@"n",@"n",@"FamilyBow",@"n",@"n"] userName:allArmor];
 }
+
+
+
+#pragma mark - 设置自己的名字 -
+- (void)changeName{
+    
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake((kScreenWidth - kScreenWidth / 2.0) / 2.0, 30, kScreenWidth / 2.0, 50)];
+    textField.textAlignment = NSTextAlignmentCenter;
+    textField.backgroundColor = [UIColor whiteColor];
+    textField.layer.masksToBounds = YES;
+    textField.layer.cornerRadius = 50 / 2.0;
+    textField.tag = 1234567;
+    [self.view addSubview:textField];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification   object:nil];
+    
+    [textField becomeFirstResponder];
+    
+   
+    
+}
+
+- (void)keyboardWillShow:(NSNotification *)aNotification{
+    //获取键盘的高度
+     NSDictionary *userInfo = [aNotification userInfo];
+     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+     CGRect keyboardRect = [aValue CGRectValue];
+     int height = keyboardRect.size.height;   //height 就是键盘的高度
+     
+        
+    UITextField *t = (UITextField *)[self.view viewWithTag:1234567];
+    t.frame = CGRectMake(t.origin.x, height - 50 - 100, t.size.width, 50);
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth / 2.0 - 44 / 2.0 , t.bottom + 20, 44, 44)];
+    [btn addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
+    [btn setImage:[UIImage imageNamed:@"confirm"] forState:UIControlStateNormal];
+    btn.tag = 3211;
+    [self.view addSubview:btn];
+    
+}
+
+- (void)confirmAction:(UIButton *)sender
+{
+    UITextField *t = (UITextField *)[self.view viewWithTag:1234567];
+    if (t.text.length == 0) {
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"请输入姓名~" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:vc animated:YES completion:^{
+                    
+        }];
+        [self dismiss:vc];
+        
+    }else if(t.text.length < 2){
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"名字太短了~" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:vc animated:YES completion:^{
+                    
+        }];
+        [self dismiss:vc];
+        
+    }else if(t.text.length > 6){
+        
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"名字太长了~" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:vc animated:YES completion:^{
+                    
+        }];
+        [self dismiss:vc];
+        
+    }else{
+        
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:kIsHaveName];
+        [[NSUserDefaults  standardUserDefaults]setObject:t.text forKey:kUserName];
+        [t resignFirstResponder];
+        [t removeFromSuperview];
+        UIButton *btn = (UIButton *)[self.view viewWithTag:3211];
+        [btn removeFromSuperview];
+        [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForChangeNameAlready object:nil];
+    }
+}
+
+
+
+- (void)dismiss:(UIAlertController *)vc{
+    __weak typeof(self)weakSelf = self;
+    [vc dismissViewControllerAnimated:YES completion:^{
+        UITextField *t = (UITextField *)[weakSelf.view viewWithTag:1234567];
+        [t becomeFirstResponder];
+    }];
+}
+
+
 
 @end

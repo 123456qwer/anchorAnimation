@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 表情 -
 ///正常
 - (void)normalFaceState;
+
 ///生气
 - (void)angleFaceState;
+- (void)angleFaceStateWithEye;
 
 ///omg
 - (void)omgFaceState;

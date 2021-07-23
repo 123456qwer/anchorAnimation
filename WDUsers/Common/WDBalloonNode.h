@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDBalloonNode : SKSpriteNode
 
-@property (nonatomic,copy)void (^complete)(void);
+@property (nonatomic,copy)void (^_Nullable complete)(void);
 
 /// 显示时间和样式
 - (void)setBalloonWithLine:(NSInteger)line

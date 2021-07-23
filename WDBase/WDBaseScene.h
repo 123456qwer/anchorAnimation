@@ -41,8 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 否定
 @property (nonatomic,strong)SKSpriteNode *cancelNode;
 
-/// 背景
-@property (nonatomic,strong)SKSpriteNode *bgNode;
 /// 管理怪物
 @property (nonatomic,strong)NSMutableArray *monsterArr;
 /// 仇恨列表名称
@@ -67,7 +65,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)WDPriestNode  *priest;
 @property (nonatomic,strong)WDWizardNode  *wizard;
 
-
+/// 玩家给自己设置的名字
+@property (nonatomic,copy)NSString *userName;
 /// 技能
 - (void)skill1Action;
 - (void)skill2Action;
@@ -96,6 +95,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 目标转化
 - (void)changeSelectNode:(WDBaseNode *)node;
+
+/// 转换目标朝向
+- (void)changeSelectNodeDirection:(NSInteger)direction
+                             node:(WDBaseNode *)node;
 
 /// 设置点击
 - (void)setClickNodePositionWithNode:(WDBaseNode *)node;

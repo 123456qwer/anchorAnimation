@@ -42,6 +42,10 @@
         sceneStr = @"WDLearnScene1";
     }else if(![defaults boolForKey:kLearnPass2]){
         sceneStr = @"WDLearnScene2";
+    }else if(![defaults boolForKey:kLearnPass3]){
+        sceneStr = @"WDLearnScene3Click";
+    }else{
+        sceneStr = @"WDLearnScene4";
     }
     
 //    CGFloat a = [UIScreen mainScreen].scale;
@@ -52,6 +56,8 @@
     
     [self createSceneWithName:sceneStr];
     
+    
+   
 }
 
 
@@ -113,8 +119,7 @@
 
 #pragma mark - 创建场景 (根据场景名称) -
 - (void)createSceneWithName:(NSString *)sceneName{
-    
-    //sceneName = @"WDTestScene";
+
     
      Class class = NSClassFromString(sceneName);
      WDBaseScene *scene = [class nodeWithFileNamed:sceneName];
@@ -143,6 +148,7 @@
     [_selectScene setChangeSceneBlock:^(NSString * _Nonnull sceneName) {
         [weakSelf createSceneWithName:sceneName];
     }];
+    
     
 }
 

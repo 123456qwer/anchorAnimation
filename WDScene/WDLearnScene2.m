@@ -23,7 +23,6 @@
     
     [super didMoveToView:view];
    
-    self.bgNode.size = CGSizeMake(kScreenWidth * 2.0, kScreenHeight * 2.0);
     self.archer.position = CGPointMake(-kScreenWidth, 0);
     [self.archer moveAction:CGPointMake(-kScreenWidth / 2.0, 0)];
     self.archer.state = self.archer.state | Sprite_learn;
@@ -243,7 +242,7 @@
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:kLearnPass2];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     NSLog(@"下一章！");
-    [self changeSceneWithName:@"WDLearnScene3"];
+    [self changeSceneWithName:@"WDLearnScene3Click"];
 }
 
 @end

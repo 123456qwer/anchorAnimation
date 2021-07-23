@@ -10,6 +10,9 @@
 #import <GameplayKit/GameplayKit.h>
 
 @interface GameViewController : UIViewController
+
 @property (atomic,copy) NSString *atomicString;
 @property (nonatomic,copy) NSString *userName;
+
+
 @end

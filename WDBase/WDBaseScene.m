@@ -11,6 +11,11 @@
 
 
 @implementation WDBaseScene
+{
+    SKSpriteNode *_bgNode1;
+    SKSpriteNode *_bgNode2;
+    SKSpriteNode *_bgNode;
+}
 
 - (void)didMoveToView:(SKView *)view
 {
@@ -25,10 +30,31 @@
     CGFloat screenHeight = kScreenHeight * 2.0;
     self.size = CGSizeMake(screenWidth, screenHeight);
     
-    self.bgNode = (SKSpriteNode *)[self childNodeWithName:@"bgNode"];
-    CGFloat yScale = self.size.height / self.bgNode.size.height;
-    self.bgNode.yScale = yScale;
-    self.bgNode.xScale = yScale;
+    [self setBgScene];
+}
+
+- (void)setBgScene{
+    
+    _bgNode1    = (SKSpriteNode *)[self childNodeWithName:@"bgNode1"];
+    _bgNode2    = (SKSpriteNode *)[self childNodeWithName:@"bgNode2"];
+    _bgNode     = (SKSpriteNode *)[self childNodeWithName:@"bgNode"];
+
+    CGFloat page = 5;
+    
+    //屏幕适配
+    CGFloat screenWidth = kScreenWidth * 2.0;
+    CGFloat screenHeight = kScreenHeight * 2.0;
+    
+    _bgNode.size = CGSizeMake(screenWidth + page, screenHeight + 5);
+    _bgNode.position = CGPointMake(0, 0);
+    
+    _bgNode1.size = CGSizeMake(screenWidth + page, (screenWidth + page) / _bgNode1.size.width * _bgNode1.size.height);
+    _bgNode1.position = CGPointMake(0, kScreenHeight - _bgNode1.size.height / 2.0);
+    
+    _bgNode2.size = CGSizeMake(screenWidth + page, (screenWidth + page) / _bgNode2.size.width * _bgNode2.size.height);
+    _bgNode2.position = CGPointMake(0,- kScreenHeight + _bgNode2.size.height / 2.0);
+    
+    _bgNode2.zPosition = 10000;
 }
 
 #pragma mark - 通知方法 -
@@ -89,7 +115,7 @@
 - (SKSpriteNode *)speakBgNode{
     if (!_speakBgNode) {
         _speakBgNode = [SKSpriteNode spriteNodeWithTexture:self.textureManager.speak];
-        _speakBgNode.zPosition = 1000000;
+        _speakBgNode.zPosition = 100000;
         _speakBgNode.xScale = 1.5;
         _speakBgNode.yScale = 1.5;
         _speakBgNode.position = CGPointMake(0, -kScreenHeight + _speakBgNode.size.height / 1.5);
@@ -278,9 +304,6 @@
 /// 触碰结束
 - (void)touchUpAtPoint:(CGPoint)pos {
     
-    NSLog(@"屏宽 :%lf bg宽 :%lf",kScreenWidth,self.bgNode.size.width);
-    NSLog(@"x: %lf %lf",pos.x,pos.y);
-    
     pos = [WDCalculateTool calculateMaxMovePosition:pos node:_selectNode];
     
     NSArray *nodes = [self nodesAtPoint:pos];
@@ -387,7 +410,9 @@
     self.selectNode.cureNode   = nil;
     [self.selectNode removeAllActions];
     
-   
+    if (self.selectNode.attackDistance > 0) {
+        [self.selectNode attackAction:enemy];
+    }
 }
 
 /// 显示装备栏
@@ -453,6 +478,11 @@
     
     [_selectNode selectSpriteAction];
     
+}
+
+- (void)changeSelectNodeDirection:(NSInteger)direction
+                             node:(nonnull WDBaseNode *)node{
+    node.xScale = fabs(node.xScale) * direction;
 }
 
 - (void)endTalkAction{

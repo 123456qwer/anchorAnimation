@@ -31,6 +31,8 @@
 
 
 #define kIsFirstLogin @"kIsFirstLogin" // 首次进入，初始化一下数据
+#define kIsHaveName   @"kIsHaveName"   // 没名字加通知
+#define kUserName     @"kUserName"     // 用户输入的名字
 
 //零件
 #define kBody @"body"  //身体
@@ -122,7 +124,8 @@
 #define kLearnPass1 @"kLearnPass1"
 /// 学习关卡2
 #define kLearnPass2 @"kLearnPass2"
-
+/// 学习关卡3
+#define kLearnPass3 @"kLearnPass3"
 
 
 //NSLog
@@ -160,7 +163,7 @@ static const uint32_t ARROW_CATEGORY       = 0X04;     //0100
 static const uint32_t ARROW_CATEGORY_ENEMY = 0x01;     //1000
 
 
-static CGFloat allScale = 0.5;
+static CGFloat allScale = 0.6;
 
 
 #pragma mark - 通知 -
@@ -183,10 +186,12 @@ static CGFloat allScale = 0.5;
 #define kNotificationForShowSkill @"kNotificationForShowSkill"
 /// 隐藏或显示技能栏
 #define kNotificationForHiddenSkill @"kNotificationForHiddenSkill"
-
 /// 玩家移动结束通知
 #define kNotificationForMoveEnd @"kNotificationForMoveEnd"
 
+/// 设置名字
+#define kNotificationForChangeName @"kNotificationForChangeName"
+#define kNotificationForChangeNameAlready @"kNotificationForChangeNameAlready"
 
 
 
