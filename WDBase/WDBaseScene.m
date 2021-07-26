@@ -62,6 +62,7 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deadAction:) name:kNotificationForDead object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeEquip:) name:kNotificationForChangeEquip object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(bossCallMonster:) name:kNotificationForBossCallMonster object:nil];
 }
 
 #pragma mark - 操作 -
@@ -208,12 +209,21 @@
     return _monsterArr;
 }
 
+- (NSMutableArray *)userArr{
+    
+    if (!_userArr) {
+        _userArr = [NSMutableArray array];
+    }
+    
+    return _userArr;;
+}
 
 
 - (WDKknightNode *)knight{
    
     if (!_knight) {
         _knight = [WDBaseNode initActionWithName:kKinght superNode:self position:CGPointMake(0, 0)];
+        [self.userArr addObject:_knight];
     }
     
     return _knight;
@@ -223,6 +233,7 @@
    
     if (!_archer) {
         _archer = [WDBaseNode initActionWithName:kArcher superNode:self position:CGPointMake(0, 0)];
+        [self.userArr addObject:_archer];
     }
     
     return _archer;
@@ -232,6 +243,7 @@
    
     if (!_wizard) {
         _wizard = [WDBaseNode initActionWithName:kWizard superNode:self position:CGPointMake(0, 0)];
+        [self.userArr addObject:_wizard];
     }
     
     return _wizard;
@@ -241,6 +253,7 @@
    
     if (!_priest) {
         _priest = [WDBaseNode initActionWithName:kPriest superNode:self position:CGPointMake(0, 0)];
+        [self.userArr addObject:_priest];
     }
     
     return _priest;
@@ -427,6 +440,10 @@
     NSLog(@"%@",notification);
 }
 
+/// 招小怪
+- (void)bossCallMonster:(NSNotification *)notification{
+    NSLog(@"%@",notification);
+}
 
 #pragma mark - 释放技能 -
 - (void)skill1Action{
@@ -477,7 +494,7 @@
     _selectNode.arrowNode.hidden = NO;
     
     [_selectNode selectSpriteAction];
-    
+    [WDNotificationManager changeUser:self.selectNode.name];
 }
 
 - (void)changeSelectNodeDirection:(NSInteger)direction
@@ -552,6 +569,17 @@
     SKAction *seq1 = [SKAction sequence:@[alpha1,alpha2]];
     SKAction *rep2 = [SKAction repeatActionForever:seq1];
     [location runAction:rep2];
+}
+
+- (void)setHateNameArrWithNode:(NSArray *)nodes{
+   
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:nodes.count];
+    for (int i = 0; i < nodes.count; i ++) {
+        WDBaseNode *node = nodes[i];
+        [arr addObject:node.name];
+    }
+    
+    _hateNameArr = [arr copy];
 }
 
 

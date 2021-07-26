@@ -87,7 +87,8 @@
 #pragma mark - 技能 -
 - (void)skill1Action
 {
-   
+    [WDNotificationManager addHateWithNode:self];
+    
 }
 
 - (void)skill2Action

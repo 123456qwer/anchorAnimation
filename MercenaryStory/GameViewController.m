@@ -7,6 +7,7 @@
 
 #import "GameViewController.h"
 #import "GameViewController+Data.h"
+#import "MapSelectViewController.h"
 
 
 #import "WDEquipScene.h"
@@ -45,19 +46,17 @@
     }else if(![defaults boolForKey:kLearnPass3]){
         sceneStr = @"WDLearnScene3Click";
     }else{
-        sceneStr = @"WDLearnScene4";
+        sceneStr = @"WDFirstCampsiteScene";
     }
     
 //    CGFloat a = [UIScreen mainScreen].scale;
+    
     
     [self createSkillView];
     [self createEquipView];
     [self createMenuView];
     
     [self createSceneWithName:sceneStr];
-    
-    
-   
 }
 
 
@@ -120,6 +119,7 @@
 #pragma mark - 创建场景 (根据场景名称) -
 - (void)createSceneWithName:(NSString *)sceneName{
 
+     //sceneName = @"WDTestScene";
     
      Class class = NSClassFromString(sceneName);
      WDBaseScene *scene = [class nodeWithFileNamed:sceneName];
@@ -149,7 +149,10 @@
         [weakSelf createSceneWithName:sceneName];
     }];
     
-    
+    /// 选择地图
+    [_selectScene setShowMapSelectBlock:^{
+        [weakSelf showMapSelectViewController];
+    }];
 }
 
 
@@ -157,15 +160,19 @@
 #pragma mark - 展示主菜单栏 -
 - (void)showMenuView{
     
-    [UIView animateWithDuration:0.5 animations:^{
-        self->_allMenuView.frame = CGRectMake(0, kScreenHeight - 80, kScreenWidth, 80);
-    }];
+    if (_allMenuView.frame.origin.y == kScreenHeight) {
+        //__weak typeof(self)weakSelf = self;
+        [UIView animateWithDuration:0.5 animations:^{
+            self ->_allMenuView.frame = CGRectMake(0, kScreenHeight - 80, kScreenWidth, 80);
+        }];
+    }
 }
 
 
 #pragma mark - 展示换装页面 -
 - (void)showEquipView:(NSString *)userName{
    
+    __weak typeof(self)weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
         self->_allMenuView.frame = CGRectMake(0, kScreenHeight, kScreenWidth, 80);
     } completion:^(BOOL finished) {
@@ -173,6 +180,7 @@
             SKView *skView = (SKView *)self.view;
             WDEquipScene *equipScene = (WDEquipScene *)[WDEquipScene nodeWithFileNamed:@"WDEquipScene"];
             [skView presentScene:equipScene];
+            [equipScene changeSelectNodeWithName:weakSelf.userName];
             [self->_equipView reloadDataWithName:userName];
             [self->_equipView cancelConfirmBtn];
             self->_equipView.hidden = NO;
@@ -185,7 +193,19 @@
     
 }
 
-
+#pragma mark - 展示地图选择器 -
+- (void)showMapSelectViewController
+{
+    MapSelectViewController *vc = [[MapSelectViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:^{
+        
+    }];
+    
+    __weak typeof(self)weakSelf = self;
+    [vc setSelectSceneBlock:^(NSString * _Nonnull sceneName) {
+        [weakSelf createSceneWithName:sceneName];
+    }];
+}
 
 #pragma mark - 释放技能 -
 - (void)skillActionWithTag:(NSInteger)tag{

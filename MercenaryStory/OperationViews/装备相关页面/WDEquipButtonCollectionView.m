@@ -62,4 +62,13 @@
     _changeEquipBlock(indexPath.row,_userName);
 }
 
+- (void)reloadAction{
+    for (int i = 0; i < _btnArr.count; i ++) {
+        _isSelect[i] = NO;
+    }
+    
+    _isSelect[0] = YES;
+    [self reloadData];
+}
+
 @end

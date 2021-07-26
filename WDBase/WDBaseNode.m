@@ -392,6 +392,10 @@
 /// 移动
 - (void)moveAction:(CGPoint)movePoint{
     
+    if (self.state & Sprite_movie) {
+        return;
+    }
+    
     self.bowMiddle.zPosition = 0;
     self.rightHand.zPosition = 1;
     self.rightFinger.zPosition = 2;

@@ -14,6 +14,7 @@
 #import "WDArcherNode.h"
 #import "WDWizardNode.h"
 #import "WDBaseNode+Emoji.h"
+#import "WDBoss1Node.h"
 
 @implementation WDTestScene
 {
@@ -50,18 +51,48 @@
     int a;
     int b;
     WDBaseNode *node;
+    WDBoss1Node *_bossNode;
 }
 
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
-  
+    
+    [self knight];
+    [self priest];
+    [self archer];
+    
+    _bossNode = [WDBoss1Node initWithModel:self.textureManager.boss1Model];
+    _bossNode.state = Sprite_movie;
+    [self addChild:_bossNode];
+    [self.monsterArr addObject:_bossNode];
+    
+    __weak typeof(self)weakSelf = self;
+    [_bossNode moveToTheMap:^(BOOL isComplete) {
+        for (WDBaseNode *node in weakSelf.userArr) {
+            node.state = Sprite_stand;
+        }
+        
+        [weakSelf noPassForBoss2];
+    }];
+    
+    [WDNotificationManager hiddenSkillView:1];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [_priest omgFaceState];
+- (void)bossCallMonster:(NSNotification *)notification{
+    
+    [WDBaseNode initTextureActionWithName:kRedBat superNode:self initPoint:CGPointMake(0, 0)];
+    
 }
 
-
+- (void)noPassForBoss2{
+    SKAction *animation = [SKAction animateWithTextures:_bossNode.boss1Model.winArr timePerFrame:0.15];
+    _bossNode.state = Sprite_movie;
+    [_bossNode.talkNode setText:@"你们还不够格哦"];
+    __weak typeof(self)weakSelf = self;
+    [_bossNode runAction:animation completion:^{
+        weakSelf.changeSceneBlock(@"WDLearnScene4");
+    }];
+}
 
 @end

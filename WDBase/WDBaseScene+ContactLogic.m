@@ -98,7 +98,96 @@
         }
     }
     
+    
+    /// 风攻击导致瘫痪
+    if ([nodeA isKindOfClass:[WDUserNode class]] && [nodeB.name isEqualToString:@"wind"]) {
+        [self windContactAction:nodeB user:nodeA];
+    }else if([nodeB isKindOfClass:[WDUserNode class]] && [nodeA.name isEqualToString:@"wind"]){
+        [self windContactAction:nodeA user:nodeB];
+    }
+    
+    
+    /// 怪物攻击击中玩家
+    if ([nodeA isKindOfClass:[WDUserNode class]] && [nodeB isKindOfClass:[WDWeaponNode class]]) {
+        CGFloat numer = nodeB.attackNumber;
+        [nodeA beAttackAction:nodeB attackNumber:numer];
+
+        [self weaponAttackAction:nodeA weaponNode:nodeB];
+    }else if([nodeB isKindOfClass:[WDUserNode class]] && [nodeA isKindOfClass:[WDWeaponNode class]]){
+        CGFloat numer = nodeA.attackNumber;
+        [nodeB beAttackAction:nodeA attackNumber:numer];
+        [self weaponAttackAction:nodeB weaponNode:nodeA];
+    }
+    
 }
 
+/// 怪物释放出的招式
+- (void)weaponAttackAction:(WDBaseNode *)userNode
+                weaponNode:(WDBaseNode *)weaponNode
+{
+    /// 鬼魂召唤的巨斧攻击
+//    if ([weaponNode.name isEqualToString:@"axe"]) {
+//
+//        userNode.state = SpriteState_movie;
+//        userNode.isMoveAnimation = NO;
+//        [userNode removeAllActions];
+//
+//        [userNode runAction:[SKAction moveTo:weaponNode.position duration:0.2] completion:^{
+//            userNode.state = SpriteState_stand;
+//        }];
+//    }
+    
+    
+    /// 鬼魂召唤的鬼爪
+//    if ([weaponNode.name isEqualToString:@"hand"]) {
+//
+//        userNode.affect = SpriteAffect_reduceSpeed;
+//        CGPoint point = CGPointMake(-60, userNode.realSize.height + 40);
+//        CGFloat scale = 3.0;
+//        if ([userNode.name isEqualToString:kArcher]) {
+//            point = CGPointMake(-60, userNode.realSize.height + 40);
+//            scale = 3.0;
+//        }
+//
+//        [userNode setAffectWithArr:userNode.model.statusReduceArr point:point scale:scale count:3];
+//    }
+    
+}
+
+/// 被BOSS的吹风攻击
+- (void)windContactAction:(WDBaseNode *)windNode
+                     user:(WDBaseNode *)userNode
+{
+   // userNode.paused = YES;
+    userNode.state = userNode.state | Sprite_movie;
+    [userNode removeAllActions];
+    
+   // userNode.reduceBloodNow = NO;
+   // userNode.colorBlendFactor = 0;
+   // [NSObject cancelPreviousPerformRequestsWithTarget:userNode];
+    
+    [windNode removeAllActions];
+    windNode.physicsBody = nil;
+    CGPoint point = CGPointZero;
+    if (windNode.direction == -1) {
+        point = CGPointMake(kScreenWidth - 100, windNode.position.y);
+    }else{
+        point = CGPointMake(-kScreenWidth + 100, windNode.position.y);
+    }
+    
+    NSTimeInterval time = fabs(point.x - (windNode.direction * 600)) / 2000;
+    SKAction *wind = [SKAction animateWithTextures:[WDTextureManager shareManager].boss1Model.windArr timePerFrame:0.1];
+    SKAction *moveAction = [SKAction moveTo:point duration:time];
+    SKAction *alpha = [SKAction fadeAlphaTo:0 duration:0.4];
+    SKAction *gg = [SKAction group:@[wind,moveAction]];
+    SKAction *seq = [SKAction sequence:@[gg,alpha,[SKAction removeFromParent]]];
+    [windNode runAction:seq completion:^{
+                
+    }];
+    
+    [userNode runAction:moveAction completion:^{
+        userNode.state = userNode.state ^ Sprite_movie;
+    }];
+}
 
 @end

@@ -7,6 +7,7 @@
 
 #import "WDPriestNode.h"
 #import "WDBaseNode+Animation.h"
+#import "WDBaseScene.h"
 
 @implementation WDPriestNode
 - (void)createUserNodeWithScale:(CGFloat)scale
@@ -226,6 +227,39 @@
     [self.leftArm runAction:seqLeftArmAction completion:^{
         weakSelf.state = weakSelf.state ^ Sprite_cure;
     }];   
+}
+
+
+#pragma mark - 技能 -
+- (void)skill1Action
+{
+    [WDNotificationManager addHateWithNode:self];
+    WDBaseScene *scene = (WDBaseScene *)self.parent;
+    
+    for (WDBaseNode *node in scene.userArr) {
+        
+        [node addBlood:self.cureNumber * 2];
+    }
+}
+
+- (void)skill2Action
+{
+    
+}
+
+- (void)skill3Action
+{
+    
+}
+
+- (void)skill4Action
+{
+    
+}
+
+- (void)skill5Action
+{
+    
 }
 
 @end

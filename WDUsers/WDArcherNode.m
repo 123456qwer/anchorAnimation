@@ -20,13 +20,16 @@
     [self setEyeTexture:@"Eyes5"];
     [self setMouthTexture:@"Mouth_Arhcer"];
     [self setEyeBrowsTexture:@"EyeBrows_love"];
+    
+    [self standAction];
+
 }
 
 - (void)upDataAction
 {
     [super upDataAction];
     
-    if (self.state & Sprite_dead) {
+    if (self.state & Sprite_walk || self.state & Sprite_dead || self.state & Sprite_run) {
         return;
     }
     
@@ -34,8 +37,17 @@
         self.targetNode = nil;
     }
     
+
     if (self.targetNode) {
         [self attackAction:self.targetNode];
+    }else{
+        
+        if (!self.targetNode && !(self.state & Sprite_movie)) {
+            WDBaseNode *target = [WDCalculateTool searchMonsterNearNode:self];
+            if (target) {
+                self.targetNode = target;
+            }
+        }
     }
 }
 

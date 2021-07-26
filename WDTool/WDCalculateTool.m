@@ -149,6 +149,44 @@
     return CGPointMake(x, y);
 }
 
++ (WDBaseNode *)searchMonsterNearNode:(WDBaseNode *)node
+{
+    NSArray *childNodes = node.parent.children;
+    WDBaseNode *target = nil;
+    CGFloat distance = 10000;
+    for (WDBaseNode *nearN in childNodes) {
+        if ([nearN isKindOfClass:[WDEnemyNode class]]) {
+            CGFloat d = [WDCalculateTool distanceBetweenPoints:nearN.position seconde:node.position];
+            if (distance > d) {
+                distance = d;
+                target = nearN;
+            }
+        }
+    }
+    
+    
+    return target;
+}
+
++ (WDBaseNode *)searchUserNearNode:(WDBaseNode *)node
+{
+    NSArray *childNodes = node.parent.children;
+    WDBaseNode *target = nil;
+    CGFloat distance = 10000;
+    for (WDBaseNode *nearN in childNodes) {
+        if ([nearN isKindOfClass:[WDUserNode class]]) {
+            CGFloat d = [WDCalculateTool distanceBetweenPoints:nearN.position seconde:node.position];
+            if (distance > d) {
+                distance = d;
+                target = nearN;
+            }
+        }
+    }
+    
+    
+    return target;
+}
+
 
 #pragma mark - 图片相关 -
 + (NSDictionary *)userArmorImageDic:(UIImage *)image{
@@ -459,7 +497,17 @@
       stringByTrimmingCharactersInSet:
           [NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
 
+    // String should be 6 or 8 characters
+    if ([cString length] < 6)
+      return [UIColor whiteColor];
 
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"])
+      cString = [cString substringFromIndex:2];
+    if ([cString hasPrefix:@"#"])
+      cString = [cString substringFromIndex:1];
+    if ([cString length] != 6)
+      return [UIColor whiteColor];
 
   UIColor *result = nil;
   unsigned int colorCode = 0;

@@ -21,6 +21,7 @@
 #import "WDDataManager.h"
 #import "WDBaseModel.h"
 #import "WDSkillManager.h"
+#import "WDWeaponNode.h"
 
 /// define
 //屏宽高
@@ -117,6 +118,8 @@
 //红色蝙蝠
 #define kRedBat @"RedBat"
 
+/// 第一关Boss，也是技能训练师
+#define kBoss1 @"Boss1"
 
 #pragma mark - 关卡 -
 /// 目前关卡进度
@@ -126,6 +129,36 @@
 #define kLearnPass2 @"kLearnPass2"
 /// 学习关卡3
 #define kLearnPass3 @"kLearnPass3"
+
+/// 第1关
+#define kPassCheckPoint1 @"kPassCheckPoint1"
+/// 第2关
+#define kPassCheckPoint2 @"kPassCheckPoint2"
+/// 第3关
+#define kPassCheckPoint3 @"kPassCheckPoint3"
+/// 第4关
+#define kPassCheckPoint4 @"kPassCheckPoint4"
+/// 第5关
+#define kPassCheckPoint5 @"kPassCheckPoint5"
+/// 第6关
+#define kPassCheckPoint6 @"kPassCheckPoint6"
+/// 第7关
+#define kPassCheckPoint7 @"kPassCheckPoint7"
+/// 第8关
+#define kPassCheckPoint8 @"kPassCheckPoint8"
+/// 第9关
+#define kPassCheckPoint9 @"kPassCheckPoint9"
+/// 第10关
+#define kPassCheckPoint10 @"kPassCheckPoint10"
+/// 第11关
+#define kPassCheckPoint11 @"kPassCheckPoint11"
+/// 第12关
+#define kPassCheckPoint12 @"kPassCheckPoint12"
+/// 第13关
+#define kPassCheckPoint13 @"kPassCheckPoint13"
+
+#pragma mark 常用动画方法
+#define REMOVE_ACTION [SKAction removeFromParent]
 
 
 //NSLog
@@ -176,7 +209,8 @@ static CGFloat allScale = 0.6;
 #define kNotificationForDead @"kNotificationForDead"
 ///换装通知
 #define kNotificationForChangeEquip @"kNotificationForChangeEquip"
-
+/// boss召唤小怪的通知
+#define kNotificationForBossCallMonster @"kNotificationForBossCallMonster"
 
 /// 换人通知
 #define kNotificationForChangeUser @"kNotificationForChangeUser"

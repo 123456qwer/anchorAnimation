@@ -40,9 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)SKSpriteNode *confirmNode;
 /// 否定
 @property (nonatomic,strong)SKSpriteNode *cancelNode;
-
 /// 管理怪物
 @property (nonatomic,strong)NSMutableArray *monsterArr;
+/// 管理玩家
+@property (nonatomic,strong)NSMutableArray *userArr;
+
 /// 仇恨列表名称
 @property (nonatomic,copy)NSArray *hateNameArr;
 /// 向下指示手势
@@ -59,6 +61,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 切换场景
 @property (nonatomic,copy)void (^changeSceneBlock)(NSString *sceneName);
 
+/// 显示地图选择
+@property (nonatomic,copy)void (^showMapSelectBlock)(void);
+
 #pragma mark - 玩家，根据玩家自己选择的人物初始化 -
 @property (nonatomic,strong)WDKknightNode *knight;
 @property (nonatomic,strong)WDArcherNode  *archer;
@@ -73,6 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)skill3Action;
 - (void)skill4Action;
 - (void)skill5Action;
+
+/// 设置仇恨列表，怪物初始化的时候用到
+- (void)setHateNameArrWithNode:(NSArray *)nodes;
 
 /// 触碰结束
 - (void)touchUpAtPoint:(CGPoint)pos;

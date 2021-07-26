@@ -25,6 +25,7 @@
 - (void)setChildNodeWithModel:(WDRedBatModel *)model
 {
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(upDataAction) name:kNotificationForUpData object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addHateNumber:) name:kNotificationForAddHateNumber object:nil];
     [model changeArr];
     self.shadow = [WDBaseNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Shadow"]]];
     self.shadow.position = CGPointMake(0, -340 * allScale);

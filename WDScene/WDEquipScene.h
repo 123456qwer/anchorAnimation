@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WDEquipScene : WDBaseScene
 
+- (void)changeSelectNodeWithName:(NSString *)name;
+
 @end
 
 NS_ASSUME_NONNULL_END

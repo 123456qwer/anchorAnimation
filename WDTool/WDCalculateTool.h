@@ -32,7 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGPoint)calculateMaxMovePosition:(CGPoint)movePoint
                                node:(WDBaseNode *)node;
 
-
+/// 玩家搜索最近的怪物
+/// @param node 玩家
++ (WDBaseNode *)searchMonsterNearNode:(WDBaseNode *)node;
++ (WDBaseNode *)searchUserNearNode:(WDBaseNode *)node;
 
 #pragma mark - 图片计算相关 -
 + (SKTexture *)textureWithArmorKeyName:(NSString *)name

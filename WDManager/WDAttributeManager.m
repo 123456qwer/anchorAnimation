@@ -110,4 +110,16 @@
     node.attackDistance     = 400;
 }
 
+/// BOSS1
++ (void)initBoss1Attribute:(WDBaseNode *)node{
+    
+    node.animationWalkSpeed = 220;
+    node.animationRunSpeed  = 300;
+    node.initBlood          = 3000;
+    node.lastBlood          = 3000;
+    node.attackNumber       = 20;
+    node.CADisplaySpeed     = 2;
+    node.attackDistance     = 400;
+}
+
 @end

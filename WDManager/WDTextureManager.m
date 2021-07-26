@@ -26,6 +26,16 @@ static WDTextureManager *textureManager = nil;
 
 
 #pragma mark - getter -
+- (Boss1Model *)boss1Model
+{
+    if (!_boss1Model) {
+        _boss1Model = [[Boss1Model alloc] init];
+        [_boss1Model setTextures];
+    }
+    
+    return _boss1Model;
+}
+
 - (SKTexture *)speak{
     if (!_speak) {
         _speak = [SKTexture textureWithImage:[UIImage imageNamed:@"speak"]];
@@ -72,6 +82,15 @@ static WDTextureManager *textureManager = nil;
     }
     
     return _humanHead;
+}
+
+- (NSArray<SKTexture *> *)passDoorArr
+{
+    if (!_passDoorArr) {
+        _passDoorArr = [WDCalculateTool curImageWithImage:[UIImage imageNamed:@"passDoor"] line:5 arrange:1 itemSize:CGSizeMake(256, 128) count:5];
+    }
+    
+    return _passDoorArr;
 }
 
 - (SKTexture *)male_eye

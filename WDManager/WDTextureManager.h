@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WDRedBatModel.h"
+#import "Boss1Model.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 出血动画
 @property (nonatomic,copy)NSArray *bloodHitArr;
-
+/// 传送门
+@property (nonatomic,copy)NSArray <SKTexture *>*passDoorArr;
 /// 人头
 @property (nonatomic,strong)SKTexture *humanHead;
 /// 男性人眼
@@ -52,7 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 手势引导 */
 @property (nonatomic,copy)NSArray <SKTexture *>*handClickArr;
-
+/// boss1 学习技能NPC
+@property (nonatomic,strong)Boss1Model *boss1Model;
 
 /// 蝙蝠
 @property (nonatomic,strong)WDRedBatModel *redBatModel;

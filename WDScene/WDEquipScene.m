@@ -11,14 +11,25 @@
 
 - (void)didMoveToView:(SKView *)view{
     
-
-    self.knight.position = CGPointMake(-self.size.width / 2.0 / 2.0, 0);
-    self.knight.xScale = 2.0;
-    self.knight.yScale = 2.0;
-    
-    self.selectNode = self.knight;
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeEquip:) name:kNotificationForChangeEquip object:nil];
+}
+
+- (void)changeSelectNodeWithName:(NSString *)name{
+    
+    if ([name isEqualToString:kArcher]) {
+        self.selectNode = self.archer;
+    }else if([name isEqualToString:kKinght]){
+        self.selectNode = self.knight;
+    }else if([name isEqualToString:kPriest]){
+        self.selectNode = self.priest;
+    }else if([name isEqualToString:kWizard]){
+        self.selectNode = self.wizard;
+    }
+    
+    self.selectNode.position = CGPointMake(-self.size.width / 2.0 / 2.0, 0);
+    self.selectNode.xScale = 2.0;
+    self.selectNode.yScale = 2.0;
+    
 }
 
 /// 换装通知

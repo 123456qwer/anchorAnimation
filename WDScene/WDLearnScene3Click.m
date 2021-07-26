@@ -23,7 +23,7 @@
     
     self.priest.position = CGPointMake(-kScreenWidth - self.knight.size.width / 2.0, 0);
     self.knight.position = CGPointMake(-kScreenWidth - self.priest.size.width * 2.0, 0);
-    
+  
     __weak typeof(self)weakSelf = self;
     [self.priest moveAction:CGPointMake(self.knight.size.width * 2.5, 0) moveFinishBlock:^{
         [weakSelf changeSelectNode:weakSelf.priest];
@@ -178,7 +178,10 @@
         [self setTextAction:@"我的名字是....."];
         [self performSelector:@selector(setName) withObject:nil afterDelay:1.5];
         _part[14] = NO;
-
+       
+        /// 测试用，正式可以注掉
+        [self setNoIndex:15 yesIndex:16];
+        
     }else if(_part[15]){
         
         [self changeSelectNode:self.priest];
@@ -190,10 +193,51 @@
         
         [self changeSelectNode:self.knight];
         [self setTextAction:@"提前做好心理准备啊！"];
-        _part[16] = NO;
+        [self setNoIndex:16 yesIndex:17];
+        
+    }else if(_part[17]){
+        
+        [self changeSelectNode:self.priest];
+        [self setTextAction:@"对了，这是我之前捡到的技能书\n他能有效影响怪物心智，使他们只攻击你"];
+        [self setNoIndex:17 yesIndex:18];
+        
+    }else if(_part[18]){
+        
+        [self setTextAction:@"可能在以后的战斗中会用到，你先拿去"];
+        [self setNoIndex:18 yesIndex:19];
+        
+    
+        SKSpriteNode *node = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:[UIImage imageNamed:@"Knight_0"]]];
+        node.position = CGPointMake(self.knight.size.width * 2.5, 0);
+        node.zPosition = 10000;
+        node.alpha = 0.8;
+        node.size = CGSizeMake(110 * allScale, 110 * allScale);
+        [self addChild:node];
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddArc(path, 0, -self.knight.size.width * 2.5 / 2.0, 0, -self.knight.size.width * 2.5 / 2.0, M_PI, 0, NO);
+        SKAction *a = [SKAction followPath:path speed:700];
+        SKAction *al = [SKAction fadeAlphaTo:0 duration:0.3];
+        SKAction *remo = [SKAction removeFromParent];
+        SKAction *seq = [SKAction sequence:@[a,al,remo]];
+        __weak typeof(self)weakSelf = self;
+        [node runAction:seq completion:^{
+            [weakSelf give];
+        }];
+        
+    }else if(_part[19]){
+        
+        [self setTextAction:@"我作为一个初阶牧师\n也学习了群体治疗的技能\n实战的时候体会下吧！"];
+        [self setNoIndex:19 yesIndex:20];
+        
+    }else if(_part[20]){
         [self overAndOver];
     }
     
+}
+
+- (void)give{
+    [self setNoIndex:18 yesIndex:19];
 }
 
 - (void)setName{
@@ -213,8 +257,7 @@
     [self setTextAction:na];
     
     [self setNoIndex:14 yesIndex:15];
-
-
+  
 }
 
 - (void)overAndOver{

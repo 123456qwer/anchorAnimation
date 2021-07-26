@@ -62,8 +62,10 @@
 
 - (void)reloadDataWithName:(NSString *)name {
     
+    
     [WDDataManager shareManager].userName = name;
     _equipButtonCollectionView.userName = name;
+    [_equipButtonCollectionView reloadAction];
     
     NSString *key = [NSString stringWithFormat:@"%@_user",name];
     WDBaseModel *model = [[WDDataManager shareManager]searchData:key];
@@ -183,6 +185,8 @@
 #pragma mark - 操作 -
 /// 更换选中的装备位置
 - (void)changeEquip:(EquipType)index name:(NSString *)userName{
+    
+    
     
     NSString *key = [NSString stringWithFormat:@"%ld",index + 1];
     id value = _allEquipDic[key];
