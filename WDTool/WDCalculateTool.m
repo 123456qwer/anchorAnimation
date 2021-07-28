@@ -8,7 +8,7 @@
 #import "WDCalculateTool.h"
 #import "WDEnemyNode.h"
 #import "WDUserNode.h"
-
+#import "WDBaseScene.h"
 @implementation WDCalculateTool
 
 #pragma mark - 计算相关 -
@@ -65,7 +65,7 @@
     
     /// 同一个位置不占人
     if ([attackNode isKindOfClass:[WDEnemyNode class]]) {
-        if (![user.targetNode isEqualToNode:attackNode]) {
+        if (![user.targetNode isEqualToNode:attackNode] && user.targetNode) {
             if (user.xScale > 0) {
                 x = user.position.x - user.size.width - enemy.randomAttackX;
             }else{
@@ -96,24 +96,24 @@
         enemy = (WDEnemyNode *)attackNode;
     }
     
-    CGFloat dis = attackNode.size.width * 2.0;
+    CGFloat dis = attackNode.attackDistance;
     
     if (attackNode.position.x > targetNode.position.x) {
-        x = targetNode.position.x + targetNode.size.width + enemy.randomAttackX + dis;
+        x = targetNode.position.x + dis;
     }else{
-        x = targetNode.position.x - targetNode.size.width - enemy.randomAttackX - dis;
+        x = targetNode.position.x - dis;
     }
     
     /// 同一个位置不占人
-    if ([attackNode isKindOfClass:[WDEnemyNode class]]) {
-        if (![user.targetNode isEqualToNode:attackNode]) {
-            if (user.xScale > 0) {
-                x = user.position.x - user.size.width - enemy.randomAttackX - dis;
-            }else{
-                x = user.position.x + user.size.width + enemy.randomAttackX + dis;
-            }
-        }
-    }
+//    if ([attackNode isKindOfClass:[WDEnemyNode class]]) {
+//        if (![user.targetNode isEqualToNode:attackNode]) {
+//            if (user.xScale > 0) {
+//                x = user.position.x - user.size.width - enemy.randomAttackX - dis;
+//            }else{
+//                x = user.position.x + user.size.width + enemy.randomAttackX + dis;
+//            }
+//        }
+//    }
     
     CGFloat wi = attackNode.parent.frame.size.width / 2;
     
@@ -187,6 +187,33 @@
     return target;
 }
 
++ (WDBaseNode *)searchUserBigDistanceNode:(WDBaseNode *)node
+{
+    WDBaseScene *scene = (WDBaseScene *)node.parent;
+    CGFloat distance = 0;
+    WDBaseNode *target = nil;
+    for (WDUserNode *distanceN in scene.userArr) {
+       
+        CGFloat d = [WDCalculateTool distanceBetweenPoints:distanceN.position seconde:node.position];
+        if (distance < d) {
+            distance = d;
+            target = distanceN;
+        }
+    }
+    
+    return target;
+}
+
++ (WDBaseNode *)searchUserRandomNode:(WDBaseNode *)node
+{
+    WDBaseScene *scene = (WDBaseScene *)node.parent;
+    int index = arc4random() % scene.userArr.count;
+    if (index >= scene.userArr.count) {
+        return nil;
+    }else{
+        return scene.userArr[index];
+    }
+}
 
 #pragma mark - 图片相关 -
 + (NSDictionary *)userArmorImageDic:(UIImage *)image{

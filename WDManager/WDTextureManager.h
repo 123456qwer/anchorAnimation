@@ -63,6 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (WDTextureManager *)shareManager;
 
+- (void)releaseAction;
+
 /// 人物头顶上的状态
 /// @param line 哪一行，参考Balloon图片
 - (NSArray *)balloonTexturesWithLine:(NSInteger)line;

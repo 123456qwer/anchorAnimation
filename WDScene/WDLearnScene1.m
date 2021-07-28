@@ -218,6 +218,7 @@
                 [self stopTalk];
                 [self performSelector:@selector(priestLogin) withObject:nil afterDelay:5];
                 self.knight.talkNode.hidden = YES;
+                _redNode.state = _redNode.state ^ Sprite_movie;
                 break;
             }
         }
@@ -266,6 +267,7 @@
         if (knight) {
             self.selectNode.cureNode = knight;
             self.selectNode.targetNode = nil;
+            self.selectNode.state = self.selectNode.state ^ Sprite_movie;
             _isFiveClick = YES;
             self.knight.paused = NO;
             _redNode.paused    = NO;
@@ -274,6 +276,7 @@
             [_leadHandNode removeAllActions];
             [_leadHandNode removeFromParent];
             _leadHandNode = nil;
+            
             self.priest.talkNode.hidden = YES;
         }
     }
@@ -314,6 +317,7 @@
     self.knight.paused = YES;
     
     self.priest.state = self.priest.state | Sprite_learn;
+    self.priest.state = self.priest.state | Sprite_movie;
     self.priest.alpha = 0;
     self.priest.position = CGPointMake(-150, 0);
     self.clickNode.position = CGPointMake(-150, - 80.f * self.yScale);
@@ -393,16 +397,15 @@
     
     _redNode = [WDRedBatNode initWithModel:_redBatModel];
     _redNode.name = kRedBat;
+    _redNode.state = Sprite_movie;
     [self addChild:_redNode];
     _redNode.alpha = 0;
    
     _redNode.position = CGPointMake(kScreenWidth / 2.0, 0);
     [self setSmokeWithMonster:_redNode name:kRedBat];
     [WDAttributeManager setSpriteAttribute:_redNode];
-    _redNode.attackNumber = 100;
     _redNode.numberName = @"showRedBat";
-    _redNode.lastBlood = 150;
-    _redNode.initBlood = 150;
+  
 }
 
 - (void)moveEndDouble{
@@ -433,6 +436,7 @@
             _redNode = nil;
             self.priest.cureNode = nil;
             self.priest.state = self.priest.state ^ Sprite_cure;
+            self.priest.state = self.priest.state | Sprite_movie;
             [self.priest standAction];
            
             __weak typeof(self)weakSelf = self;
@@ -485,6 +489,7 @@
         weakSelf.selectNode.arrowNode.hidden = NO;
         
         [weakSelf setTextAction:@"有话一会说,先解决这些怪物" hiddenTime:2 completeBlock:^{
+            weakSelf.priest.state = self.priest.state ^ Sprite_movie;
             node1.state = Sprite_stand;
             node2.state = Sprite_stand;
             [weakSelf learnOver];
@@ -504,8 +509,11 @@
 /// 整个战斗结束后剧情
 - (void)overBattle{
     
+    self.priest.CUR = self.knight.BLOOD_INIT - self.knight.BLOOD_LAST;
+    [self.knight beCureAction:self.priest];
     self.knight.bgBlood.hidden = YES;
     self.priest.bgBlood.hidden = YES;
+    self.priest.state = self.priest.state | Sprite_movie;
    
     _isAllOver = YES;
     __weak typeof(self)weakSelf = self;
@@ -554,13 +562,13 @@
             
             
             WDBaseModel *model = [[WDDataManager shareManager]searchData:kKinght];
-            model.Equip_shield = @"SteelShield";
-            model.Equip_helmet = @"EliteKnightHelm";
-            model.Equip_armor  = @"KnightArmor";
-            model.Equip_pauldrons = @"KnightArmor";
-            model.Equip_gloves = @"KnightArmor";
-            model.Equip_belt = @"KnightArmor";
-            model.Equip_boots = @"KnightArmor";
+            model.Equip_shield = @"SteelShield_5";
+            model.Equip_helmet = @"EliteKnightHelm_3";
+            model.Equip_armor  = @"KnightArmor_3";
+            model.Equip_pauldrons = @"KnightArmor_3";
+            model.Equip_gloves = @"KnightArmor_3";
+            model.Equip_belt = @"KnightArmor_3";
+            model.Equip_boots = @"KnightArmor_3";
             
             NSString *allArmorName = [NSString stringWithFormat:@"%@_user",kKinght];
             WDBaseModel *modelAll = [[WDDataManager shareManager]searchData:allArmorName];
@@ -676,6 +684,7 @@
 
 - (void)over{
     
+    self.priest.state = self.priest.state ^ Sprite_movie;
     [self stopTalk];
     [self.priest moveAction:CGPointMake(kScreenWidth + 1000, 0)];
     [self.knight moveAction:CGPointMake(kScreenWidth + 50, 0)];

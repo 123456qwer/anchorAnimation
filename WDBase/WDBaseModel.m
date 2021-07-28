@@ -77,4 +77,42 @@
     }
 }
 
+
+
+- (int)getAllDefines{
+    
+    NSDictionary *dic = [self properties_aps];
+    int defines = 0;
+    
+    NSArray *keys = dic.allKeys;
+    for (int i = 0; i < keys.count; i ++) {
+        
+        NSString *keyName = keys[i];
+        if ([keyName isEqualToString:@"Equip_bow"]||[keyName isEqualToString:@"Equip_sword2h"]||[keyName isEqualToString:@"Equip_sword1h"]||[keyName isEqualToString:@"Equip_shield"]) {
+            
+        }else{
+            
+            NSString *value = dic[keyName];
+            NSArray *subArr = [self subArr:value];
+            if (subArr.count > 1) {
+                int define = [subArr[1] intValue];
+                defines += define;
+            }
+            
+            
+        }
+        
+    }
+    
+    
+    return defines;
+    
+}
+
+#pragma mark - getter -
+- (NSArray *)subArr:(NSString *)str{
+    return [str componentsSeparatedByString:@"_"];
+}
+
+
 @end

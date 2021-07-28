@@ -16,22 +16,24 @@
     
     ///弓箭触碰到敌人
     if ([nodeA.name isEqualToString:@"user_arrow"]) {
-        int numer = nodeA.attackNumber;
+        int numer = nodeA.ATK;
         if ([nodeB isKindOfClass:[WDEnemyNode class]]) {
-            [nodeB beAttackAction:nodeA attackNumber:numer];
             WDArcherNode *node = (WDArcherNode *)[self childNodeWithName:kArcher];
             [nodeB addHateNumberWithAttackNode:node];
+            [nodeB beAttackAction:node attackNumber:numer];
+
             //弓箭手吸血技能
 //            if (node.skill4) {
 //                [node setBloodNodeNumber:-numer];
 //            }
         }
     }else if([nodeB.name isEqualToString:@"user_arrow"]){
-        int numer = nodeB.attackNumber;
+        int numer = nodeB.ATK;
         if ([nodeA isKindOfClass:[WDEnemyNode class]]) {
-            [nodeA beAttackAction:nodeB attackNumber:numer];
             WDArcherNode *node = (WDArcherNode *)[self childNodeWithName:kArcher];
             [nodeA addHateNumberWithAttackNode:node];
+            [nodeA beAttackAction:node attackNumber:numer];
+
             //弓箭手吸血技能
 //            if (node.skill4) {
 //                [node setBloodNodeNumber:-numer];
@@ -41,14 +43,14 @@
     
     ///弓箭触碰玩家
     if ([nodeA.name isEqualToString:@"enemy_arrow"]) {
-        int numer = nodeA.attackNumber;
+        int numer = nodeA.ATK;
         [nodeA removeAllActions];
         [nodeA removeFromParent];
         if ([nodeB isKindOfClass:[WDUserNode class]]) {
             [nodeB beAttackAction:nodeA attackNumber:numer];
         }
     }else if([nodeB.name isEqualToString:@"enemy_arrow"]){
-        int numer = nodeB.attackNumber;
+        int numer = nodeB.ATK;
         [nodeB removeAllActions];
         [nodeB removeFromParent];
         if ([nodeA isKindOfClass:[WDUserNode class]]) {
@@ -64,7 +66,7 @@
         WDPriestNode *node = (WDPriestNode *)[self childNodeWithName:kPriest];
         [nodeB addHateNumberWithAttackNode:node];
         if ([nodeB isKindOfClass:[WDEnemyNode class]]) {
-            [nodeB beAttackAction:nodeA attackNumber:numer];
+            [nodeB beAttackAction:node attackNumber:numer];
         }
         
     }else if([nodeB.name isEqualToString:@"iceFire"] && ![nodeA isKindOfClass:[WDUserNode class]]){
@@ -73,7 +75,7 @@
         WDPriestNode *node = (WDPriestNode *)[self childNodeWithName:kPriest];
         [nodeA addHateNumberWithAttackNode:node];
         if ([nodeA isKindOfClass:[WDEnemyNode class]]) {
-            [nodeA beAttackAction:nodeB attackNumber:numer];
+            [nodeA beAttackAction:node attackNumber:numer];
         }
     }
     
@@ -109,12 +111,12 @@
     
     /// 怪物攻击击中玩家
     if ([nodeA isKindOfClass:[WDUserNode class]] && [nodeB isKindOfClass:[WDWeaponNode class]]) {
-        CGFloat numer = nodeB.attackNumber;
+        CGFloat numer = nodeB.ATK;
         [nodeA beAttackAction:nodeB attackNumber:numer];
 
         [self weaponAttackAction:nodeA weaponNode:nodeB];
     }else if([nodeB isKindOfClass:[WDUserNode class]] && [nodeA isKindOfClass:[WDWeaponNode class]]){
-        CGFloat numer = nodeA.attackNumber;
+        CGFloat numer = nodeA.ATK;
         [nodeB beAttackAction:nodeA attackNumber:numer];
         [self weaponAttackAction:nodeB weaponNode:nodeA];
     }
@@ -161,7 +163,7 @@
    // userNode.paused = YES;
     userNode.state = userNode.state | Sprite_movie;
     [userNode removeAllActions];
-    
+    [userNode beAttackAction:windNode attackNumber:windNode.ATK];
    // userNode.reduceBloodNow = NO;
    // userNode.colorBlendFactor = 0;
    // [NSObject cancelPreviousPerformRequestsWithTarget:userNode];
@@ -169,7 +171,7 @@
     [windNode removeAllActions];
     windNode.physicsBody = nil;
     CGPoint point = CGPointZero;
-    if (windNode.direction == -1) {
+    if (windNode.direction == 1) {
         point = CGPointMake(kScreenWidth - 100, windNode.position.y);
     }else{
         point = CGPointMake(-kScreenWidth + 100, windNode.position.y);

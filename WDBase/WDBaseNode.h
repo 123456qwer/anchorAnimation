@@ -161,6 +161,10 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,strong)WDBaseNode *hemlet;
 @property (nonatomic,strong)WDBaseNode *shield;
 @property (nonatomic,strong)WDBaseNode *shadow;
+@property (nonatomic,strong)WDBaseNode *beard;
+@property (nonatomic,strong)WDBaseNode *glass;
+
+@property (nonatomic,strong)WDBaseNode *leftWeapon;
 
 /// 弓把手部份
 @property (nonatomic,strong)WDBaseNode *bowMiddle;
@@ -245,17 +249,30 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,assign)CGFloat CADisplaySpeed;
 
 /// 攻击力
-@property (nonatomic,assign)int attackNumber;
+@property (nonatomic,assign)int ATK;
+/// 浮动值
+@property (nonatomic,assign)int ATK_FLOAT;
+
+/// 防御力
+@property (nonatomic,assign)int DEF;
+
+
 /// 初始血量
-@property (nonatomic,assign)int initBlood;
+@property (nonatomic,assign)int BLOOD_INIT;
 /// 剩余血量
-@property (nonatomic,assign)int lastBlood;
+@property (nonatomic,assign)int BLOOD_LAST;
+
 /// 当前治疗量
-@property (nonatomic,assign)int cureNumber;
+@property (nonatomic,assign)int CUR;
+/// 治疗浮动值
+@property (nonatomic,assign)int CUR_FLOAT;
+
+
 /// 增加的治疗量
 @property (nonatomic,assign)int realCureNumber;
 /// 方向，默认1是向右，-1向左
 @property (nonatomic,assign)int direction;
+
 
 @property (nonatomic,copy)void (^_Nullable moveFinishBlock)(void);
 
@@ -291,6 +308,12 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 - (void)setEyeBrowsTexture:(NSString *)name;
 /// 设置眼睛
 - (void)setEyeTexture:(NSString *)name;
+/// 设置胡子
+- (void)setBeardTexture:(NSString *)name;
+
+/// 设置👀
+- (void)setGlassTexture:(NSString *)name;
+
 /// 设置帽子
 - (void)setHemletTexture:(NSString *)name;
 /// 设置武器（左）

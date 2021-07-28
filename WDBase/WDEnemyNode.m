@@ -66,7 +66,7 @@
     }
     
     int hateNumber = [self.hateManager.hateDic[node.name]intValue];
-    CGFloat attackNumber = node.attackNumber;
+    CGFloat attackNumber = node.ATK;
     if ([node.name isEqualToString:kPriest]) {
         attackNumber = 0;
     }
@@ -97,7 +97,7 @@
 /// 一直在更新的方法
 - (void)upDataAction
 {
-    self.zPosition = 10000 - self.position.y;
+    self.zPosition = 4000 - self.position.y;
    
     if (self.state & Sprite_dead) {
         return;
@@ -199,7 +199,7 @@
                 ///可以攻击的状态
                 [self attackAction:self.targetNode];
                 
-            }else if (distance > self.attackDistance || distance < self.size.width * 2.0) {
+            }else if (distance > self.attackDistance) {
                 
                 CGPoint movePoint = [WDCalculateTool calculateNodeMovePositionForBow:self enemy:self.targetNode];
                 [self moveAction:movePoint];

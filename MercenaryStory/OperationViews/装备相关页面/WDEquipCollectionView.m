@@ -85,6 +85,7 @@
     if (indexPath.row < data.count) {
         
         NSString *equipStr = data[indexPath.row];
+        equipStr = [self subArr:equipStr][0];
         
         cell.equipImageView.image = [UIImage imageNamed:equipStr];
         cell.yConstraint.constant = 25;
@@ -94,6 +95,10 @@
         cell.equipImageView.image = nil;
     }
    
+}
+
+- (NSArray *)subArr:(NSString *)str{
+    return [str componentsSeparatedByString:@"_"];
 }
 
 /// 盔甲类的需要截取
@@ -106,7 +111,7 @@
     if (indexPath.row < armorArr.count) {
       
         NSString *armor = armorArr[indexPath.row];
-        
+        armor = [self subArr:armor][0];
         if ([armor isEqualToString:@"n"]) {
             cell.equipImageView.image = nil;
             return;
@@ -148,6 +153,7 @@
             if (indexPath.row < data.count) {
                 NSInteger ke = [_key integerValue];
                 NSString *na = data[indexPath.row];
+                //na = [self subArr:na][0];
                 [WDNotificationManager changeEquip:@{na:@(ke)}];
             }
             
@@ -160,6 +166,7 @@
             if (indexPath.row < armorArr.count) {
                 
                 NSString *armor = armorArr[indexPath.row];
+                //armor = [self subArr:armor][0];
                 [WDNotificationManager changeEquip:@{armor:bodyName}];
                 
             }

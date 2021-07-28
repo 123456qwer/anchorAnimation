@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0400974526AFA0A500DC804A /* Boss1Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 0400974426AFA0A500DC804A /* Boss1Node.m */; };
+		0400974A26AFA1D200DC804A /* Dandy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400974926AFA1D200DC804A /* Dandy.png */; };
+		0400975026AFACB200DC804A /* VikingBeard.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400974F26AFACB200DC804A /* VikingBeard.png */; };
+		0400975526AFAE7900DC804A /* Eye6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400975426AFAE7900DC804A /* Eye6.png */; };
+		0400975A26AFAF2100DC804A /* SteampunkGlasses.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400975926AFAF2100DC804A /* SteampunkGlasses.png */; };
+		0400975F26AFAFA100DC804A /* CardinalBook.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400975E26AFAFA100DC804A /* CardinalBook.png */; };
+		0400976426AFB06500DC804A /* ElderStaff.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400976326AFB06500DC804A /* ElderStaff.png */; };
+		0400976926AFB14E00DC804A /* FireAdept.png in Resources */ = {isa = PBXBuildFile; fileRef = 0400976826AFB14E00DC804A /* FireAdept.png */; };
+		0400976E26AFF2DC00DC804A /* BlueFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0400976D26AFF2DC00DC804A /* BlueFire.sks */; };
 		040EDA83269EA5AF0045DFDE /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDA82269EA5AF0045DFDE /* arrow.png */; };
 		040EDA88269EA5BF0045DFDE /* biaoji.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDA87269EA5BF0045DFDE /* biaoji.png */; };
 		040EDA9A269EB30A0045DFDE /* smoke_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 040EDA8C269EB3070045DFDE /* smoke_5.png */; };
@@ -427,6 +436,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0400974326AFA0A500DC804A /* Boss1Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boss1Node.h; sourceTree = "<group>"; };
+		0400974426AFA0A500DC804A /* Boss1Node.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Boss1Node.m; sourceTree = "<group>"; };
+		0400974926AFA1D200DC804A /* Dandy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dandy.png; sourceTree = "<group>"; };
+		0400974F26AFACB200DC804A /* VikingBeard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VikingBeard.png; sourceTree = "<group>"; };
+		0400975426AFAE7900DC804A /* Eye6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye6.png; sourceTree = "<group>"; };
+		0400975926AFAF2100DC804A /* SteampunkGlasses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SteampunkGlasses.png; sourceTree = "<group>"; };
+		0400975E26AFAFA100DC804A /* CardinalBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardinalBook.png; sourceTree = "<group>"; };
+		0400976326AFB06500DC804A /* ElderStaff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ElderStaff.png; sourceTree = "<group>"; };
+		0400976826AFB14E00DC804A /* FireAdept.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FireAdept.png; sourceTree = "<group>"; };
+		0400976D26AFF2DC00DC804A /* BlueFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlueFire.sks; sourceTree = "<group>"; };
 		040EDA82269EA5AF0045DFDE /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		040EDA87269EA5BF0045DFDE /* biaoji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biaoji.png; sourceTree = "<group>"; };
 		040EDA8C269EB3070045DFDE /* smoke_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smoke_5.png; sourceTree = "<group>"; };
@@ -913,6 +932,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0400974E26AFACAB00DC804A /* Beard */ = {
+			isa = PBXGroup;
+			children = (
+				0400974F26AFACB200DC804A /* VikingBeard.png */,
+			);
+			path = Beard;
+			sourceTree = "<group>";
+		};
 		040EDAB4269EC6E20045DFDE /* OperationViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1000,6 +1027,7 @@
 		04394AE12681BCF2006EBF8B /* Shield */ = {
 			isa = PBXGroup;
 			children = (
+				0400975E26AFAFA100DC804A /* CardinalBook.png */,
 				04394AE22681BD11006EBF8B /* SteelShield.png */,
 			);
 			path = Shield;
@@ -1061,6 +1089,7 @@
 			children = (
 				049A397126AE6251001E6BDE /* Fire2.sks */,
 				043ADA42268965E4001D2F01 /* IceFire.sks */,
+				0400976D26AFF2DC00DC804A /* BlueFire.sks */,
 				044448022684929300089700 /* Fire.sks */,
 				044447CD2684598E00089700 /* cureFire.sks */,
 				044447D2268459DC00089700 /* MyParticle.sks */,
@@ -1082,6 +1111,7 @@
 		0445021F267B4DF300C3F83D /* WDImages */ = {
 			isa = PBXGroup;
 			children = (
+				0400974E26AFACAB00DC804A /* Beard */,
 				049A382C26AE5F98001E6BDE /* BOSS */,
 				04E2FF2E26A7E6B300727D04 /* UI */,
 				04C6F37626A036D500753957 /* Enemys */,
@@ -1115,6 +1145,8 @@
 				04450F30267B4F9B00C3F83D /* Eye_Male.png */,
 				046FECA2268AC21F00260225 /* Eyes5.png */,
 				04CBF08B26A66A74007DF759 /* EyesBlue.png */,
+				0400975426AFAE7900DC804A /* Eye6.png */,
+				0400975926AFAF2100DC804A /* SteampunkGlasses.png */,
 			);
 			path = Eyes;
 			sourceTree = "<group>";
@@ -1176,6 +1208,7 @@
 		04450F69267B51FE00C3F83D /* Hair */ = {
 			isa = PBXGroup;
 			children = (
+				0400974926AFA1D200DC804A /* Dandy.png */,
 				046FEC93268ABBCC00260225 /* Hair5.png */,
 				044447B8268425E200089700 /* ShortPonytail.png */,
 				04394ABD2681B5CF006EBF8B /* BuzzCut.png */,
@@ -1188,6 +1221,7 @@
 		04450F6F267B53AF00C3F83D /* Weapon */ = {
 			isa = PBXGroup;
 			children = (
+				0400976326AFB06500DC804A /* ElderStaff.png */,
 				046FEC9D268ABCB800260225 /* FireWizardArmor.png */,
 				046FEC98268ABC3100260225 /* HardwoodWand.png */,
 				04E25E2226807DDE001CC70F /* FamilySword.png */,
@@ -1310,6 +1344,8 @@
 				049A382026AE5BCF001E6BDE /* Boss1Model.m */,
 				049A397626AE64FA001E6BDE /* WDWeaponNode.h */,
 				049A397726AE64FA001E6BDE /* WDWeaponNode.m */,
+				0400974326AFA0A500DC804A /* Boss1Node.h */,
+				0400974426AFA0A500DC804A /* Boss1Node.m */,
 			);
 			path = WDBoss;
 			sourceTree = "<group>";
@@ -1675,6 +1711,7 @@
 				04394ADC2681B8CD006EBF8B /* KnightArmor.png */,
 				04D88A1E267C972F005C7B0C /* Armor1.png */,
 				04D88A23267C9819005C7B0C /* Armor2.png */,
+				0400976826AFB14E00DC804A /* FireAdept.png */,
 			);
 			path = Armor;
 			sourceTree = "<group>";
@@ -1871,6 +1908,7 @@
 				049A394826AE5FCB001E6BDE /* boss3_attack6_3.png in Resources */,
 				049A39DA26AEA4F0001E6BDE /* sword.png in Resources */,
 				049A621426AA6EF300098DF7 /* Forest1.png in Resources */,
+				0400975A26AFAF2100DC804A /* SteampunkGlasses.png in Resources */,
 				04C6F35A26A008FC00753957 /* hand.png in Resources */,
 				049A391C26AE5FCB001E6BDE /* boss3_attack9_1.png in Resources */,
 				043B9B9C26A9765200718763 /* Mouth_OMG.png in Resources */,
@@ -1892,7 +1930,9 @@
 				049A394026AE5FCB001E6BDE /* boss3_attack8_2.png in Resources */,
 				043B9BF326A9805F00718763 /* Mouth_Sad.png in Resources */,
 				04450F5B267B50A800C3F83D /* PeasantHead.png in Resources */,
+				0400975F26AFAFA100DC804A /* CardinalBook.png in Resources */,
 				049A38E226AE5FCB001E6BDE /* boss3_attack8_5.png in Resources */,
+				0400974A26AFA1D200DC804A /* Dandy.png in Resources */,
 				04E2FF3926A7F46800727D04 /* confirm.png in Resources */,
 				040EDACB269EDA8C0045DFDE /* Knight_3.png in Resources */,
 				043B9BFD26A985AB00718763 /* Mouth_Arhcer.png in Resources */,
@@ -1924,6 +1964,7 @@
 				043B9BAC26A9769100718763 /* EyeBrows_Angry.png in Resources */,
 				049A390E26AE5FCB001E6BDE /* boss3_attack7_1.png in Resources */,
 				04CBF0C126A676F3007DF759 /* Gloves.png in Resources */,
+				0400976E26AFF2DC00DC804A /* BlueFire.sks in Resources */,
 				043CA2DE26A523A1002086CB /* WDEquipScene.sks in Resources */,
 				049A393226AE5FCB001E6BDE /* boss3_btAttack_3.png in Resources */,
 				049A396C26AE5FCB001E6BDE /* boss3_move_8.png in Resources */,
@@ -1994,12 +2035,14 @@
 				049A396226AE5FCB001E6BDE /* boss3_attack5_8.png in Resources */,
 				04394ADD2681B8CD006EBF8B /* KnightArmor.png in Resources */,
 				049A38FF26AE5FCB001E6BDE /* boss3_attack2_7.png in Resources */,
+				0400976926AFB14E00DC804A /* FireAdept.png in Resources */,
 				049A393C26AE5FCB001E6BDE /* boss3_attack6_6.png in Resources */,
 				049A381A26AE5862001E6BDE /* Priest_4.png in Resources */,
 				04450F31267B4F9B00C3F83D /* Eye_Female.png in Resources */,
 				044447F926846F5300089700 /* BowmanHelm.png in Resources */,
 				049A391B26AE5FCB001E6BDE /* boss3_attack2_5.png in Resources */,
 				049A396626AE5FCB001E6BDE /* wizard_cloud.png in Resources */,
+				0400975526AFAE7900DC804A /* Eye6.png in Resources */,
 				049A38E426AE5FCB001E6BDE /* boss3_died_10.png in Resources */,
 				049A390826AE5FCB001E6BDE /* boss3_attack8_7.png in Resources */,
 				049A395B26AE5FCB001E6BDE /* boss3_attack6_11.png in Resources */,
@@ -2084,6 +2127,7 @@
 				04C6F38726A036E700753957 /* RedBat_hurt_4.png in Resources */,
 				049A393A26AE5FCB001E6BDE /* boss3_move_1.png in Resources */,
 				049A391A26AE5FCB001E6BDE /* wuqishi_mete2_3.png in Resources */,
+				0400976426AFB06500DC804A /* ElderStaff.png in Resources */,
 				049A391526AE5FCB001E6BDE /* boss3_attack5_9.png in Resources */,
 				043CA2E326A523C2002086CB /* GradientV.png in Resources */,
 				040EDACC269EDA8C0045DFDE /* Knight_4.png in Resources */,
@@ -2119,6 +2163,7 @@
 				049A39D526AEA4E2001E6BDE /* bone.png in Resources */,
 				049A390C26AE5FCB001E6BDE /* boss3_died_13.png in Resources */,
 				049A38DC26AE5FCB001E6BDE /* boss3_attack7_4.png in Resources */,
+				0400975026AFACB200DC804A /* VikingBeard.png in Resources */,
 				049A38D526AE5FCB001E6BDE /* boss3_attack6_1.png in Resources */,
 				049A390B26AE5FCB001E6BDE /* boss3_attack9_5.png in Resources */,
 				049A394726AE5FCB001E6BDE /* boss3_attack5_10.png in Resources */,
@@ -2269,6 +2314,7 @@
 				04E2FF1726A7E51100727D04 /* WDEquipView.m in Sources */,
 				049EFEC92679FC5800283E13 /* WDBaseScene.m in Sources */,
 				049EFE882679F83700283E13 /* GameViewController.m in Sources */,
+				0400974526AFA0A500DC804A /* Boss1Node.m in Sources */,
 				043B9B6926A95EA600718763 /* WDSkillManager.m in Sources */,
 				046FEC8A268AB75500260225 /* WDWizardNode.m in Sources */,
 				044447DB26845F9D00089700 /* WDBaseNode+InitAction.m in Sources */,

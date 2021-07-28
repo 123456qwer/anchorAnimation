@@ -8,19 +8,20 @@
 #import "WDLearnScene4.h"
 #import "WDBaseNode+Emoji.h"
 #import "WDBoss1Node.h"
+#import "Boss1Node.h"
 
 @implementation WDLearnScene4
 {
     BOOL _isBegin;
     int _createNumber;
-    WDBoss1Node *_bossNode;
+    Boss1Node *_bossNode;
 }
 
 - (void)didMoveToView:(SKView *)view{
     
     [super didMoveToView:view];
     
-  
+    
     
     self.archer.position = CGPointMake(0, 0);
     self.knight.position = CGPointMake(-200, 0);
@@ -157,18 +158,8 @@
 
 - (void)createBoss{
     
-    _bossNode = [WDBoss1Node initWithModel:self.textureManager.boss1Model];
-    _bossNode.state = Sprite_movie;
-    [self addChild:_bossNode];
-    [self.monsterArr addObject:_bossNode];
-    
-    __weak typeof(self)weakSelf = self;
-    [_bossNode moveToTheMap:^(BOOL isComplete) {
-       
-        [weakSelf beginToBoss];
-    }];
-    
-    [WDNotificationManager hiddenSkillView:1];
+    _bossNode = [WDBaseNode initActionWithName:kBoss1 superNode:self position:CGPointMake(1, 0)];
+    [self beginToBoss];
 }
 
 - (void)beginToBoss{
@@ -185,13 +176,30 @@
 
 
 - (void)noPassForBoss2{
-    SKAction *animation = [SKAction animateWithTextures:_bossNode.boss1Model.winArr timePerFrame:0.15];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [_bossNode removeAllActions];
+    
     _bossNode.state = Sprite_movie;
+    _bossNode.xScale = fabs(1);
+    _bossNode.yScale = fabs(1);
+    _bossNode.alpha  = 1;
+    _bossNode.zRotation = 0;
+    
     [_bossNode.talkNode setText:@"你们还不够格哦"];
     __weak typeof(self)weakSelf = self;
-    [_bossNode runAction:animation completion:^{
-        weakSelf.changeSceneBlock(@"WDLearnScene4");
+    [self runAction:[SKAction waitForDuration:3] completion:^{
+        weakSelf.changeSceneBlock(@"WDFirstCampsiteScene");
     }];
+    
+    for (WDBaseNode *node in self.monsterArr) {
+        if (![node isEqualToNode:_bossNode]) {
+            [node deadAction];
+        }
+    }
+    
+    [WDNotificationManager hiddenSkillView:0];
+    [self.textureManager releaseAction];
 }
 
 @end

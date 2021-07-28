@@ -179,8 +179,8 @@
         [self performSelector:@selector(setName) withObject:nil afterDelay:1.5];
         _part[14] = NO;
        
-        /// 测试用，正式可以注掉
-        [self setNoIndex:15 yesIndex:16];
+        /// 测试用，正式必须注掉
+        ///[self setNoIndex:15 yesIndex:16];
         
     }else if(_part[15]){
         
@@ -231,6 +231,9 @@
         [self setNoIndex:19 yesIndex:20];
         
     }else if(_part[20]){
+        [self setTextAction:@"准备准备，就可以出发了！"];
+        [self setNoIndex:20 yesIndex:21];
+    }else if(_part[21]){
         [self overAndOver];
     }
     
@@ -265,7 +268,7 @@
     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:kLearnPass3];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     NSLog(@"下一章！");
-    [self changeSceneWithName:@"WDLearnScene4"];
+    [self changeSceneWithName:@"WDFirstCampsiteScene"];
 }
 
 @end

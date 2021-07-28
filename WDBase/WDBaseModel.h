@@ -36,10 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 眼镜
 @property (nonatomic,copy)NSString *Equip_glasses;
 
+
 /// 获取装备后，拼接到所有装备列表中
 - (void)appendDataWithModel:(WDBaseModel *)model
                        name:(NSString *)userName;
 - (NSDictionary *)properties_aps;
+
+- (int)getSingleDefines;
+- (int)getAllDefines;
 
 @end
 

@@ -267,4 +267,14 @@ static WDTextureManager *textureManager = nil;
     return muAr;
 }
 
+
+- (void)releaseAction{
+    _boss1Model   = nil;
+    _smokeArr     = nil;
+    _redBatModel  = nil;
+    _bloodHitArr  = nil;
+    _bloodHit3Arr = nil;
+    _bloodHit4Arr = nil;
+}
+
 @end

@@ -17,8 +17,8 @@
     
     [super didMoveToView:view];
     
-    
-    
+    WDBaseModel *model = [[WDDataManager shareManager]searchData:kKinght];
+    [model getAllDefines];
     self.priest.position = CGPointMake(0, 0);
     
     self.archer.position = CGPointMake(self.priest.size.width * 2.5, 0);

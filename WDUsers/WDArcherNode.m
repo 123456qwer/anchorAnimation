@@ -33,6 +33,10 @@
         return;
     }
     
+    if (self.state & Sprite_movie) {
+        return;
+    }
+    
     if (self.targetNode.state & Sprite_dead) {
         self.targetNode = nil;
     }
@@ -42,7 +46,7 @@
         [self attackAction:self.targetNode];
     }else{
         
-        if (!self.targetNode && !(self.state & Sprite_movie)) {
+        if (!self.targetNode) {
             WDBaseNode *target = [WDCalculateTool searchMonsterNearNode:self];
             if (target) {
                 self.targetNode = target;

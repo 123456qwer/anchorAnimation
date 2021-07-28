@@ -97,7 +97,7 @@ static WDSkillManager *skillManager = nil;
                        skillType:(int)skillType
 {
     if (skillType == 2) {
-        node.cureNumber = node.realCureNumber;
+        node.CUR = node.realCureNumber;
     }else if(skillType == 3){
         WDBaseNode *nodeD = (WDBaseNode *)[node childNodeWithName:@"define"];
         [nodeD removeFromParent];

@@ -18,6 +18,10 @@
 #import "WDSolider2BowNode.h"
 
 
+/// boss
+#import "Boss1Node.h"
+
+
 #import "WDRedBatNode.h"
 
 
@@ -164,6 +168,21 @@
 
 }
 
+
+#pragma mark - boss -
++ (Boss1Node *)initBoss1Action:(NSString *)spriteName
+                           dic:(NSDictionary *)dic{
+   
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
+    Boss1Node *node = [[Boss1Node alloc] init];
+    node.position = point;
+    node.alpha = 0;
+    node.size = CGSizeMake(145 * allScale, 300 * allScale);
+    [self singleAttackWithName:spriteName node:node superNode:superNode];
+    [self setMonsterLocation:node];
+    return node;
+}
 
 
 

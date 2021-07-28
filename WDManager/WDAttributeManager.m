@@ -22,53 +22,62 @@
 /// 初始化骑士数值
 + (void)initKnightAttribute:(WDBaseNode *)node{
     
+    WDBaseModel *model = [[WDDataManager shareManager]searchData:kKinght];
+    
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 1000;
-    node.lastBlood          = 1000;
-    node.attackNumber       = 20;
+    node.BLOOD_INIT         = 300;
+    node.BLOOD_LAST         = 300;
+    node.ATK                = 20;
+    node.ATK_FLOAT          = 3;
+    node.DEF                = 3 + [model getAllDefines];
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 0;
-    node.attackNumber       = 25;
     node.hateNumber         = 100;
 }
 
 /// 初始化牧师数值
 + (void)initPriestAttribute:(WDBaseNode *)node{
     
-    node.animationWalkSpeed = 220;
-    node.animationRunSpeed  = 300;
-    node.initBlood          = 500;
-    node.lastBlood          = 500;
-    node.attackNumber       = 20;
-    node.cureNumber         = 50;
-    node.CADisplaySpeed     = 3;
-    node.attackDistance     = 300;
-    node.hateNumber         = 1;
+    WDBaseModel *model = [[WDDataManager shareManager]searchData:kPriest];
+
+    node.animationWalkSpeed  = 220;
+    node.animationRunSpeed   = 300;
+    node.BLOOD_INIT          = 100;
+    node.BLOOD_LAST          = 100;
+    node.ATK                 = 20;
+    node.DEF                 = 0 + [model getAllDefines];
+    node.CUR                 = 50;
+    node.CUR_FLOAT           = 5;
+    node.CADisplaySpeed      = 3;
+    node.attackDistance      = 300;
+    node.hateNumber          = 1;
 }
 
 /// 初始化弓箭手数值
 + (void)initArcherAttribute:(WDBaseNode *)node{
-    
+    WDBaseModel *model = [[WDDataManager shareManager]searchData:kArcher];
+
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 500;
-    node.lastBlood          = 500;
-    node.attackNumber       = 20;
-    node.cureNumber         = 50;
+    node.BLOOD_INIT         = 100;
+    node.BLOOD_LAST         = 100;
+    node.ATK                = 20;
+    node.ATK_FLOAT          = 8;
+    node.DEF                = 0 + [model getAllDefines];
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 300;
     node.hateNumber         = 2;
 }
 
-/// 初始化牧师数值
+/// 初始化巫师数值
 + (void)initWizardAttribute:(WDBaseNode *)node{
     
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 500;
-    node.lastBlood          = 500;
-    node.attackNumber       = 20;
+    node.BLOOD_INIT          = 100;
+    node.BLOOD_LAST          = 100;
+    node.ATK       = 20;
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 300;
     node.hateNumber         = 2;
@@ -80,9 +89,10 @@
     
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 600;
-    node.lastBlood          = 600;
-    node.attackNumber       = 0;
+    node.BLOOD_INIT          = 300;
+    node.BLOOD_LAST          = 300;
+    node.ATK       = 15;
+    node.ATK_FLOAT  = 8;
     node.CADisplaySpeed     = 2;
 }
 
@@ -91,9 +101,10 @@
     
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 300;
-    node.lastBlood          = 300;
-    node.attackNumber       = 0;
+    node.BLOOD_INIT          = 150;
+    node.BLOOD_LAST          = 150;
+    node.ATK       = 15;
+    node.ATK_FLOAT  = 8;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;
 }
@@ -103,9 +114,10 @@
     
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 150;
-    node.lastBlood          = 150;
-    node.attackNumber       = 20;
+    node.BLOOD_INIT         = 150;
+    node.BLOOD_LAST         = 150;
+    node.ATK                = 25;
+    node.ATK_FLOAT          = 3;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;
 }
@@ -115,11 +127,12 @@
     
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.initBlood          = 3000;
-    node.lastBlood          = 3000;
-    node.attackNumber       = 20;
+    node.BLOOD_INIT         = 3000;
+    node.BLOOD_LAST         = 3000;
+    node.ATK                = 20;
+    node.ATK_FLOAT          = 20;
     node.CADisplaySpeed     = 2;
-    node.attackDistance     = 400;
+    node.attackDistance     = 500;
 }
 
 @end

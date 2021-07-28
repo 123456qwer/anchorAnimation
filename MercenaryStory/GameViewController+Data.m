@@ -56,12 +56,12 @@
     
     /// 初始化骑士自身穿戴的装备
     [manager openDBwithName:kKinght];
-    [manager insterData:0 name:@[@"n",@"n",@"n",@"n",@"n",@"n",@"n",@"FamilySword",@"n",@"n",@"n",@"n"] userName:kKinght];
+    [manager insterData:0 name:@[@"n",@"n",@"n",@"n",@"n",@"n",@"n",@"FamilySword_3",@"n",@"n",@"n",@"n"] userName:kKinght];
     
     /// 初始化骑士拥有的装备
     NSString *allArmor = [NSString stringWithFormat:@"%@_user",kKinght];
     [manager openDBwithName:allArmor];
-    [manager insterData:0 name:@[@"n",@"n",@"n",@"n",@"n",@"n",@"n",@"FamilySword",@"n",@"n",@"n",@"n"] userName:allArmor];
+    [manager insterData:0 name:@[@"n",@"n",@"n",@"n",@"n",@"n",@"n",@"FamilySword_3",@"n",@"n",@"n",@"n"] userName:allArmor];
 }
 
 
@@ -70,12 +70,12 @@
     
     /// 初始化牧师自身穿戴的装备
     [manager openDBwithName:kPriest];
-    [manager insterData:0 name:@[@"PriestHelm",@"PriestArmor",@"PriestArmor",@"PriestArmor",@"PriestArmor",@"PriestArmor",@"n",@"ClericWand1",@"n",@"n",@"n",@"n"] userName:kPriest];
+    [manager insterData:0 name:@[@"PriestHelm_1",@"PriestArmor_1",@"PriestArmor_1",@"PriestArmor_1",@"PriestArmor_1",@"PriestArmor_1",@"n",@"ClericWand1_5",@"n",@"n",@"n",@"n"] userName:kPriest];
     
     /// 初始化牧师拥有的装备
     NSString *allArmor = [NSString stringWithFormat:@"%@_user",kPriest];
     [manager openDBwithName:allArmor];
-    [manager insterData:0 name:@[@"PriestHelm",@"PriestArmor",@"PriestArmor",@"PriestArmor",@"PriestArmor",@"PriestArmor",@"n",@"ClericWand1",@"n",@"n",@"n",@"n"] userName:allArmor];
+    [manager insterData:0 name:@[@"PriestHelm_1",@"PriestArmor_1",@"PriestArmor_1",@"PriestArmor_1",@"PriestArmor_1",@"PriestArmor_1",@"n",@"ClericWand1_5",@"n",@"n",@"n",@"n"] userName:allArmor];
 }
 
 #pragma mark - 初始化弓箭手装备 -
@@ -103,12 +103,12 @@
     
     /// 初始化弓箭手自身穿戴的装备
     [manager openDBwithName:kArcher];
-    [manager insterData:0 name:@[@"BowmanHelm",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"n",@"n",@"n",@"FamilyBow",@"n",@"n"] userName:kArcher];
+    [manager insterData:0 name:@[@"BowmanHelm_1",@"ArcherArmor_2",@"ArcherArmor_2",@"ArcherArmor_2",@"ArcherArmor_2",@"ArcherArmor_2",@"n",@"n",@"n",@"FamilyBow_5",@"n",@"n"] userName:kArcher];
     
     /// 初始化牧师拥有的装备
     NSString *allArmor = [NSString stringWithFormat:@"%@_user",kArcher];
     [manager openDBwithName:allArmor];
-    [manager insterData:0 name:@[@"BowmanHelm",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"ArcherArmor",@"n",@"n",@"n",@"FamilyBow",@"n",@"n"] userName:allArmor];
+    [manager insterData:0 name:@[@"BowmanHelm_1",@"ArcherArmor_2",@"ArcherArmor_2",@"ArcherArmor_2",@"ArcherArmor_2",@"ArcherArmor_2",@"n",@"n",@"n",@"FamilyBow_5",@"n",@"n"] userName:allArmor];
 }
 
 

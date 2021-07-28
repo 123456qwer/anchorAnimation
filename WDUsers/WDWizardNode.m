@@ -136,7 +136,7 @@
      arrowN.physicsBody.affectedByGravity = NO;
      arrowN.physicsBody.allowsRotation = NO;
      arrowN.name = @"wizardFire";
-     arrowN.attackNumber = self.attackNumber;
+     arrowN.ATK = self.ATK;
     
      [self.parent addChild:arrowN];
     

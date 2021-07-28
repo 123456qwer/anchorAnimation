@@ -91,12 +91,13 @@
 }
 
 - (void)beAttackAction:(WDBaseNode *)enemyNode attackNumber:(int)attackNumber{
+    
     [super beAttackAction:enemyNode attackNumber:attackNumber];
-   
+    
     [WDAnimationManager demageAnimation:self point:CGPointMake(0, 0) scale:2 demagePic:@""];
     
     ///血量少于一半，硬直
-    if (self.lastBlood * 2 < self.initBlood && _stagger == 1) {
+    if (self.BLOOD_LAST * 2 < self.BLOOD_INIT && _stagger == 1) {
         _stagger = 0;
         
         [self removeAllActions];
@@ -168,7 +169,7 @@
     [self runAction:gro completion:^{
         
         if ([self canReduceBlood]) {
-            [enemyNode beAttackAction:weakSelf attackNumber:weakSelf.attackNumber];
+            [enemyNode beAttackAction:weakSelf attackNumber:weakSelf.ATK];
             [enemyNode addHateNumberWithAttackNode:weakSelf];
         }
         
@@ -218,7 +219,7 @@
 - (void)observedNode
 {
     
-    self.zPosition = 10000 - self.position.y;
+    self.zPosition = 4000 - self.position.y;
     self.zPosition = self.zPosition + 150;
       
     
@@ -236,7 +237,7 @@
     }
    
     if (!self.targetNode) {
-
+        self.targetNode = [WDCalculateTool searchUserNearNode:self];
         return;
     }
     

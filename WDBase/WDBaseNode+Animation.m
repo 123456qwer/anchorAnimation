@@ -247,7 +247,7 @@
                 
                 if (dis <= self.size.width / 2.0 + enemyNode.size.width / 2.0 + add) {
                     //击中
-                    [enemyNode beAttackAction:weakSelf attackNumber:weakSelf.attackNumber];
+                    [enemyNode beAttackAction:weakSelf attackNumber:weakSelf.ATK];
                     [enemyNode addHateNumberWithAttackNode:weakSelf];
                 }else{
                     //未击中
@@ -449,7 +449,7 @@
      arrowN.physicsBody.affectedByGravity = NO;
      arrowN.physicsBody.allowsRotation = NO;
      arrowN.name = arrowName;
-     arrowN.attackNumber = weakSelf.attackNumber;
+     arrowN.ATK = weakSelf.ATK;
     
      [weakSelf.parent addChild:arrowN];
      
@@ -550,21 +550,21 @@
         return;
     }
     
-    CGFloat lastBlood = self.lastBlood - attackNumber;
+    CGFloat lastBlood = self.BLOOD_LAST - attackNumber;
    
     if (lastBlood <= 0) {
-        attackNumber = self.lastBlood;
-        self.lastBlood = 0;
+        attackNumber = self.BLOOD_LAST;
+        self.BLOOD_LAST = 0;
     }else{
-        self.lastBlood = lastBlood;
+        self.BLOOD_LAST = lastBlood;
     }
     
     
     
     ///剩余血的半分比
-    CGFloat percent = (float)self.lastBlood / (float)self.initBlood;
+    CGFloat percent = (float)self.BLOOD_LAST / (float)self.BLOOD_INIT;
     ///攻击量的半分比
-    CGFloat attackPercent = (float)attackNumber / (float)self.initBlood;
+    CGFloat attackPercent = (float)attackNumber / (float)self.BLOOD_INIT;
     
     CGFloat width   = fabs(self.bgBlood.size.width * percent);
     CGFloat reduceWidth = fabs(self.bgBlood.size.width * attackPercent);
@@ -584,9 +584,9 @@
     SKAction *seq = [SKAction sequence:@[size,remo]];
     [reduce runAction:seq];
     
-    if (self.lastBlood <= 0) {
+    if (self.BLOOD_LAST <= 0) {
         [self deadAction];
-    }else if (self.lastBlood >= self.initBlood) {
+    }else if (self.BLOOD_LAST >= self.BLOOD_INIT) {
         self.bgBlood.hidden = YES;
     }else{
         self.bgBlood.hidden = NO;
@@ -600,19 +600,19 @@
         return;
     }
     
-    CGFloat lastBlood = self.lastBlood + cureNumber;
+    CGFloat lastBlood = self.BLOOD_LAST + cureNumber;
    
-    if (lastBlood >= self.initBlood) {
-        cureNumber = self.initBlood - self.lastBlood;
-        lastBlood = self.initBlood;
+    if (lastBlood >= self.BLOOD_INIT) {
+        cureNumber = self.BLOOD_INIT - self.BLOOD_LAST;
+        lastBlood = self.BLOOD_INIT;
     }
     
-    self.lastBlood = lastBlood;
+    self.BLOOD_LAST = lastBlood;
     
     ///剩余血的半分比
-    CGFloat percent = (float)self.lastBlood / (float)self.initBlood;
+    CGFloat percent = (float)self.BLOOD_LAST / (float)self.BLOOD_INIT;
     ///攻击量的半分比
-    CGFloat attackPercent = (float)cureNumber / (float)self.initBlood;
+    CGFloat attackPercent = (float)cureNumber / (float)self.BLOOD_INIT;
     
     CGFloat width   = fabs(self.bgBlood.size.width * percent);
     CGFloat reduceWidth = fabs(self.bgBlood.size.width * attackPercent);
@@ -632,7 +632,7 @@
     SKAction *seq = [SKAction sequence:@[size,remo]];
     [reduce runAction:seq];
     
-    if (self.lastBlood >= self.initBlood) {
+    if (self.BLOOD_LAST >= self.BLOOD_INIT) {
         self.bgBlood.hidden = YES;
     }else{
         self.bgBlood.hidden = NO;

@@ -34,6 +34,7 @@
 
 - (void)endMove1{
     
+    self.archer.state = self.archer.state | Sprite_movie;
     [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationForMoveEnd object:nil];
     [self changeSelectNode:self.archer];
     [self setTextAction:@"这个地方怎么似曾相识啊？"];
@@ -135,6 +136,7 @@
         node3.state = Sprite_stand;
         [weakSelf stopTalk];
         [weakSelf setPart2:YES];
+        weakSelf.archer.state = weakSelf.archer.state ^ Sprite_movie;
     }];
 }
 
@@ -167,6 +169,8 @@
     [self.archer.balloonNode setBalloonWithLine:1 hiddenTime:2];
     __weak typeof(self)weakSelf = self;
     [self.archer omgFaceState];
+    weakSelf.archer.state = weakSelf.archer.state | Sprite_movie;
+
     [self setTextAction:@"这没完没了了啊！是时候拿出真本事了！" hiddenTime:3 completeBlock:^{
         [weakSelf.archer normalFaceState];
         weakSelf.archer.mouth.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Mouth_Angry"]];
@@ -183,6 +187,8 @@
 
 - (void)skill1Action{
     
+    self.archer.state = self.archer.state ^ Sprite_movie;
+
     for (WDBaseNode *node in self.monsterArr) {
         node.state = Sprite_stand;
     }
@@ -224,7 +230,7 @@
 }
 
 - (void)endMove3{
-    
+    self.archer.bgBlood.hidden = YES;
     [[NSNotificationCenter defaultCenter]removeObserver:self name:kNotificationForMoveEnd object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(overAndOver) name:kNotificationForMoveEnd object:nil];
     

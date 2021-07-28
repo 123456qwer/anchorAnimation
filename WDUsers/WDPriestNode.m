@@ -35,6 +35,10 @@
 {
     [super upDataAction];
     
+    if (self.state & Sprite_movie) {
+        return;
+    }
+    
     if (self.state & Sprite_dead) {
         return;
     }
@@ -47,31 +51,48 @@
         return;
     }
     
+    
     if (self.cureNode) {
+        
         if (self.position.x > self.cureNode.position.x) {
             self.xScale = - fabs(self.xScale);
         }else{
             self.xScale =  fabs(self.xScale);
         }
-    }else if(self.targetNode){
+        
+        [self cureAction];
+        
+    }else if (self.targetNode.state & Sprite_dead) {
+        
+        self.targetNode = nil;
+        
+    }else if (self.targetNode) {
+        
         if (self.position.x > self.targetNode.position.x) {
             self.xScale = - fabs(self.xScale);
         }else{
             self.xScale =  fabs(self.xScale);
         }
-    }
-    
-    if (self.cureNode) {
-        [self cureAction];
-    }
-    
-    if (self.targetNode.state & Sprite_dead) {
-        self.targetNode = nil;
-    }
-    
-    if (self.targetNode) {
+        
         [self attackAction:self.targetNode];
+        
+    }else{
+        
+        WDBaseScene *scene = (WDBaseScene *)self.parent;
+        for (WDUserNode *node in scene.userArr) {
+            if (node.BLOOD_LAST < node.BLOOD_INIT) {
+                self.cureNode = node;
+                break;
+            }
+        }
+        
     }
+    
+    
+    
+    
+    
+    
     
 }
 
@@ -235,10 +256,11 @@
 {
     [WDNotificationManager addHateWithNode:self];
     WDBaseScene *scene = (WDBaseScene *)self.parent;
-    
+    int cureNumber = self.CUR;
     for (WDBaseNode *node in scene.userArr) {
-        
-        [node addBlood:self.cureNumber * 2];
+        self.CUR = cureNumber * 2;
+        [node beCureAction:self];
+        self.CUR = cureNumber;
     }
 }
 

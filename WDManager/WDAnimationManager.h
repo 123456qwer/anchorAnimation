@@ -15,6 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
                   point:(CGPoint)point
                   scale:(CGFloat)scale
               demagePic:(NSString *)imageName;
+
+/// 加血数字动画
++ (void)addBloodNumberAnimation:(WDBaseNode *)node
+                         number:(int)number;
+
+/// 减血数字动画
++ (void)reduceBloodNumberAnimation:(WDBaseNode *)node
+                            number:(int)number;
+
 @end
 
 NS_ASSUME_NONNULL_END

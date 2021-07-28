@@ -508,7 +508,7 @@
         boomNode.xScale = 2.0;
         boomNode.yScale = 2.0;
         boomNode.name = @"meteorite1";
-        boomNode.attackNumber = 20;
+        boomNode.ATK = 20;
       //  boomNode.floatAttackNumber = 10;
         boomNode.alpha = 0.6;
         [parentNode addChild:boomNode];
@@ -587,7 +587,7 @@
     flashNode.xScale = 1.5;
     flashNode.yScale = 1.5;
     flashNode.alpha  = 0.8;
-    flashNode.attackNumber = 20;
+    flashNode.ATK = 20;
     //flashNode.floatAttackNumber = 20;
     flashNode.name = @"flash";
     CGRect rect = CGRectMake(0, 0, flashNode.size.width / 2.0, flashNode.size.height);
@@ -660,7 +660,6 @@
     __weak typeof(self)weakSelf = self;
     [self runAction:seq completion:^{
         [weakSelf bookAttack];
-       
     }];
 }
 
@@ -696,7 +695,7 @@
     CGFloat bigDistance = self.size.width / 2.0 / 2.0 + self.targetNode.size.width / 2.0;
     
     if (fabs(distanceX) < bigDistance && fabs(distanceY) < 100) {
-        [self.targetNode beAttackAction:self attackNumber:self.targetNode.initBlood / 5];
+        [self.targetNode beAttackAction:self attackNumber:self.targetNode.BLOOD_INIT / 5];
     }
 }
 

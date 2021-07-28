@@ -15,6 +15,7 @@
 #import "WDWizardNode.h"
 #import "WDBaseNode+Emoji.h"
 #import "WDBoss1Node.h"
+#import "Boss1Node.h"
 
 @implementation WDTestScene
 {
@@ -52,12 +53,43 @@
     int b;
     WDBaseNode *node;
     WDBoss1Node *_bossNode;
+    Boss1Node *_b;
+    SKLabelNode *_label;
+    
 }
 
 - (void)didMoveToView:(SKView *)view
 {
     [super didMoveToView:view];
     
+//    _b = [WDBaseNode initActionWithName:kBoss1 superNode:self position:CGPointMake(0, 0)];
+////    _b.xScale = 2.0;
+////    _b.yScale = 2.0;
+//   
+//    self.priest.position = CGPointMake(0, 0);
+//    self.knight.position = CGPointMake(kScreenWidth - 300, 0);
+//    self.knight.initBlood = 10000000;
+//    self.knight.lastBlood = 10000000;
+//    self.knight.xScale = 2.0;
+//    self.knight.yScale = 2.0;
+    
+    
+//Charter
+    
+    [self knight];
+    
+    
+   
+}
+
+- (void)touchUpAtPoint:(CGPoint)pos{
+    
+    [super touchUpAtPoint:pos];
+    [self.knight beAttackAction:self.priest attackNumber:5];
+  
+}
+
+- (void)testBoss{
     [self knight];
     [self priest];
     [self archer];
