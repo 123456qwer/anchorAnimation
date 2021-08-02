@@ -20,6 +20,8 @@
     [self setArmorWithModel:model];
 
     [self standAction];
+    [self setEyeTexture:@"Eye_knight"];
+
     
 }
 

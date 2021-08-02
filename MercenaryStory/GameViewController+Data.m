@@ -54,6 +54,27 @@
 #pragma mark - 初始化骑士装备 -
 - (void)knightData:(WDDataManager *)manager{
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger skill2 = [defaults integerForKey:kKinght_skill_2];
+    if (skill2 == 0) {
+        [defaults setInteger:10 forKey:kKinght_skill_2];
+    }
+    
+    NSInteger skill3 = [defaults integerForKey:kKinght_skill_3];
+    if (skill3 == 0) {
+        [defaults setInteger:10 forKey:kKinght_skill_3];
+    }
+    
+    NSInteger skill4 = [defaults integerForKey:kKinght_skill_4];
+    if (skill4 == 0) {
+        [defaults setInteger:10 forKey:kKinght_skill_4];
+    }
+    
+    NSInteger skill5 = [defaults integerForKey:kKinght_skill_5];
+    if (skill5 == 0) {
+        [defaults setInteger:60 forKey:kKinght_skill_5];
+    }
+    
     /// 初始化骑士自身穿戴的装备
     [manager openDBwithName:kKinght];
     [manager insterData:0 name:@[@"n",@"n",@"n",@"n",@"n",@"n",@"n",@"FamilySword_3",@"n",@"n",@"n",@"n"] userName:kKinght];
@@ -67,6 +88,23 @@
 
 #pragma mark - 初始化牧师装备 -
 - (void)priestData:(WDDataManager *)manager{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger skill1 = [defaults integerForKey:kPriest_skill_1];
+    if (skill1 == 0) {
+        [defaults setInteger:10 forKey:kPriest_skill_1];
+    }
+    
+    NSInteger skill3 = [defaults integerForKey:kPriest_skill_3];
+    if (skill3 == 0) {
+        [defaults setInteger:10 forKey:kPriest_skill_3];
+    }
+    
+    NSInteger skill4 = [defaults integerForKey:kPriest_skill_4];
+    if (skill4 == 0) {
+        [defaults setInteger:5 forKey:kPriest_skill_4];
+    }
     
     /// 初始化牧师自身穿戴的装备
     [manager openDBwithName:kPriest];

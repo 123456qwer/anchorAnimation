@@ -259,6 +259,16 @@
     return _priest;
 }
 
+- (WDSkillNpcNode *)skillLearnNpc{
+    
+    if (!_skillLearnNpc) {
+        _skillLearnNpc = [WDBaseNode initActionWithName:kLearnSkillNPC superNode:self position:CGPointMake(self.knight.position.x - self.knight.size.width * 3.0, self.knight.position.y + self.knight.size.height)];
+    }
+    
+    return _skillLearnNpc;
+    
+}
+
 
 - (SKSpriteNode *)clickNode{
     if (!_clickNode) {
@@ -430,8 +440,8 @@
 
 /// 显示装备栏
 - (void)presentEquipScene{
-    if (self.presentEquipBlock) {
-        self.presentEquipBlock(self.selectNode.name);
+    if (self.prenestMenuForArmorBlock) {
+        self.prenestMenuForArmorBlock(self.selectNode.name);
     }
 }
 
@@ -460,6 +470,21 @@
 }
 - (void)skill5Action{
     [_selectNode skill5Action];
+}
+
+#pragma mark - 人物死亡置空 -
+- (void)deadForRelease:(WDBaseNode *)node{
+    
+    if ([node.name isEqualToString:kKinght]) {
+        _knight = nil;
+    }else if([node.name isEqualToString:kArcher]){
+        _archer = nil;
+    }else if([node.name isEqualToString:kPriest]){
+        _priest = nil;
+    }else if([node.name isEqualToString:kWizard]){
+        _wizard = nil;
+    }
+    
 }
 
 #pragma mark - 物理检测 -
@@ -530,8 +555,7 @@
 }
 
 #pragma mark - 指示箭头 -
-- (void)hiddenArrow
-{
+- (void)hiddenArrow{
    
     WDBaseNode *arrow  = self.arrowNode;
     WDBaseNode *location = self.locationNode;
@@ -543,8 +567,7 @@
     location.alpha = 0;
 }
 
-- (void)arrowMoveActionWithPos:(CGPoint)pos
-{
+- (void)arrowMoveActionWithPos:(CGPoint)pos{
     WDBaseNode *arrow  = self.arrowNode;
     WDBaseNode *location = self.locationNode;
        
@@ -610,8 +633,7 @@
 }
 
 
-- (void)dealloc
-{
+- (void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     NSLog(@"%@释放了",NSStringFromClass([self class]));
 }

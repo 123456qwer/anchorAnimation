@@ -252,6 +252,8 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,assign)int ATK;
 /// 浮动值
 @property (nonatomic,assign)int ATK_FLOAT;
+/// 武器攻击力
+@property (nonatomic,assign)int ATK_WEAPON;
 
 /// 防御力
 @property (nonatomic,assign)int DEF;

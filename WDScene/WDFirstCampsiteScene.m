@@ -11,6 +11,8 @@
 {
     BOOL _isCreate;
     BOOL _isPassDoor;
+    SKSpriteNode *_ballNode;
+    SKLabelNode *_ballLabel;
 }
 
 - (void)didMoveToView:(SKView *)view{
@@ -31,14 +33,80 @@
         [self.selectNode setArmorWithModel:model];
         
     }else{
+        
         self.passDoorNode.position = CGPointMake(kScreenWidth - self.passDoorNode.size.width,100);
         self.passDoorNode.zPosition = 1000;
+        [self changeSelectNode:self.knight];
+        __weak typeof(self)weakSelf = self;
+        [self setTextAction:@"准备齐全后，点击右上角传送门\n随时可以出发" hiddenTime:2 completeBlock:^{
+            [weakSelf stopTalk];
+        }];
+        
+        /// 技能训练师
+        [self createSkillLearnNode];
     }
     
-    [self changeSelectNode:nil];
     _isCreate = YES;
+
     
-    [self setTextAction:@"准备齐全后，点击右上角传送门\n随时可以出发"];
+}
+
+- (void)createSkillLearnNode{
+   
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    /// 过了第一关，有技能训练师
+    if ([defaults boolForKey:kPassCheckPoint1]) {
+        
+        [self skillLearnNpc];
+        [self createBallAction];
+        _ballNode.position = CGPointMake(self.skillLearnNpc.position.x, self.skillLearnNpc.position.y + self.knight.size.height / 2.0 + _ballNode.size.width / 2.0);
+    
+        _ballLabel.position = CGPointMake(_ballNode.position.x + _ballNode.size.width / 2.0 + _ballLabel.fontSize + 10, _ballNode.position.y );
+        
+    }
+}
+
+- (void)createBallAction{
+    
+   
+    NSInteger ballCount = [[NSUserDefaults standardUserDefaults]integerForKey:kSkillBall];
+    
+    if (ballCount > 3) {
+        ballCount = 3;
+    }
+    
+    UIImage *image = [UIImage imageNamed:@"select_yes"];
+    CGFloat width = image.size.width;
+    
+    CGFloat x = self.skillLearnNpc.position.x;
+    if (ballCount % 2 == 0) {
+        x = self.skillLearnNpc.position.x - ballCount / 2 * width + width / 2.0;
+    }else{
+        x = self.skillLearnNpc.position.x - ballCount / 2 * width;
+    }
+    
+   
+    CGFloat y = self.skillLearnNpc.position.y + self.knight.size.height / 2.0 + width  / 2.0;
+    
+    for (int i = 0; i < ballCount; i ++) {
+        SKSpriteNode *node = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImage:image]];
+        node.zPosition = 100000;
+        node.position = CGPointMake(x,y );
+        [self addChild:node];
+        
+        SKAction *alpha = [SKAction fadeAlphaTo:0.7 duration:1.2];
+        SKAction *alpha2 = [SKAction fadeAlphaTo:1 duration:1.2];
+        SKAction *sca  = [SKAction scaleTo:0.8 duration:1.2];
+        SKAction *sca2 = [SKAction scaleTo:1 duration:1.2];
+        SKAction *seq1 = [SKAction sequence:@[alpha,alpha2]];
+        SKAction *seq2 = [SKAction sequence:@[sca,sca2]];
+        SKAction *gr = [SKAction group:@[seq1,seq2]];
+        SKAction *rep = [SKAction repeatActionForever:gr];
+        [node runAction:rep];
+
+        x = x + width;
+    }
+ 
 }
 
 /// 开始触碰
@@ -79,10 +147,14 @@
     
     /// 切换角色
     if (user && ![user isEqualToNode:self.selectNode]) {
-        [self changeSelectNode:user];
-        self.presentEquipBlock(self.selectNode.name);
-    }else if(passDoor && !_isPassDoor){
+        if ([user.name isEqualToString:kLearnSkillNPC]) {
+            self.prenestMenuForSkillBlock(self.selectNode.name);
+        }else{
+            [self changeSelectNode:user];
+            self.prenestMenuForArmorBlock(self.selectNode.name);
+        }
         
+    }else if(passDoor && !_isPassDoor){
         NSArray *arr = [self.textureManager.passDoorArr subarrayWithRange:NSMakeRange(1, self.textureManager.passDoorArr.count - 1)];
         SKAction *an = [SKAction animateWithTextures:arr timePerFrame:0.1];
         SKAction *re = [SKAction repeatAction:an count:2];
@@ -93,6 +165,8 @@
             [weakSelf passDoorDown];
             [weakSelf performSelector:@selector(endPass) withObject:nil afterDelay:0.3];
         }];
+    }else{
+        //self.hiddenMenuBlock(self.selectNode.name);
     }
     
     

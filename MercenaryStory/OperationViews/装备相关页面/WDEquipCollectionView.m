@@ -14,7 +14,7 @@
     NSDictionary *_equipDic;
     BOOL _isSelect[30];
     NSMutableDictionary *_selectDic;
-    NSString *_key;
+    NSString *_equipType; //EquipType
     NSString *_userName;
     NSMutableArray *_haveChangeArr;
 }
@@ -67,7 +67,7 @@
         cell.equipImageView.image = nil;
     }
     
-    NSMutableArray *arr = _selectDic[_key];
+    NSMutableArray *arr = _selectDic[_equipType];
     if ([arr[indexPath.row] intValue] == 1) {
         cell.bgImageView.image = [UIImage imageNamed:@"Blue"];
     }else{
@@ -86,6 +86,10 @@
         
         NSString *equipStr = data[indexPath.row];
         equipStr = [self subArr:equipStr][0];
+      
+        if ([_equipType intValue] == Equip_bow) {
+            equipStr = [NSString stringWithFormat:@"%@的副本",equipStr];
+        }
         
         cell.equipImageView.image = [UIImage imageNamed:equipStr];
         cell.yConstraint.constant = 25;
@@ -137,7 +141,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSMutableArray *arr = _selectDic[_key];
+    NSMutableArray *arr = _selectDic[_equipType];
     
     /// 选中不同的数据
     if ([arr[indexPath.row]intValue] == 0) {
@@ -151,7 +155,7 @@
             NSArray *data = [dataString componentsSeparatedByString:@","];
             
             if (indexPath.row < data.count) {
-                NSInteger ke = [_key integerValue];
+                NSInteger ke = [_equipType integerValue];
                 NSString *na = data[indexPath.row];
                 //na = [self subArr:na][0];
                 [WDNotificationManager changeEquip:@{na:@(ke)}];
@@ -188,12 +192,12 @@
             NSArray *data = [dataString componentsSeparatedByString:@","];
             
             if (indexPath.row < data.count) {
-                NSInteger ke = [_key integerValue];
+                NSInteger ke = [_equipType integerValue];
                 [WDNotificationManager changeEquip:@{@"n":@(ke)}];
             }
             
             if (indexPath.row < _equipArr.count) {
-                NSInteger ke = [_key integerValue];
+                NSInteger ke = [_equipType integerValue];
                 [WDNotificationManager changeEquip:@{@"n":@(ke)}];
             }
             
@@ -226,11 +230,11 @@
     
     _userName = userName;
     
-    _key = [NSString stringWithFormat:@"%ld",index + 1];
+    _equipType = [NSString stringWithFormat:@"%ld",index + 1];
     _equipDic = nil;
     _equipArr = equipArr;
     
-    NSMutableArray *arr = _selectDic[_key];
+    NSMutableArray *arr = _selectDic[_equipType];
     
     BOOL haveChangeData = NO;
     
@@ -248,7 +252,7 @@
         NSDictionary *dic = [model properties_aps];
         
         NSString *value = dic[[self modelKey:index]];
-        [WDNotificationManager changeEquip:@{value:@([_key intValue])}];
+        [WDNotificationManager changeEquip:@{value:@([_equipType intValue])}];
 
         
         for (int i = 0; i < arr.count; i ++) {
@@ -278,11 +282,11 @@
                      name:(NSString *)userName{
     
     _userName = userName;
-    _key = [NSString stringWithFormat:@"%ld",index + 1];
+    _equipType = [NSString stringWithFormat:@"%ld",index + 1];
     _equipArr = nil;
     _equipDic = equipDic;
     
-    NSMutableArray *arr = _selectDic[_key];
+    NSMutableArray *arr = _selectDic[_equipType];
     
     BOOL haveChangeData = NO;
     
@@ -301,7 +305,7 @@
         NSDictionary *dic = [model properties_aps];
         
         NSString *value = dic[[self modelKey:index]];
-        [WDNotificationManager changeEquip:@{value:@([_key intValue])}];
+        [WDNotificationManager changeEquip:@{value:@([_equipType intValue])}];
 
         
         for (int i = 0; i < arr.count; i ++) {

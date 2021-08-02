@@ -332,7 +332,7 @@
     _arrowNode.position = point;
     _arrowNode.xScale = scale;
     _arrowNode.yScale = scale;
-    _arrowNode.zPosition = 100;
+    _arrowNode.zPosition = 100000;
     _arrowNode.hidden = YES;
     [self addChild:_arrowNode];
     
@@ -529,6 +529,10 @@
     
     attackNumber -= self.DEF;
     
+    if (attackNumber < 0) {
+        attackNumber = 1;
+    }
+    
     [WDAnimationManager reduceBloodNumberAnimation:self number:attackNumber];
     [self bleedAnimation:attackNumber];
     [self reduceBlood:attackNumber];
@@ -654,6 +658,8 @@
     [self setRightShield:[self subArr:model.Equip_shield][0]];
     
     [self setBow:[self subArr:model.Equip_bow][0]];
+    
+    [WDAttributeManager setSpriteAttribute:self];
 }
 
 - (void)setAllArmor:(NSString *)armorName{

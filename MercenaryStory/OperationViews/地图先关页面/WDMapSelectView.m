@@ -277,7 +277,7 @@
         _selectBtn.backgroundColor = [WDCalculateTool colorFromHexRGB:@"#F5F5F5"];
     }
     
-    NSArray *mapArr = @[@"WDLearnScene4",@"BoneSoliderScene",@"BoneBossScene",@"ZombieScene",@"OXScene",@"GhostScene",@"DogScene",@"SquidScene"];
+    NSArray *mapArr = @[@"WDLearnScene4",@"WDLevelScene1",@"BoneBossScene",@"ZombieScene",@"OXScene",@"GhostScene",@"DogScene",@"SquidScene"];
     NSString *mapName = mapArr[sender.tag - 100];
     _selectMapName = mapName;
     _selectBtn = sender;

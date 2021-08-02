@@ -29,6 +29,7 @@
     node.BLOOD_INIT         = 300;
     node.BLOOD_LAST         = 300;
     node.ATK                = 20;
+    node.ATK_WEAPON         = [model getSingleValueWithName:@"Equip_sword1h"];
     node.ATK_FLOAT          = 3;
     node.DEF                = 3 + [model getAllDefines];
     node.CADisplaySpeed     = 3;
@@ -43,9 +44,10 @@
 
     node.animationWalkSpeed  = 220;
     node.animationRunSpeed   = 300;
-    node.BLOOD_INIT          = 100;
-    node.BLOOD_LAST          = 100;
+    node.BLOOD_INIT          = 150;
+    node.BLOOD_LAST          = 150;
     node.ATK                 = 20;
+    node.ATK_WEAPON         = [model getSingleValueWithName:@"Equip_sword1h"];
     node.DEF                 = 0 + [model getAllDefines];
     node.CUR                 = 50;
     node.CUR_FLOAT           = 5;
@@ -60,10 +62,11 @@
 
     node.animationWalkSpeed = 220;
     node.animationRunSpeed  = 300;
-    node.BLOOD_INIT         = 100;
-    node.BLOOD_LAST         = 100;
+    node.BLOOD_INIT         = 250;
+    node.BLOOD_LAST         = 250;
     node.ATK                = 20;
     node.ATK_FLOAT          = 8;
+    node.ATK_WEAPON         = [model getSingleValueWithName:@"Equip_bow"];
     node.DEF                = 0 + [model getAllDefines];
     node.CADisplaySpeed     = 3;
     node.attackDistance     = 300;
@@ -116,7 +119,7 @@
     node.animationRunSpeed  = 300;
     node.BLOOD_INIT         = 150;
     node.BLOOD_LAST         = 150;
-    node.ATK                = 25;
+    node.ATK                = 30;
     node.ATK_FLOAT          = 3;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;

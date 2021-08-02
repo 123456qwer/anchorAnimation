@@ -16,13 +16,15 @@
 /// 怪物
 #import "WDSolider1Node.h"
 #import "WDSolider2BowNode.h"
+#import "WDRedBatNode.h"
 
+/// NPC
+#import "WDSkillNpcNode.h"
 
 /// boss
 #import "Boss1Node.h"
 
 
-#import "WDRedBatNode.h"
 
 
 
@@ -129,6 +131,19 @@
     return node;
 }
 
+#pragma mark - NPC -
+#pragma mark - 技能训练师 -
++ (WDSkillNpcNode *)initLearnSkillNPCAction:(NSString *)spriteName
+                                        dic:(NSDictionary *)dic{
+    
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
+    WDSkillNpcNode *node = [[WDSkillNpcNode alloc] init];
+    node.position = point;
+    node.size = CGSizeMake(145 * allScale, 300 * allScale);
+    [self singleAttackWithName:spriteName node:node superNode:superNode];
+    return node;
+}
 
 #pragma mark - 敌人 -
 #pragma mark - 骷髅兵 -

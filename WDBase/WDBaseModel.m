@@ -88,7 +88,7 @@
     for (int i = 0; i < keys.count; i ++) {
         
         NSString *keyName = keys[i];
-        if ([keyName isEqualToString:@"Equip_bow"]||[keyName isEqualToString:@"Equip_sword2h"]||[keyName isEqualToString:@"Equip_sword1h"]||[keyName isEqualToString:@"Equip_shield"]) {
+        if ([keyName isEqualToString:@"Equip_bow"]||[keyName isEqualToString:@"Equip_sword2h"]||[keyName isEqualToString:@"Equip_sword1h"]) {
             
         }else{
             
@@ -107,6 +107,17 @@
     
     return defines;
     
+}
+
+- (int)getSingleValueWithName:(NSString *)valueName{
+    
+    NSString *value = [self valueForKey:valueName];
+    NSArray *ar = [self subArr:value];
+    if (ar.count >= 2) {
+        return [ar [1]intValue];
+    }else{
+        return 0;
+    }
 }
 
 #pragma mark - getter -

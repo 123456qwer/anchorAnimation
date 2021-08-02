@@ -44,12 +44,14 @@
     blueFire.position = CGPointMake(-10 * allScale, 235 * allScale);
     blueFire.name = @"blueFire";
     [self.leftWeapon addChild:blueFire];
-    
-    
 }
 
 #pragma mark - 复写 -
 - (void)upDataAction{
+    
+    if (self.state & Sprite_dead) {
+        return;
+    }
     
     [super upDataAction];
  
@@ -60,6 +62,10 @@
 
 - (void)attackAction:(WDBaseNode *)enemyNode{
   
+    if (self.state & Sprite_dead) {
+        return;
+    }
+    
     if (self.state & Sprite_attack) {
         return;
     }
@@ -72,6 +78,7 @@
             index = 3;
         }
     }
+    
     //index = 3;
     NSString *skillName = skillNames[index];
     SEL action = NSSelectorFromString(skillName);
@@ -836,7 +843,130 @@
 }
 
 
+#pragma mark - 死亡 -
+- (void)deadAction{
 
+    self.state = Sprite_dead;
+  
+    
+    WDBaseNode *node = (WDBaseNode *)[self.targetNode childNodeWithName:@"windwindwind"];
+    //[node removeAllActions];
+    SKAction *alphaA = [SKAction fadeAlphaTo:0 duration:0.3];
+    SKAction *remo = [SKAction removeFromParent];
+    [node runAction:[SKAction sequence:@[alphaA,remo]]];
+    
+    self.bgBlood.hidden = YES;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self performSelector:@selector(died) withObject:nil afterDelay:2];
+
+}
+
+- (void)died{
+ 
+    
+    [self moveSameActionWithState:Sprite_walk movePoint:CGPointMake(self.size.width * 2.5 * 2, 0)];
+    
+    
+}
+
+/// 这里点击移动跟玩家效果一样，在死了以后
+- (void)moveSameActionWithState:(SpriteState)moveState
+                      movePoint:(CGPoint)movePoint{
+    
+    if (self.state & Sprite_dead) {
+        if (self.state & Sprite_stand) {
+            self.state = self.state ^ Sprite_stand;
+        }
+        
+        if (self.state & Sprite_attack) {
+            self.state = self.state ^ Sprite_attack;
+        }
+        
+        if (self.state & Sprite_cure) {
+            self.state = self.state ^ Sprite_cure;
+        }
+        
+        BOOL isWalk = YES;
+        
+        if (moveState == Sprite_walk) {
+            if (self.state & Sprite_run) {
+                self.state = self.state ^ Sprite_run;
+            }
+            
+        }else{
+            if (self.state & Sprite_walk) {
+                self.state = self.state ^ Sprite_walk;
+            }
+            isWalk = NO;
+        }
+
+        [self normalFaceState];
+        
+        if (!(self.state & moveState)) {
+            
+            [self.hip removeAllActions];
+            [self.body removeAllActions];
+            [self.leftArm removeAllActions];
+            [self.leftElbow removeAllActions];
+            [self.rightArm removeAllActions];
+            
+            self.leftArm.zRotation = self.leftArm.defaultAngle;
+            self.rightArm.zRotation = self.rightArm.defaultAngle;
+            self.hip.zRotation = 0;
+            self.body.zRotation = 0;
+            
+            [self removeLegAnimation];
+            [self performSelector:@selector(rightLegMoveAction) withObject:nil afterDelay:self.walkTime / 2];
+            [self rightLegMoveAction];
+            [self leftLegMoveAction];
+            if (isWalk) {
+                [self upBodyActionForWalk];
+            }else{
+                [self upBodyActionForRun];
+            }
+        }
+        
+        [self removeAllActions];
+        self.state = self.state | moveState;
+        
+        
+        if (movePoint.x < self.position.x) {
+            self.xScale = - fabs(self.xScale);
+        }else{
+            self.xScale = fabs(self.xScale);
+        }
+        
+        CGFloat distance = [WDCalculateTool distanceBetweenPoints:self.position seconde:movePoint];
+        
+        CGFloat speed = isWalk ? self.animationWalkSpeed : self.animationRunSpeed;
+        
+        NSTimeInterval moveTime = fabs(distance) / speed;
+        SKAction *moveAction = [SKAction moveTo:movePoint duration:moveTime];
+        __weak typeof(self)weakSelf = self;
+        __block NSString *name = self.name;
+        [self runAction:moveAction completion:^{
+            WDBaseScene *base = (WDBaseScene *)weakSelf.parent;
+            if ([name isEqualToString:base.selectNode.name]) {
+                [base hiddenArrow];
+            }
+            
+            [weakSelf standAction];
+            if (weakSelf.moveFinishBlock) {
+                weakSelf.moveFinishBlock();
+                weakSelf.moveFinishBlock = NULL;
+            }
+            
+            weakSelf.deadBlock();
+            weakSelf.xScale = - fabs(weakSelf.xScale);
+            [[NSNotificationCenter defaultCenter]postNotificationName:kNotificationForMoveEnd object:nil];
+        }];
+    }else{
+        [super moveSameActionWithState:moveState movePoint:movePoint];
+    }
+    
+    
+
+}
 
 
 @end

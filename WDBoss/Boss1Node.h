@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Boss1Node : WDEnemyNode
-
+@property (nonatomic,copy)void (^deadBlock)(void);
 @end
 
 NS_ASSUME_NONNULL_END

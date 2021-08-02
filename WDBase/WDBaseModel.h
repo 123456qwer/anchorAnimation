@@ -42,7 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
                        name:(NSString *)userName;
 - (NSDictionary *)properties_aps;
 
-- (int)getSingleDefines;
+/// 获取单属性值
+- (int)getSingleValueWithName:(NSString *)valueName;
 - (int)getAllDefines;
 
 @end

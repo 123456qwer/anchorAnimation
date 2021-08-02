@@ -51,7 +51,6 @@
 		043ADA5226899A47001D2F01 /* WDHateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 043ADA5126899A47001D2F01 /* WDHateManager.m */; };
 		043ADA612689C230001D2F01 /* WDNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 043ADA602689C230001D2F01 /* WDNotificationManager.m */; };
 		043ADA672689CE00001D2F01 /* WDTextureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 043ADA662689CE00001D2F01 /* WDTextureManager.m */; };
-		043B9B3426A9027500718763 /* Human的副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B9B3326A9027500718763 /* Human的副本.png */; };
 		043B9B5F26A958F100718763 /* Archer_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B9B5A26A958F000718763 /* Archer_4.png */; };
 		043B9B6026A958F100718763 /* Archer_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B9B5B26A958F000718763 /* Archer_0.png */; };
 		043B9B6126A958F100718763 /* Archer_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 043B9B5C26A958F000718763 /* Archer_2.png */; };
@@ -152,6 +151,16 @@
 		046FECED268B020A00260225 /* WDSolider2BowNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FECEC268B020A00260225 /* WDSolider2BowNode.m */; };
 		046FECF2268B024E00260225 /* HunterShortBow.png in Resources */ = {isa = PBXBuildFile; fileRef = 046FECF1268B024E00260225 /* HunterShortBow.png */; };
 		046FECFB268B052100260225 /* WDUserNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 046FECFA268B052100260225 /* WDUserNode.m */; };
+		047CD32B26B3C0620034C87A /* WDSkillNpcNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CD32A26B3C0620034C87A /* WDSkillNpcNode.m */; };
+		047CD33026B3C2050034C87A /* tome.png in Resources */ = {isa = PBXBuildFile; fileRef = 047CD32F26B3C2050034C87A /* tome.png */; };
+		047CD33626B3C48E0034C87A /* LearnSkillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CD33426B3C48E0034C87A /* LearnSkillViewController.m */; };
+		047CD33C26B3C4A50034C87A /* WDLearnSkillView.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CD33B26B3C4A50034C87A /* WDLearnSkillView.m */; };
+		047CD34126B3C5DD0034C87A /* skillLearnBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 047CD34026B3C5DD0034C87A /* skillLearnBG.png */; };
+		047CD34626B3C5F00034C87A /* iceBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 047CD34526B3C5F00034C87A /* iceBg.png */; };
+		047CD34C26B3ECE50034C87A /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 047CD34A26B3ECE50034C87A /* select_no.png */; };
+		047CD34D26B3ECE50034C87A /* select_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = 047CD34B26B3ECE50034C87A /* select_yes.png */; };
+		047CD35326B3F76A0034C87A /* WDBaseScene+Moive.m in Sources */ = {isa = PBXBuildFile; fileRef = 047CD35226B3F76A0034C87A /* WDBaseScene+Moive.m */; };
+		047CD35826B3F8D50034C87A /* poisonFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 047CD35726B3F8D50034C87A /* poisonFire.sks */; };
 		049A381726AE5862001E6BDE /* Priest_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 049A381226AE5862001E6BDE /* Priest_0.png */; };
 		049A381826AE5862001E6BDE /* Priest_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 049A381326AE5862001E6BDE /* Priest_3.png */; };
 		049A381926AE5862001E6BDE /* Priest_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 049A381426AE5862001E6BDE /* Priest_1.png */; };
@@ -393,6 +402,10 @@
 		04CBF0F326A6AC59007DF759 /* GuardSword1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CBF0F226A6AC59007DF759 /* GuardSword1.png */; };
 		04CBF10026A6B6C7007DF759 /* WDDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CBF0FF26A6B6C7007DF759 /* WDDataManager.m */; };
 		04CBF10626A6C6ED007DF759 /* WDBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CBF10526A6C6ED007DF759 /* WDBaseModel.m */; };
+		04CFD28A26B79F72008FE56B /* FamilyBow的副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CFD28926B79F72008FE56B /* FamilyBow的副本.png */; };
+		04CFD29F26B7CA48008FE56B /* Eye_knight.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CFD29E26B7CA48008FE56B /* Eye_knight.png */; };
+		04CFD2A526B7D2A7008FE56B /* WDLevelScene1.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CFD2A426B7D2A7008FE56B /* WDLevelScene1.m */; };
+		04CFD2AA26B7D2B8008FE56B /* WDLevelScene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04CFD2A926B7D2B7008FE56B /* WDLevelScene1.sks */; };
 		04D88A1F267C972F005C7B0C /* Armor1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D88A1E267C972F005C7B0C /* Armor1.png */; };
 		04D88A24267C9819005C7B0C /* Armor2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D88A23267C9819005C7B0C /* Armor2.png */; };
 		04E25E2326807DDE001CC70F /* FamilySword.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E25E2226807DDE001CC70F /* FamilySword.png */; };
@@ -415,6 +428,8 @@
 		04E2FF4726A8053800727D04 /* speak.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E2FF4626A8053800727D04 /* speak.png */; };
 		04E2FF4D26A8208B00727D04 /* WDLearnScene2.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E2FF4C26A8208B00727D04 /* WDLearnScene2.m */; };
 		04E2FF5226A8209E00727D04 /* WDLearnScene2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04E2FF5126A8209E00727D04 /* WDLearnScene2.sks */; };
+		04FDC1F626B23F5C00F647B0 /* Human_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FDC1F526B23F5C00F647B0 /* Human_color.png */; };
+		04FDC1FB26B2404C00F647B0 /* Head_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FDC1FA26B2404C00F647B0 /* Head_color.png */; };
 		B4BA03A275D60B67A665B596 /* Pods_MercenaryStory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD103ADE2C37D510020EC83 /* Pods_MercenaryStory.framework */; };
 /* End PBXBuildFile section */
 
@@ -487,7 +502,6 @@
 		043ADA602689C230001D2F01 /* WDNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDNotificationManager.m; sourceTree = "<group>"; };
 		043ADA652689CE00001D2F01 /* WDTextureManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDTextureManager.h; sourceTree = "<group>"; };
 		043ADA662689CE00001D2F01 /* WDTextureManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDTextureManager.m; sourceTree = "<group>"; };
-		043B9B3326A9027500718763 /* Human的副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Human的副本.png"; sourceTree = "<group>"; };
 		043B9B5A26A958F000718763 /* Archer_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Archer_4.png; sourceTree = "<group>"; };
 		043B9B5B26A958F000718763 /* Archer_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Archer_0.png; sourceTree = "<group>"; };
 		043B9B5C26A958F000718763 /* Archer_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Archer_2.png; sourceTree = "<group>"; };
@@ -603,6 +617,20 @@
 		046FECF1268B024E00260225 /* HunterShortBow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HunterShortBow.png; sourceTree = "<group>"; };
 		046FECF9268B052100260225 /* WDUserNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDUserNode.h; sourceTree = "<group>"; };
 		046FECFA268B052100260225 /* WDUserNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDUserNode.m; sourceTree = "<group>"; };
+		047CD32926B3C0620034C87A /* WDSkillNpcNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDSkillNpcNode.h; sourceTree = "<group>"; };
+		047CD32A26B3C0620034C87A /* WDSkillNpcNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDSkillNpcNode.m; sourceTree = "<group>"; };
+		047CD32F26B3C2050034C87A /* tome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tome.png; sourceTree = "<group>"; };
+		047CD33426B3C48E0034C87A /* LearnSkillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnSkillViewController.m; sourceTree = "<group>"; };
+		047CD33526B3C48E0034C87A /* LearnSkillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnSkillViewController.h; sourceTree = "<group>"; };
+		047CD33A26B3C4A50034C87A /* WDLearnSkillView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLearnSkillView.h; sourceTree = "<group>"; };
+		047CD33B26B3C4A50034C87A /* WDLearnSkillView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLearnSkillView.m; sourceTree = "<group>"; };
+		047CD34026B3C5DD0034C87A /* skillLearnBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skillLearnBG.png; sourceTree = "<group>"; };
+		047CD34526B3C5F00034C87A /* iceBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iceBg.png; sourceTree = "<group>"; };
+		047CD34A26B3ECE50034C87A /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
+		047CD34B26B3ECE50034C87A /* select_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_yes.png; sourceTree = "<group>"; };
+		047CD35126B3F76A0034C87A /* WDBaseScene+Moive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WDBaseScene+Moive.h"; sourceTree = "<group>"; };
+		047CD35226B3F76A0034C87A /* WDBaseScene+Moive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WDBaseScene+Moive.m"; sourceTree = "<group>"; };
+		047CD35726B3F8D50034C87A /* poisonFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = poisonFire.sks; sourceTree = "<group>"; };
 		049A381226AE5862001E6BDE /* Priest_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Priest_0.png; sourceTree = "<group>"; };
 		049A381326AE5862001E6BDE /* Priest_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Priest_3.png; sourceTree = "<group>"; };
 		049A381426AE5862001E6BDE /* Priest_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Priest_1.png; sourceTree = "<group>"; };
@@ -868,6 +896,11 @@
 		04CBF0FF26A6B6C7007DF759 /* WDDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDDataManager.m; sourceTree = "<group>"; };
 		04CBF10426A6C6ED007DF759 /* WDBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDBaseModel.h; sourceTree = "<group>"; };
 		04CBF10526A6C6ED007DF759 /* WDBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDBaseModel.m; sourceTree = "<group>"; };
+		04CFD28926B79F72008FE56B /* FamilyBow的副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FamilyBow的副本.png"; sourceTree = "<group>"; };
+		04CFD29E26B7CA48008FE56B /* Eye_knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eye_knight.png; sourceTree = "<group>"; };
+		04CFD2A326B7D2A7008FE56B /* WDLevelScene1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDLevelScene1.h; sourceTree = "<group>"; };
+		04CFD2A426B7D2A7008FE56B /* WDLevelScene1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDLevelScene1.m; sourceTree = "<group>"; };
+		04CFD2A926B7D2B7008FE56B /* WDLevelScene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WDLevelScene1.sks; sourceTree = "<group>"; };
 		04D88A1E267C972F005C7B0C /* Armor1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Armor1.png; sourceTree = "<group>"; };
 		04D88A23267C9819005C7B0C /* Armor2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Armor2.png; sourceTree = "<group>"; };
 		04E25E2226807DDE001CC70F /* FamilySword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FamilySword.png; sourceTree = "<group>"; };
@@ -901,6 +934,8 @@
 		04E2FF4B26A8208B00727D04 /* WDLearnScene2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDLearnScene2.h; sourceTree = "<group>"; };
 		04E2FF4C26A8208B00727D04 /* WDLearnScene2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDLearnScene2.m; sourceTree = "<group>"; };
 		04E2FF5126A8209E00727D04 /* WDLearnScene2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WDLearnScene2.sks; sourceTree = "<group>"; };
+		04FDC1F526B23F5C00F647B0 /* Human_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Human_color.png; sourceTree = "<group>"; };
+		04FDC1FA26B2404C00F647B0 /* Head_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Head_color.png; sourceTree = "<group>"; };
 		92E18414883EBCA2F38A05AA /* Pods-MercenaryStory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercenaryStory.release.xcconfig"; path = "Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory.release.xcconfig"; sourceTree = "<group>"; };
 		93989DBAC1A006CC52F99BB0 /* Pods-MercenaryStory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MercenaryStory.debug.xcconfig"; path = "Target Support Files/Pods-MercenaryStory/Pods-MercenaryStory.debug.xcconfig"; sourceTree = "<group>"; };
 		DBD103ADE2C37D510020EC83 /* Pods_MercenaryStory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MercenaryStory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1087,6 +1122,7 @@
 		044447CC2684597800089700 /* WDEmitter */ = {
 			isa = PBXGroup;
 			children = (
+				047CD35726B3F8D50034C87A /* poisonFire.sks */,
 				049A397126AE6251001E6BDE /* Fire2.sks */,
 				043ADA42268965E4001D2F01 /* IceFire.sks */,
 				0400976D26AFF2DC00DC804A /* BlueFire.sks */,
@@ -1104,6 +1140,7 @@
 				044447FD268479E400089700 /* HornBow.png */,
 				046FECF1268B024E00260225 /* HunterShortBow.png */,
 				044447E6268467B500089700 /* FamilyBow.png */,
+				04CFD28926B79F72008FE56B /* FamilyBow的副本.png */,
 			);
 			path = Bow;
 			sourceTree = "<group>";
@@ -1143,6 +1180,7 @@
 				04450F2E267B4F9A00C3F83D /* Eye_Female.png */,
 				043CA2E726A52E3A002086CB /* Eyes10.png */,
 				04450F30267B4F9B00C3F83D /* Eye_Male.png */,
+				04CFD29E26B7CA48008FE56B /* Eye_knight.png */,
 				046FECA2268AC21F00260225 /* Eyes5.png */,
 				04CBF08B26A66A74007DF759 /* EyesBlue.png */,
 				0400975426AFAE7900DC804A /* Eye6.png */,
@@ -1187,6 +1225,7 @@
 		04450F56267B509D00C3F83D /* Head */ = {
 			isa = PBXGroup;
 			children = (
+				04FDC1FA26B2404C00F647B0 /* Head_color.png */,
 				04BB817C268333EA00EB0D8F /* Head_Skeleton.png */,
 				04450F59267B50A800C3F83D /* Head.png */,
 				04450F57267B50A800C3F83D /* HeadScar.png */,
@@ -1198,7 +1237,7 @@
 		04450F63267B50CA00C3F83D /* Body */ = {
 			isa = PBXGroup;
 			children = (
-				043B9B3326A9027500718763 /* Human的副本.png */,
+				04FDC1F526B23F5C00F647B0 /* Human_color.png */,
 				04450F64267B50D500C3F83D /* Human.png */,
 				04BB81772683336200EB0D8F /* Skeleton.png */,
 			);
@@ -1321,6 +1360,15 @@
 				046FECDA268ACB2400260225 /* Shadow.png */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		047CD31C26B3AE7B0034C87A /* WDNPC */ = {
+			isa = PBXGroup;
+			children = (
+				047CD32926B3C0620034C87A /* WDSkillNpcNode.h */,
+				047CD32A26B3C0620034C87A /* WDSkillNpcNode.m */,
+			);
+			path = WDNPC;
 			sourceTree = "<group>";
 		};
 		049A380126AE57DC001E6BDE /* priest */ = {
@@ -1541,6 +1589,7 @@
 				044447CC2684597800089700 /* WDEmitter */,
 				04BB817026831F4100EB0D8F /* WDEnemy */,
 				04394AAE2681AFE3006EBF8B /* WDUsers */,
+				047CD31C26B3AE7B0034C87A /* WDNPC */,
 				049A381F26AE5BBC001E6BDE /* WDBoss */,
 				04394AA42681ADB6006EBF8B /* WDManager */,
 				049EFEC62679FC4C00283E13 /* WDBase */,
@@ -1575,6 +1624,8 @@
 				04E2FEF026A7BA5700727D04 /* GameViewController+Data.m */,
 				049A39BD26AEA2FB001E6BDE /* MapSelectViewController.h */,
 				049A39BE26AEA2FB001E6BDE /* MapSelectViewController.m */,
+				047CD33526B3C48E0034C87A /* LearnSkillViewController.h */,
+				047CD33426B3C48E0034C87A /* LearnSkillViewController.m */,
 				049EFE892679F83700283E13 /* Main.storyboard */,
 				049EFE8C2679F83900283E13 /* Assets.xcassets */,
 				049EFE8E2679F83900283E13 /* Info.plist */,
@@ -1617,6 +1668,9 @@
 				049A622326AACD0D00098DF7 /* WDLearnScene4.h */,
 				049A622426AACD0D00098DF7 /* WDLearnScene4.m */,
 				049A622926AACD5900098DF7 /* WDLearnScene4.sks */,
+				04CFD2A326B7D2A7008FE56B /* WDLevelScene1.h */,
+				04CFD2A426B7D2A7008FE56B /* WDLevelScene1.m */,
+				04CFD2A926B7D2B7008FE56B /* WDLevelScene1.sks */,
 			);
 			path = WDScene;
 			sourceTree = "<group>";
@@ -1630,6 +1684,8 @@
 				044834B926856F50008F4C92 /* WDBaseScene+ContactLogic.m */,
 				040EDAAB269EB4830045DFDE /* WDBaseScene+MonsterLocation.h */,
 				040EDAAC269EB4830045DFDE /* WDBaseScene+MonsterLocation.m */,
+				047CD35126B3F76A0034C87A /* WDBaseScene+Moive.h */,
+				047CD35226B3F76A0034C87A /* WDBaseScene+Moive.m */,
 				044501F1267ADED300C3F83D /* WDBaseNode.h */,
 				044501F2267ADED300C3F83D /* WDBaseNode.m */,
 				044834C126857F46008F4C92 /* WDEnemyNode.h */,
@@ -1723,6 +1779,8 @@
 				04E2FF1D26A7E51B00727D04 /* WDSkillBtn.m */,
 				04E2FF1C26A7E51B00727D04 /* WDSkillView.h */,
 				04E2FF1E26A7E51B00727D04 /* WDSkillView.m */,
+				047CD33A26B3C4A50034C87A /* WDLearnSkillView.h */,
+				047CD33B26B3C4A50034C87A /* WDLearnSkillView.m */,
 			);
 			path = "技能相关页面";
 			sourceTree = "<group>";
@@ -1758,9 +1816,14 @@
 		04E2FF2E26A7E6B300727D04 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				047CD34A26B3ECE50034C87A /* select_no.png */,
+				047CD34B26B3ECE50034C87A /* select_yes.png */,
+				047CD34526B3C5F00034C87A /* iceBg.png */,
+				047CD34026B3C5DD0034C87A /* skillLearnBG.png */,
 				04E2FF4126A7F79400727D04 /* cancel.png */,
 				04E2FF3726A7F46700727D04 /* confirm.png */,
 				04E2FF2F26A7E6BB00727D04 /* backpack.png */,
+				047CD32F26B3C2050034C87A /* tome.png */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1922,6 +1985,7 @@
 				049A38EA26AE5FCB001E6BDE /* boss3_win_7.png in Resources */,
 				049A38DD26AE5FCB001E6BDE /* boss3_attack4_1.png in Resources */,
 				044447FE268479E400089700 /* HornBow.png in Resources */,
+				047CD34C26B3ECE50034C87A /* select_no.png in Resources */,
 				049A393F26AE5FCB001E6BDE /* boss3_died_3.png in Resources */,
 				049A396526AE5FCB001E6BDE /* boss3_attack3_6.png in Resources */,
 				049A61F526AA5FDE00098DF7 /* layer1.png in Resources */,
@@ -1947,6 +2011,7 @@
 				043B9BB926A9777100718763 /* EyeBrows_OMG.png in Resources */,
 				049A394526AE5FCB001E6BDE /* boss3_attack2_12.png in Resources */,
 				04C6F38426A036E700753957 /* RedBat_hurt_3.png in Resources */,
+				047CD34126B3C5DD0034C87A /* skillLearnBG.png in Resources */,
 				043B9B6026A958F100718763 /* Archer_0.png in Resources */,
 				04E2FF4726A8053800727D04 /* speak.png in Resources */,
 				043B9B9626A9763000718763 /* Eye_Dead.png in Resources */,
@@ -1959,6 +2024,7 @@
 				049A38D026AE5FCB001E6BDE /* boss3_wind_5.png in Resources */,
 				04513E7226A1831D005B6097 /* Red.png in Resources */,
 				043B9BBE26A9792200718763 /* Eye_Fishy.png in Resources */,
+				04FDC1FB26B2404C00F647B0 /* Head_color.png in Resources */,
 				049A394926AE5FCB001E6BDE /* boss3_attack3_7.png in Resources */,
 				04E25E2326807DDE001CC70F /* FamilySword.png in Resources */,
 				043B9BAC26A9769100718763 /* EyeBrows_Angry.png in Resources */,
@@ -1966,6 +2032,7 @@
 				04CBF0C126A676F3007DF759 /* Gloves.png in Resources */,
 				0400976E26AFF2DC00DC804A /* BlueFire.sks in Resources */,
 				043CA2DE26A523A1002086CB /* WDEquipScene.sks in Resources */,
+				047CD34626B3C5F00034C87A /* iceBg.png in Resources */,
 				049A393226AE5FCB001E6BDE /* boss3_btAttack_3.png in Resources */,
 				049A396C26AE5FCB001E6BDE /* boss3_move_8.png in Resources */,
 				040EDAA5269EB30A0045DFDE /* smoke_13.png in Resources */,
@@ -2074,6 +2141,7 @@
 				049A392426AE5FCB001E6BDE /* boss3_move_6.png in Resources */,
 				04CBF0E926A67864007DF759 /* Glasses.png in Resources */,
 				049A395326AE5FCB001E6BDE /* boss3_attack3_1.png in Resources */,
+				04CFD28A26B79F72008FE56B /* FamilyBow的副本.png in Resources */,
 				04394AD22681B7DF006EBF8B /* BerserkHelm.png in Resources */,
 				049A38E826AE5FCB001E6BDE /* boss3_died_12.png in Resources */,
 				040EDA9B269EB30A0045DFDE /* smoke_7.png in Resources */,
@@ -2097,12 +2165,14 @@
 				049A38DA26AE5FCB001E6BDE /* boss3_attack2_14.png in Resources */,
 				049A391026AE5FCB001E6BDE /* wuqishi_mete2_1.png in Resources */,
 				049A390726AE5FCB001E6BDE /* boss3_move_3.png in Resources */,
+				04CFD29F26B7CA48008FE56B /* Eye_knight.png in Resources */,
 				04394AB92681B5AE006EBF8B /* Leaky.png in Resources */,
 				049A381826AE5862001E6BDE /* Priest_3.png in Resources */,
 				049A393426AE5FCB001E6BDE /* boss3_attack3_2.png in Resources */,
 				04BB81822683350A00EB0D8F /* Eye_Zombies1.png in Resources */,
 				04CBF08C26A66A74007DF759 /* EyesBlue.png in Resources */,
 				04E2FF3026A7E6BB00727D04 /* backpack.png in Resources */,
+				047CD35826B3F8D50034C87A /* poisonFire.sks in Resources */,
 				043B9BC326A9795A00718763 /* EyeBrows_Fishy.png in Resources */,
 				049A38F826AE5FCB001E6BDE /* boss3_attack9_3.png in Resources */,
 				04450F7E267B59DD00C3F83D /* SamuraiElderSword.png in Resources */,
@@ -2183,7 +2253,6 @@
 				044447B42684258800089700 /* PriestHelm.png in Resources */,
 				04513E5426A182DD005B6097 /* Panel.png in Resources */,
 				043B9BD526A97B6E00718763 /* Mouth_love.png in Resources */,
-				043B9B3426A9027500718763 /* Human的副本.png in Resources */,
 				049A620926AA6C8800098DF7 /* Forest2.png in Resources */,
 				049A396A26AE5FCB001E6BDE /* boss3_attack4_3.png in Resources */,
 				040EDAA2269EB30A0045DFDE /* smoke_14.png in Resources */,
@@ -2214,6 +2283,7 @@
 				049A38D626AE5FCB001E6BDE /* boss3_wind_10.png in Resources */,
 				049A395626AE5FCB001E6BDE /* boss3_attack8_4.png in Resources */,
 				049A392B26AE5FCB001E6BDE /* boss3_attack9_6.png in Resources */,
+				047CD34D26B3ECE50034C87A /* select_yes.png in Resources */,
 				049A396826AE5FCB001E6BDE /* boss3_attack2_9.png in Resources */,
 				04513E5E26A18306005B6097 /* Green.png in Resources */,
 				04C6F38326A036E700753957 /* RedBat_hurt_0.png in Resources */,
@@ -2227,6 +2297,7 @@
 				043B9BE926A9802100718763 /* Eye_Sad.png in Resources */,
 				04CBF09926A670FB007DF759 /* Button.png in Resources */,
 				04C6F38626A036E700753957 /* RedBat_hurt_5.png in Resources */,
+				04FDC1F626B23F5C00F647B0 /* Human_color.png in Resources */,
 				049A394426AE5FCB001E6BDE /* boss3_win_6.png in Resources */,
 				049A394E26AE5FCB001E6BDE /* boss3_wind_8.png in Resources */,
 				049A394D26AE5FCB001E6BDE /* boss3_attack7_10.png in Resources */,
@@ -2238,6 +2309,8 @@
 				049A38D426AE5FCB001E6BDE /* boss3_attack1_5.png in Resources */,
 				04E2FF5226A8209E00727D04 /* WDLearnScene2.sks in Resources */,
 				049A396726AE5FCB001E6BDE /* boss3_attack7_15.png in Resources */,
+				047CD33026B3C2050034C87A /* tome.png in Resources */,
+				04CFD2AA26B7D2B8008FE56B /* WDLevelScene1.sks in Resources */,
 				04CBF0DA26A67765007DF759 /* Sword2H.png in Resources */,
 				049A38EB26AE5FCB001E6BDE /* boss3_wind_4.png in Resources */,
 				040EDAA3269EB30A0045DFDE /* smoke_9.png in Resources */,
@@ -2311,6 +2384,7 @@
 				04E2FF1F26A7E51B00727D04 /* WDSkillBtn.m in Sources */,
 				04E2FF2726A7E55700727D04 /* WDAllMenuView.m in Sources */,
 				04E25E2E268091F6001CC70F /* WDBaseNode+Animation.m in Sources */,
+				04CFD2A526B7D2A7008FE56B /* WDLevelScene1.m in Sources */,
 				04E2FF1726A7E51100727D04 /* WDEquipView.m in Sources */,
 				049EFEC92679FC5800283E13 /* WDBaseScene.m in Sources */,
 				049EFE882679F83700283E13 /* GameViewController.m in Sources */,
@@ -2327,12 +2401,16 @@
 				049A397E26AE975D001E6BDE /* WDFirstCampsiteScene.m in Sources */,
 				04C6F34F26A0044600753957 /* WDLearnScene1.m in Sources */,
 				049A382526AE5BCF001E6BDE /* WDBoss1Node.m in Sources */,
+				047CD33C26B3C4A50034C87A /* WDLearnSkillView.m in Sources */,
+				047CD32B26B3C0620034C87A /* WDSkillNpcNode.m in Sources */,
 				044447E12684677000089700 /* WDArcherNode.m in Sources */,
 				044834C326857F46008F4C92 /* WDEnemyNode.m in Sources */,
 				049EFEEB267A033100283E13 /* WDCalculateTool.m in Sources */,
 				04C6F37226A01C0100753957 /* WDRedBatModel.m in Sources */,
 				04CBF10026A6B6C7007DF759 /* WDDataManager.m in Sources */,
 				049A39C626AEA328001E6BDE /* WDMapSelectView.m in Sources */,
+				047CD35326B3F76A0034C87A /* WDBaseScene+Moive.m in Sources */,
+				047CD33626B3C48E0034C87A /* LearnSkillViewController.m in Sources */,
 				04394AA72681ADEE006EBF8B /* WDAttributeManager.m in Sources */,
 				049A39BF26AEA2FB001E6BDE /* MapSelectViewController.m in Sources */,
 				043CA2D926A52382002086CB /* WDEquipScene.m in Sources */,

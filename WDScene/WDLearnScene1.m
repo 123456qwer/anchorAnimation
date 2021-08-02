@@ -12,6 +12,7 @@
 #import "WDRedBatNode.h"
 #import "WDRedBatModel.h"
 #import "WDBaseNode+Emoji.h"
+#import "WDBaseScene+Moive.h"
 
 @implementation WDLearnScene1
 {
@@ -62,11 +63,6 @@
     
     
     [self setTextAction:@"选中操作人物"];
-
-   
-    
-
-    
 }
 
 /// 开始触碰
@@ -574,7 +570,7 @@
             WDBaseModel *modelAll = [[WDDataManager shareManager]searchData:allArmorName];
             [modelAll appendDataWithModel:model name:allArmorName];
         
-            weakSelf.presentEquipBlock(kKinght);
+            weakSelf.prenestMenuForArmorBlock(kKinght);
         }];
         
         

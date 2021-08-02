@@ -174,10 +174,11 @@
         
     }else if(_part[14]){
         
+        _part[14] = NO;
         [self changeSelectNode:self.knight];
         [self setTextAction:@"我的名字是....."];
         [self performSelector:@selector(setName) withObject:nil afterDelay:1.5];
-        _part[14] = NO;
+        
        
         /// 测试用，正式必须注掉
         ///[self setNoIndex:15 yesIndex:16];

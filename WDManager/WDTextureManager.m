@@ -78,7 +78,7 @@ static WDTextureManager *textureManager = nil;
 - (SKTexture *)humanHead
 {
     if (!_humanHead) {
-        _humanHead = [SKTexture textureWithImage:[UIImage imageNamed:@"Head"]];
+        _humanHead = [SKTexture textureWithImage:[UIImage imageNamed:@"Head_color"]];
     }
     
     return _humanHead;

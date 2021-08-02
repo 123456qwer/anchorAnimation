@@ -54,7 +54,6 @@
     [sender removeFromSuperview];
     [_equipCollectionView reloadHaveChangeArr];
     self.hidden = YES;
-    
     _confirmBlock();
 }
 
@@ -79,8 +78,10 @@
     
     NSArray *shield   = @[model.Equip_shield];
     NSArray *weapon1s = @[model.Equip_sword1h];
+    NSArray *weapon2s = @[model.Equip_sword2h];
+    NSArray *bows = @[model.Equip_bow];
     
-    _allEquipDic = @{@"1":helmets,@"2":armors,@"3":leftArm,@"4":gloves,@"5":hip,@"6":foot,@"7":shield,@"8":weapon1s};
+    _allEquipDic = @{@"1":helmets,@"2":armors,@"3":leftArm,@"4":gloves,@"5":hip,@"6":foot,@"7":shield,@"8":weapon1s,@"9":weapon2s,@"10":bows};
     [self changeEquip:Equip_helmet - 1 name:name];
 }
 

@@ -285,7 +285,7 @@
 }
 
 + (NSDictionary *)userDic{
-    UIImage *image = [UIImage imageNamed:@"Human"];
+    UIImage *image = [UIImage imageNamed:@"Human_color.png"];
     NSDictionary *userDic = [self curWithImage:image];
     [WDTextureManager shareManager].humamDic = userDic;
     return userDic;

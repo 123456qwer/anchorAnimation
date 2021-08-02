@@ -10,7 +10,6 @@
 
 @implementation WDSkillManager
 static WDSkillManager *skillManager = nil;
-
 + (WDSkillManager *)shareSkillManager;
 {
     static dispatch_once_t onceToken;

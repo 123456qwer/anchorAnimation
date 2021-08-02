@@ -17,6 +17,7 @@
 #import "WDBoss1Node.h"
 #import "Boss1Node.h"
 
+
 @implementation WDTestScene
 {
     WDBaseNode *_head;
@@ -70,26 +71,21 @@
 //    self.knight.position = CGPointMake(kScreenWidth - 300, 0);
 //    self.knight.initBlood = 10000000;
 //    self.knight.lastBlood = 10000000;
-//    self.knight.xScale = 2.0;
-//    self.knight.yScale = 2.0;
-    
-    
-//Charter
-    
-    [self knight];
-    
-    
+
+    [self skillLearnNpc];
+    self.skillLearnNpc.position = CGPointMake(0, 0);
    
+
 }
 
 - (void)touchUpAtPoint:(CGPoint)pos{
     
     [super touchUpAtPoint:pos];
-    [self.knight beAttackAction:self.priest attackNumber:5];
   
 }
 
 - (void)testBoss{
+    
     [self knight];
     [self priest];
     [self archer];

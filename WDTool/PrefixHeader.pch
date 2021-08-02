@@ -110,6 +110,10 @@
 #define kWizard_skill_5 @"Wizard_skill_5" //三倍攻击，继承每一根箭
 
 
+#pragma mark - NPC -
+#define kLearnSkillNPC @"LearnSkillNPC"
+#define kSkillBall @"kSkillBall" // 学习技能的球
+
 #pragma mark - 敌人 -
 /// 士兵1号 普通骷髅兵
 #define kSolider1 @"Solider1"
@@ -227,6 +231,10 @@ static CGFloat allScale = 0.6;
 #define kNotificationForChangeName @"kNotificationForChangeName"
 #define kNotificationForChangeNameAlready @"kNotificationForChangeNameAlready"
 
+/// ball学习技能，刷新界面
+#define kNotificationForLearnSkill @"kNotificationForLearnSkill"
 
+/// 点击指示图标
+#define kNotificationForClickPrompt @"kNotificationForClickPrompt"
 
 #endif /* PrefixHeader_pch */

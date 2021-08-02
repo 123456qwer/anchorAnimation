@@ -14,6 +14,9 @@
 #import "WDPriestNode.h"
 #import "WDWizardNode.h"
 
+#import "WDSkillNpcNode.h"
+
+
 NS_ASSUME_NONNULL_BEGIN
 @interface WDBaseScene : SKScene<SKPhysicsContactDelegate>
 
@@ -55,20 +58,33 @@ NS_ASSUME_NONNULL_BEGIN
 /// 聊天自动切换
 @property (nonatomic,copy)void (^talkCompleteBlock)(void);
 
-/// 展示装备栏
-@property (nonatomic,copy)void (^presentEquipBlock)(NSString *userName);
+/// 展示菜单栏
+@property (nonatomic,copy)void (^prenestMenuForArmorBlock)(NSString *userName);
+@property (nonatomic,copy)void (^prenestMenuForSkillBlock)(NSString *userName);
+@property (nonatomic,copy)void (^hiddenMenuBlock)(NSString *userName);
+
 
 /// 切换场景
 @property (nonatomic,copy)void (^changeSceneBlock)(NSString *sceneName);
-
+/// 奖励
+@property (nonatomic,strong)WDBaseNode *rewardNode;
+/// 关卡 kPassCheckPoint%d
+@property (nonatomic,copy)NSString *passStr;
 /// 显示地图选择
 @property (nonatomic,copy)void (^showMapSelectBlock)(void);
+
+
 
 #pragma mark - 玩家，根据玩家自己选择的人物初始化 -
 @property (nonatomic,strong)WDKknightNode *knight;
 @property (nonatomic,strong)WDArcherNode  *archer;
 @property (nonatomic,strong)WDPriestNode  *priest;
 @property (nonatomic,strong)WDWizardNode  *wizard;
+
+#pragma mark - NPC -
+@property (nonatomic,strong)WDSkillNpcNode *skillLearnNpc;
+
+
 
 /// 玩家给自己设置的名字
 @property (nonatomic,copy)NSString *userName;
@@ -78,6 +94,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)skill3Action;
 - (void)skill4Action;
 - (void)skill5Action;
+
+/// 死亡以后释放
+- (void)deadForRelease:(WDBaseNode *)node;
 
 /// 设置仇恨列表，怪物初始化的时候用到
 - (void)setHateNameArrWithNode:(NSArray *)nodes;
@@ -119,6 +138,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - 指示箭头 -
 - (void)hiddenArrow;
 - (void)arrowMoveActionWithPos:(CGPoint)pos;
+
+
 
 @end
 
