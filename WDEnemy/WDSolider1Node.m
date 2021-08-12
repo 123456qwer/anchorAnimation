@@ -16,14 +16,13 @@
     self.head.texture = [WDTextureManager shareManager].skeletonHead;
     self.hemlet.texture = nil;
     self.hair.texture = nil;
-    self.eye.texture = [SKTexture textureWithImage:[UIImage imageNamed:@"Eye_Zombies1"]];
+
     self.ear.texture = nil;
-//    [self setAllArmor:@"KnightArmor"];
     [self setLeftWeapon:@"FamilySword"];
-//    [self setRightShield:@"SteelShield"];
     [self standAction];
     
-
+    [self setEyeTexture:@"Eye_Zombies1"];
+    [self setEyeBrowsTexture:@"n"];
     
     CGFloat dirctionX = 1;
     CGFloat dirctionY = 1;

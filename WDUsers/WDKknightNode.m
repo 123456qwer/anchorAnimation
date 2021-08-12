@@ -36,6 +36,7 @@
     
     if (self.targetNode.state & Sprite_dead) {
         self.targetNode = nil;
+        [self standAction];
     }
     
     if (self.state & Sprite_attack) {

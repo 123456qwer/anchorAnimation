@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign)CGFloat randomAttackX;
 @property (nonatomic,assign)CGFloat randomAttackY;
 @property (nonatomic,strong)WDHateManager *hateManager;
-
+/// 这个需要走移动动画，不是CA那个
+@property (nonatomic,assign)BOOL isSkillBossMove;
 
 
 /// 设置仇恨体系

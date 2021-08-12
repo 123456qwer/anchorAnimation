@@ -19,6 +19,21 @@
     return sqrt(deltaX*deltaX + deltaY*deltaY );
 }
 
++ (CGFloat)distanceBigClickPoints:(CGPoint)first
+                           second:(CGPoint)second halfHeight:(CGFloat)halfHeight{
+    
+    CGFloat deltaX = second.x - first.x;
+    CGFloat deltaY = second.y - first.y;
+    CGFloat dis = sqrt(deltaX*deltaX + deltaY*deltaY );
+    
+    CGFloat big = deltaX > deltaY ? deltaX : deltaY;
+    
+    
+    CGFloat bigDis = dis * halfHeight / fabs(big);
+    
+    return bigDis;
+}
+
 + (CGFloat)angleForStartPoint:(CGPoint)startPoint
                      EndPoint:(CGPoint)endPoint{
     
@@ -140,9 +155,9 @@
     }
     
     if (y > kScreenHeight - node.size.height) {
-        y = kScreenHeight - node.size.height - node.size.height / 2.0;
+        y = kScreenHeight - node.size.height - node.size.height / 3.0;
     }else if(y < -kScreenHeight + node.size.height){
-        y = -kScreenHeight + node.size.height + node.size.height /2.0;
+        y = -kScreenHeight + node.size.height + node.size.height /3.0;
     }
     
     

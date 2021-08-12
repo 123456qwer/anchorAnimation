@@ -159,10 +159,11 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 @property (nonatomic,strong)WDBaseNode *mouth;
 @property (nonatomic,strong)WDBaseNode *hair;
 @property (nonatomic,strong)WDBaseNode *hemlet;
-@property (nonatomic,strong)WDBaseNode *shield;
-@property (nonatomic,strong)WDBaseNode *shadow;
 @property (nonatomic,strong)WDBaseNode *beard;
 @property (nonatomic,strong)WDBaseNode *glass;
+
+@property (nonatomic,strong)WDBaseNode *shield;
+@property (nonatomic,strong)WDBaseNode *shadow;
 
 @property (nonatomic,strong)WDBaseNode *leftWeapon;
 
@@ -312,10 +313,8 @@ typedef NS_ENUM(NSInteger,AttackMode) {
 - (void)setEyeTexture:(NSString *)name;
 /// 设置胡子
 - (void)setBeardTexture:(NSString *)name;
-
 /// 设置👀
 - (void)setGlassTexture:(NSString *)name;
-
 /// 设置帽子
 - (void)setHemletTexture:(NSString *)name;
 /// 设置武器（左）

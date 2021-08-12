@@ -54,6 +54,7 @@
 
 - (void)createUserNodeWithScale:(CGFloat)scale{
 
+    self.anchorPoint = CGPointMake(0.5, 0);
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(upDataAction) name:kNotificationForUpData object:nil];
     
@@ -531,6 +532,8 @@
     
     if (attackNumber < 0) {
         attackNumber = 1;
+    }else if(attackNumber > self.BLOOD_INIT){
+        attackNumber = self.BLOOD_INIT;
     }
     
     [WDAnimationManager reduceBloodNumberAnimation:self number:attackNumber];
@@ -814,8 +817,25 @@
 
 /// 设置眉毛
 - (void)setEyeBrowsTexture:(NSString *)name{
-    self.eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
-    self.defaultEyesBrowsTexture = self.eyeBrows.texture;
+
+    if ([name isEqualToString:@"n"]) {
+        
+        if (_eyeBrows) {
+            [_eyeBrows removeFromParent];
+            _eyeBrows = nil;
+        }
+        
+    }else{
+        
+        if (!_eyeBrows) {
+            _eyeBrows = [WDBaseNode spriteNodeWithTexture:[WDTextureManager shareManager].normalEyeBrows];
+            _eyeBrows.zPosition = 0;
+            [_head addChild:_eyeBrows];
+        }
+        
+        _eyeBrows.texture = [SKTexture textureWithImage:[UIImage imageNamed:name]];
+        self.defaultEyesBrowsTexture = self.eyeBrows.texture;
+    }
 }
 
 /// 设置眼睛
@@ -866,6 +886,7 @@
             _leftWeapon.position = CGPointMake(-5, -1);
             _leftWeapon.zPosition = -1;
             _leftWeapon.zRotation = DEGREES_TO_RADIANS(-115);
+            _leftWeapon.defaultAngle = DEGREES_TO_RADIANS(-115);
             [_leftHand addChild:_leftWeapon];
             _leftWeapon.name = @"leftWeapon";
             

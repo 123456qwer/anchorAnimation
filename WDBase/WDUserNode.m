@@ -132,8 +132,12 @@
         //斜边英文。。。。等比计算
         CGFloat hypotenuse = sqrt(aDX * aDX + aDY * aDY);
            
-        CGFloat moveX = self.CADisplaySpeed * aDX / hypotenuse * xDirection;
-        CGFloat moveY = self.CADisplaySpeed * aDY / hypotenuse * yDirection;
+        int displaySpeed = self.CADisplaySpeed;
+        if (self.isRunState) {
+            displaySpeed += 2;
+        }
+        CGFloat moveX = displaySpeed * aDX / hypotenuse * xDirection;
+        CGFloat moveY = displaySpeed * aDY / hypotenuse * yDirection;
            
                
         CGFloat pointX = self.position.x + moveX;

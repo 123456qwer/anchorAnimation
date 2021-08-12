@@ -23,6 +23,7 @@
 
 /// boss
 #import "Boss1Node.h"
+#import "Boss2Node.h"
 
 
 
@@ -199,6 +200,20 @@
     return node;
 }
 
++ (Boss2Node *)initBoss2Action:(NSString *)spriteName
+                           dic:(NSDictionary *)dic{
+   
+    SKSpriteNode *superNode = dic[@"superNode"];
+    CGPoint point           = [dic[@"point"] CGPointValue];
+    Boss2Node *node = [[Boss2Node alloc] init];
+    node.position = point;
+    node.alpha = 0;
+    node.size = CGSizeMake(145 * allScale, 300 * allScale);
+    [self singleAttackWithName:spriteName node:node superNode:superNode];
+    [self setMonsterLocation:node];
+    return node;
+    
+}
 
 
 #pragma mark - 帧动画系列 -

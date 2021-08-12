@@ -115,6 +115,7 @@
     /// 目标死亡，清除仇恨
     if (self.targetNode.state & Sprite_dead) {
         [self.hateManager.hateDic setObject:@(0) forKey:self.targetNode.name];
+        self.targetNode = nil;
     }
     
     if (self.attackDistance == 0) {
@@ -166,7 +167,6 @@
         }
     }else{
         
-        
         /// 远程攻击
         if (self.targetNode && !(self.targetNode.state & Sprite_dead)) {
             
@@ -208,6 +208,8 @@
                 ///可以攻击的状态
                 [self attackAction:self.targetNode];
             }
+        }else{
+           self.targetNode = [WDCalculateTool searchUserRandomNode:self];
         }
     }
     

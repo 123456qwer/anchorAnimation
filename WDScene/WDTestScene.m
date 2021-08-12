@@ -16,6 +16,8 @@
 #import "WDBaseNode+Emoji.h"
 #import "WDBoss1Node.h"
 #import "Boss1Node.h"
+#import "Boss2Node.h"
+
 
 
 @implementation WDTestScene
@@ -54,6 +56,7 @@
     int b;
     WDBaseNode *node;
     WDBoss1Node *_bossNode;
+    Boss2Node *_boss2Node;
     Boss1Node *_b;
     SKLabelNode *_label;
     
@@ -67,24 +70,37 @@
 ////    _b.xScale = 2.0;
 ////    _b.yScale = 2.0;
 //   
-//    self.priest.position = CGPointMake(0, 0);
-//    self.knight.position = CGPointMake(kScreenWidth - 300, 0);
-//    self.knight.initBlood = 10000000;
-//    self.knight.lastBlood = 10000000;
+    self.archer.position = CGPointMake(0, 0);
+    self.knight.position = CGPointMake(200, 0);
+    //self.knight.isRunState = YES;
+    self.priest.position = CGPointMake(400, 0);
 
-    [self skillLearnNpc];
-    self.skillLearnNpc.position = CGPointMake(0, 0);
-   
+    _boss2Node = [WDBaseNode initActionWithName:kBoss2 superNode:self position:CGPointMake(-600,-50)];
+    
+    [WDNotificationManager hiddenSkillView:1];
+    [WDNotificationManager changeUser:self.priest.name];
 
+    [self setHead];
+}
+
+- (void)setHead{
+    self.knightHead.position = CGPointMake(kScreenWidth - self.knightHead.realSize.width - 20 , kScreenHeight - self.knightHead.realSize.height - 10);
+    self.archerHead.position = CGPointMake(kScreenWidth - self.knightHead.realSize.width * 2 - 40 ,kScreenHeight - self.archerHead.realSize.height - 10);
+    self.priestHead.position = CGPointMake(kScreenWidth - self.knightHead.realSize.width * 3 - 60 ,kScreenHeight - self.priestHead.realSize.height - 10);
 }
 
 - (void)touchUpAtPoint:(CGPoint)pos{
     
     [super touchUpAtPoint:pos];
   
+    //[self testBoss2];
 }
 
-- (void)testBoss{
+- (void)testBoss2{
+    [_boss2Node attackAction:self.knight];
+}
+
+- (void)testBoss1{
     
     [self knight];
     [self priest];

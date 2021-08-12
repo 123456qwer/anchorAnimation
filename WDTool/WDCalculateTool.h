@@ -17,6 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat)distanceBetweenPoints:(CGPoint)first
                          seconde:(CGPoint)second;
 
+/// 计算最远能点中响应的位置点 halfHeight：放宽的半宽（计算按正方形）
++ (CGFloat)distanceBigClickPoints:(CGPoint)first
+                           second:(CGPoint)second
+                       halfHeight:(CGFloat)halfHeight;
+
 ///俩点之间的角度
 + (CGFloat)angleForStartPoint:(CGPoint)startPoint
                      EndPoint:(CGPoint)endPoint;

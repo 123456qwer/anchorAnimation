@@ -39,7 +39,7 @@
     
     [self changeSelectNode:self.knight];
     __weak typeof(self)weakSelf = self;
-    [self setTextAction:@"就是这里了" hiddenTime:2 completeBlock:^{
+    [self setTextAction:@"就是这里了" hiddenTime:1 completeBlock:^{
         [weakSelf setTextAction:@"(???):来者何人？扰我清净!" hiddenTime:2 completeBlock:^{
             [weakSelf createMonster];
         }];
@@ -145,7 +145,7 @@
             
             [self createBoss];
             
-        }else if(_createNumber < 5){
+        }else if(_createNumber < 15){
             
             [WDBaseNode initTextureActionWithName:kRedBat superNode:self initPoint:CGPointMake(0, 0)];
             _createNumber ++;

@@ -459,25 +459,28 @@
     
      SKAction *aa = [SKAction moveTo:weakSelf.targetNode.position duration:time];
      SKAction *rem = [SKAction removeFromParent];
-     SKAction *seee = [SKAction sequence:@[aa,rem]];
+     SKAction *seee = [SKAction sequence:@[aa,[SKAction fadeAlphaTo:0 duration:0.3],rem]];
      [arrowN runAction:seee completion:^{
      }];
      
-     ///火焰
-//     SKAction *moveAction = [SKAction moveTo:weakSelf.targetNode.position duration:time];
-//     SKAction *alpha = [SKAction scaleTo:0 duration:0.3];
-//     SKAction *removeAction = [SKAction removeFromParent];
-//     SKAction *seq = [SKAction sequence:@[moveAction,alpha,removeAction]];
-//     
-//     SKEmitterNode *blueFire = [SKEmitterNode nodeWithFileNamed:@"Fire"];
-//     blueFire.zPosition = 20000;
-//     blueFire.targetNode = weakSelf.parent;
-//     blueFire.position = CGPointMake(arrowN.position.x + 10, arrowN.position.y);
-//     blueFire.name = @"blueFire";
-//     [blueFire runAction:seq completion:^{
-//     }];
-//     
-//     [weakSelf.parent addChild:blueFire];
+    if (self.skill1) {
+        ///火焰
+        SKAction *moveAction = [SKAction moveTo:weakSelf.targetNode.position duration:time];
+        SKAction *alpha = [SKAction scaleTo:0 duration:0.3];
+        SKAction *removeAction = [SKAction removeFromParent];
+        SKAction *seq = [SKAction sequence:@[moveAction,alpha,removeAction]];
+        
+        SKEmitterNode *blueFire = [SKEmitterNode nodeWithFileNamed:@"Fire"];
+        blueFire.zPosition = 20000;
+        blueFire.targetNode = weakSelf.parent;
+        blueFire.position = CGPointMake(arrowN.position.x + 10, arrowN.position.y);
+        blueFire.name = @"blueFire";
+        [blueFire runAction:seq completion:^{
+        }];
+        
+        [weakSelf.parent addChild:blueFire];
+    }
+     
     //self.attackNumber = self.trueAttackNumber;
 }
 
@@ -485,6 +488,7 @@
 - (void)deadAnimation{
     
     [self removeAllBodyAction];
+    [self removeAllActions];
     
     NSTimeInterval time1 = 0.4;
     

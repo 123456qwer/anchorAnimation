@@ -124,6 +124,9 @@
 
 /// 第一关Boss，也是技能训练师
 #define kBoss1 @"Boss1"
+/// 第二关Boss，也是wizard
+#define kBoss2 @"Boss2"
+
 
 #pragma mark - 关卡 -
 /// 目前关卡进度
@@ -236,5 +239,12 @@ static CGFloat allScale = 0.6;
 
 /// 点击指示图标
 #define kNotificationForClickPrompt @"kNotificationForClickPrompt"
+
+
+
+
+/// 常用方法
+#define REMOVE_ACTION [SKAction removeFromParent]
+
 
 #endif /* PrefixHeader_pch */

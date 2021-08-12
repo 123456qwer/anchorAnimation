@@ -94,7 +94,7 @@
     node.animationRunSpeed  = 300;
     node.BLOOD_INIT          = 300;
     node.BLOOD_LAST          = 300;
-    node.ATK       = 15;
+    node.ATK       = 35;
     node.ATK_FLOAT  = 8;
     node.CADisplaySpeed     = 2;
 }
@@ -106,7 +106,7 @@
     node.animationRunSpeed  = 300;
     node.BLOOD_INIT          = 150;
     node.BLOOD_LAST          = 150;
-    node.ATK       = 15;
+    node.ATK       = 40;
     node.ATK_FLOAT  = 8;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 400;
@@ -134,6 +134,19 @@
     node.BLOOD_LAST         = 3000;
     node.ATK                = 20;
     node.ATK_FLOAT          = 20;
+    node.CADisplaySpeed     = 2;
+    node.attackDistance     = 500;
+}
+
+/// BOSS2
++ (void)initBoss2Attribute:(WDBaseNode *)node{
+    
+    node.animationWalkSpeed = 300;
+    node.animationRunSpeed  = 400;
+    node.BLOOD_INIT         = 300000;
+    node.BLOOD_LAST         = 300000;
+    node.ATK                = 30;
+    node.ATK_FLOAT          = 30;
     node.CADisplaySpeed     = 2;
     node.attackDistance     = 500;
 }

@@ -126,8 +126,8 @@
 #pragma mark - 创建场景 (根据场景名称) -
 - (void)createSceneWithName:(NSString *)sceneName{
 
-     //sceneName = @"WDTestScene";
-     //sceneName = @"WDLearnScene4";
+     sceneName = @"WDTestScene";
+     //sceneName = @"WDLearnScene3Click";
 
      Class class = NSClassFromString(sceneName);
      WDBaseScene *scene = [class nodeWithFileNamed:sceneName];
@@ -137,10 +137,10 @@
      SKTransition *tr = [SKTransition fadeWithDuration:1];
      [skView presentScene:scene transition:tr];
 
-//     skView.showsFPS = YES;
-//     skView.showsNodeCount = YES;
-//     //skView.ignoresSiblingOrder = YES;
-//     skView.showsPhysics = YES;
+     skView.showsFPS = YES;
+     skView.showsNodeCount = YES;
+     //skView.ignoresSiblingOrder = YES;
+     skView.showsPhysics = YES;
 
      _selectScene = scene;
     

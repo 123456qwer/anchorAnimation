@@ -21,7 +21,6 @@
             WDArcherNode *node = (WDArcherNode *)[self childNodeWithName:kArcher];
             [nodeB addHateNumberWithAttackNode:node];
             [nodeB beAttackAction:node attackNumber:numer];
-
             //弓箭手吸血技能
 //            if (node.skill4) {
 //                [node setBloodNodeNumber:-numer];
@@ -33,7 +32,6 @@
             WDArcherNode *node = (WDArcherNode *)[self childNodeWithName:kArcher];
             [nodeA addHateNumberWithAttackNode:node];
             [nodeA beAttackAction:node attackNumber:numer];
-
             //弓箭手吸血技能
 //            if (node.skill4) {
 //                [node setBloodNodeNumber:-numer];
@@ -111,13 +109,8 @@
     
     /// 怪物攻击击中玩家
     if ([nodeA isKindOfClass:[WDUserNode class]] && [nodeB isKindOfClass:[WDWeaponNode class]]) {
-        CGFloat numer = nodeB.ATK;
-        [nodeA beAttackAction:nodeB attackNumber:numer];
-
         [self weaponAttackAction:nodeA weaponNode:nodeB];
     }else if([nodeB isKindOfClass:[WDUserNode class]] && [nodeA isKindOfClass:[WDWeaponNode class]]){
-        CGFloat numer = nodeA.ATK;
-        [nodeB beAttackAction:nodeA attackNumber:numer];
         [self weaponAttackAction:nodeB weaponNode:nodeA];
     }
     
@@ -127,32 +120,27 @@
 - (void)weaponAttackAction:(WDBaseNode *)userNode
                 weaponNode:(WDBaseNode *)weaponNode
 {
-    /// 鬼魂召唤的巨斧攻击
-//    if ([weaponNode.name isEqualToString:@"axe"]) {
-//
-//        userNode.state = SpriteState_movie;
-//        userNode.isMoveAnimation = NO;
-//        [userNode removeAllActions];
-//
-//        [userNode runAction:[SKAction moveTo:weaponNode.position duration:0.2] completion:^{
-//            userNode.state = SpriteState_stand;
-//        }];
-//    }
+    CGFloat attackNumber = weaponNode.ATK;
     
-    
-    /// 鬼魂召唤的鬼爪
-//    if ([weaponNode.name isEqualToString:@"hand"]) {
-//
-//        userNode.affect = SpriteAffect_reduceSpeed;
-//        CGPoint point = CGPointMake(-60, userNode.realSize.height + 40);
-//        CGFloat scale = 3.0;
-//        if ([userNode.name isEqualToString:kArcher]) {
-//            point = CGPointMake(-60, userNode.realSize.height + 40);
-//            scale = 3.0;
-//        }
-//
-//        [userNode setAffectWithArr:userNode.model.statusReduceArr point:point scale:scale count:3];
-//    }
+    if ([weaponNode.name isEqualToString:@"BlueFire"]) {
+        
+        /// BOSS2蓝色烟火攻击，需要用身体挡住
+        SKEmitterNode *node = (SKEmitterNode *)weaponNode.parent;
+        [node removeAllActions];
+        SKAction *alpha = [SKAction scaleTo:0 duration:0.5];
+        [node runAction:[SKAction sequence:@[alpha,REMOVE_ACTION]] completion:^{
+                        
+        }];
+        
+        
+        [userNode beAttackAction:weaponNode attackNumber:attackNumber];
+
+        
+    }else {
+        
+        [userNode beAttackAction:weaponNode attackNumber:attackNumber];
+        
+    }
     
 }
 

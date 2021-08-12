@@ -24,7 +24,7 @@
     _mapView.userInteractionEnabled = YES;
     [self.view addSubview:_mapView];
     
-    [_mapView setDataWithArr:@[[UIImage imageNamed:@"RedBatScene.png"],[UIImage imageNamed:@"RedBatScene.png"],[UIImage imageNamed:@"RedBatScene.png"],[UIImage imageNamed:@"RedBatScene.png"],[UIImage imageNamed:@"RedBatScene.png"]] textArr:@[@"蝙蝠领地",@"忍者？？？",@"幕后主使",@"丧尸来了？？",@"一只牛"]];
+    [_mapView setDataWithArr:@[[UIImage imageNamed:@"Ice1.png"],[UIImage imageNamed:@"Ice1.png"],[UIImage imageNamed:@"Ice1.png"],[UIImage imageNamed:@"Ice1.png"],[UIImage imageNamed:@"Ice1.png"]] textArr:@[@"蝙蝠领地",@"忍者？？？",@"幕后主使",@"丧尸来了？？",@"一只牛"]];
 
     __weak typeof(self)weakSelf = self;
     [_mapView setCancleBlock:^{

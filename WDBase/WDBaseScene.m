@@ -54,8 +54,9 @@
     _bgNode2.size = CGSizeMake(screenWidth + page, (screenWidth + page) / _bgNode2.size.width * _bgNode2.size.height);
     _bgNode2.position = CGPointMake(0,- kScreenHeight + _bgNode2.size.height / 2.0);
     
-    _bgNode2.zPosition = 10000;
+    _bgNode2.zPosition = 100000 - 10;
 }
+
 
 #pragma mark - 通知方法 -
 - (void)addObserve{
@@ -218,11 +219,51 @@
     return _userArr;;
 }
 
+- (WDHeadNode *)knightHead{
+    if (!_knightHead) {
+        _knightHead = [WDHeadNode spriteNodeWithTexture:self.textureManager.humanHead];
+        _knightHead.xScale = 0.7;
+        _knightHead.yScale = 0.7;
+        _knightHead.name = kKinght;
+        [_knightHead createFaceWithName:kKinght];
+        [self addChild:_knightHead];
+    }
+    
+    return _knightHead;
+}
+
+- (WDHeadNode *)archerHead{
+    if (!_archerHead) {
+        _archerHead = [WDHeadNode spriteNodeWithTexture:self.textureManager.humanHead];
+        _archerHead.xScale = 0.7;
+        _archerHead.yScale = 0.7;
+        _archerHead.name   = kArcher;
+        [_archerHead createFaceWithName:kArcher];
+        [self addChild:_archerHead];
+    }
+    
+    return _archerHead;
+}
+
+- (WDHeadNode *)priestHead{
+    if (!_priestHead) {
+        _priestHead = [WDHeadNode spriteNodeWithTexture:self.textureManager.humanHead];
+        _priestHead.xScale = 0.7;
+        _priestHead.yScale = 0.7;
+        _priestHead.name   = kPriest;
+        [_priestHead createFaceWithName:kPriest];
+        [self addChild:_priestHead];
+    }
+
+    return _priestHead;
+}
+
 
 - (WDKknightNode *)knight{
    
     if (!_knight) {
         _knight = [WDBaseNode initActionWithName:kKinght superNode:self position:CGPointMake(0, 0)];
+        
         [self.userArr addObject:_knight];
     }
     
@@ -327,12 +368,16 @@
 /// 触碰结束
 - (void)touchUpAtPoint:(CGPoint)pos {
     
+    /// 这个点是实际点击位置
+    CGPoint clickPoint = pos;
+    /// 这个点是计算过后用来移动的位置
     pos = [WDCalculateTool calculateMaxMovePosition:pos node:_selectNode];
     
     NSArray *nodes = [self nodesAtPoint:pos];
     CGFloat distance = 10000;
     WDEnemyNode *enemy = nil;
     WDUserNode  *user = nil;
+    WDHeadNode  *header = nil;
 
     /// 牧师或其他治疗拖动治疗的情况，只考虑选中玩家，忽略敌人
     if ([self.selectNode.name isEqualToString:kPriest] && self.selectLine.hidden == NO) {
@@ -340,9 +385,16 @@
         /// 获取离点击点最近位置友军
         for (SKSpriteNode *node in nodes) {
             if([node isKindOfClass:[WDUserNode class]]){
-                CGFloat dis = [WDCalculateTool distanceBetweenPoints:pos seconde:node.position];
+                CGFloat dis = [WDCalculateTool distanceBetweenPoints:clickPoint seconde:node.position];
                  if (dis < distance && dis <= node.size.width) {
                      user = (WDUserNode *)node;
+                     distance = dis;
+                     enemy = nil;
+                 }
+            }else if([node isKindOfClass:[WDHeadNode class]]){
+                CGFloat dis = [WDCalculateTool distanceBetweenPoints:clickPoint seconde:node.position];
+                 if (dis < distance && dis <= node.size.width) {
+                     header = (WDHeadNode *)node;
                      distance = dis;
                      enemy = nil;
                  }
@@ -354,16 +406,26 @@
         /// 获取离点击点最近位置的敌人
         for (SKSpriteNode *node in nodes) {
             if ([node isKindOfClass:[WDEnemyNode class]]) {
-               CGFloat dis = [WDCalculateTool distanceBetweenPoints:pos seconde:node.position];
+               CGFloat dis = [WDCalculateTool distanceBetweenPoints:clickPoint seconde:node.position];
                 if (dis < distance && dis <= node.size.width) {
                     enemy = (WDEnemyNode *)node;
                     distance = dis;
                     user = nil;
                 }
             }else if([node isKindOfClass:[WDUserNode class]]){
-                CGFloat dis = [WDCalculateTool distanceBetweenPoints:pos seconde:node.position];
+                CGFloat dis = [WDCalculateTool distanceBetweenPoints:clickPoint seconde:node.position];
                  if (dis < distance && dis <= node.size.width) {
                      user = (WDUserNode *)node;
+                     distance = dis;
+                     enemy = nil;
+                 }
+            }else if([node isKindOfClass:[WDHeadNode class]]){
+                WDHeadNode *head = (WDHeadNode *)node;
+                CGPoint nodePoint = CGPointMake(head.position.x + head.realPoint.x, head.position.y + head.realPoint.y);
+                CGFloat dis = [WDCalculateTool distanceBetweenPoints:clickPoint seconde:nodePoint];
+                CGFloat bigD = [WDCalculateTool distanceBigClickPoints:clickPoint second:nodePoint halfHeight:head.realSize.width / 2.0];
+                 if (dis < distance && dis <= bigD) {
+                     header = head;
                      distance = dis;
                      enemy = nil;
                  }
@@ -387,8 +449,17 @@
         [self clickEneny:enemy];
         [self hiddenArrow];
         
-    }else{
+    }else if(header){
         
+        if ([header.name isEqualToString:kKinght]) {
+            [self changeOrCureUser:_knight];
+        }else if([header.name isEqualToString:kPriest]){
+            [self changeOrCureUser:_priest];
+        }else if([header.name isEqualToString:kArcher]){
+            [self changeOrCureUser:_archer];
+        }
+        
+    }else{
         ///单纯移动
         self.selectNode.targetNode = enemy;
         [self.selectNode moveAction:pos];
@@ -520,6 +591,7 @@
     
     [_selectNode selectSpriteAction];
     [WDNotificationManager changeUser:self.selectNode.name];
+    [self hiddenArrow];
 }
 
 - (void)changeSelectNodeDirection:(NSInteger)direction

@@ -15,6 +15,7 @@
 #import "WDWizardNode.h"
 
 #import "WDSkillNpcNode.h"
+#import "WDHeadNode.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -80,6 +81,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)WDArcherNode  *archer;
 @property (nonatomic,strong)WDPriestNode  *priest;
 @property (nonatomic,strong)WDWizardNode  *wizard;
+
+@property (nonatomic,strong)WDHeadNode  *knightHead;
+@property (nonatomic,strong)WDHeadNode  *archerHead;
+@property (nonatomic,strong)WDHeadNode  *priestHead;
 
 #pragma mark - NPC -
 @property (nonatomic,strong)WDSkillNpcNode *skillLearnNpc;

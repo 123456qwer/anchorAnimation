@@ -183,11 +183,16 @@
     UITextField *t = (UITextField *)[self.view viewWithTag:1234567];
     t.frame = CGRectMake(t.origin.x, height - 50 - 100, t.size.width, 50);
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth / 2.0 - 44 / 2.0 , t.bottom + 20, 44, 44)];
-    [btn addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setImage:[UIImage imageNamed:@"confirm"] forState:UIControlStateNormal];
-    btn.tag = 3211;
-    [self.view addSubview:btn];
+    UIButton *btn = (UIButton *)[self.view viewWithTag:3211];
+    if (!btn) {
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth / 2.0 - 44 / 2.0 , t.bottom + 20, 44, 44)];
+        [btn addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
+        [btn setImage:[UIImage imageNamed:@"confirm"] forState:UIControlStateNormal];
+        btn.tag = 3211;
+        [self.view addSubview:btn];
+    }
+    
+    
     
 }
 
